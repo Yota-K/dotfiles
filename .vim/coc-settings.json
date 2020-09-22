@@ -1,0 +1,18 @@
+{
+  "intelephense": {
+    "diagnostics": {
+      "undefinedClassConstants": false,
+      "undefinedConstants": false,
+      "undefinedFunctions": false,
+      "undefinedMethods": false,
+      "undefinedProperties": false,
+      "undefinedTypes": false
+     },
+    "command": "intelephense",
+    "args": ["--stdio"],
+    "filetypes": ["php"],
+    "initializationOptions": {
+      "storagePath": "/tmp/intelephense"
+     }
+   }
+}
