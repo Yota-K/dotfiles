@@ -2,7 +2,7 @@
 " Maintainer:	Bohdan Vlasyuk <bohdan@vstu.edu.ua>
 " Last Change:	2008 Jul 18
 
-" darkblue -- for those who prefer dark background
+" darkblue_custom -- for those who prefer dark background
 " [note: looks bit uglier with come terminal palettes,
 " but is fine on default linux console palette.]
 
@@ -75,3 +75,9 @@ hi JsxClosePunct ctermfg=27
 hi JsxComponentName ctermfg=27
 hi JsxCloseString ctermfg=27
 hi JsxTagName ctermfg=226
+
+" popupの色
+hi Pmenu ctermbg=black
+hi PmenuSel ctermbg=cyan
+hi PmenuThumb ctermfg=darkcyan guibg=darkcyan
+hi PmenuSbar ctermbg=white
