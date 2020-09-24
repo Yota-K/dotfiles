@@ -22,11 +22,12 @@ set ambiwidth=double
 set ruler
 
 " インデントを入れる
-set tabstop=2
-set smartindent
-set autoindent
-set expandtab
 set shiftwidth=2
+set softtabstop=2
+set tabstop=2
+set expandtab
+set autoindent
+set smartindent
 
 " 入力中のコマンドを表示
 set showcmd
