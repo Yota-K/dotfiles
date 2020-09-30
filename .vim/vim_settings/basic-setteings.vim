@@ -78,3 +78,10 @@ augroup MyXML
   autocmd Filetype html inoremap <buffer> </ </<C-x><C-o>
   autocmd Filetype xml inoremap <buffer> </ </<C-x><C-o>
 augroup END
+
+" ()と{}と[]と引用符の補完
+inoremap ( ()<Left>
+inoremap {<Enter> {}<Left><CR><ESC><S-o>
+inoremap [ []<Left>
+inoremap " ""<Left>
+inoremap ' ''<Left>
