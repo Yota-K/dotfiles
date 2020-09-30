@@ -50,18 +50,6 @@ autocmd Filetype json let g:indentLine_setConceal = 0
 " diffsplitを縦分割で表示 
 set diffopt+=vertical
 
-" coc
-" Use <C-l> for trigger snippet expand.
-imap <C-l> <Plug>(coc-snippets-expand)
-" Use <C-j> for select text for visual placeholder of snippet.
-vmap <C-j> <Plug>(coc-snippets-select)
-" Use <C-j> for jump to next placeholder, it's default of coc.nvim
-let g:coc_snippet_next = '<c-j>'
-" Use <C-k> for jump to previous placeholder, it's default of coc.nvim
-let g:coc_snippet_prev = '<c-k>'
-" Use <C-j> for both expand and jump (make expand higher priority.)
-imap <C-j> <Plug>(coc-snippets-expand-jump)
-
 " emmet
 let g:user_emmet_leader_key='<c-e>'
 let g:user_emmet_settings = {

@@ -17,7 +17,8 @@ Plug 'itchyny/lightline.vim'
 " 6, gitの情報を表示
 Plug 'tpope/vim-fugitive'
 " 7, 補完
-Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+" Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " 8, エメット
 Plug 'mattn/emmet-vim'
 " 9, jsx・tsxのシンタックスハイライト
