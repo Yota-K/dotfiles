@@ -67,7 +67,7 @@ hi PmenuSbar guifg=blue guibg=darkgray
 hi PmenuThumb guifg=#c0c0c0
 
 " アイコンの色
-hi NERDTreeFlags ctermfg=9
+hi NERDTreeFlags ctermfg=15
 
 " JS・JSXのシンタックスハイライトの上書き
 hi JsxOpenPunct ctermfg=27
