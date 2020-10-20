@@ -4,15 +4,11 @@ function! GrepWrap(name, extension)
   execute("grep -r " .a:name. " *." .a:extension)
 endfunction
 
-" 検索にヒットした単語の数を表示
-" command! -nargs=1 SCount call SCount(<f-args>)
-" function! SCount(name)
-"   try
-"     execute("%s/" .a:name. "//gn")
-"   catch
-"     echo '一致するワードはありません' 
-"   endtry
-" endfunction
+" 行末の半角スペースを一括削除
+command! DeleteSpace call DeleteSpace()
+function! DeleteSpace()
+  execute("%s/ *$//g")
+endfunction
 
 " カーソル上のsyntax情報を取得する
 function! s:get_syn_id(transparent)
@@ -54,5 +50,3 @@ function! s:get_syn_info()
         \ " guifg: " . linkedSyn.guifg .
         \ " guibg: " . linkedSyn.guibg
 endfunction
-
-command! WipeReg for i in range(34,122) | silent! call setreg(nr2char(i), []) | endfor
