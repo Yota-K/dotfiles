@@ -26,8 +26,8 @@ set shiftwidth=2
 set softtabstop=2
 set tabstop=2
 set expandtab
-set autoindent
-set smartindent
+"set autoindent
+"set smartindent
 
 " 入力中のコマンドを表示
 set showcmd
@@ -81,6 +81,7 @@ augroup END
 
 " ()と{}と[]と引用符の補完
 inoremap (<Enter> ()<Left>
+inoremap {<Space> {}<Left>
 inoremap {<Enter> {}<Left><CR><ESC><S-o>
 inoremap [<Enter> []<Left>
 inoremap "<Enter> ""<Left>
