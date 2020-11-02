@@ -77,7 +77,7 @@ hi JsxCloseString ctermfg=27
 hi JsxTagName ctermfg=226
 
 " popupの色
-hi Pmenu ctermbg=black
+hi Pmenu ctermbg=234
 hi PmenuSel ctermbg=cyan
 hi PmenuThumb ctermfg=darkcyan guibg=darkcyan
 hi PmenuSbar ctermbg=white
