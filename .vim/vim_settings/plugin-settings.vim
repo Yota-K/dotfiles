@@ -50,6 +50,13 @@ autocmd Filetype json let g:indentLine_setConceal = 0
 " diffsplitを縦分割で表示 
 set diffopt+=vertical
 
+" coc
+" ヒントを表示
+" silent・・・コマンドラインへの出力を抑制する
+" <C-u>hoge<cr>・・・特殊なキーのマッピング
+" https://thinca.hatenablog.com/entry/20100205/1265307642
+nnoremap <silent> <space>h :<C-u>call CocAction('doHover')<cr>
+
 " emmet
 let g:user_emmet_leader_key='<c-e>'
 let g:user_emmet_settings = {
