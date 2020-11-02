@@ -47,10 +47,6 @@ set backspace=indent,eol,start
 " 行末の1文字先までカーソルを移動できるようにする
 set virtualedit=onemore
 
-" 折り返し時に表示してる行単位で移動できるようにする
-nnoremap j gj
-nnoremap k gk
-
 " スワップファイルを作成しないようにする
 set noswapfile
 
@@ -79,10 +75,28 @@ augroup MyXML
   autocmd Filetype xml inoremap <buffer> </ </<C-x><C-o>
 augroup END
 
+" インサートモード時のキーマッピング
 " ()と{}と[]と引用符の補完
 inoremap (<Enter> ()<Left>
-inoremap {<Space> {}<Left>
-inoremap {<Enter> {}<Left><CR><ESC><S-o>
+inoremap {<Enter> {}<Left>
 inoremap [<Enter> []<Left>
 inoremap "<Enter> ""<Left>
 inoremap '<Enter> ''<Left>
+
+inoremap {<Space> {}<Left><CR><ESC><S-o>
+inoremap [<Space> []<Left><CR><ESC><S-o>
+
+" ノーマルモード時のキーマッピング
+" 折り返し時に表示してる行単位で移動できるようにする
+nnoremap j gj
+nnoremap k gk
+
+" インクリメント・デクリメント
+nnoremap + <C-a>
+nnoremap - <C-x>
+
+" 矢印キー無効化 (矢印の使って移動するのは甘え)
+noremap <Left> <Nop>
+noremap <Down> <Nop>
+noremap <Up> <Nop>
+noremap <Right> <Nop>
