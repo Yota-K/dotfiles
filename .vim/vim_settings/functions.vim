@@ -10,6 +10,18 @@ function! DeleteSpace()
   execute("%s/ *$//g")
 endfunction
 
+" Reactのテンプレートを生成
+command! ReactTemplate call ReactTemplate()
+function! ReactTemplate()
+  :r ~/.vim/templates/javascript/template.tsx
+endfunction
+
+" markdownのテンプレートを作成
+command! MarkdownTemplate call MarkdownTemplate()
+function! MarkdownTemplate()
+  :r ~/.vim/templates/markdown/template.md
+endfunction
+
 " カーソル上のsyntax情報を取得する
 function! s:get_syn_id(transparent)
   let synid = synID(line("."), col("."), 1)
