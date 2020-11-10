@@ -21,13 +21,13 @@ set ambiwidth=double
 " カーソルの位置を表示する
 set ruler
 
-" インデントを入れる
+" インデント周りの設定
 set shiftwidth=2
 set softtabstop=2
 set tabstop=2
 set expandtab
-"set autoindent
-"set smartindent
+set autoindent
+set smartindent
 
 " 入力中のコマンドを表示
 set showcmd
