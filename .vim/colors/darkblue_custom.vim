@@ -81,3 +81,6 @@ hi Pmenu ctermbg=234
 hi PmenuSel ctermbg=cyan
 hi PmenuThumb ctermfg=darkcyan guibg=darkcyan
 hi PmenuSbar ctermbg=white
+
+" PHPのヒアドキュメント
+hi phpHereDoc ctermfg=57
