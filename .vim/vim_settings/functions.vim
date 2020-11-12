@@ -1,7 +1,9 @@
 " grepをラップした関数
-command! -nargs=+ GrepWrap call GrepWrap(<f-args>)
-function! GrepWrap(name, extension)
-  execute("grep -r " .a:name. " *." .a:extension)
+" 拡張子を判定して、拡張子ごとに除外ディレクトリを変更できたら
+" 検索精度上がるかも
+command! -nargs=1 GrepWrap call GrepWrap(<f-args>)
+function! GrepWrap(name)
+  execute("grep -r ".a:name." * | cw")
 endfunction
 
 " 行末の半角スペースを一括削除

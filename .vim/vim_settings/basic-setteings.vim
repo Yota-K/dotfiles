@@ -95,8 +95,11 @@ nnoremap k gk
 nnoremap + <C-a>
 nnoremap - <C-x>
 
-" 矢印キー無効化 (矢印の使って移動するのは甘え)
+" 矢印キー無効化 (矢印使って移動するのは甘え)
 noremap <Left> <Nop>
 noremap <Down> <Nop>
 noremap <Up> <Nop>
 noremap <Right> <Nop>
+
+" 外部grepで検索対象から除外するディレクトリを指定
+set grepprg=grep\ -rnIH\ --exclude-dir=node_modules\ --exclude-dir=.*\ --exclude-dir=out\ --exclude-dir=build\ --exclude-dir=vendor
