@@ -1,5 +1,6 @@
 # dotfiles
 
-## 以下の設定ファイルを管理する
-* vimrc
-* tmux.conf
+## 管理しているファイル
+* .bash_profile
+* .tmux.conf
+* .vimrc
