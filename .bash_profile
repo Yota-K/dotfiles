@@ -17,6 +17,7 @@ PS1="\$ \W > "
 
 # Docker
 alias dud='docker-compose up -d'
+alias dbuild="docker-compose build"
 alias dstart='docker-compose start'
 alias drestart='docker-compose restart'
 alias dstop='docker-compose stop'
