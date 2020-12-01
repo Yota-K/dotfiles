@@ -23,8 +23,10 @@ alias drestart='docker-compose restart'
 alias dstop='docker-compose stop'
 alias ddown='docker-compose down'
 alias dps='docker ps'
+alias dpsa='docker ps -a'
 alias dimages='docker images'
 alias dexec='docker exec -it'
+alias dvolumels='docker volume ls'
 
 # tig
 alias tiga='tig --all'
