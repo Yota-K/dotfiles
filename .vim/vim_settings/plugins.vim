@@ -17,7 +17,6 @@ Plug 'itchyny/lightline.vim'
 " 6, gitの情報を表示
 Plug 'tpope/vim-fugitive'
 " 7, 補完
-" Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " 8, エメット
 Plug 'mattn/emmet-vim'
@@ -31,5 +30,7 @@ Plug 'vim-jp/vimdoc-ja'
 Plug 'w0rp/ale'
 " 12, ファイルの検索
 Plug 'ctrlpvim/ctrlp.vim'
+" 13, コメントアウトを効率化
+Plug 'tyru/caw.vim'
 
 call plug#end()

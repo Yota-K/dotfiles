@@ -84,3 +84,7 @@ let g:user_emmet_settings = {
 let g:ale_linters = {  
 \   'javascript': ['eslint'],  
 \}  
+
+" caw.vim
+nmap <C-z> <Plug>(caw:hatpos:toggle)
+vmap <C-z> <Plug>(caw:hatpos:toggle)
