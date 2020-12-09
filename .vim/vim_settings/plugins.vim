@@ -32,5 +32,7 @@ Plug 'w0rp/ale'
 Plug 'ctrlpvim/ctrlp.vim'
 " 13, コメントアウトを効率化
 Plug 'tyru/caw.vim'
+" 14, 定義元ジャンプ
+Plug 'pechorin/any-jump.vim'
 
 call plug#end()

@@ -65,9 +65,6 @@ map split sp
 " 行を折り返さない
 set nowrap
 
-" カレントディレクトリを自動的に変更
-set autochdir
-
 " HTMLとXMLの閉じタグの補完
 augroup MyXML
   autocmd!
