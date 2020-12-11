@@ -28,11 +28,9 @@ Plug 'HerringtonDarkholme/yats.vim', { 'for': 'tsx' }
 Plug 'vim-jp/vimdoc-ja' 
 " 11, 各種Lintを非同期実行
 Plug 'w0rp/ale'
-" 12, ファイルの検索
-Plug 'ctrlpvim/ctrlp.vim'
-" 13, コメントアウトを効率化
+" 12, コメントアウトを効率化
 Plug 'tyru/caw.vim'
-" 14, 定義元ジャンプ
+" 13, 定義元ジャンプ
 Plug 'pechorin/any-jump.vim'
 
 call plug#end()
