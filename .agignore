@@ -1,0 +1,15 @@
+log
+logs
+images
+imgs
+img
+node_modules
+out
+build
+vendor
+.git
+jquery-*.js
+*.bak
+*.map
+*.tmp
+*.temp
