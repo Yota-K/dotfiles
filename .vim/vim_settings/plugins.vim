@@ -6,6 +6,7 @@ call plug#begin()
 
 " 1, ファイラー
 Plug 'scrooloose/nerdtree'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 " 2, アイコン
 Plug 'ryanoasis/vim-devicons'
 " 3, インデントの可視化

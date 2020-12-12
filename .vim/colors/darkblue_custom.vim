@@ -66,8 +66,13 @@ hi PmenuSel ctermbg=76 guifg=#c0c0c0 guibg=#2050d0
 hi PmenuSbar guifg=blue guibg=darkgray
 hi PmenuThumb guifg=#c0c0c0
 
-" アイコンの色
+" ファイラーのテキスト・アイコンの色
 hi NERDTreeFlags ctermfg=15
+hi WebDevIconsDefaultFolderSymbol ctermfg=15
+hi NERDTreeOpenable ctermfg=40
+hi NERDTreeClosable ctermfg=40
+hi nerdtreeExactMatchFolderIcon_node_modules ctermfg=2
+hi nerdtreeExactMatchFolder_node_modules ctermfg=cyan
 
 " JS・JSXのシンタックスハイライトの上書き
 hi JsxOpenPunct ctermfg=27
