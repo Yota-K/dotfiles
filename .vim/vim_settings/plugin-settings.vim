@@ -3,19 +3,17 @@
 "----------------------------------------
 
 " nerdtree
-" Ctrl + tでNERDTreeを開く
 nnoremap <silent><C-n> :NERDTreeToggle<CR>
 let NERDTreeMinimalUI=1
 let NERDTreeShowHidden=1
+let g:webdevicons_conceal_nerdtree_brackets = 1
+let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
 
 " vim-devicons
 " after a re-source, fix syntax matching issues (concealing brackets):
 if exists('g:loaded_webdevicons')
   call webdevicons#refresh()
 endif
-
-let g:webdevicons_conceal_nerdtree_brackets = 1
-let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
 
 " guifontを設定しないと文字化けになる。terminalで行ったフォントの設定と同様
 " 公式サイトではLinuxとmacOSの設定が若干異なるが、Linuxの設定でもmacOSで問題なし
@@ -26,7 +24,7 @@ set encoding=utf-8
 set laststatus=2
 
 let g:lightline = {
-  \'colorscheme': 'ayu_mirage',
+  \'colorscheme': 'molokai',
   \'active': {
   \   'left': [ [ 'mode', 'paste' ],
   \           [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
@@ -88,3 +86,20 @@ let g:ale_linters = {
 " caw.vim
 nmap <C-z> <Plug>(caw:hatpos:toggle)
 vmap <C-z> <Plug>(caw:hatpos:toggle)
+
+" any-jump
+" Custom ignore files
+let g:any_jump_ignored_files = ['log', 'logs', 'images', 'imgs', 'img', 'node_modules', 'out', 'build', 'vendor', '.git', 'jquery-*.js', '*.bak', '*.map', '*.tmp', '*.temp']
+
+" nerdtree-git-plugin
+let g:NERDTreeGitStatusIndicatorMapCustom = {
+    \ "Modified"  : "M ✹",
+    \ "Staged"    : "S ✚",
+    \ "Untracked" : "U ✭",
+    \ "Renamed"   : "R ➜",
+    \ "Deleted"   : "D ✖",
+    \ "Clean"     : "C ✔︎",
+    \ "Unmerged"  : "═",
+    \ "Dirty"     : "✗",
+    \ "Unknown"   : "?"
+    \ }
