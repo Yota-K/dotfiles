@@ -21,6 +21,9 @@ set ambiwidth=double
 " カーソルの位置を表示する
 set ruler
 
+" 不可視文字を可視化 (タブが「▸-」と表示される)
+set list listchars=tab:\▸\-
+
 " インデント周りの設定
 set shiftwidth=2
 set softtabstop=2
@@ -91,6 +94,9 @@ nnoremap k gk
 " インクリメント・デクリメント
 nnoremap + <C-a>
 nnoremap - <C-x>
+
+" ESC連打でハイライト解除
+nnoremap <Esc><Esc> :noh<CR><Esc>
 
 " 矢印キー無効化 (矢印使って移動するのは甘え)
 noremap <Left> <Nop>
