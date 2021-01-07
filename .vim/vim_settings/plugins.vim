@@ -34,5 +34,7 @@ Plug 'w0rp/ale'
 Plug 'tyru/caw.vim'
 " 13, 定義元ジャンプ
 Plug 'pechorin/any-jump.vim'
+" 14, earthboundのテーマ（VSCodeと同じやつ）
+Plug 'benbusby/vim-earthbound-themes'
 
 call plug#end()
