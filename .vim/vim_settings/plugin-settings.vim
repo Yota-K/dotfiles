@@ -23,6 +23,13 @@ set encoding=utf-8
 " indent-lightLine
 set laststatus=2
 
+let g:indentLine_color_term = 17
+let g:indentLine_char_list = ['|']
+let g:indentLine_concealcursor = 'inc'
+
+" jsonのダブルクォーテーションを表示
+autocmd Filetype json let g:indentLine_setConceal = 0
+
 let g:lightline = {
   \'colorscheme': 'molokai',
   \'active': {
@@ -34,15 +41,8 @@ let g:lightline = {
   \},
   \}
 
-let g:indentLine_color_term = 17
-let g:indentLine_char_list = ['|']
-let g:indentLine_concealcursor = 'inc'
-
 " ステータスバーにブランチの情報を表示
 set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
-
-" jsonのダブルクォーテーションを表示
-autocmd Filetype json let g:indentLine_setConceal = 0
 
 " vim-fugitive
 " diffsplitを縦分割で表示 
