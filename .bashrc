@@ -33,6 +33,9 @@ alias rm='rm -i'
 alias v='vi'
 alias vstart='cd && cd Documents/ && vi'
 
+# tmux
+alias tmuxRestart='tmux attach'
+
 # Gitのターミナルでの補完を有効にする
 source /usr/local/etc/bash_completion.d/git-prompt.sh
 source /usr/local/etc/bash_completion.d/git-completion.bash
