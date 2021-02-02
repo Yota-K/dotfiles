@@ -24,6 +24,9 @@ function! MarkdownTemplate()
   :r ~/.vim/templates/markdown/template.md
 endfunction
 
+" ポップアップウィンドウの中にターミナルを生成
+command! TerminalOpen call popup_create(term_start([&shell], #{ hidden: 1, term_finish: 'close'}), #{ border: [], minwidth: winwidth(1), minheight: &lines/2 })
+
 " カーソル上のsyntax情報を取得する
 function! s:get_syn_id(transparent)
   let synid = synID(line("."), col("."), 1)
