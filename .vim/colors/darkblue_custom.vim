@@ -34,7 +34,7 @@ hi MoreMsg			ctermfg=darkgreen	ctermfg=darkgreen
 hi Question			guifg=green gui=none ctermfg=green cterm=none
 hi NonText			guifg=#0030ff		ctermfg=darkblue
 
-hi StatusLine	guifg=blue guibg=darkgray gui=none		ctermfg=blue ctermbg=blue term=none cterm=none
+hi StatusLine	ctermfg=12 ctermbg=white
 hi StatusLineNC	guifg=black guibg=darkgray gui=none		ctermfg=black ctermbg=gray term=none cterm=none
 hi VertSplit	guifg=black guibg=darkgray gui=none		ctermfg=black ctermbg=gray term=none cterm=none
 
@@ -82,7 +82,7 @@ hi JsxCloseString ctermfg=27
 hi JsxTagName ctermfg=226
 
 " popupの色
-hi Pmenu ctermbg=234
+hi Pmenu ctermfg=249 ctermbg=234
 hi PmenuSel ctermbg=cyan
 hi PmenuThumb ctermfg=darkcyan guibg=darkcyan
 hi PmenuSbar ctermbg=white
