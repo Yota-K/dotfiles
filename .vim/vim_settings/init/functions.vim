@@ -12,13 +12,19 @@ function! DeleteSpace()
   execute("%s/ *$//g")
 endfunction
 
-" Reactのテンプレートを生成
+" Reactのテンプレ
 command! ReactTemplate call ReactTemplate()
 function! ReactTemplate()
   :r ~/.vim/templates/javascript/template.tsx
 endfunction
 
-" markdownのテンプレートを作成
+" アロー関数のテンプレ
+command! ArrowFunction call ArrowFunction()
+function! ArrowFunction()
+  :r ~/.vim/templates/javascript/arrow-function.js
+endfunction
+
+" markdownのテンプレ
 command! MarkdownTemplate call MarkdownTemplate()
 function! MarkdownTemplate()
   :r ~/.vim/templates/markdown/template.md
