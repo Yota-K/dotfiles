@@ -12,12 +12,6 @@ function! DeleteSpace()
   execute("%s/ *$//g")
 endfunction
 
-" Reactのテンプレ
-command! ReactTemplate call ReactTemplate()
-function! ReactTemplate()
-  :r ~/.vim/templates/javascript/template.tsx
-endfunction
-
 " アロー関数のテンプレ
 command! ArrowFunction call ArrowFunction()
 function! ArrowFunction()

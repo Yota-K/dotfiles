@@ -37,6 +37,8 @@ Plug 'pechorin/any-jump.vim'
 " 14, earthboundのテーマ（VSCodeと同じやつ）
 Plug 'benbusby/vim-earthbound-themes'
 " 15, Vueの構文とインデントを設定するためのプラグイン
-Plug 'posva/vim-vue'
+" Plug 'posva/vim-vue'
+" 16, テンプレートを管理するプラグイン
+Plug 'mattn/sonictemplate-vim'
 
 call plug#end()
