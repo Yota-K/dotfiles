@@ -19,6 +19,8 @@ alias dpsa='docker ps -a'
 alias dimages='docker images'
 alias dexec='docker exec -it'
 alias dvolumels='docker volume ls'
+alias dlogs='docker logs'
+alias dlogsf='docker logs -f'
 
 # tig
 alias tiga='tig --all'
