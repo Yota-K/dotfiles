@@ -36,6 +36,9 @@ alias v='vi'
 # tmux
 alias tmuxRestart='tmux attach'
 
+# ranger
+alias r='ranger'
+
 # Gitのターミナルでの補完を有効にする
 source /usr/local/etc/bash_completion.d/git-prompt.sh
 source /usr/local/etc/bash_completion.d/git-completion.bash
