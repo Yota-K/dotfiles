@@ -38,5 +38,7 @@ Plug 'pechorin/any-jump.vim', { 'on': 'AnyJump' }
 Plug 'benbusby/vim-earthbound-themes'
 " 15, テンプレートを管理するプラグイン
 Plug 'mattn/sonictemplate-vim'
+" 16, Vimからagを使えるようにする
+Plug 'rking/ag.vim', { 'on': 'Ag' }
 
 call plug#end()
