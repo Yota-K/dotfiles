@@ -5,6 +5,7 @@ dotfilesを管理するリポジトリ。
 * .agignore
 * .bash_profile
 * .bashrc
+* .tigrc
 * .tmux.conf
 * .vimrc
 

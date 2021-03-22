@@ -1,0 +1,36 @@
+# main viewの左端にコミットIDを表示
+set main-view = id date author commit-title:graph=yes,refs=yes
+
+# 画面を水平方向に分割
+set vertical-split = no
+#
+# 水平分割したウィンドウの下画面サイズを % で指定（行数指定も可）
+set split-view-height = 45%
+
+## 色の設定
+color default white black
+color cursor default 154
+color date 27 default
+color delimiter cyan default
+color line-number yellow default
+color diff-header yellow default
+color diff-index blue default
+color diff-chunk magenta default
+color "Reported-by:" green default
+color graph-commit cyan default
+
+# キーバインドの拡張
+# ブランチが表示されている画面で
+# 1, Shift + F・・・git fetch
+# 2, shift + n・・・git ct -b
+# 3, Shift + p・・・git push
+# 4, Shift + l・・・git pull
+# 5, Shift + M・・・git merge
+bind generic F none
+bind generic F !git fetch
+bind branch n !git checkout -b %(prompt) %(branch)
+bind branch P !git push origin %(branch)
+bind branch L !git pull origin %(branch)
+bind generic M none
+bind branch M none
+bind branch M !git merge %(branch)
