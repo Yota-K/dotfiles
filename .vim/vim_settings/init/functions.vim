@@ -1,28 +1,20 @@
-" grepをラップした関数
-" 拡張子を判定して、拡張子ごとに除外ディレクトリを変更できたら
-" 検索精度上がるかも
-command! -nargs=1 GrepWrap call GrepWrap(<f-args>)
-function! GrepWrap(name)
-  execute("grep -r ".a:name." * | cw")
-endfunction
-
 " 行末の半角スペースを一括削除
 command! DeleteSpace call DeleteSpace()
 function! DeleteSpace()
   execute("%s/ *$//g")
 endfunction
 
-" アロー関数のテンプレ
-command! ArrowFunction call ArrowFunction()
-function! ArrowFunction()
-  :r ~/.vim/templates/javascript/arrow-function.js
-endfunction
-
-" markdownのテンプレ
-command! MarkdownTemplate call MarkdownTemplate()
-function! MarkdownTemplate()
-  :r ~/.vim/templates/markdown/template.md
-endfunction
+"" アロー関数のテンプレ
+"command! ArrowFunction call ArrowFunction()
+"function! ArrowFunction()
+"  :r ~/.vim/templates/javascript/arrow-function.js
+"endfunction
+"
+"" markdownのテンプレ
+"command! MarkdownTemplate call MarkdownTemplate()
+"function! MarkdownTemplate()
+"  :r ~/.vim/templates/markdown/template.md
+"endfunction
 
 " ポップアップウィンドウの中にターミナルを生成
 command! TerminalOpen call popup_create(term_start([&shell], #{ hidden: 1, term_finish: 'close'}), #{ border: [], minwidth: winwidth(1), minheight: &lines/2 })
