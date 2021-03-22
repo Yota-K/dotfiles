@@ -5,11 +5,11 @@
 call plug#begin()
 
 " 1, ファイラー
-Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 " 2, アイコン
-Plug 'ryanoasis/vim-devicons'
+Plug 'ryanoasis/vim-devicons', { 'on': 'NERDTreeToggle' }
 " 3, インデントの可視化
 Plug 'Yggdroot/indentLine'
 " 4, ウィンドウサイズの変更を簡単にする
@@ -33,12 +33,10 @@ Plug 'w0rp/ale'
 " 12, コメントアウトを効率化
 Plug 'tyru/caw.vim'
 " 13, 定義元ジャンプ
-Plug 'pechorin/any-jump.vim'
-" 14, earthboundのテーマ（VSCodeと同じやつ）
+Plug 'pechorin/any-jump.vim', { 'on': 'AnyJump' }
+" 14, earthboundのテーマ
 Plug 'benbusby/vim-earthbound-themes'
-" 15, Vueの構文とインデントを設定するためのプラグイン
-" Plug 'posva/vim-vue'
-" 16, テンプレートを管理するプラグイン
+" 15, テンプレートを管理するプラグイン
 Plug 'mattn/sonictemplate-vim'
 
 call plug#end()
