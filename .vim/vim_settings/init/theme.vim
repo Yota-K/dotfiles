@@ -13,6 +13,10 @@ autocmd ColorScheme * highlight PmenuSel ctermbg=cyan
 autocmd ColorScheme * highlight PmenuThumb ctermfg=darkcyan guibg=darkcyan
 autocmd ColorScheme * highlight PmenuSbar ctermbg=white
 
+" 行数の数字が表示されてる部分の幅
+set numberwidth=4
+
 syntax enable
-colorscheme darkblue_custom
+colorscheme tron256
+" colorscheme darkblue_custom
 " colorscheme slate
