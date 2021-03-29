@@ -4,18 +4,6 @@ function! DeleteSpace()
   execute("%s/ *$//g")
 endfunction
 
-"" アロー関数のテンプレ
-"command! ArrowFunction call ArrowFunction()
-"function! ArrowFunction()
-"  :r ~/.vim/templates/javascript/arrow-function.js
-"endfunction
-"
-"" markdownのテンプレ
-"command! MarkdownTemplate call MarkdownTemplate()
-"function! MarkdownTemplate()
-"  :r ~/.vim/templates/markdown/template.md
-"endfunction
-
 " ポップアップウィンドウの中にターミナルを生成
 command! TerminalOpen call popup_create(term_start([&shell], #{ hidden: 1, term_finish: 'close'}), #{ border: [], minwidth: winwidth(1), minheight: &lines/2 })
 
