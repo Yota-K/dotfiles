@@ -8,6 +8,7 @@ dotfilesを管理するリポジトリ。
 * .tigrc
 * .tmux.conf
 * .vimrc
+* iTerm2のテーマ
 
 ## 使っているCLIツールなど
 * [tmux](https://github.com/tmux/tmux)
