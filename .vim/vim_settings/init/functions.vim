@@ -1,11 +1,17 @@
+" ポップアップウィンドウの中にターミナルを生成
+command! TerminalOpen call popup_create(term_start([&shell], #{ hidden: 1, term_finish: 'close'}), #{ border: [], minwidth: winwidth(1), minheight: &lines/2 })
+
 " 行末の半角スペースを一括削除
 command! DeleteSpace call DeleteSpace()
 function! DeleteSpace()
   execute("%s/ *$//g")
 endfunction
 
-" ポップアップウィンドウの中にターミナルを生成
-command! TerminalOpen call popup_create(term_start([&shell], #{ hidden: 1, term_finish: 'close'}), #{ border: [], minwidth: winwidth(1), minheight: &lines/2 })
+" filetypeを変更する
+command! -nargs=1 ChangeFileType call ChangeFileType(<f-args>)
+function! ChangeFileType(filetype)
+  execute("set filetype=".a:filetype)
+endfunction
 
 " カーソル上のsyntax情報を取得する
 function! s:get_syn_id(transparent)
