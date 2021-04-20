@@ -22,7 +22,7 @@ color graph-commit cyan default
 # キーバインドの拡張
 # ブランチが表示されている画面で
 # 1, Shift + F・・・git fetch
-# 2, shift + n・・・git ct -b
+# 2, shift + c・・・git ct -b
 # 3, Shift + p・・・git push
 # 4, Shift + l・・・git pull
 # 5, Shift + M・・・git merge
