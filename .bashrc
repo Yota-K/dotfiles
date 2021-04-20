@@ -35,6 +35,7 @@ alias v='vi'
 
 # tmux
 alias tmuxRestart='tmux attach'
+alias tmuxKillAll='tmux kill-server'
 
 # ranger
 alias r='ranger'
