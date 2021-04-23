@@ -1,20 +1,11 @@
 # -e・・・エラーが処理を中断
 # -u・・・未定義の変数を使おうとすると処理中断
 #!/bin/bash -eu
-
 path=~/dotfiles
-root_path=~/
 
-ln -sf $PWD/.agignore ~/.agignore
-ln -sf $PWD/.bash_profile ~/.bash_profile
-ln -sf $PWD/.bashrc ~/.bashrc
-ln -sf $PWD/.tigrc ~/.tigrc
-ln -sf $PWD/.tmux.conf ~/.tmux.conf
-ln -sf $PWD/.vimrc ~/.vimrc
-ln -sf $PWD/Brewfile ~/Brewfile
+cd ~/
 
-cd $root_path
-
+# ディレクトリが存在しない場合は作成する
 if [ ! -e ~/iterm2 ]; then
   mkdir -p ~/iterm2
 fi
@@ -27,5 +18,21 @@ fi
 cd $path
 
 if [ $path ]; then
-  ln -sf $PWD/iterm2/tron.itermcolors ~/iterm2/
+  ln -s $PWD/.agignore ~/.agignore
+  ln -s $PWD/.bash_profile ~/.bash_profile
+  ln -s $PWD/.bashrc ~/.bashrc
+  ln -s $PWD/.tigrc ~/.tigrc
+  ln -s $PWD/.tmux.conf ~/.tmux.conf
+  ln -s $PWD/.vimrc ~/.vimrc
+  ln -s $PWD/Brewfile ~/Brewfile
+
+  # iterm2
+  ln -s $PWD/iterm2/tron.itermcolors ~/iterm2/
+
+  # vim
+  ln -s $PWD/.vim/colors ~/.vim/colors
+  ln -s $PWD/.vim/indent ~/.vim/indent
+  ln -s $PWD/.vim/templates ~/.vim/templates
+  ln -s $PWD/.vim/vim_settings ~/.vim/vim_settings
+  ln -s $PWD/.vim/coc-settings.json ~/.vim/coc-settings.json
 fi
