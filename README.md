@@ -9,6 +9,7 @@ dotfilesを管理するリポジトリ。
 * .tmux.conf
 * .vimrc
 * iTerm2のテーマ
+* Brewfile（Homebrewでインストールするライブラリを管理できるファイル）
 
 ## 使っているCLIツールなど
 * [tmux](https://github.com/tmux/tmux)
