@@ -1,5 +1,5 @@
 # ターミナル起動時に.bashrcを読み込む
-if [ -f ~/.bashrc ] ; then
+if [ -f ~/.bashrc ]; then
 . ~/.bashrc
 fi
 
@@ -17,3 +17,10 @@ export LSCOLORS=Exfxcxdxbxegedabagacad
 
 # Gitのワーキングツリーの状態の把握をしやすいようにする
 GIT_PS1_SHOWDIRTYSTATE=true
+
+# golangのPATH
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
+
+# GOPATHの外でプロジェクトを扱えるようにする
+export GO111MODULE=on
