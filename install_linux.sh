@@ -57,10 +57,6 @@ get_os_distribution() {
   echo ${distri_name}
 }
 
-# golang_setting() {
-# 
-# }
-
 get_os_distribution
 os_distribution=`get_os_distribution`
 
@@ -85,4 +81,14 @@ if [ "${os_distribution}" = "alpine" ]; then
 
   echo Node.js setting
   apk add nodejs npm yarn
+  echo export NODE_PATH=/usr/local/lib/node_modules
+fi
+
+cd ~/
+
+# Goの設定
+if [ -e /go ]; then
+  echo export GOPATH=$HOME/go
+  echo export PATH=$PATH:$GOPATH/bin
+  GO111MODULE=on go get golang.org/x/tools/gopls
 fi
