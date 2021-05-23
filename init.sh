@@ -31,6 +31,7 @@ if [ $path ]; then
 
   # fish
   ln -s $PWD/fish/config.fish ~/.config/fish/config.fish
+  ln -s $PWD/fish/functions/fish_prompt.fish ~/.config/fish/functions/fish_prompt.fish
 
   # vim
   ln -s $PWD/.vim/colors ~/.vim/colors
