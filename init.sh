@@ -29,6 +29,9 @@ if [ $path ]; then
   # iterm2
   ln -s $PWD/iterm2/tron.itermcolors ~/iterm2/
 
+  # fish
+  ln -s $PWD/fish/config.fish ~/.config/fish/config.fish
+
   # vim
   ln -s $PWD/.vim/colors ~/.vim/colors
   ln -s $PWD/.vim/indent ~/.vim/indent
