@@ -4,14 +4,17 @@
 
 # 現在のディレクトリを表示
 function _prompt_dir
-  printf '   %s' (prompt_pwd)
+  printf '\uf413  %s' (prompt_pwd)
 end
 
 function _git_status
-  # Git
-  set last_status $status
-  printf '%s ' (__fish_git_prompt)
-  set_color normal
+  # ワークツリーの中であればtrueが返ってくる
+  if command git rev-parse --is-inside-work-tree >/dev/null 2>&1
+    # Git
+    set last_status $status
+    printf ' \uf408 %s ' (__fish_git_prompt)
+    set_color normal
+  end
 end
 
 # メインで表示されるやつ
