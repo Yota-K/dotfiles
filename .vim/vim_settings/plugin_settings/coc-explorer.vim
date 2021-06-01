@@ -1,6 +1,8 @@
 nnoremap <silent><C-n> :CocCommand explorer<CR>
 
 " キーマッピング周りの設定
+" MEMO: ディレクトリアイコンにホバーした状態で、sを押すと
+" ホバーしたディレクトリを起点にしてファイラーを開き直せる
 call coc#config("explorer",{
   \"icon.enableNerdfont":1,
   \"keyMappingMode":"none",
