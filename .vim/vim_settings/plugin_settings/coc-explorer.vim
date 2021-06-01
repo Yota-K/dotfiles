@@ -21,5 +21,9 @@ call coc#config("explorer",{
   \"r":"rename",
   \"q":"quit",
   \"/":"search",
+  \"R": "refresh",
+  \"yy": "copyFile",
+  \"dd": "cutFile",
+  \"p": "pasteFile",
   \},
   \})
