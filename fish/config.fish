@@ -50,6 +50,10 @@ alias gb='git branch'
 alias gbl='git branch -l'
 alias gbla='git branch -la'
 alias glogo='git log --oneline'
+alias gpush='git push'
+alias gpull='git pull'
+alias gmerge='git merge'
+alias gfetch='git fetch --prune'
 
 # tig
 alias tiga='tig --all'
