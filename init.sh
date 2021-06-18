@@ -14,6 +14,10 @@ if [ ! -e ~/.vim ]; then
   mkdir -p ~/.vim
 fi
 
+if [ ! -e ~/.config/ranger/colorschemes ]; then
+  mkdir -p ~/.config/ranger/colorschemes
+fi
+
 # ~/dotfilesに戻る
 cd $path
 
@@ -32,6 +36,9 @@ if [ $path ]; then
   # fish
   ln -s $PWD/fish/config.fish ~/.config/fish/config.fish
   ln -s $PWD/fish/functions/fish_prompt.fish ~/.config/fish/functions/fish_prompt.fish
+
+  # ranger
+  ln -s $PWD/ranger/colorschemes/myscheme.py ~/.config/ranger/colorschemes/myscheme.py
 
   # vim
   ln -s $PWD/.vim/colors ~/.vim/colors
