@@ -31,5 +31,5 @@ function fish_prompt
   and echo (set_color red)"#"
 
   # Main
-  echo -n (set_color cyan) (set_color red)'❯'(set_color yellow)'❯'(set_color green)'❯ '
+  echo -n (set_color cyan) (set_color f55f17)'❯'(set_color 1afea3)'❯'(set_color 20d6fd)'❯ '
 end
