@@ -27,5 +27,6 @@ call coc#config("explorer",{
   \"yy": "copyFile",
   \"dd": "cutFile",
   \"p": "pasteFile",
+  \"G": ["wait", "gotoParent"],
   \},
   \})
