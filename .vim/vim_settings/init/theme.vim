@@ -2,7 +2,7 @@
 " テーマ
 "----------------------------------------
 
-" シンタックスハイライト (上書き)
+" JS関連のシンタックスハイライト (上書き)
 autocmd ColorScheme * highlight javascriptArrowFuncArg ctermfg=13
 autocmd ColorScheme * highlight javascriptImport ctermfg=226 
 autocmd ColorScheme * highlight javascriptString ctermfg=249
@@ -23,6 +23,9 @@ autocmd ColorScheme * highlight DiffText   cterm=bold ctermfg=10 ctermbg=21
 autocmd ColorScheme * highlight NERDTreeOpenable ctermfg=75
 autocmd ColorScheme * highlight NERDTreeClosable ctermfg=75
 autocmd ColorScheme * highlight nerdtreeExactMatchFolder_node_modules ctermfg=34
+
+" 背景色tron256用（上書き）
+autocmd ColorScheme * highlight Normal ctermbg=0
 
 " 行数の数字が表示されてる部分の幅
 set numberwidth=4
