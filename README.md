@@ -1,7 +1,7 @@
 # dotfiles
 dotfilesを管理するリポジトリ。
 
-<img width="1440" alt="スクリーンショット 2021-06-20 0 49 53" src="https://user-images.githubusercontent.com/51050458/122647957-d9244d80-d161-11eb-89a8-1037551c7343.png">
+<img width="1440" alt="スクリーンショット 2021-07-29 23 32 15" src="https://user-images.githubusercontent.com/51050458/127511281-df863bb8-a983-4cac-9091-1503cff473c6.png">
 
 ## 管理しているファイル
 * .agignore
