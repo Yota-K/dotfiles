@@ -27,8 +27,11 @@ autocmd ColorScheme * highlight nerdtreeExactMatchFolder_node_modules ctermfg=34
 " 背景色tron256用（上書き）
 autocmd ColorScheme * highlight Normal ctermbg=0
 
+" 行の背景色（上書き）
+autocmd ColorScheme * highlight lineNr ctermbg=0
+
 " 行数の数字が表示されてる部分の幅
-set numberwidth=4
+set numberwidth=6
 
 syntax enable
 colorscheme tron256
