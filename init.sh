@@ -18,6 +18,14 @@ if [ ! -e ~/.config/ranger/colorschemes ]; then
   mkdir -p ~/.config/ranger/colorschemes
 fi
 
+if [ ! -e ~/.config/nvim ]; then
+  mkdir -p ~/.config/nvim
+fi
+
+if [ ! -e ~/.config/init.vim ]; then
+  touch init.vim
+fi
+
 # ~/dotfilesに戻る
 cd $path
 
@@ -46,4 +54,12 @@ if [ $path ]; then
   ln -s $PWD/.vim/templates ~/.vim/templates
   ln -s $PWD/.vim/vim_settings ~/.vim/vim_settings
   ln -s $PWD/.vim/coc-settings.json ~/.vim/coc-settings.json
+
+  # nvim
+  ln -s $PWD/.vimrc ~/.config/nvim/init.vim
+  ln -s $PWD/.vim/colors ~/.config/nvim/colors
+  ln -s $PWD/.vim/indent ~/.config/nvim/indent
+  ln -s $PWD/.vim/templates ~/.config/nvim/templates
+  ln -s $PWD/.vim/vim_settings ~/.config/nvim/vim_settings
+  ln -s $PWD/.vim/coc-settings.json ~/.config/nvim/coc-settings.json
 fi

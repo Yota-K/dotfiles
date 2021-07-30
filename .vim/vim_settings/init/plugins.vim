@@ -33,6 +33,6 @@ Plug 'benbusby/vim-earthbound-themes'
 " 13, テンプレートを管理するプラグイン
 Plug 'mattn/sonictemplate-vim'
 " 14, Vimからagを使えるようにする
-Plug 'rking/ag.vim', { 'on': 'Ag' }
+Plug 'rking/ag.vim', { 'on': ['Ag', 'AgFile'] }
 
 call plug#end()
