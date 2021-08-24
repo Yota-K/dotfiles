@@ -34,5 +34,7 @@ Plug 'benbusby/vim-earthbound-themes'
 Plug 'mattn/sonictemplate-vim'
 " 14, Vimからagを使えるようにする
 Plug 'rking/ag.vim', { 'on': ['Ag', 'AgFile'] }
+" 15, 複数ファイルの一括置換
+Plug 'thinca/vim-qfreplace', { 'on': 'Qfreplace' }
 
 call plug#end()
