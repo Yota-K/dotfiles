@@ -1,12 +1,28 @@
-let g:ale_linters = {  
-\   'javascript': ['eslint'],  
-\   'markdown': ['textlint']
-\}  
+" 解説記事: https://kuune.org/text/2017/07/23/how-to-lint-and-autoformat-with-ale/
 
-" ALEFixコマンドで各種リンターを実行できるようにする
-" ALE can fix files with the ALEFix command.
-" Functions need to be configured either in each buffer with a b:ale_fixers, or globally with g:ale_fixers.
-let b:ale_fixers = ['prettier', 'eslint', 'gofmt']
+" 言語ごとに有効にするLintツールを設定する
+let g:ale_linters = {
+ \ 'javascript': ['eslint', 'prettier'],
+ \ 'javascriptreact': ['eslint', 'prettier'],
+ \ 'typescript': ['eslint', 'prettier'],
+ \ 'typescriptreact': ['eslint', 'prettier'],
+ \ 'vue': ['eslint', 'prettier'],
+ \ 'css': ['stylelint', 'prettier'],
+ \ 'scss': ['stylelint', 'prettier'],
+ \ 'go': ['gofmt', 'goimports', 'remove_trailing_lines', 'trim_whitespace'],
+ \ }
+
+" 言語ごとの自動整形を行うリンターの設定を行う
+let g:ale_fixers = {
+  \ 'javascript': ['eslint', 'prettier'],
+  \ 'javascriptreact': ['eslint', 'prettier'],
+  \ 'typescript': ['eslint', 'prettier'],
+  \ 'typescriptreact': ['eslint', 'prettier'],
+  \ 'vue': ['eslint', 'prettier'],
+  \ 'css': ['stylelint', 'prettier'],
+  \ 'scss': ['stylelint', 'prettier'],
+  \ 'go': ['gofmt', 'goimports', 'remove_trailing_lines', 'trim_whitespace'],
+  \ }
 
 " ファイル保存時に実行
 let g:ale_fix_on_save = 1
