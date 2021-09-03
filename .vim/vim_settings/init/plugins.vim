@@ -36,5 +36,7 @@ Plug 'mattn/sonictemplate-vim'
 Plug 'rking/ag.vim', { 'on': ['Ag', 'AgFile'] }
 " 15, 複数ファイルの一括置換
 Plug 'thinca/vim-qfreplace', { 'on': 'Qfreplace' }
+" 16, markdownのpreview
+Plug 'skanehira/preview-markdown.vim'
 
 call plug#end()
