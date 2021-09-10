@@ -53,3 +53,15 @@ function! s:get_syn_info()
         \ " guifg: " . linkedSyn.guifg .
         \ " guibg: " . linkedSyn.guibg
 endfunction
+
+command! GlowOpen call GlowOpen()
+function! GlowOpen()
+  if !executable("glow")
+    call s:echo_err("not found glow command.")
+  endif
+
+  echo "open markdown..."
+
+  execute("set splitright")
+  execute("vert ter glow")
+endfunction
