@@ -127,3 +127,5 @@ noremap <Right> <Nop>
 
 " 外部grepで検索対象から除外するディレクトリを指定
 set grepprg=grep\ -rnIH\ --exclude-dir=node_modules\ --exclude-dir=.*\ --exclude-dir=out\ --exclude-dir=build\ --exclude-dir=vendor
+
+nnoremap <Space>p :GlowOpen<CR>
