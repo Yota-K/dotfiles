@@ -22,6 +22,7 @@ alias ..='cd ..'
 alias ls='ls -G'
 
 # Docker
+alias dup='docker-compose up'
 alias dud='docker-compose up -d'
 alias dbuild='docker-compose build'
 alias dstart='docker-compose start'
@@ -53,6 +54,8 @@ alias gbl='git branch -l'
 alias gbla='git branch -la'
 alias glogo='git log --oneline'
 alias gmergetool='git mergetool -t vimdiff'
+alias gstash='git stash'
+alias gspop='git stash pop'
 
 # tig
 alias tiga='tig --all'
