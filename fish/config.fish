@@ -12,9 +12,6 @@ set -x PATH $PATH:$GOPATH/bin
 # GOPATHの外でプロジェクトを扱えるようにする
 set -x GO111MODULE on
 
-# Gitのワーキングツリーの状態の把握をしやすいようにする
-set -x GIT_PS1_SHOWDIRTYSTATE true
-
 #####################
 # Aliases           #
 #####################
