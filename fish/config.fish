@@ -75,6 +75,11 @@ alias tmuxKillAll='tmux kill-server'
 # ranger
 alias r='ranger'
 
+# tree
+# node_modulesを除外 エイリアスを無視したい場合は、$ \tree
+# ※fishだと使えない
+alias tree="tree -I node_modules -L 3"
+
 # gitのブランチとstatusを表示させるのに必要
 # https://qiita.com/mom0tomo/items/b593c0e98c1eea70a114
 #
