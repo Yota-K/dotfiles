@@ -22,3 +22,4 @@ dotfilesを管理するリポジトリ。
 * [ranger](https://github.com/ranger/ranger)
 * [ag](https://github.com/ggreer/the_silver_searcher)
 * [fish](https://github.com/fish-shell/fish-shell)
+* [glow](https://github.com/charmbracelet/glow)
