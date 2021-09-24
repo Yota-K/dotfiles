@@ -15,6 +15,7 @@ let g:ale_linters = {
 " 言語ごとの自動整形を行うリンターの設定を行う
 let g:ale_fixers = {
   \ 'javascript': ['eslint', 'prettier'],
+  \ 'json': ['eslint', 'prettier'],
   \ 'javascriptreact': ['eslint', 'prettier'],
   \ 'typescript': ['eslint', 'prettier'],
   \ 'typescriptreact': ['eslint', 'prettier'],
