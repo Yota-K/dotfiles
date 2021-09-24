@@ -1,5 +1,5 @@
 #####################
-# 環境変数          #
+#      環境変数     #
 #####################
 
 # nodeのPATH
@@ -80,9 +80,12 @@ alias r='ranger'
 # ※fishだと使えない
 alias tree="tree -I node_modules -L 3"
 
+# Remove greeting messsage
+set fish_greeting
+
 # gitのブランチとstatusを表示させるのに必要
 # https://qiita.com/mom0tomo/items/b593c0e98c1eea70a114
-#
+
 # Fish git prompt
 set __fish_git_prompt_showdirtystate 'yes'
 set __fish_git_prompt_showstashstate 'yes'
