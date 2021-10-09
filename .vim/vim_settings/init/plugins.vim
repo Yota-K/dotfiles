@@ -19,7 +19,7 @@ Plug 'mattn/emmet-vim'
 " 7, jsx・tsxのシンタックスハイライト
 Plug 'othree/yajs.vim', { 'for': ['jsx', 'tsx'] }
 Plug 'maxmellon/vim-jsx-pretty', { 'for': ['jsx', 'tsx'] }
-Plug 'HerringtonDarkholme/yats.vim', { 'for': 'tsx' }
+Plug 'HerringtonDarkholme/yats.vim', { 'for': ['jsx', 'tsx'] }
 " 8, vim helpを日本語化
 Plug 'vim-jp/vimdoc-ja' 
 " 9, 各種Lintを非同期実行
@@ -28,13 +28,11 @@ Plug 'w0rp/ale'
 Plug 'tyru/caw.vim'
 " 11, 定義元ジャンプ
 Plug 'pechorin/any-jump.vim', { 'on': 'AnyJump' }
-" 12, earthboundのテーマ
-Plug 'benbusby/vim-earthbound-themes'
-" 13, テンプレートを管理するプラグイン
+" 12, テンプレートを管理するプラグイン
 Plug 'mattn/sonictemplate-vim'
-" 14, Vimからagを使えるようにする
+" 13, Vimからagを使えるようにする
 Plug 'rking/ag.vim', { 'on': ['Ag', 'AgFile'] }
-" 15, 複数ファイルの一括置換
+" 14, 複数ファイルの一括置換
 Plug 'thinca/vim-qfreplace', { 'on': 'Qfreplace' }
 
 call plug#end()
