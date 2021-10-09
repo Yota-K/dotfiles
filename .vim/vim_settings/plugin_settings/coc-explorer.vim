@@ -4,6 +4,7 @@ nnoremap <silent><C-n> :CocCommand explorer<CR>
 " MEMO: ディレクトリアイコンにホバーした状態で、sを押すと
 " ホバーしたディレクトリを起点にしてファイラーを開き直せる
 call coc#config("explorer",{
+  \"file.showHiddenFiles":"true",
   \"icon.enableNerdfont":1,
   \"keyMappingMode":"none",
   \"keyMappings.global":{

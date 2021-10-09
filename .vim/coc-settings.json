@@ -17,9 +17,4 @@
    },
    "suggest.noselect":false,
    "suggest.preferCompleteThanJumpPlaceholder":true,
-   "explorer": {
-     "file": {
-       "showHiddenFiles": true
-     }
-   }
 }
