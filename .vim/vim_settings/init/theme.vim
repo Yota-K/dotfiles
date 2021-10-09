@@ -7,7 +7,7 @@ autocmd ColorScheme * highlight Pmenu ctermbg=234
 autocmd ColorScheme * highlight PmenuSel ctermbg=cyan
 autocmd ColorScheme * highlight PmenuThumb ctermfg=darkcyan guibg=darkcyan
 autocmd ColorScheme * highlight PmenuSbar ctermbg=white
-" 
+ 
 " gitの差分を表示する際の色（上書き）
 autocmd ColorScheme * highlight DiffAdd    cterm=bold ctermfg=10 ctermbg=22
 autocmd ColorScheme * highlight DiffDelete cterm=bold ctermfg=10 ctermbg=52
@@ -24,6 +24,5 @@ autocmd ColorScheme * highlight lineNr ctermbg=0
 set numberwidth=6
 
 syntax enable
-colorscheme tron256
-" colorscheme darkblue_custom
-" colorscheme slate
+" colorscheme tron256
+colorscheme pablo
