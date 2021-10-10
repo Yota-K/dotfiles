@@ -16,5 +16,5 @@
      }
    },
    "suggest.noselect":false,
-   "suggest.preferCompleteThanJumpPlaceholder":true,
+   "suggest.preferCompleteThanJumpPlaceholder":true
 }
