@@ -17,8 +17,11 @@ autocmd ColorScheme * highlight DiffText   cterm=bold ctermfg=10 ctermbg=21
 " 背景色tron256用（上書き）
 autocmd ColorScheme * highlight Normal ctermbg=0
 
-" 行の背景色（上書き）
-autocmd ColorScheme * highlight lineNr ctermbg=0
+" 背景色tron256用（上書き）
+autocmd ColorScheme * highlight Normal ctermbg=0
+
+" コメントアウトの色 pablo用（上書き）
+autocmd ColorScheme * highlight Comment ctermfg=250
 
 " 行数の数字が表示されてる部分の幅
 set numberwidth=6
