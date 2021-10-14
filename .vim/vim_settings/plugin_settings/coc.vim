@@ -1,3 +1,7 @@
+" MEMO
+" control + n 下に移動
+" control + p 上に移動
+"
 " ヒントを表示
 " silent・・・コマンドラインへの出力を抑制する
 " <C-u>hoge<cr>・・・特殊なキーのマッピング
