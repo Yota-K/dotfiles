@@ -5,7 +5,7 @@
 " floating window（上書き）
 autocmd ColorScheme * highlight Pmenu ctermbg=234
 autocmd ColorScheme * highlight PmenuSel ctermbg=cyan
-autocmd ColorScheme * highlight PmenuThumb ctermfg=darkcyan guibg=darkcyan
+autocmd ColorScheme * highlight PmenuThumb ctermbg=darkcyan
 autocmd ColorScheme * highlight PmenuSbar ctermbg=white
  
 " gitの差分を表示する際の色（上書き）
