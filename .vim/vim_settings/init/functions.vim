@@ -54,6 +54,7 @@ function! s:get_syn_info()
         \ " guibg: " . linkedSyn.guibg
 endfunction
 
+" GlowをVimターミナル上で実行する
 command! GlowOpen call GlowOpen()
 function! GlowOpen()
   if !executable("glow")
@@ -64,4 +65,14 @@ function! GlowOpen()
 
   execute("set splitright")
   execute("vert ter glow")
+endfunction
+
+" jqをVim上で実行
+command! JsonFormatter call JsonFormatter()
+function! JsonFormatter()
+  if !executable("jq")
+    call s:echo_err("not found jq command.")
+  endif
+
+  execute("%!jq '.'")
 endfunction
