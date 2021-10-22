@@ -125,7 +125,11 @@ noremap <Down> <Nop>
 noremap <Up> <Nop>
 noremap <Right> <Nop>
 
+" 行番号の表示切り替え
+nnoremap <Space>n :set invnumber<CR>
+
+" GlowをVim経由で実行
+nnoremap <Space>p :GlowOpen<CR>
+
 " 外部grepで検索対象から除外するディレクトリを指定
 set grepprg=grep\ -rnIH\ --exclude-dir=node_modules\ --exclude-dir=.*\ --exclude-dir=out\ --exclude-dir=build\ --exclude-dir=vendor
-
-nnoremap <Space>p :GlowOpen<CR>
