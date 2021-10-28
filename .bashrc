@@ -1,26 +1,29 @@
-#####################
-#      Aliases      #
-#####################
+#########################################
+# エイリアス
+#########################################
 
 alias ..='cd ..'
 
 # lsした時の色変更
 alias ls='ls -G'
 
-# Docker
-alias dud='docker-compose up -d'
-alias dbuild='docker-compose build'
-alias dstart='docker-compose start'
-alias drestart='docker-compose restart'
-alias dstop='docker-compose stop'
-alias ddown='docker-compose down'
-alias dps='docker ps'
-alias dpsa='docker ps -a'
-alias dimages='docker images'
-alias dexec='docker exec -it'
-alias dvolumels='docker volume ls'
-alias dlogs='docker logs'
-alias dlogsf='docker logs -f'
+# git
+alias gpush='git push'
+alias gpull='git pull'
+alias gmerge='git merge'
+alias gfetch='git fetch --prune'
+alias grebase='git rebase'
+alias gcm='git commit'
+alias gst='git status'
+alias gct='git checkout'
+alias gctb='git checkout -b'
+alias gb='git branch'
+alias gbl='git branch -l'
+alias gbla='git branch -la'
+alias glogo='git log --oneline'
+alias gmergetool='git mergetool -t vimdiff'
+alias gstash='git stash'
+alias gspop='git stash pop'
 
 # tig
 alias tiga='tig --all'
@@ -32,14 +35,3 @@ alias rm='rm -i'
 
 # vim
 alias v='vi'
-
-# tmux
-alias tmuxRestart='tmux attach'
-alias tmuxKillAll='tmux kill-server'
-
-# ranger
-alias r='ranger'
-
-# Gitのターミナルでの補完を有効にする
-source /usr/local/etc/bash_completion.d/git-prompt.sh
-source /usr/local/etc/bash_completion.d/git-completion.bash
