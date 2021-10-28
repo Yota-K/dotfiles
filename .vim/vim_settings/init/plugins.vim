@@ -34,5 +34,7 @@ Plug 'mattn/sonictemplate-vim'
 Plug 'rking/ag.vim', { 'on': ['Ag', 'AgFile'] }
 " 14, 複数ファイルの一括置換
 Plug 'thinca/vim-qfreplace', { 'on': 'Qfreplace' }
+" 15, タブにアイコンフォントを表示するために使用
+Plug 'ryanoasis/vim-devicons'
 
 call plug#end()
