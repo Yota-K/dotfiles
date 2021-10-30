@@ -36,5 +36,7 @@ Plug 'rking/ag.vim', { 'on': ['Ag', 'AgFile'] }
 Plug 'thinca/vim-qfreplace', { 'on': 'Qfreplace' }
 " 15, タブにアイコンフォントを表示するために使用
 Plug 'ryanoasis/vim-devicons'
+" 16, quickfixで自由にファイルを開けるようにするためのプラグイン
+Plug 'skanehira/qfopen.vim'
 
 call plug#end()
