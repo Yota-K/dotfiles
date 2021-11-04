@@ -103,6 +103,7 @@ inoremap {<Enter> {}<Left>
 inoremap [<Enter> []<Left>
 inoremap "<Enter> ""<Left>
 inoremap '<Enter> ''<Left>
+inoremap `<Enter> ``<Left>
 
 inoremap {<Space> {}<Left><CR><ESC><S-o>
 inoremap [<Space> []<Left><CR><ESC><S-o>
