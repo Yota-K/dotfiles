@@ -30,7 +30,7 @@ set helplang=ja,en
 set title
 
 " 行番号を表示
-set number
+" set number
 set numberwidth=5
 
 " vimを使ってくれてありがとうを非表示
