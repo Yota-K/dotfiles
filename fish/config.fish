@@ -39,6 +39,13 @@ alias dvolumerm='docker volume rm'
 alias dlogs='docker logs'
 alias dlogsf='docker logs -f'
 
+# Dockerコンテナの中でUNIXコマンドを実行する
+# $argv[1]・・・コンテナの名前
+# $argv[2]・・・実行したいコマンドを''か""で囲って渡す 'node -v'
+function dshell_invoke
+  docker-compose run --rm $argv[1] sh -c $argv[2]
+end
+
 # git
 alias gpush='git push'
 alias gpull='git pull'
