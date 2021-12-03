@@ -39,13 +39,6 @@ alias dvolumerm='docker volume rm'
 alias dlogs='docker logs'
 alias dlogsf='docker logs -f'
 
-# Dockerコンテナの中でUNIXコマンドを実行する
-# $argv[1]・・・コンテナの名前
-# $argv[2]・・・実行したいコマンドを''か""で囲って渡す 'node -v'
-function dshell_invoke
-  docker-compose run --rm $argv[1] sh -c $argv[2]
-end
-
 # git
 alias gpush='git push'
 alias gpull='git pull'
@@ -63,6 +56,7 @@ alias glogo='git log --oneline'
 alias gmergetool='git mergetool -t vimdiff'
 alias gstash='git stash'
 alias gspop='git stash pop'
+alias gtag='git tag'
 
 # tig
 alias tiga='tig --all'
@@ -86,6 +80,22 @@ alias r='ranger'
 # node_modulesを除外 エイリアスを無視したい場合は、$ \tree
 # ※fishだと使えない
 alias tree="tree -I node_modules -L 3"
+
+#########################################
+# 関数
+#########################################
+
+# Dockerコンテナの中でUNIXコマンドを実行する
+# $argv[1]・・・コンテナの名前
+# $argv[2]・・・実行したいコマンドを''か""で囲って渡す 'node -v'
+function dshell_invoke
+  docker-compose run --rm $argv[1] sh -c $argv[2]
+end
+
+# ワークツリーで変更済みのファイルにタグをつけてコミットする
+function gtag_commit
+  git tag -a $argv[1] -m $argv[1] -a
+end
 
 #########################################
 # その他
