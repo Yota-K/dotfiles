@@ -57,6 +57,8 @@ alias gmergetool='git mergetool -t vimdiff'
 alias gstash='git stash'
 alias gspop='git stash pop'
 alias gtag='git tag'
+alias gcherrypick='git cherry-pick'
+alias gresethard='git reset --hard'
 
 # tig
 alias tiga='tig --all'
