@@ -15,10 +15,7 @@ autocmd ColorScheme * highlight DiffChange cterm=bold ctermfg=10 ctermbg=17
 autocmd ColorScheme * highlight DiffText   cterm=bold ctermfg=10 ctermbg=21
 
 " 背景色tron256用（上書き）
-autocmd ColorScheme * highlight Normal ctermbg=0
-
-" 背景色tron256用（上書き）
-autocmd ColorScheme * highlight Normal ctermbg=0
+" autocmd ColorScheme * highlight Normal ctermbg=0
 
 " コメントアウトの色 pablo用（上書き）
 autocmd ColorScheme * highlight Comment ctermfg=250
