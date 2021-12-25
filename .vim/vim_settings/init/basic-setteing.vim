@@ -36,9 +36,6 @@ set numberwidth=5
 " vimを使ってくれてありがとうを非表示
 set notitle
 
-" 記号などで字が潰れるのを防ぐ
-set ambiwidth=double
-
 " カーソルの位置を表示する
 set ruler
 
@@ -76,7 +73,7 @@ set noswapfile
 
 " ヤンクしたテキストをクリップボードにもコピーできるようにする
 set clipboard+=unnamed
-set clipboard+=unnamed,autoselect
+" set clipboard+=unnamed,autoselect
 
 " コマンドの補完
 set wildmenu

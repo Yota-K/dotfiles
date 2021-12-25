@@ -29,5 +29,6 @@ call coc#config("explorer",{
   \"dd": "cutFile",
   \"p": "pasteFile",
   \"G": ["wait", "gotoParent"],
+  \"gb": "gotoSource:buffer",
   \},
   \})

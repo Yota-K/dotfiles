@@ -38,5 +38,7 @@ Plug 'thinca/vim-qfreplace', { 'on': 'Qfreplace' }
 Plug 'ryanoasis/vim-devicons'
 " 16, quickfixで自由にファイルを開けるようにするためのプラグイン
 Plug 'skanehira/qfopen.vim'
+" 17, プロジェクトルートをカレントディレクトリにする
+Plug 'mattn/vim-findroot'
 
 call plug#end()

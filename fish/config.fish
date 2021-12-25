@@ -69,7 +69,7 @@ alias mv='mv -i'
 alias rm='rm -i'
 
 # vim
-alias v='vi'
+alias v='nvim'
 
 # tmux
 alias tmuxRestart='tmux attach'
@@ -80,7 +80,7 @@ alias r='ranger'
 
 # tree
 # node_modulesを除外 エイリアスを無視したい場合は、$ \tree
-# ※fishだと使えない
+# ※ fishだと使えない
 alias tree="tree -I node_modules -L 3"
 
 #########################################
