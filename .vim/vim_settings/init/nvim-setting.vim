@@ -8,9 +8,10 @@ if has('nvim')
 
   " 常にインサートモードでTerminalを開く
   command! -nargs=* T sp | wincmd j | resize 20 | terminal <args>
+  nnoremap T :T<CR>
 
   " インサートモードからの離脱をescキーにマッピング
-  tnoremap<Esc> <C-\><C-n>
+  tnoremap<Space>q <C-\><C-n>
 
   " ファイラーのアイコンフォントの表示が崩れてしまうのを防ぐ
   if exists('&ambw')

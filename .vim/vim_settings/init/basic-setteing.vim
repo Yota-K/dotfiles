@@ -115,7 +115,7 @@ nnoremap + <C-a>
 nnoremap - <C-x>
 
 " ESC連打でハイライト解除
-nnoremap <Esc><Esc> :noh<CR><Esc>
+nnoremap <Esc> :noh<CR>
 
 " 矢印キー無効化 (矢印使って移動するのは甘え)
 noremap <Left> <Nop>
