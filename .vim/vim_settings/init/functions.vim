@@ -1,8 +1,3 @@
-" ポップアップウィンドウの中にターミナルを生成
-" MEMO: neovimだとpopup_create関数が存在しないらしく、使えなかった（あまり使っていなかったので問題はない）
-" ゆくゆく使えるようにできたらいっかくらいの感じ
-" command! TerminalOpen call popup_create(term_start([&shell], #{ hidden: 1, term_finish: 'close'}), #{ border: [], minwidth: winwidth(1), minheight: &lines/2 })
-
 " 行末の半角スペースを一括削除
 command! DeleteSpace call DeleteSpace()
 function! DeleteSpace()
