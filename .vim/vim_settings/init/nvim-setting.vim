@@ -10,18 +10,11 @@ if has('nvim')
   command! -nargs=* T sp | wincmd j | resize 20 | terminal <args>
   nnoremap T :T<CR>
 
-  " インサートモードからの離脱をescキーにマッピング
+  " インサートモードからの離脱をspace + qにマッピング
   tnoremap<Space>q <C-\><C-n>
 
   " ファイラーのアイコンフォントの表示が崩れてしまうのを防ぐ
   if exists('&ambw')
     set ambiwidth=single
   endif
-else
-"----------------------------------------
-" 普通のVimのみに適用したい設定はここに書く
-"----------------------------------------
-
-  " 記号などで字が潰れるのを防ぐ
-  set ambiwidth=double
 endif
