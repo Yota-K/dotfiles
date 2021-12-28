@@ -16,10 +16,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " 6, エメット
 Plug 'mattn/emmet-vim'
-" 7, jsx・tsxのシンタックスハイライト
-Plug 'othree/yajs.vim', { 'for': ['jsx', 'tsx'] }
-Plug 'maxmellon/vim-jsx-pretty', { 'for': ['jsx', 'tsx'] }
-Plug 'HerringtonDarkholme/yats.vim', { 'for': ['jsx', 'tsx'] }
+" 7, tree-sitterを用いたコードのシンタックスハイライトを行うプラグイン
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 " 8, vim helpを日本語化
 Plug 'vim-jp/vimdoc-ja' 
 " 9, 各種Lintを非同期実行
