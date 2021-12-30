@@ -14,6 +14,7 @@ require("github-theme").setup({
     pmenu = {
       sbar = "#4cadfb",
     },
+    bg_search = "#525151",
   },
 
   -- Overwrite the highlight groups
