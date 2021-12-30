@@ -38,5 +38,7 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'skanehira/qfopen.vim'
 " 17, プロジェクトルートをカレントディレクトリにする
 Plug 'mattn/vim-findroot'
+" 18, github-nvim-theme
+Plug 'projekt0n/github-nvim-theme'
 
 call plug#end()
