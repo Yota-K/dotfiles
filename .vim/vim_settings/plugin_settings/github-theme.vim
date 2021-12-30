@@ -3,7 +3,7 @@ lua <<EOF
 require("github-theme").setup({
   theme_style = "dark",
   function_style = "italic",
-  sidebars = {"qf", "vista_kind", "terminal", "packer"},
+  sidebars = {"qf", "vista_kind"},
 
   -- Change the "hint" color to the "orange" color, and make the "error" color bright red
   colors = {
