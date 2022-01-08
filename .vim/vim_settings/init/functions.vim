@@ -60,7 +60,7 @@ function! GlowOpen()
 
   echo "open markdown..."
 
-  execute("T glow")
+  execute("TS glow")
 endfunction
 
 " jqをVim上で実行
