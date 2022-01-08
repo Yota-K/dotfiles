@@ -1,5 +1,7 @@
 "----------------------------------------
 " Neovimの設定
+"
+" Nevimのみ使用可能な設定をここに記述する
 "----------------------------------------
 
 if has('nvim')
@@ -21,4 +23,16 @@ if has('nvim')
   if exists('&ambw')
     set ambiwidth=single
   endif
+
+  " GlowをVimターミナル上で実行する
+  command! GlowOpen call GlowOpen()
+  function! GlowOpen()
+    if !executable("glow")
+      call s:echo_err("not found glow command.")
+    endif
+
+    echo "open markdown..."
+
+    execute("TS glow")
+  endfunction
 endif
