@@ -1,7 +1,7 @@
 if has('nvim')
 lua <<EOF
 require("github-theme").setup({
-  theme_style = "dark",
+  theme_style = "dark_default",
   function_style = "italic",
   sidebars = {"qf", "vista_kind"},
 
@@ -15,6 +15,7 @@ require("github-theme").setup({
       sbar = "#4cadfb",
     },
     bg_search = "#525151",
+    black = "#000"
   },
 
   -- Overwrite the highlight groups
