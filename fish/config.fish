@@ -72,6 +72,8 @@ alias v='nvim'
 
 # tmux
 alias tmuxRestart='tmux attach'
+
+# tmux全体を終了
 alias tmuxKillAll='tmux kill-server'
 
 # ranger
@@ -98,59 +100,25 @@ function gtag_commit
   git tag -a $argv[1] -m $argv[1] -a
 end
 
-# 指定したファイル・ディレクトリをnvimで開く
-function vopen
-  v $argv[1]
-end
+# パスを指定してtigを開く
+function topen
+  if string length -q -- $argv
+    set dir $argv
+    cd $dir
 
-# 魚を表示する
-function fish_logo \
-    --description="Fish-shell colorful ASCII-art logo" \
-    --argument-names outer_color medium_color inner_color mouth eye
-
-    # defaults:
-    [ $outer_color  ]; or set outer_color  'red'
-    [ $medium_color ]; or set medium_color 'f70'
-    [ $inner_color  ]; or set inner_color  'yellow'
-    [ $mouth ]; or set mouth '['
-    [ $eye   ]; or set eye   'O'
-
-    set usage 'Usage: fish_logo <outer_color> <medium_color> <inner_color> <mouth> <eye>
-See set_color --help for more on available colors.'
-
-    if contains -- $outer_color '--help' '-h' '-help'
-        echo $usage
-        return 0
+    # 指定したディレクトリに.gitがあるかのチェック
+    if test -d .git
+      tiga
+    else
+      echo 'Not found .git directory.'
+      return 0
     end
 
-    # shortcuts:
-    set o (set_color $outer_color)
-    set m (set_color $medium_color)
-    set i (set_color $inner_color)
-
-    if test (count $o) != 1; or test (count $m) != 1; or test (count $i) != 1
-        echo 'Invalid color argument'
-        echo $usage
-        return 1
-    end
-
-    echo '                 '$o'___
-  ___======____='$m'-'$i'-'$m'-='$o')
-/T            \_'$i'--='$m'=='$o')
-'$mouth' \ '$m'('$i$eye$m')   '$o'\~    \_'$i'-='$m'='$o')
- \      / )J'$m'~~    '$o'\\'$i'-='$o')
-  \\\\___/  )JJ'$m'~'$i'~~   '$o'\)
-   \_____/JJJ'$m'~~'$i'~~    '$o'\\
-   '$m'/ '$o'\  '$i', \\'$o'J'$m'~~~'$i'~~     '$m'\\
-  (-'$i'\)'$o'\='$m'|'$i'\\\\\\'$m'~~'$i'~~       '$m'L_'$i'_
-  '$m'('$o'\\'$m'\\)  ('$i'\\'$m'\\\)'$o'_           '$i'\=='$m'__
-   '$o'\V    '$m'\\\\'$o'\) =='$m'=_____   '$i'\\\\\\\\'$m'\\\\
-          '$o'\V)     \_) '$m'\\\\'$i'\\\\JJ\\'$m'J\)
-                      '$o'/'$m'J'$i'\\'$m'J'$o'T\\'$m'JJJ'$o'J)
-                      (J'$m'JJ'$o'| \UUU)
-                       (UU)'(set_color normal)
+  else
+    echo 'Please setting args.'
+    return 0
+  end
 end
-
 
 #########################################
 # その他
@@ -178,3 +146,13 @@ set __fish_git_prompt_char_untrackedfiles '☡'
 set __fish_git_prompt_char_stashstate '↩'
 set __fish_git_prompt_char_upstream_ahead '+'
 set __fish_git_prompt_char_upstream_behind '-'
+
+#########################################
+# MEMO
+#########################################
+
+# fishの文法
+# MEMO: https://www.gfd-dennou.org/member/hiroki/homepage/main009.html
+
+# Fish Shellでコマンドの実行結果を変数に代入する方法
+# https://efcl.info/2013/0520/res3282/
