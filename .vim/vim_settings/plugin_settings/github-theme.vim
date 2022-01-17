@@ -7,7 +7,7 @@ require("github-theme").setup({
 
   -- Change the "hint" color to the "orange" color, and make the "error" color bright red
   colors = {
-    bg = "#000",
+    bg = '#0a0c10',
     hint = "orange",
     error = "#ff0000",
     cursor = "#6cb6ff",
@@ -15,7 +15,7 @@ require("github-theme").setup({
       sbar = "#4cadfb",
     },
     bg_search = "#525151",
-    black = "#000"
+    black = '#0a0c10',
   },
 
   -- Overwrite the highlight groups
