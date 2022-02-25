@@ -40,5 +40,7 @@ Plug 'skanehira/qfopen.vim'
 Plug 'mattn/vim-findroot'
 " 18, github-nvim-theme
 Plug 'projekt0n/github-nvim-theme'
+" 19, Tailwind CSSの補完
+Plug 'rodrigore/coc-tailwind-intellisense'
 
 call plug#end()
