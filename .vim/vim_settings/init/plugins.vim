@@ -42,5 +42,11 @@ Plug 'mattn/vim-findroot'
 Plug 'projekt0n/github-nvim-theme'
 " 19, Tailwind CSSの補完
 Plug 'rodrigore/coc-tailwind-intellisense'
+" 20, ファイラー
+Plug 'lambdalisue/fern.vim'
+Plug 'lambdalisue/nerdfont.vim'
+Plug 'lambdalisue/fern-renderer-nerdfont.vim'
+Plug 'lambdalisue/fern-git-status.vim'
+Plug 'lambdalisue/glyph-palette.vim'
 
 call plug#end()
