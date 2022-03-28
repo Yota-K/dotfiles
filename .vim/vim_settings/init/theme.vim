@@ -24,5 +24,8 @@ autocmd ColorScheme * highlight Comment ctermfg=250
 set numberwidth=6
 
 syntax enable
+
+autocmd Filetype fern :IndentLinesDisable
+
 " colorscheme tron256
 colorscheme pablo
