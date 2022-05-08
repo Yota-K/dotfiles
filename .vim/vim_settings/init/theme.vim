@@ -20,6 +20,10 @@ autocmd ColorScheme * highlight DiffText   cterm=bold ctermfg=10 ctermbg=21
 " コメントアウトの色 pablo用（上書き）
 autocmd ColorScheme * highlight Comment ctermfg=250
 
+" サイドバーの左端の色（上書き）
+" https://github.com/lambdalisue/fern.vim/issues/342
+autocmd ColorScheme * highlight SignColumn ctermbg=none
+
 " 行数の数字が表示されてる部分の幅
 set numberwidth=6
 
