@@ -5,7 +5,7 @@ let g:lightline = {
   \           [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
   \},
   \'component_function': {
-  \   'gitbranch': 'fugitive#head'
+  \   'gitbranch': 'FugitiveHead'
   \},
   \'tab_component_function': {
   \  'tabnum': 'LightlineWebDevIcons',
