@@ -84,6 +84,9 @@ alias r='ranger'
 # ※ fishだと使えない
 alias tree="tree -I node_modules -L 3"
 
+# dotfilesのエイリアス
+alias dotfiles="cd ~/dotfiles && v"
+
 #########################################
 # 関数
 #########################################
