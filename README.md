@@ -21,7 +21,6 @@ dotfilesを管理するリポジトリ。
 * [iTerm2](https://github.com/gnachman/iTerm2)
 * [tmux](https://github.com/tmux/tmux)
 * [tig](https://github.com/jonas/tig)
-* [ranger](https://github.com/ranger/ranger)
 * [ag](https://github.com/ggreer/the_silver_searcher)
 * [fish](https://github.com/fish-shell/fish-shell)
 * [glow](https://github.com/charmbracelet/glow)
