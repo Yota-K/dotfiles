@@ -40,9 +40,11 @@ Plug 'skanehira/qfopen.vim'
 Plug 'mattn/vim-findroot'
 " 18, github-nvim-theme
 Plug 'projekt0n/github-nvim-theme'
-" 19, Tailwind CSSの補完
+" 19, dracula-theme
+Plug 'dracula/vim'
+" 20, Tailwind CSSの補完
 Plug 'rodrigore/coc-tailwind-intellisense'
-" 20, ファイラー
+" 21, ファイラー
 Plug 'lambdalisue/fern.vim'
 Plug 'lambdalisue/nerdfont.vim'
 Plug 'lambdalisue/fern-renderer-nerdfont.vim'
