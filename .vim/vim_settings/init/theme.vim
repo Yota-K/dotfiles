@@ -35,5 +35,6 @@ syntax enable
 
 autocmd Filetype fern :IndentLinesDisable
 
-" colorscheme tron256
 colorscheme dracula
+" colorscheme pablo
+" colorscheme tron256

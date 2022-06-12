@@ -41,7 +41,7 @@ Plug 'mattn/vim-findroot'
 " 18, github-nvim-theme
 Plug 'projekt0n/github-nvim-theme'
 " 19, dracula-theme
-Plug 'dracula/vim'
+Plug 'Mofiqul/dracula.nvim'
 " 20, Tailwind CSSの補完
 Plug 'rodrigore/coc-tailwind-intellisense'
 " 21, ファイラー
