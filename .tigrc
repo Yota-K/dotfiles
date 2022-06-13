@@ -9,8 +9,8 @@ set split-view-height = 45%
 
 ## 色の設定
 color default white 0a0c10
-color cursor default 154
-color date 27 default
+color cursor 232 154 bold
+color date 33 default
 color delimiter cyan default
 color line-number yellow default
 color diff-header yellow default
