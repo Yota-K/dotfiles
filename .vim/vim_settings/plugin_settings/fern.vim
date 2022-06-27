@@ -1,4 +1,5 @@
 nnoremap <C-n> :Fern . -reveal=% -drawer -toggle<CR>
+
 let g:fern#renderer = "nerdfont"
 let g:fern#default_hidden = 1
 let g:fern#drawer_width = 40
@@ -38,3 +39,5 @@ augroup my-glyph-palette
   autocmd FileType fern call glyph_palette#apply()
   autocmd FileType nerdtree,startify call glyph_palette#apply()
 augroup END
+
+autocmd Filetype fern :IndentLinesDisable
