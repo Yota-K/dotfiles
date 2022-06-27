@@ -131,3 +131,6 @@ nnoremap <Space>p :GlowOpen<CR>
 
 " 外部grepで検索対象から除外するディレクトリを指定
 set grepprg=grep\ -rnIH\ --exclude-dir=node_modules\ --exclude-dir=.*\ --exclude-dir=out\ --exclude-dir=build\ --exclude-dir=vendor
+
+" 拡張子がmdxの時は、*.mdとして扱う
+au BufNewFile,BufRead *.mdx set filetype=markdown
