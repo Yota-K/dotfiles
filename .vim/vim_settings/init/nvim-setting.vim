@@ -1,7 +1,7 @@
 "----------------------------------------
 " Neovimの設定
 "
-" Nevimのみ使用可能な設定をここに記述する
+" Neovimのみ実行可能な設定をここに記述する
 "----------------------------------------
 
 if has('nvim')
@@ -35,4 +35,7 @@ if has('nvim')
 
     execute("TS glow")
   endfunction
+
+  " ctrl + rでGlowを実行
+  nmap <space>r :GlowOpen<CR>
 endif
