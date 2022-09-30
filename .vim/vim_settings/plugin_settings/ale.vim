@@ -23,6 +23,7 @@ let g:ale_fixers = {
   \ 'css': ['stylelint', 'prettier'],
   \ 'scss': ['stylelint', 'prettier'],
   \ 'go': ['gofmt', 'goimports', 'remove_trailing_lines', 'trim_whitespace'],
+  \ 'astro': ['prettier'],
   \ }
 
 " ファイル保存時に実行

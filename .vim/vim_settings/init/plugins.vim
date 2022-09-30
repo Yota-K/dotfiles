@@ -44,13 +44,13 @@ Plug 'projekt0n/github-nvim-theme'
 Plug 'Mofiqul/dracula.nvim'
 " 20, papercolor-theme
 Plug 'NLKNguyen/papercolor-theme'
-" 21, Tailwind CSSの補完
-Plug 'rodrigore/coc-tailwind-intellisense'
-" 22, ファイラー
+" 21, ファイラー
 Plug 'lambdalisue/fern.vim'
 Plug 'lambdalisue/nerdfont.vim'
 Plug 'lambdalisue/fern-renderer-nerdfont.vim'
 Plug 'lambdalisue/fern-git-status.vim'
 Plug 'lambdalisue/glyph-palette.vim'
+" 22, astroのsyntax 
+Plug 'elel-dev/vim-astro-syntax'
 
 call plug#end()
