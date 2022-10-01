@@ -48,13 +48,6 @@ if [ $path ]; then
   # ranger
   ln -s $PWD/ranger/colorschemes/myscheme.py ~/.config/ranger/colorschemes/myscheme.py
 
-  # vim
-  ln -s $PWD/.vim/colors ~/.vim/colors
-  ln -s $PWD/.vim/indent ~/.vim/indent
-  ln -s $PWD/.vim/templates ~/.vim/templates
-  ln -s $PWD/.vim/vim_settings ~/.vim/vim_settings
-  ln -s $PWD/.vim/coc-settings.json ~/.vim/coc-settings.json
-
   # nvim
   ln -s $PWD/.vimrc ~/.config/nvim/init.vim
   ln -s $PWD/.vim/colors ~/.config/nvim/colors
