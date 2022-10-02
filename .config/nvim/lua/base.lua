@@ -1,7 +1,7 @@
 vim.opt.encoding = 'utf-8'
 
 vim.opt.helplang = 'ja,en'
-vim.opt.numberwidth = 5
+vim.opt.numberwidth = 6
 
 vim.opt.ruler = true
 
