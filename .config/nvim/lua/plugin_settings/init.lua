@@ -10,5 +10,3 @@ return {
   plugin9 = require('plugin_settings.treesitter'),
   plugin10 = require('plugin_settings.vim-findroot')
 }
-
-
