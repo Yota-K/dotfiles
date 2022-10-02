@@ -10,10 +10,6 @@ if [ ! -e ~/.config/nvim ]; then
   mkdir -p ~/.config/nvim
 fi
 
-if [ ! -e ~/.config/nvim/lua ]; then
-  mkdir -p ~/.config/nvim/lua
-fi
-
 if [ ! -e ~/iterm2 ]; then
   mkdir -p ~/iterm2
 fi
@@ -33,7 +29,8 @@ if [ $path ]; then
   ln -s $PWD/Brewfile ~/Brewfile
 
   # nvim
-  ln -s $PWD/.config/nvim ~/.config/nvim
+  ln -s $PWD/.config/nvim/init.lua ~/.config/nvim/init.lua
+  ln -sf $PWD/.config/nvim/lua ~/.config/nvim/lua
   ln -s $PWD/.vim/indent ~/.config/nvim/indent
 
   # iterm2
