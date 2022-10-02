@@ -20,4 +20,7 @@ vim.cmd[[
 
   " theme
   colorscheme PaperColor
+
+  " タブの背景色を同化
+  :hi TabLineFill ctermbg=212121
 ]]

@@ -3,6 +3,7 @@
 -- Only required if you have packer configured as `opt`
 vim.cmd [[packadd packer.nvim]]
 
+-- TODO: プラグインの遅延読込あたり設定する
 return require('packer').startup(function(use)
   -- プラグインマネージャ
   use 'wbthomason/packer.nvim'
@@ -58,10 +59,12 @@ return require('packer').startup(function(use)
   -- astroのsyntax
   use 'elel-dev/vim-astro-syntax'
 
-  use {
-    'nvim-lualine/lualine.nvim',
-    requires = { 'kyazdani42/nvim-web-devicons', opt = true }
-  }
+  -- アイコン
+  use 'ryanoasis/vim-devicons'
 
+  -- ステータスライン
+  use 'nvim-lualine/lualine.nvim'
+
+  -- Git操作
   use 'dinhhuy258/git.nvim'
 end)
