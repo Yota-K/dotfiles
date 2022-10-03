@@ -41,6 +41,9 @@ return require('packer').startup(function(use)
   -- テーマ
   use 'NLKNguyen/papercolor-theme'
 
+  -- アイコン
+  use 'ryanoasis/vim-devicons'
+
   -- ファイラー
   use 'lambdalisue/fern.vim'
   use 'lambdalisue/nerdfont.vim'
@@ -58,9 +61,6 @@ return require('packer').startup(function(use)
 
   -- astroのsyntax
   use 'elel-dev/vim-astro-syntax'
-
-  -- アイコン
-  use 'ryanoasis/vim-devicons'
 
   -- ステータスライン
   use 'nvim-lualine/lualine.nvim'
