@@ -16,6 +16,7 @@ nvim_create_user_command('JsonFormatter', function() vim.cmd[[
 
 -- タブラインのカスタマイズ
 -- ファイルのアイコン ファイル名の形式でタブを表示する
+-- TODO: 正常に動作しない
 vim.cmd([[
   function MyTabLine()
     let s = ''
