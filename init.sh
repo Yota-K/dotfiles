@@ -32,6 +32,7 @@ if [ $path ]; then
   ln -s $PWD/.config/nvim/init.lua ~/.config/nvim/init.lua
   ln -sf $PWD/.config/nvim/lua ~/.config/nvim/lua
   ln -s $PWD/.vim/indent ~/.config/nvim/indent
+  ln -s $PWD/.vim/coc-settings.json ~/.config/nvim/coc-settings.json
 
   # iterm2
   ln -s $PWD/iterm2/tron.itermcolors ~/iterm2/

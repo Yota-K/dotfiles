@@ -52,12 +52,7 @@ return require('packer').startup(function(use)
   use 'lambdalisue/glyph-palette.vim'
 
   -- lsp
-  use 'neovim/nvim-lspconfig'
-  use 'williamboman/mason.nvim'
-  use 'williamboman/mason-lspconfig.nvim'
-  use "hrsh7th/nvim-cmp"
-  use "hrsh7th/cmp-nvim-lsp"
-  use "hrsh7th/vim-vsnip"
+  use { 'neoclide/coc.nvim', run = 'yarn install --frozen-lockfile' }
 
   -- astroのsyntax
   use 'elel-dev/vim-astro-syntax'

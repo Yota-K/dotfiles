@@ -1,0 +1,33 @@
+{
+  "intelephense": {
+    "command": "intelephense",
+    "args": [
+      "--stdio"
+    ],
+    "filetypes": [
+      "php"
+    ],
+    "diagnostics": {
+      "undefinedClassConstants": false,
+      "undefinedConstants": false,
+      "undefinedFunctions": false,
+      "undefinedMethods": false,
+      "undefinedProperties": false,
+      "undefinedTypes": false
+    },
+    "initializationOptions": {
+      "storagePath": "/tmp/intelephense"
+    }
+  },
+  "Lua": {
+    "workspace.library": {
+      "/usr/share/nvim/runtime/lua": true,
+      "/usr/share/nvim/runtime/lua/vim": true,
+      "/usr/share/nvim/runtime/lua/vim/lsp": true
+    },
+    "diagnostics": {
+      "globals": ["vim"]
+    }
+  },
+  "Lua.telemetry.enable": false
+}
