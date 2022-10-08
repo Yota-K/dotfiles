@@ -1,21 +1,20 @@
--- This file can be loaded by calling `lua require('plugins')` from your init.vim
+-- this file can be loaded by calling `lua require('plugins')` from your init.vim
 
--- Only required if you have packer configured as `opt`
+-- only required if you have packer configured as `opt`
 vim.cmd [[packadd packer.nvim]]
 
--- TODO: プラグインの遅延読込あたり設定する
 return require('packer').startup(function(use)
   -- プラグインマネージャ
   use 'wbthomason/packer.nvim'
 
   -- ウィンドウサイズの変更を簡単にできるようにする
-  use 'simeji/winresizer'
+  use {'simeji/winresizer', opt = true, cmd = {'WinResizerStartResize'}}
 
   --  エメット
-  use 'mattn/emmet-vim'
+  use {'mattn/emmet-vim', opt = true, ft = {'html', 'jsx', 'tsx', 'vue', 'php', 'ejs'}}
 
   -- tree-sitterを用いたコードのシンタックスハイライトを行うプラグイン
-  use 'nvim-treesitter/nvim-treesitter'
+  use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
 
   -- vim helpを日本語化
   use 'vim-jp/vimdoc-ja'
@@ -27,13 +26,13 @@ return require('packer').startup(function(use)
   use 'tyru/caw.vim'
 
   -- 定義元ジャンプ
-  use 'pechorin/any-jump.vim'
+  use {'pechorin/any-jump.vim', opt = true, cmd = {'AnyJump'}}
 
   -- Vimからagを使えるようにする
-  use 'rking/ag.vim'
+  use {'rking/ag.vim', opt = true, cmd = {'Ag'}}
 
   -- 複数ファイルの一括置換
-  use 'thinca/vim-qfreplace'
+  use {'thinca/vim-qfreplace', opt = true, cmd = {'Qfreplace'}}
 
   -- プロジェクトルートをカレントディレクトリにする
   use 'mattn/vim-findroot'
@@ -41,21 +40,21 @@ return require('packer').startup(function(use)
   -- テーマ
   use 'NLKNguyen/papercolor-theme'
 
-  -- アイコン
+  -- アイコンフォント
   use 'ryanoasis/vim-devicons'
 
   -- ファイラー
-  use 'lambdalisue/fern.vim'
-  use 'lambdalisue/nerdfont.vim'
-  use 'lambdalisue/fern-renderer-nerdfont.vim'
-  use 'lambdalisue/fern-git-status.vim'
-  use 'lambdalisue/glyph-palette.vim'
+  use {'lambdalisue/fern.vim',
+    requires = {
+      {'lambdalisue/fern-renderer-devicons.vim', 'lambdalisue/fern-git-status.vim', 'lambdalisue/glyph-palette.vim'},
+    },
+  }
 
   -- lsp
-  use { 'neoclide/coc.nvim', run = 'yarn install --frozen-lockfile' }
+  use {'neoclide/coc.nvim', run = 'yarn install --frozen-lockfile'}
 
   -- astroのsyntax
-  use 'elel-dev/vim-astro-syntax'
+  use {'elel-dev/vim-astro-syntax', ft = {'astro'}}
 
   -- ステータスライン
   use 'nvim-lualine/lualine.nvim'
