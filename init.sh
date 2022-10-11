@@ -27,6 +27,7 @@ if [ $path ]; then
   ln -s $PWD/.tigrc ~/.tigrc
   ln -s $PWD/.tmux.conf ~/.tmux.conf
   ln -s $PWD/Brewfile ~/Brewfile
+  ln -s $PWD/.wezterm.lua ~/.wezterm.lua
 
   # nvim
   ln -s $PWD/.config/nvim/init.lua ~/.config/nvim/init.lua
