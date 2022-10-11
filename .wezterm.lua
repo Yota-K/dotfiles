@@ -1,58 +1,83 @@
 local wezterm = require 'wezterm';
 
 -- ウィンドウが最初に表示されてから1秒後に開始され、1秒に1回トリガーされるイベントを定義
+-- 年月日と時間・バッテリーの残量をステータスバーに表示する
 wezterm.on('update-right-status', function(window, pane)
-  local success, date, stderr = wezterm.run_child_process({'date'});
+  -- Each element holds the text for a cell in a "powerline" style << fade
+  local cells = {}
 
-  -- However, if all you need is to format the date/time, then:
-  date = wezterm.strftime('📆 %Y-%m-%d (%a)  ⏰ %H:%M:%S ');
-  window:set_right_status(wezterm.format({
-    {Text=date},
-  }));
-end);
+  -- Setting date
+  local date = wezterm.strftime('📆 %Y-%m-%d (%a) ⏰ %H:%M:%S');
+  table.insert(cells, date)
+
+  -- An entry for each battery (typically 0 or 1 battery)
+  for _, b in ipairs(wezterm.battery_info()) do
+    table.insert(cells, string.format('🔋%.0f%%', b.state_of_charge * 100))
+  end
+
+  -- Foreground color for the text across the fade
+  local text_fg = '#c0c0c0'
+
+  -- The elements to be formatted
+  local elements = {}
+
+  -- Translate a cell into elements
+  function push(text)
+    table.insert(elements, { Foreground = { Color = text_fg } })
+    table.insert(elements, { Text = ' ' .. text .. ' ' })
+  end
+
+  while #cells > 0 do
+    local cell = table.remove(cells, 1)
+    push(cell)
+  end
+
+  window:set_right_status(wezterm.format(elements))
+end)
 
 local base_colors = {
   black = '#1c1c1c',
-  blue = '#6fc3df',
-  secondary_blue = '#6871ff',
-  light_red = '#ff6d67',
-  tab_active_bg_blue = 'aliceblue',
   yellow = '#ffe64d'
 }
 
 local colors = {
   background = base_colors['black'],
   cursor_bg = base_colors['yellow'],
-  split = base_colors['blue'],
+  split = '#6fc3df',
   ansi = {
-    'black',
-    'maroon',
-    'green',
-    -- 今いるブランチのテキストの色
-    base_colors['yellow'],
-    -- ディレクトリとかの色
-    base_colors['blue'],
-    'purple',
-    'teal',
-    'silver',
+    -- black
+    '#0c141f',
+    -- red
+    '#df740c',
+    -- green
+    '#00c200',
+    -- yellow
+    '#f8e420',
+    -- blue
+    '#6c72d8',
+    -- magenta
+    '#af0087',
+    -- cyan
+    '#6fc3df',
+    -- white
+    '#e6ffff'
   },
-  -- 多分明度: アイコンフォントの色みがここで変更できる
   brights = {
-    'grey',
-    base_colors['light_red'],
-    'lime',
-    base_colors['yellow'],
-    base_colors['secondary_blue'],
-    'fuchsia',
-    'aqua',
-    'white',
+    '#676767',
+    '#ff6d67',
+    '#5ff967',
+    '#fefb67',
+    '#6871ff',
+    '#ff76ff',
+    '#5ffdff',
+    '#feffff'
   },
   tab_bar = {
     background = base_colors['black'],
     -- The active tab is the one that has focus in the window
     active_tab = {
       -- activeなタブの背景色を変更する
-      bg_color = base_colors['tab_active_bg_blue'],
+      bg_color = 'aliceblue',
       fg_color = base_colors['black'],
     },
   },
@@ -84,7 +109,7 @@ local keys = {
   { key = '8', mods = 'LEADER', action = act({ ActivateTab = 7 })},
   { key = '9', mods = 'LEADER', action = act({ ActivateTab = 8 })},
   -- PANEを水平方向に開く
-	{ key = '-', mods = 'LEADER', action = act({ SplitVertical = { domain = 'CurrentPaneDomain' } }) },
+  { key = '-', mods = 'LEADER', action = act({ SplitVertical = { domain = 'CurrentPaneDomain' } }) },
   -- PANEを縦方向に開く
 	{ key = '|', mods = 'LEADER', action = act({ SplitHorizontal = { domain = 'CurrentPaneDomain' } }) },
   -- hjklでPANEを移動する
