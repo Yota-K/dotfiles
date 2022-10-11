@@ -18,6 +18,8 @@ color diff-index blue default
 color diff-chunk magenta default
 color "Reported-by:" green default
 color graph-commit cyan default
+color Author 34 default
+color id 213 default
 
 # キーバインドの拡張
 # ブランチが表示されている画面で
