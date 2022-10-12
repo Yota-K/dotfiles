@@ -3,7 +3,6 @@ local wezterm = require 'wezterm';
 -- ウィンドウが最初に表示されてから1秒後に開始され、1秒に1回トリガーされるイベントを定義
 -- 年月日と時間・バッテリーの残量をステータスバーに表示する
 wezterm.on('update-right-status', function(window, pane)
-  -- "Wed Mar 3 08:14"
   local date = wezterm.strftime('📆  %Y-%m-%d (%a) ⏰  %H:%M:%S');
 
   local bat = ''
