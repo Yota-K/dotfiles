@@ -82,10 +82,14 @@ alias r='ranger'
 # tree
 # node_modulesを除外 エイリアスを無視したい場合は、$ \tree
 # ※ fishだと使えない
-alias tree="tree -I node_modules -L 3"
+alias tree='tree -I node_modules -L 3'
 
 # dotfilesのエイリアス
-alias dotfiles="cd ~/dotfiles && v"
+alias dotfiles='cd ~/dotfiles && v'
+
+# weztermで画像を表示
+# TODO: weztermを使用しているかどうかのエラーハンドリングが必要そう
+alias imgcat='wezterm imgcat'
 
 #########################################
 # CLIの色の変更
