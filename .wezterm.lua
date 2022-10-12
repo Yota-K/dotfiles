@@ -113,27 +113,19 @@ local keys = {
   -- PANEを縦方向に開く
 	{ key = '|', mods = 'LEADER', action = act({ SplitHorizontal = { domain = 'CurrentPaneDomain' } }) },
   -- hjklでPANEを移動する
-	{ key = 'h', mods = 'LEADER', action = act({ ActivatePaneDirection = 'Left' }) },
-	{ key = 'l', mods = 'LEADER', action = act({ ActivatePaneDirection = 'Right' }) },
-	{ key = 'k', mods = 'LEADER', action = act({ ActivatePaneDirection = 'Up' }) },
-	{ key = 'j', mods = 'LEADER', action = act({ ActivatePaneDirection = 'Down' }) },
+  { key = 'h', mods = 'LEADER', action = act({ ActivatePaneDirection = 'Left' }) },
+  { key = 'l', mods = 'LEADER', action = act({ ActivatePaneDirection = 'Right' }) },
+  { key = 'k', mods = 'LEADER', action = act({ ActivatePaneDirection = 'Up' }) },
+  { key = 'j', mods = 'LEADER', action = act({ ActivatePaneDirection = 'Down' }) },
   -- PANEを閉じる
   { key = 'x', mods = 'CTRL', action = act({ CloseCurrentPane = { confirm = false } }) },
   -- ALT + hjklでペインの幅を調整する
-	{ key = 'h', mods = 'ALT', action = act({ AdjustPaneSize = { 'Left', 5 } }) },
-	{ key = 'l', mods = 'ALT', action = act({ AdjustPaneSize = { 'Right', 5 } }) },
-	{ key = 'k', mods = 'ALT', action = act({ AdjustPaneSize = { 'Up', 5 } }) },
-	{ key = 'j', mods = 'ALT', action = act({ AdjustPaneSize = { 'Down', 5 } }) },
-  -- { key = "Enter", mods = "ALT", action = "QuickSelect" },
-		-- -- move cursor
-		-- { key = "h", mods = "NONE", action = act.CopyMode("MoveLeft") },
-		-- { key = "LeftArrow", mods = "NONE", action = act.CopyMode("MoveLeft") },
-		-- { key = "j", mods = "NONE", action = act.CopyMode("MoveDown") },
-		-- { key = "DownArrow", mods = "NONE", action = act.CopyMode("MoveDown") },
-		-- { key = "k", mods = "NONE", action = act.CopyMode("MoveUp") },
-		-- { key = "UpArrow", mods = "NONE", action = act.CopyMode("MoveUp") },
-		-- { key = "l", mods = "NONE", action = act.CopyMode("MoveRight") },
-		-- { key = "RightArrow", mods = "NONE", action = act.CopyMode("MoveRight") },
+  { key = 'h', mods = 'ALT', action = act({ AdjustPaneSize = { 'Left', 5 } }) },
+  { key = 'l', mods = 'ALT', action = act({ AdjustPaneSize = { 'Right', 5 } }) },
+  { key = 'k', mods = 'ALT', action = act({ AdjustPaneSize = { 'Up', 5 } }) },
+  { key = 'j', mods = 'ALT', action = act({ AdjustPaneSize = { 'Down', 5 } }) },
+  -- QuickSelect・・・画面に表示されている文字をクイックにコピペできる機能
+  { key = "Enter", mods = "ALT", action = "QuickSelect" },
 }
 
 return {
