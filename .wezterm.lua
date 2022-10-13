@@ -15,6 +15,19 @@ wezterm.on('update-right-status', function(window, pane)
   })
 end)
 
+-- タブの表示をカスタマイズ
+wezterm.on('format-tab-title', function(tab, tabs, panes, config, hover, max_width)
+  local tab_num = tab.tab_index + 1
+  local tab_title = string.format(' %d: %s', tab_num, tab.active_pane.title)
+
+  if tab.is_active then
+    return {
+      { Text = tab_title .. ' ' },
+    }
+  end
+  return tab_title
+end)
+
 local base_colors = {
   black = '#1c1c1c',
   yellow = '#ffe64d'
