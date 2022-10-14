@@ -129,7 +129,7 @@ local keys = {
   -- PANEを水平方向に開く
   { key = '-', mods = 'LEADER', action = act({ SplitVertical = { domain = 'CurrentPaneDomain' } }) },
   -- PANEを縦方向に開く
-	{ key = '|', mods = 'LEADER', action = act({ SplitHorizontal = { domain = 'CurrentPaneDomain' } }) },
+  { key = '|', mods = 'LEADER', action = act({ SplitHorizontal = { domain = 'CurrentPaneDomain' } }) },
   -- hjklでPANEを移動する
   { key = 'h', mods = 'LEADER', action = act({ ActivatePaneDirection = 'Left' }) },
   { key = 'l', mods = 'LEADER', action = act({ ActivatePaneDirection = 'Right' }) },
