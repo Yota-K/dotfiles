@@ -1,12 +1,18 @@
-local status, builtin = pcall(require, 'telescope.builtin')
+local status, telescope = pcall(require, 'telescope')
 if (not status) then return end
 
-vim.keymap.set('n', 'ff', function()
+local builtin = require('telescope.builtin')
+
+telescope.setup {}
+
+local keyset = vim.keymap.set
+
+keyset('n', 'ff', function()
   builtin.find_files({
     no_ignore = false,
     hidden = true
   })
 end)
 -- vim.keymap.set('n', 'fg', builtin.live_grep, {})
-vim.keymap.set('n', 'fb', builtin.buffers, {})
-vim.keymap.set('n', 'fh', builtin.help_tags, {})
+keyset('n', 'fb', builtin.buffers, {})
+keyset('n', 'fh', builtin.help_tags, {})
