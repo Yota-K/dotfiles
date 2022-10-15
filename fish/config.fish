@@ -16,6 +16,7 @@ set -x GO111MODULE on
 # エイリアス
 #########################################
 
+alias home='cd ~/Documents'
 alias ..='cd ..'
 
 # lsした時の色変更
@@ -88,8 +89,8 @@ alias tree='tree -I node_modules -L 3'
 alias dotfiles='cd ~/dotfiles && v'
 
 # weztermで画像を表示
-# TODO: weztermを使用しているかどうかのエラーハンドリングが必要そう
 alias imgcat='wezterm imgcat'
+
 
 #########################################
 # CLIの色の変更
