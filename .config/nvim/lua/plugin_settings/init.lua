@@ -8,5 +8,6 @@ return {
   plugin7 = require('plugin_settings.lsp'),
   plugin8 = require('plugin_settings.lualine'),
   plugin9 = require('plugin_settings.treesitter'),
-  plugin10 = require('plugin_settings.vim-findroot')
+  plugin10 = require('plugin_settings.telescope'),
+  plugin11 = require('plugin_settings.vim-findroot')
 }
