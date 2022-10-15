@@ -1,15 +1,18 @@
-vim.cmd([[
-  " TerminalをVSCodeのように現在のウィンドウの下に開く
-  autocmd TermOpen * startinsert
+local keyset = vim.api.nvim_set_keymap
+local user_command = vim.api.nvim_create_user_command
 
-  " 常にインサートモードでTerminalを開く（水平分割）
-  command! -nargs=* T sp | wincmd j | resize 20 | terminal <args>
-  nnoremap T :T<CR>
+-- TerminalをVSCodeのように現在のウィンドウの下に開く
+vim.api.nvim_create_autocmd({'TermOpen'}, {
+  command = 'startinsert',
+})
 
-  " 常にインサートモードでTerminalを開く（垂直分割）
-  command! -nargs=* TS vs | wincmd j | resize 100 | terminal <args>
-  nnoremap TS :TS<CR>
+-- 常にインサートモードでTerminalを開く（水平分割）
+user_command('T', 'sp | wincmd j | resize 20 | terminal <args>', { nargs = '*' })
+keyset('n', 'T', ':T <cr>', { noremap = true })
 
-  " インサートモードからの離脱をspace + qにマッピング
-  tnoremap<Space>q <C-\><C-n>
-]])
+-- 常にインサートモードでTerminalを開く（垂直分割）
+user_command('TS', 'vs | wincmd j | resize 100 | terminal <args>', { nargs = '*' })
+keyset('n', 'TS', ':TS <cr>', { noremap = true })
+
+-- インサートモードからの離脱をspace + qにマッピング
+keyset('t', '<Space>q', '<C-\\><C-n>', { silent = true })
