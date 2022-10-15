@@ -1,7 +1,7 @@
 local wezterm = require 'wezterm';
 
--- ウィンドウが最初に表示されてから1秒後に開始され、1秒に1回トリガーされるイベントを定義
 -- 年月日と時間・バッテリーの残量をステータスバーに表示する
+-- NOTE: ウィンドウが最初に表示されてから1秒後に開始され、1秒に1回トリガーされるイベント
 wezterm.on('update-right-status', function(window, pane)
   local date = wezterm.strftime('📆  %Y-%m-%d (%a) ⏰  %H:%M:%S');
 
@@ -146,7 +146,12 @@ local keys = {
   { key = 'Enter', mods = 'SHIFT', action = 'QuickSelect' },
 }
 
+-- デフォルトディレクトリを/Documents/に変更
+-- NOTE: ~でホームディレクトリを指定する方法だとうまくいかなかった
+local default_cwd = os.getenv('HOME')..'/Documents/'
+
 return {
+  default_cwd = default_cwd,
   colors = colors,
   use_fancy_tab_bar = false,
   font_size = 16.5,
