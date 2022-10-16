@@ -33,7 +33,7 @@ wezterm.on('update-right-status', function(window, pane)
       battery_icon = '🌑  '
     end
 
-    bat = string.format('%s%.0f%%', battery_icon, battery_state_of_charge)
+    bat = string.format('%s%.0f%% ', battery_icon, battery_state_of_charge)
   end
 
   window:set_right_status(wezterm.format {
@@ -156,10 +156,10 @@ local default_cwd = os.getenv('HOME')..'/Documents/'
 return {
   default_cwd = default_cwd,
   colors = colors,
-  use_fancy_tab_bar = false,
-  font_size = 16.5,
-  font = wezterm.font('Ricty Diminished', { weight='Bold' }),
-  line_height = 1.2,
   leader = leader,
-  keys = keys
+  keys = keys,
+  use_fancy_tab_bar = false,
+  font_size = 18.5,
+  line_height = 1.25,
+  font = wezterm.font('Ricty Diminished', { weight = 'Bold' }),
 }
