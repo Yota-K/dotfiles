@@ -1,4 +1,4 @@
-local status, packer = pcall(require, 'packer')
+local status = pcall(require, 'packer')
 if (not status) then
   print('Packer is not installed')
   return
@@ -44,7 +44,11 @@ return require('packer').startup(function(use)
   use 'mattn/vim-findroot'
 
   -- テーマ
-  use 'NLKNguyen/papercolor-theme'
+  use {'NLKNguyen/papercolor-theme',
+    config = function()
+      vim.cmd [[colorscheme PaperColor]]
+    end
+  }
 
   -- アイコンフォント
   use 'ryanoasis/vim-devicons'
