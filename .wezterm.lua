@@ -1,7 +1,12 @@
-local wezterm = require 'wezterm';
+-- NOTE: 関数を保護されたモードで呼び出すpcallを使って、weztermを呼び出す。
+-- pcallの最初の戻り値がfalseの時は、funcの実行中にエラーが発生している。
+--
+-- http://www.rtpro.yamaha.co.jp/RT/docs/lua/tutorial/library.html#pcall
+local status, wezterm = pcall(require, 'wezterm')
+if (not status) then return end
 
--- 年月日と時間・バッテリーの残量をステータスバーに表示する
--- NOTE: ウィンドウが最初に表示されてから1秒後に開始され、1秒に1回トリガーされるイベント
+-- 年月日と時間、バッテリーの残量をステータスバーに表示する
+-- ウィンドウが最初に表示されてから1秒後に開始され、1秒に1回トリガーされるイベント
 wezterm.on('update-right-status', function(window, pane)
   local date = wezterm.strftime('📆  %Y-%m-%d (%a) ⏰  %H:%M:%S');
 
@@ -38,15 +43,7 @@ end)
 
 -- タブの表示をカスタマイズ
 wezterm.on('format-tab-title', function(tab, tabs, panes, config, hover, max_width)
-  local tab_num = tab.tab_index + 1
-  local tab_title = string.format(' %d: %s', tab_num, tab.active_pane.title)
-
-  if tab.is_active then
-    return {
-      { Text = tab_title .. ' ' },
-    }
-  end
-  return tab_title
+  return string.format(' %d ', tab.tab_index + 1)
 end)
 
 local base_colors = {
@@ -101,11 +98,10 @@ local colors = {
   },
 }
 
--- キーバインドの設定
-
--- mac osの場合は以下のようになる
--- CTRL・・・CMD
--- ALT・・・OPTION
+-- キーバインドの設定、macOSの場合は以下のようになる
+--
+-- CTRL →  CMD
+-- ALT → OPTION
 local act = wezterm.action;
 
 -- leader keyを CTRL + qにマッピング
