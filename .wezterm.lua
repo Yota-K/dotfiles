@@ -91,15 +91,19 @@ local colors = {
     '#feffff'
   },
   -- the foreground color of selected text
-  selection_fg = 'black',
+  selection_fg = base_colors['black'],
   -- the background color of selected text
   selection_bg = base_colors['yellow'],
   tab_bar = {
     background = base_colors['black'],
     -- The active tab is the one that has focus in the window
     active_tab = {
-      -- activeなタブの背景色を変更する
       bg_color = 'aliceblue',
+      fg_color = base_colors['black'],
+    },
+    -- plus button hidden
+    new_tab = {
+      bg_color = base_colors['black'],
       fg_color = base_colors['black'],
     },
   },
@@ -109,11 +113,10 @@ local colors = {
 --
 -- CTRL →  CMD
 -- ALT → OPTION
-local act = wezterm.action;
 
 -- leader keyを CTRL + qにマッピング
 local leader = { key = 'q', mods = 'CTRL', timeout_milliseconds = 1000 };
-
+local act = wezterm.action;
 local keys = {
   -- CMD + cでタブを新規作成
   { key = 'c', mods = 'LEADER', action = act({ SpawnTab = 'CurrentPaneDomain' })},
@@ -158,8 +161,13 @@ return {
   colors = colors,
   leader = leader,
   keys = keys,
-  use_fancy_tab_bar = false,
+  font = wezterm.font('Ricty Diminished', { weight = 'Bold' }),
   font_size = 18.5,
   line_height = 1.25,
-  font = wezterm.font('Ricty Diminished', { weight = 'Bold' }),
+  use_fancy_tab_bar = false,
+  -- アクティブではないペインの彩度を変更しない
+  inactive_pane_hsb = {
+    saturation = 1,
+    brightness = 1,
+  },
 }
