@@ -43,7 +43,14 @@ end)
 
 -- タブの表示をカスタマイズ
 wezterm.on('format-tab-title', function(tab, tabs, panes, config, hover, max_width)
-  return string.format(' %d ', tab.tab_index + 1)
+  local tab_index = tab.tab_index + 1
+
+  -- Copymode時のみ、"Copymode..."というテキストを表示
+  if tab.is_active and string.match(tab.active_pane.title, 'Copy mode:') ~= nil then
+    return string.format(' %d %s ', tab_index, 'Copy mode...')
+  end
+
+  return string.format(' %d ', tab_index)
 end)
 
 local base_colors = {
