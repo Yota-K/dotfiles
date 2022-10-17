@@ -142,7 +142,7 @@ local keys = {
   { key = 'k', mods = 'LEADER', action = act({ ActivatePaneDirection = 'Up' }) },
   { key = 'j', mods = 'LEADER', action = act({ ActivatePaneDirection = 'Down' }) },
   -- PANEを閉じる
-  { key = 'x', mods = 'CTRL', action = act({ CloseCurrentPane = { confirm = true } }) },
+  { key = 'x', mods = 'ALT', action = act({ CloseCurrentPane = { confirm = true } }) },
   -- ALT + hjklでペインの幅を調整する
   { key = 'h', mods = 'ALT', action = act({ AdjustPaneSize = { 'Left', 5 } }) },
   { key = 'l', mods = 'ALT', action = act({ AdjustPaneSize = { 'Right', 5 } }) },
