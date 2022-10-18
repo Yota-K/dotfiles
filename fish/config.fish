@@ -12,6 +12,9 @@ set -x PATH $PATH:$GOPATH/bin
 # GOPATHの外でプロジェクトを扱えるようにする
 set -x GO111MODULE on
 
+# RustのPATH
+set PATH $HOME/.cargo/bin $PATH
+
 #########################################
 # エイリアス
 #########################################
