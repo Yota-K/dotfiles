@@ -5,12 +5,37 @@
 local status, wezterm = pcall(require, 'wezterm')
 if (not status) then return end
 
+-- os.dateによって返却された数値から曜日を判定し、漢字に変換する
+local function day_of_week_ja (w_num)
+  if w_num == 0 then
+    return '日'
+  elseif w_num == 1 then
+    return '月'
+  elseif w_num == 2 then
+    return '火'
+  elseif w_num == 3 then
+    return '水'
+  elseif w_num == 4 then
+    return '木'
+  elseif w_num == 5 then
+    return '金'
+  elseif w_num == 6 then
+    return '土'
+  end
+end
+
 -- 年月日と時間、バッテリーの残量をステータスバーに表示する
 -- ウィンドウが最初に表示されてから1秒後に開始され、1秒に1回トリガーされるイベント
 wezterm.on('update-right-status', function(window, pane)
-  local date = wezterm.strftime('📆  %Y-%m-%d (%a) ⏰  %H:%M:%S');
+  -- 日付のtableを作成する方法じゃないと曜日の取得がうまくいかなかった
+  -- NOTE: https://www.lua.org/pil/22.1.html
+  local wday = os.date('*t', 906000490).wday
+  -- 指定子の後に半角スペースをつけないと正常に表示されなかった
+  local wday_ja = string.format('(%s )', day_of_week_ja(wday))
+  local date = wezterm.strftime('📆  %Y-%m-%d ' .. wday_ja .. ' ⏰  %H:%M:%S');
 
   local bat = ''
+
   for _, b in ipairs(wezterm.battery_info()) do
     local battery_state_of_charge = b.state_of_charge * 100;
     local battery_icon = ''
