@@ -9,14 +9,14 @@ local base_colors = {
 }
 
 -- normal mode
-cusutom_nightfly.normal.a.bg = base_colors['black']
-cusutom_nightfly.normal.a.fg = 'white'
-cusutom_nightfly.normal.b.bg = base_colors['black']
+-- cusutom_nightfly.normal.a.bg = base_colors['black']
+-- cusutom_nightfly.normal.a.fg = 'white'
+-- cusutom_nightfly.normal.b.bg = base_colors['black']
 cusutom_nightfly.normal.c.bg = base_colors['black']
 
 -- default
-cusutom_nightfly.inactive.a.bg = base_colors['black']
-cusutom_nightfly.inactive.b.bg = base_colors['black']
+-- cusutom_nightfly.inactive.a.bg = base_colors['black']
+-- cusutom_nightfly.inactive.b.bg = base_colors['black']
 cusutom_nightfly.inactive.c.bg = base_colors['black']
 
 lualine.setup {
