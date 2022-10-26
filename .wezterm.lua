@@ -6,20 +6,21 @@ local status, wezterm = pcall(require, 'wezterm')
 if (not status) then return end
 
 -- os.dateによって返却された数値から曜日を判定し、漢字に変換する
+-- (曜日, 1–7, 日曜日が 1)
 local function day_of_week_ja (w_num)
-  if w_num == 0 then
+  if w_num == 1 then
     return '日'
-  elseif w_num == 1 then
-    return '月'
   elseif w_num == 2 then
-    return '火'
+    return '月'
   elseif w_num == 3 then
-    return '水'
+    return '火'
   elseif w_num == 4 then
-    return '木'
+    return '水'
   elseif w_num == 5 then
-    return '金'
+    return '木'
   elseif w_num == 6 then
+    return '金'
+  elseif w_num == 7 then
     return '土'
   end
 end
@@ -29,7 +30,7 @@ end
 wezterm.on('update-right-status', function(window, pane)
   -- 日付のtableを作成する方法じゃないと曜日の取得がうまくいかなかった
   -- NOTE: https://www.lua.org/pil/22.1.html
-  local wday = os.date('*t', 906000490).wday
+  local wday = os.date('*t').wday
   -- 指定子の後に半角スペースをつけないと正常に表示されなかった
   local wday_ja = string.format('(%s )', day_of_week_ja(wday))
   local date = wezterm.strftime('📆  %Y-%m-%d ' .. wday_ja .. ' ⏰  %H:%M:%S');
