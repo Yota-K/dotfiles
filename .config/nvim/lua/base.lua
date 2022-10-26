@@ -44,6 +44,9 @@ vim.opt.incsearch = true
 vim.opt.hlsearch = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
+-- Global Status Line を有効にする
+-- 画面をスプリットした時に Status LineはSplitされないようにする
+vim.opt.laststatus = 3
 
 vim.cmd [[
   augroup highlightIdegraphicSpace
