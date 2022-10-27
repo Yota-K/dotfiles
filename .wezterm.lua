@@ -80,42 +80,13 @@ wezterm.on('format-tab-title', function(tab, tabs, panes, config, hover, max_wid
 end)
 
 local base_colors = {
-  black = '#1c1c1c',
+  black = '#172331',
   yellow = '#ffe64d'
 }
 
 local colors = {
-  background = base_colors['black'],
   cursor_bg = base_colors['yellow'],
   split = '#6fc3df',
-  ansi = {
-    -- black
-    '#0c141f',
-    -- red
-    '#df740c',
-    -- green
-    '#00c200',
-    -- yellow
-    '#f8e420',
-    -- blue
-    '#6c72d8',
-    -- magenta
-    '#af0087',
-    -- cyan
-    '#6fc3df',
-    -- white
-    '#e6ffff'
-  },
-  brights = {
-    '#676767',
-    '#ff6d67',
-    '#5ff967',
-    '#fefb67',
-    '#6871ff',
-    '#ff76ff',
-    '#5ffdff',
-    '#feffff'
-  },
   -- the foreground color of selected text
   selection_fg = base_colors['black'],
   -- the background color of selected text
@@ -183,6 +154,7 @@ local keys = {
 local default_cwd = os.getenv('HOME')..'/Documents/'
 
 return {
+  color_scheme = 'nightfox',
   default_cwd = default_cwd,
   colors = colors,
   leader = leader,

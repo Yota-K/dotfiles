@@ -44,9 +44,9 @@ return require('packer').startup(function(use)
   use 'mattn/vim-findroot'
 
   -- テーマ
-  use {'NLKNguyen/papercolor-theme',
+  use {'EdenEast/nightfox.nvim',
     config = function()
-      vim.cmd [[colorscheme PaperColor]]
+      vim.cmd [[colorscheme nightfox]]
     end
   }
 
