@@ -18,4 +18,4 @@ require ('terminal')
 vim.cmd [[autocmd BufWritePost plugins.lua PackerCompile]]
 
 -- タブの色を背景色と同化させる
-vim.cmd [[autocmd Colorscheme * highlight TabLineFill ctermbg=212121]]
+vim.cmd [[autocmd Colorscheme * highlight TabLineFill guibg=172331]]
