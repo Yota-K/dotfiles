@@ -10,6 +10,7 @@ cusutom.normal.c.bg = dark
 cusutom.insert.c.bg = dark
 cusutom.command.c.bg = dark
 cusutom.terminal.c.bg = dark
+cusutom.visual.c.bg = dark
 
 lualine.setup {
   options = {
