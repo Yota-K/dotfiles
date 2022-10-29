@@ -1,7 +1,7 @@
 return {
   plugin1 = require('plugin_settings.ale'),
   plugin2 = require('plugin_settings.any-jump'),
-  plugin3 = require('plugin_settings.caw'),
+  plugin3 = require('plugin_settings.comment-out'),
   plugin4 = require('plugin_settings.emmet'),
   plugin5 = require('plugin_settings.fern'),
   plugin6 = require('plugin_settings.git-nvim'),

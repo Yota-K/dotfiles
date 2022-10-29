@@ -29,7 +29,7 @@ return require('packer').startup(function(use)
   use 'w0rp/ale'
 
   -- コメントアウトを効率化
-  use 'tyru/caw.vim'
+  use 'terrortylor/nvim-comment'
 
   -- 定義元ジャンプ
   use {'pechorin/any-jump.vim', opt = true, cmd = {'AnyJump'}}
