@@ -80,7 +80,7 @@ wezterm.on('format-tab-title', function(tab, tabs, panes, config, hover, max_wid
 end)
 
 local base_colors = {
-  black = '#172331',
+  dark = '#172331',
   yellow = '#ffe64d'
 }
 
@@ -88,20 +88,20 @@ local colors = {
   cursor_bg = base_colors['yellow'],
   split = '#6fc3df',
   -- the foreground color of selected text
-  selection_fg = base_colors['black'],
+  selection_fg = base_colors['dark'],
   -- the background color of selected text
   selection_bg = base_colors['yellow'],
   tab_bar = {
-    background = base_colors['black'],
+    background = base_colors['dark'],
     -- The active tab is the one that has focus in the window
     active_tab = {
       bg_color = 'aliceblue',
-      fg_color = base_colors['black'],
+      fg_color = base_colors['dark'],
     },
     -- plus button hidden
     new_tab = {
-      bg_color = base_colors['black'],
-      fg_color = base_colors['black'],
+      bg_color = base_colors['dark'],
+      fg_color = base_colors['dark'],
     },
   },
 }
