@@ -5,5 +5,5 @@ comment.setup()
 
 local keyset = vim.api.nvim_set_keymap
 
-keyset('n', '<C-z>', ':CommentToggle', { noremap = true })
-keyset('v', '<C-z>', ':CommentToggle', { noremap = true })
+keyset('n', '<C-z>', ':CommentToggle<CR>', { noremap = true })
+keyset('v', '<C-z>', ':CommentToggle<CR>', { noremap = true })
