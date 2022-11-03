@@ -27,7 +27,7 @@ end
 
 -- 年月日と時間、バッテリーの残量をステータスバーに表示する
 -- ウィンドウが最初に表示されてから1秒後に開始され、1秒に1回トリガーされるイベント
-wezterm.on('update-right-status', function(window, pane)
+wezterm.on('update-status', function(window, pane)
   -- 日付のtableを作成する方法じゃないと曜日の取得がうまくいかなかった
   -- NOTE: https://www.lua.org/pil/22.1.html
   local wday = os.date('*t').wday
