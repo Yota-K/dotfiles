@@ -78,4 +78,13 @@ return require('packer').startup(function(use)
   -- or                            , branch = '0.1.x',
     requires = { {'nvim-lua/plenary.nvim'} }
   }
+
+  -- markdown preview use glow
+  use {'ellisonleao/glow.nvim',
+    opt = true, 
+    config = function() require('glow').setup({
+      pager = true
+    }) end,
+    cmd = {'Glow'}
+  }
 end)
