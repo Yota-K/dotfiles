@@ -19,6 +19,9 @@ keyset('n', '<space>l', ':CocList<cr>', {
   silent = true
 })
 
+-- 定義元ジャンプ
+keyset('n', '<space>]', '<Plug>(coc-definition)', { silent = true })
+
 -- cocで表示されるフローティングウィンドウのスクロールのキーマッピング
 -- issues: https://github.com/neoclide/coc.nvim/issues/609
 local opts = { silent = true, nowait = true, expr = true }
