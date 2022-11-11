@@ -46,7 +46,20 @@ return require('packer').startup(function(use)
   -- テーマ
   use {'EdenEast/nightfox.nvim',
     config = function()
-      vim.cmd [[colorscheme nightfox]]
+      local groups = {
+        nightfox = {
+          -- 補完メニューのホバーしたときの色
+          CocMenuSel = { bg = '#73daca', fg = 'bg0' },
+          -- 補完メニューのスクロールバーの色
+          PmenuThumb = { bg = 'white' },
+          -- 境界線の色
+          VertSplit = { fg = '#2d333b'}
+        },
+      }
+
+      require('nightfox').setup({ groups = groups })
+
+      vim.cmd [[ colorscheme nightfox ]]
     end
   }
 
@@ -75,16 +88,16 @@ return require('packer').startup(function(use)
   -- fuzzy finder 
   use {
     'nvim-telescope/telescope.nvim', tag = '0.1.0',
-  -- or                            , branch = '0.1.x',
+    -- or, branch = '0.1.x',
     requires = { {'nvim-lua/plenary.nvim'} }
   }
 
   -- markdown preview use glow
   use {'ellisonleao/glow.nvim',
-    opt = true, 
-    config = function() require('glow').setup({
-      pager = true
-    }) end,
+    opt = true,
+    config = function()
+      require('glow').setup({ pager = true })
+    end,
     cmd = {'Glow'}
   }
 end)
