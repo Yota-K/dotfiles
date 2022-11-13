@@ -1,6 +1,5 @@
 -- 解説記事: https://kuune.org/text/2017/07/23/how-to-lint-and-autoformat-with-ale/
-vim.cmd(
-  [[
+vim.cmd([[
     " 言語ごとに有効にするLintツールを設定する
     let g:ale_linters = {
       \ 'javascript': ['eslint', 'prettier'],
@@ -32,5 +31,4 @@ vim.cmd(
 
     " ローカルの設定ファイルを考慮する
     let g:ale_javascript_prettier_use_local_config = 1
-  ]]
-)
+]])

@@ -15,7 +15,4 @@ require ('plugins')
 require ('terminal')
 
 -- PackerCompileを自動実行
-vim.cmd [[autocmd BufWritePost plugins.lua PackerCompile]]
-
--- タブの色を背景色と同化させる
-vim.cmd [[autocmd Colorscheme * highlight TabLineFill guibg=172331]]
+vim.cmd('autocmd BufWritePost plugins.lua PackerCompile')

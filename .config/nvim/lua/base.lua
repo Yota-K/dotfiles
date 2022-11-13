@@ -50,7 +50,7 @@ opt.smartcase = true
 -- 画面をスプリットした時に Status LineはSplitされないようにする
 opt.laststatus = 3
 
-vim.cmd [[
+vim.cmd ([[
   augroup highlightIdegraphicSpace
     autocmd!
     autocmd Colorscheme * highlight IdeographicSpace term=underline ctermbg=DarkGreen guibg=DarkGreen
@@ -59,4 +59,4 @@ vim.cmd [[
 
   " 拡張子がmdxの時は、*.mdとして扱う
   au BufNewFile,BufRead *.mdx set filetype=markdown
-]]
+]])
