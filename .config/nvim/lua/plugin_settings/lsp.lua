@@ -7,6 +7,24 @@
 -- silent・・・コマンドラインへの出力を抑制する
 -- <C-u>hoge<cr>・・・特殊なキーのマッピング
 -- https://thinca.hatenablog.com/entry/20100205/1265307642
+
+-- NeoVim起動時にcoc起動した場合、エクステンションが未導入の場合は個別にインストールする
+vim.cmd([[
+  let g:coc_global_extensions = [
+    \'@yaegassy/coc-tailwindcss3',
+    \'coc-css',
+    \'coc-go',
+    \'coc-html',
+    \'coc-json',
+    \'coc-phpls',
+    \'coc-rust-analyzer',
+    \'coc-sumneko-lua',
+    \'coc-tsserver',
+    \'coc-vetur',
+    \'coc-yaml',
+  \]
+]])
+
 local keyset = vim.api.nvim_set_keymap
 local opts = {
   default = { silent = true, nowait = true, expr = true },
