@@ -108,8 +108,7 @@ local colors = {
 
 -- キーバインドの設定、macOSの場合は以下のようになる
 --
--- CTRL →  CMD
--- ALT → OPTION
+-- ALT →  OPTION
 
 -- leader keyを CTRL + qにマッピング
 local leader = { key = 'q', mods = 'CTRL', timeout_milliseconds = 1000 };
