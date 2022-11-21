@@ -159,7 +159,7 @@ return {
   leader = leader,
   keys = keys,
   font = wezterm.font('Ricty Diminished', { weight = 'Bold' }),
-  font_size = 16.5,
+  font_size = 16,
   line_height = 1.25,
   use_fancy_tab_bar = false,
   -- アクティブではないペインの彩度を変更しない
