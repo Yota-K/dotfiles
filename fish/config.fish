@@ -83,11 +83,6 @@ alias tmuxKillAll='tmux kill-server'
 # ranger
 alias r='ranger'
 
-# tree
-# node_modulesを除外 エイリアスを無視したい場合は、$ \tree
-# ※ fishだと使えない
-alias tree='tree -I node_modules -L 3'
-
 # dotfilesのエイリアス
 alias dotfiles='cd ~/dotfiles && v'
 
@@ -95,7 +90,15 @@ alias dotfiles='cd ~/dotfiles && v'
 alias imgcat='wezterm imgcat'
 
 # lsコマンドをexaに変更
-alias ls='exa'
+# Git管理下の場合は、Gitのステータスを表示する
+alias ls='exa --git'
+
+# tree
+# - treeオプションを有効にする
+# - 再帰の深さは3階層まで有効にする
+# - 隠しファイルを表示する
+# - node_modules, .git, .cache, .nextは検索対象から除外
+alias tree='exa -T -L 3 -a -I "node_modules|.git|.cache|.next"'
 
 #########################################
 # CLIの色の変更
