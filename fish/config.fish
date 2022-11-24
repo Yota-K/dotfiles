@@ -94,6 +94,8 @@ alias dotfiles='cd ~/dotfiles && v'
 # weztermで画像を表示
 alias imgcat='wezterm imgcat'
 
+# lsコマンドをexaに変更
+alias ls='exa'
 
 #########################################
 # CLIの色の変更
