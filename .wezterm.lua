@@ -32,8 +32,8 @@ wezterm.on('update-status', function(window, pane)
   -- NOTE: https://www.lua.org/pil/22.1.html
   local wday = os.date('*t').wday
   -- 指定子の後に半角スペースをつけないと正常に表示されなかった
-  local wday_ja = string.format('(%s )', day_of_week_ja(wday))
-  local date = wezterm.strftime('📆  %Y-%m-%d ' .. wday_ja .. ' ⏰  %H:%M:%S');
+  local wday_ja = string.format('(%s)', day_of_week_ja(wday))
+  local date = wezterm.strftime('📆 %Y-%m-%d' .. wday_ja .. ' | ⏰ %H:%M:%S | ');
 
   local bat = ''
 
@@ -42,28 +42,28 @@ wezterm.on('update-status', function(window, pane)
     local battery_icon = ''
 
     if battery_state_of_charge >= 80 then
-      battery_icon = '🌕  '
+      battery_icon = '🌕 '
     elseif battery_state_of_charge >= 70 then
-      battery_icon = '🌖  '
+      battery_icon = '🌖 '
     elseif battery_state_of_charge >= 60 then
-      battery_icon = '🌖  '
+      battery_icon = '🌖 '
     elseif battery_state_of_charge >= 50 then
-      battery_icon = '🌗  '
+      battery_icon = '🌗 '
     elseif battery_state_of_charge >= 40 then
-      battery_icon = '🌗  '
+      battery_icon = '🌗 '
     elseif battery_state_of_charge >= 30 then
-      battery_icon = '🌘  '
+      battery_icon = '🌘 '
     elseif battery_state_of_charge >= 20 then
-      battery_icon = '🌘  '
+      battery_icon = '🌘 '
     else
-      battery_icon = '🌑  '
+      battery_icon = '🌑 '
     end
 
     bat = string.format('%s%.0f%% ', battery_icon, battery_state_of_charge)
   end
 
   window:set_right_status(wezterm.format {
-    { Text = date .. '  ' .. bat },
+    { Text = date .. bat },
   })
 end)
 
