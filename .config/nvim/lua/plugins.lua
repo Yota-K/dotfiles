@@ -34,9 +34,6 @@ return require('packer').startup(function(use)
   -- 定義元ジャンプ
   use {'pechorin/any-jump.vim', opt = true, cmd = {'AnyJump'}}
 
-  -- Vimからagを使えるようにする
-  use {'rking/ag.vim', opt = true, cmd = {'Ag'}}
-
   -- 複数ファイルの一括置換
   use {'thinca/vim-qfreplace', opt = true, cmd = {'Qfreplace'}}
 
