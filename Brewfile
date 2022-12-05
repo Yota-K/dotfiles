@@ -20,6 +20,7 @@ brew "neovim", args: ["HEAD"]
 brew "nodebrew"
 brew "python@3.9"
 brew "ranger"
+brew "ripgrep"
 brew "ruby"
 brew "the_silver_searcher"
 brew "tig"
