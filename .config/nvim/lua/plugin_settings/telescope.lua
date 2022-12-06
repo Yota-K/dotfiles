@@ -1,9 +1,18 @@
 local status, telescope = pcall(require, 'telescope')
 if (not status) then return end
 
+-- TODO: .gitディレクトリは無視したい
 local builtin = require('telescope.builtin')
 
-telescope.setup {}
+telescope.setup({
+  pickers = {
+    live_grep = {
+      additional_args = function(opts)
+        return {'--hidden'}
+      end
+    },
+  },
+})
 
 local keyset = vim.keymap.set
 
