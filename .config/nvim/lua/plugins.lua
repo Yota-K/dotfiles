@@ -98,7 +98,11 @@ return require('packer').startup(function(use)
   use {'ellisonleao/glow.nvim',
     opt = true,
     config = function()
-      require('glow').setup({ pager = true })
+      require('glow').setup({
+        pager = true,
+        width = 120,
+        height = 100,
+      })
     end,
     cmd = {'Glow'}
   }
