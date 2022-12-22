@@ -17,7 +17,7 @@ return require('packer').startup(function(use)
   use {'simeji/winresizer', opt = true, cmd = {'WinResizerStartResize'}}
 
   --  エメット
-  use {'mattn/emmet-vim', opt = true, ft = {'html', 'javascriptreact', 'typescriptreact', 'vue', 'php', 'ejs'}}
+  use {'mattn/emmet-vim', opt = true, ft = {'html', 'javascriptreact', 'typescriptreact', 'vue', 'php', 'ejs', 'svelte'}}
 
   -- tree-sitterを用いたコードのシンタックスハイライトを行うプラグイン
   use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
