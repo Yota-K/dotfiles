@@ -21,6 +21,7 @@ vim.cmd([[
     \'coc-sumneko-lua',
     \'coc-tsserver',
     \'coc-vetur',
+    \'coc-svelte',
     \'coc-yaml',
   \]
 ]])
