@@ -162,6 +162,7 @@ return {
   font_size = 16,
   line_height = 1.25,
   use_fancy_tab_bar = false,
+  front_end = 'WebGpu',
   -- アクティブではないペインの彩度を変更しない
   inactive_pane_hsb = {
     saturation = 1,
