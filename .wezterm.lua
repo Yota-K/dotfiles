@@ -146,6 +146,9 @@ local keys = {
   { key = 'j', mods = 'ALT', action = act({ AdjustPaneSize = { 'Down', 5 } }) },
   -- QuickSelect・・・画面に表示されている文字をクイックにコピペできる機能
   { key = 'Enter', mods = 'SHIFT', action = 'QuickSelect' },
+  -- コマンドパレットを開く
+  -- キーマッピングに設定していない機能も使える模様
+  { key = 'P', mods = 'CTRL', action = act.ActivateCommandPalette },
 }
 
 -- デフォルトディレクトリを/Documents/に変更

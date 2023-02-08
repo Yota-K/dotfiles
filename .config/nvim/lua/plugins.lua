@@ -31,7 +31,7 @@ return require('packer').startup(function(use)
   -- コメントアウトを効率化
   use 'terrortylor/nvim-comment'
 
-  -- 定義元ジャンプ
+  -- ホバーしてる単語をカレントディレクトリ内から検索
   use {'pechorin/any-jump.vim', opt = true, cmd = {'AnyJump'}}
 
   -- ripgrepをnvim上で実行して、検索結果をQuickfixに表示

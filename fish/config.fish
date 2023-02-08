@@ -21,9 +21,7 @@ set PATH $HOME/.cargo/bin $PATH
 
 alias home='cd ~/Documents'
 alias ..='cd ..'
-
-# lsした時の色変更
-alias ls='ls -G'
+alias E='exit'
 
 # Docker
 alias dup='docker-compose up'
