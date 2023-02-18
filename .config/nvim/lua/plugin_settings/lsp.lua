@@ -8,7 +8,7 @@
 -- <C-u>hoge<cr>・・・特殊なキーのマッピング
 -- https://thinca.hatenablog.com/entry/20100205/1265307642
 
--- NeoVim起動時にcoc起動した場合、エクステンションが未導入の場合は個別にインストールする
+-- Neovim起動時にcoc起動した場合、エクステンションが未導入の場合は個別にインストールする
 vim.cmd([[
   let g:coc_global_extensions = [
     \'@yaegassy/coc-tailwindcss3',
