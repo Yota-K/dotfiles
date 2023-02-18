@@ -44,26 +44,7 @@ return require('packer').startup(function(use)
   use 'mattn/vim-findroot'
 
   -- テーマ
-  use {'EdenEast/nightfox.nvim',
-    config = function()
-      local groups = {
-        nightfox = {
-          -- 補完メニューのホバーしたときの色
-          CocMenuSel = { bg = '#73daca', fg = 'bg0'},
-          -- 補完メニューのスクロールバーの色
-          PmenuThumb = { bg = 'white'},
-          -- 境界線の色
-          VertSplit = { fg = '#2d333b'},
-          -- タブの色を背景色と同化させる
-          TabLineFill = { bg = '#172331'}
-        },
-      }
-
-      require('nightfox').setup({ groups = groups })
-
-      vim.cmd('colorscheme nightfox')
-    end
-  }
+  use 'EdenEast/nightfox.nvim'
 
   -- アイコンフォント
   use 'ryanoasis/vim-devicons'

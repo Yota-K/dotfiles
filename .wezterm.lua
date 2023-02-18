@@ -80,7 +80,8 @@ wezterm.on('format-tab-title', function(tab, tabs, panes, config, hover, max_wid
 end)
 
 local base_colors = {
-  dark = '#172331',
+  nightfox_dark = '#172331',
+  carbonfox_dark = '#161616',
   yellow = '#ffe64d'
 }
 
@@ -88,20 +89,20 @@ local colors = {
   cursor_bg = base_colors['yellow'],
   split = '#6fc3df',
   -- the foreground color of selected text
-  selection_fg = base_colors['dark'],
+  selection_fg = base_colors['carbonfox_dark'],
   -- the background color of selected text
   selection_bg = base_colors['yellow'],
   tab_bar = {
-    background = base_colors['dark'],
+    background = base_colors['carbonfox_dark'],
     -- The active tab is the one that has focus in the window
     active_tab = {
       bg_color = 'aliceblue',
-      fg_color = base_colors['dark'],
+      fg_color = base_colors['carbonfox_dark'],
     },
     -- plus button hidden
     new_tab = {
-      bg_color = base_colors['dark'],
-      fg_color = base_colors['dark'],
+      bg_color = base_colors['carbonfox_dark'],
+      fg_color = base_colors['carbonfox_dark'],
     },
   },
 }
@@ -156,7 +157,7 @@ local keys = {
 local default_cwd = os.getenv('HOME')..'/Documents/'
 
 return {
-  color_scheme = 'nightfox',
+  color_scheme = 'carbonfox',
   default_cwd = default_cwd,
   colors = colors,
   leader = leader,
