@@ -33,6 +33,8 @@ require('nightfox').setup({
     carbonfox = {
       -- フローティングウィンドウの色
       CocFloating = { bg = '#002b36' },
+      -- 選択時の色
+      Visual = { bg = '#002b36'  },
       PmenuThumb = { bg = 'white'},
       VertSplit = { fg = '#6fc3df' },
       TabLineFill = { bg = '#161616'}
