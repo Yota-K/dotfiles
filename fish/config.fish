@@ -21,7 +21,6 @@ set PATH $HOME/.cargo/bin $PATH
 
 alias home='cd ~/Documents'
 alias ..='cd ..'
-alias E='exit'
 
 # Docker
 alias dup='docker-compose up'
