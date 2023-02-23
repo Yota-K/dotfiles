@@ -164,6 +164,7 @@ return {
   keys = keys,
   font = wezterm.font('Ricty Diminished', { weight = 'Bold' }),
   font_size = 16,
+  command_palette_font_size = 16,
   line_height = 1.25,
   use_fancy_tab_bar = false,
   front_end = 'WebGpu',
