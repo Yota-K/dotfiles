@@ -69,8 +69,8 @@ return require('packer').startup(function(use)
   use 'dinhhuy258/git.nvim'
 
   -- fuzzy finder 
-  use {
-    'nvim-telescope/telescope.nvim', tag = '0.1.0',
+  use {'nvim-telescope/telescope.nvim',
+    tag = '0.1.1',
     -- or, branch = '0.1.x',
     requires = { {'nvim-lua/plenary.nvim'} }
   }
@@ -86,5 +86,12 @@ return require('packer').startup(function(use)
       })
     end,
     cmd = {'Glow'}
+  }
+
+  -- カラーコードの色を見えやすいように表示
+  use {'norcalli/nvim-colorizer.lua',
+    config = function ()
+      require'colorizer'.setup()
+    end,
   }
 end)
