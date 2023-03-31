@@ -3,7 +3,7 @@ vim.api.nvim_set_keymap('n', '<C-n>', ':Fern . -reveal=% -drawer -toggle<CR>', {
 vim.cmd([[
   let g:fern#renderer = 'devicons'
   let g:fern#default_hidden = 1
-  let g:fern#drawer_width = 50
+  let g:fern#drawer_width = 40
   let g:fern_disable_startup_warnings = 1
 
   function! s:init_fern() abort
