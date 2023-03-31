@@ -47,12 +47,12 @@ return require('packer').startup(function(use)
   use 'EdenEast/nightfox.nvim'
 
   -- アイコンフォント
-  use 'kyazdani42/nvim-web-devicons'
+  use 'ryanoasis/vim-devicons'
 
   -- ファイラー
   use {'lambdalisue/fern.vim',
     requires = {
-      {'TheLeoP/fern-renderer-web-devicons.nvim', 'lambdalisue/glyph-palette.vim', 'lambdalisue/fern-git-status.vim'},
+      {'lambdalisue/fern-renderer-devicons.vim', 'lambdalisue/glyph-palette.vim', 'lambdalisue/fern-git-status.vim'},
     },
   }
 
