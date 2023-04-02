@@ -75,19 +75,6 @@ return require('packer').startup(function(use)
     requires = { {'nvim-lua/plenary.nvim'} }
   }
 
-  -- markdown preview use glow
-  use {'ellisonleao/glow.nvim',
-    opt = true,
-    config = function()
-      require('glow').setup({
-        pager = true,
-        width = 120,
-        height = 100,
-      })
-    end,
-    cmd = {'Glow'}
-  }
-
   -- カラーコードの色を見えやすいように表示
   use {'norcalli/nvim-colorizer.lua',
     config = function ()

@@ -14,6 +14,15 @@ nvim_create_user_command('JsonFormatter', function() vim.cmd([[
   execute("%!jq '.'")
 ]]) end, {})
 
+-- Glowをvim上で実行する
+nvim_create_user_command('Glow', function() vim.cmd([[
+  if !executable('glow')
+    call s:echo_err("not found glow command.")
+  endif
+
+  execute('vs | wincmd j | resize 100 | terminal glow')
+]]) end, {})
+
 -- タブラインのカスタマイズ
 -- タブをのファイル名 + ファイルフォーマットののアイコンの形式に変更する
 vim.cmd([[
