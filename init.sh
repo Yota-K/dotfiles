@@ -1,47 +1,22 @@
-# -e・・・エラーが処理を中断
-# -u・・・未定義の変数を使おうとすると処理中断
-#!/bin/bash -eu
-path=~/dotfiles
+#!/bin/bash
 
-cd ~/
+DOTFILES_DIR="$HOME/dotfiles"
 
-# ディレクトリが存在しない場合は作成する
-if [ ! -e ~/.config/nvim ]; then
-  mkdir -p ~/.config/nvim
+# $DOTFILES_DIRが存在しない場合に、git cloneコマンドを使用してリポジトリをcloneする。
+if [ ! -d "$DOTFILES_DIR" ]; then
+  echo 'dotfilesリポジトリをcloneします'
+  git clone git@github.com:Yota-K/dotfiles.git "$DOTFILES_DIR"
 fi
 
-if [ ! -e ~/iterm2 ]; then
-  mkdir -p ~/iterm2
-fi
+cd "$DOTFILES_DIR"
 
-if [ ! -e ~/.config/ranger/colorschemes ]; then
-  mkdir -p ~/.config/ranger/colorschemes
-fi
-# ~/dotfilesに戻る
-cd $path
-
-if [ $path ]; then
-  ln -s $PWD/.agignore ~/.agignore
-  ln -s $PWD/.bash_profile ~/.bash_profile
-  ln -s $PWD/.bashrc ~/.bashrc
-  ln -s $PWD/.tigrc ~/.tigrc
-  ln -s $PWD/.tmux.conf ~/.tmux.conf
-  ln -s $PWD/Brewfile ~/Brewfile
-  ln -s $PWD/.wezterm.lua ~/.wezterm.lua
-
-  # nvim
-  ln -s $PWD/.config/nvim/init.lua ~/.config/nvim/init.lua
-  ln -sf $PWD/.config/nvim/lua ~/.config/nvim/lua
-  ln -s $PWD/.vim/indent ~/.config/nvim/indent
-  ln -s $PWD/.vim/coc-settings.json ~/.config/nvim/coc-settings.json
-
-  # iterm2
-  ln -s $PWD/iterm2/tron.itermcolors ~/iterm2/
-
-  # ranger
-  ln -s $PWD/ranger/colorschemes/myscheme.py ~/.config/ranger/colorschemes/myscheme.py
-
-  # fish
-  ln -s $PWD/fish/config.fish ~/.config/fish/config.fish
-  ln -s $PWD/fish/functions/fish_prompt.fish ~/.config/fish/functions/fish_prompt.fish
-fi
+# シンボリックリンクの設定
+# 1. git ls-filesを使用して、カレントディレクトリのGit管理下のファイルのリストを取得する。
+# 2. .* *で、dotfiles管理下の全てのファイルを取得する。
+# 3. 各ファイルが"."（カレントディレクトリを表す）、".."（親ディレクトリを表す）または ".git" ではない場合シンボリックリンクを作成する。
+git ls-files | for file in .* *; do
+  if [ "$file" != '.' ] && [ "$file" != '..' ] && [ "$file" != '.git' ]; then
+    echo "シンボリックリンクを設定します: $file"
+    ln -sfn "$DOTFILES_DIR/$file" "$HOME/$file"
+  fi
+done
