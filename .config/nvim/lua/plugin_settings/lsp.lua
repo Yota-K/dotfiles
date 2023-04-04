@@ -23,6 +23,7 @@ vim.cmd([[
     \'coc-vetur',
     \'coc-svelte',
     \'coc-yaml',
+    \'coc-spell-checker'
   \]
 ]])
 
