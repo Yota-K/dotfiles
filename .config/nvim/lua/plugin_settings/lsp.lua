@@ -12,6 +12,7 @@
 vim.cmd([[
   let g:coc_global_extensions = [
     \'@yaegassy/coc-tailwindcss3',
+    \'@yaegassy/coc-astro',
     \'coc-css',
     \'coc-go',
     \'coc-html',
