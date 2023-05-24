@@ -26,6 +26,9 @@ vim.cmd([[
     \'coc-yaml',
     \'coc-spell-checker'
   \]
+
+  " tailwind.cssのconfigをtsでも認識するように変更
+  au FileType html let b:coc_root_patterns = ['.git', '.env', 'tailwind.config.js', 'tailwind.config.cjs', 'tailwind.config.ts']
 ]])
 
 local keyset = vim.api.nvim_set_keymap
