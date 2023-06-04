@@ -82,12 +82,16 @@ end)
 local base_colors = {
   nightfox_dark = '#172331',
   carbonfox_dark = '#161616',
-  yellow = '#ffe64d'
+  yellow = '#ffe64d',
+  blue = '#6fc3df',
+  aliceblue = '#f0f8ff',
+  peru = 'peru',
+  white = '#ffffff'
 }
 
 local colors = {
   cursor_bg = base_colors['yellow'],
-  split = '#6fc3df',
+  split = base_colors['blue'],
   -- the foreground color of selected text
   selection_fg = base_colors['carbonfox_dark'],
   -- the background color of selected text
@@ -96,7 +100,7 @@ local colors = {
     background = base_colors['carbonfox_dark'],
     -- The active tab is the one that has focus in the window
     active_tab = {
-      bg_color = 'aliceblue',
+      bg_color = base_colors['aliceblue'],
       fg_color = base_colors['carbonfox_dark'],
     },
     -- plus button hidden
@@ -105,6 +109,8 @@ local colors = {
       fg_color = base_colors['carbonfox_dark'],
     },
   },
+  quick_select_label_bg = { Color = base_colors['peru'] },
+  quick_select_label_fg = { Color = base_colors['white'] },
 }
 
 -- キーバインドの設定、macOSの場合は以下のようになる
