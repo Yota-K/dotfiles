@@ -81,4 +81,7 @@ return require('packer').startup(function(use)
       require'colorizer'.setup()
     end,
   }
+
+  -- increment/decrementを拡張する
+  use 'monaqa/dial.nvim'
 end)
