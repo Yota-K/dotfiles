@@ -7,6 +7,7 @@ keymap('i', '[<Enter>', '[]<Left>', { silent = true })
 keymap('i', '"<Enter>', '""<Left>', { silent = true })
 keymap("i", "'<Enter>", "''<Left>", { silent = true })
 keymap('i', '`<Enter>', '``<Left>', { silent = true })
+keymap('i', '<C-s>', '\\', { silent = true })
 
 keymap('n', 'j', 'gj', { noremap = true })
 keymap('n', 'k', 'gk', { noremap = true })
