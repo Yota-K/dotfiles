@@ -148,13 +148,17 @@ local keys = {
   { key = 'x', mods = 'ALT', action = act({ CloseCurrentPane = { confirm = true } }) },
   -- ALT + hjklでペインの幅を調整する
   { key = 'h', mods = 'ALT', action = act({ AdjustPaneSize = { 'Left', 5 } }) },
-  { key = 'l', mods = 'ALT', action = act({ AdjustPaneSize = { 'Right', 5 } }) },
+  { key = 'l', mods = 'ALT', action = act({ AdjustPaneSize = { 'Right', 4 } }) },
   { key = 'k', mods = 'ALT', action = act({ AdjustPaneSize = { 'Up', 5 } }) },
   { key = 'j', mods = 'ALT', action = act({ AdjustPaneSize = { 'Down', 5 } }) },
   -- QuickSelect・・・画面に表示されている文字をクイックにコピペできる機能
   { key = 'Enter', mods = 'SHIFT', action = 'QuickSelect' },
+  -- 画面の文字の大きさを調整する
+  -- HINT: ⌘ + 0で文字の大きさをもとに戻す
+  { key = '+', mods = 'CTRL', action = act.IncreaseFontSize },
+  { key = '-', mods = 'CTRL', action = act.DecreaseFontSize },
   -- コマンドパレットを開く
-  -- キーマッピングに設定していない機能も使える模様
+  -- コマンドパレット経由でキーマッピングに設定していない機能も使うことができる
   { key = 'P', mods = 'CTRL', action = act.ActivateCommandPalette },
 }
 
@@ -169,7 +173,7 @@ return {
   leader = leader,
   keys = keys,
   font = wezterm.font('Ricty Diminished', { weight = 'Bold' }),
-  font_size = 17,
+  font_size = 16,
   command_palette_font_size = 16,
   line_height = 1.25,
   use_fancy_tab_bar = false,
