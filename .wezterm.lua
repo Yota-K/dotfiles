@@ -148,7 +148,7 @@ local keys = {
   { key = 'x', mods = 'ALT', action = act({ CloseCurrentPane = { confirm = true } }) },
   -- ALT + hjklでペインの幅を調整する
   { key = 'h', mods = 'ALT', action = act({ AdjustPaneSize = { 'Left', 5 } }) },
-  { key = 'l', mods = 'ALT', action = act({ AdjustPaneSize = { 'Right', 4 } }) },
+  { key = 'l', mods = 'ALT', action = act({ AdjustPaneSize = { 'Right', 5 } }) },
   { key = 'k', mods = 'ALT', action = act({ AdjustPaneSize = { 'Up', 5 } }) },
   { key = 'j', mods = 'ALT', action = act({ AdjustPaneSize = { 'Down', 5 } }) },
   -- QuickSelect・・・画面に表示されている文字をクイックにコピペできる機能
