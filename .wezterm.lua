@@ -157,6 +157,10 @@ local keys = {
   -- HINT: ⌘ + 0で文字の大きさをもとに戻す
   { key = '+', mods = 'CTRL', action = act.IncreaseFontSize },
   { key = '-', mods = 'CTRL', action = act.DecreaseFontSize },
+  -- 画面上に表示されたアルファベットを使用して、特定のペインに移動する
+  { key = '1', mods = 'CTRL', action = act.PaneSelect },
+  -- 画面上に表示されたアルファベットを使用して、現在のペインと選択したペインを入れ替える
+  { key = '2', mods = 'CTRL', action = act({ PaneSelect = { mode = 'SwapWithActive' } }) },
   -- コマンドパレットを開く
   -- コマンドパレット経由でキーマッピングに設定していない機能も使うことができる
   { key = 'P', mods = 'CTRL', action = act.ActivateCommandPalette },
