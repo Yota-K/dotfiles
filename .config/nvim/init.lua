@@ -26,8 +26,12 @@ require('nightfox').setup({
       TabLineFill = { bg = '#172331'},
     },
     carbonfox = {
+      -- coc.nvim
       -- フローティングウィンドウの色
       CocFloating = { bg = '#002b36' },
+      -- nvim lsp
+      Pmenu = { bg = '#002b36' },
+      NormalFloat = { bg = '#002b36' },
       -- 選択時の色: 視認性重視
       Visual = { fg = 'white', bg = '#8080ff'  },
       PmenuThumb = { bg = 'white'},
