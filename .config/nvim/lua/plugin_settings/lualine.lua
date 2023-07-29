@@ -3,16 +3,16 @@ if (not status) then return end
 
 local cusutom = require('lualine.themes.nightfox')
 
--- local nightfox_dark = '#172331'
-local carbonfox_dark = '#161616'
+local nightfox_dark = '#172331'
+-- local carbonfox_dark = '#161616'
 
 -- nightfox
--- cusutom.inactive.c.bg = nightfox_dark
--- cusutom.normal.c.bg = nightfox_dark
+cusutom.inactive.c.bg = nightfox_dark
+cusutom.normal.c.bg = nightfox_dark
 --
 -- carbonfox
-cusutom.inactive.c.bg = carbonfox_dark
-cusutom.normal.c.bg = carbonfox_dark
+-- cusutom.inactive.c.bg = carbonfox_dark
+-- cusutom.normal.c.bg = carbonfox_dark
 
 lualine.setup {
   options = {
