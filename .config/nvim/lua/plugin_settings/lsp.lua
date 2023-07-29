@@ -106,4 +106,12 @@ cmp.setup({
   experimental = {
     ghost_text = true,
   },
+  window = {
+    completion = cmp.config.window.bordered({
+      border = 'single'
+    }),
+    documentation = cmp.config.window.bordered({
+      border = 'single'
+   }),
+  }
 })
