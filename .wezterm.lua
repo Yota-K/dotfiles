@@ -93,20 +93,20 @@ local colors = {
   cursor_bg = base_colors['yellow'],
   split = base_colors['blue'],
   -- the foreground color of selected text
-  selection_fg = base_colors['carbonfox_dark'],
+  selection_fg = base_colors['nightfox_dark'],
   -- the background color of selected text
   selection_bg = base_colors['yellow'],
   tab_bar = {
-    background = base_colors['carbonfox_dark'],
+    background = base_colors['nightfox_dark'],
     -- The active tab is the one that has focus in the window
     active_tab = {
       bg_color = base_colors['aliceblue'],
-      fg_color = base_colors['carbonfox_dark'],
+      fg_color = base_colors['nightfox_dark'],
     },
     -- plus button hidden
     new_tab = {
-      bg_color = base_colors['carbonfox_dark'],
-      fg_color = base_colors['carbonfox_dark'],
+      bg_color = base_colors['nightfox_dark'],
+      fg_color = base_colors['nightfox_dark'],
     },
   },
   quick_select_label_bg = { Color = base_colors['peru'] },
@@ -171,7 +171,7 @@ local keys = {
 local default_cwd = os.getenv('HOME')..'/Documents/'
 
 return {
-  color_scheme = 'carbonfox',
+  color_scheme = 'nightfox',
   default_cwd = default_cwd,
   colors = colors,
   leader = leader,
