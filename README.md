@@ -15,3 +15,14 @@ If you invoked to `sh init.sh`, a symbolic link is set.
     - [bat](https://github.com/sharkdp/bat)
     - [exa](https://github.com/ogham/exa)
     - [ripgrep](https://github.com/BurntSushi/ripgrep)
+
+## LSP settings
+
+You can using to two types LSP by checkout git branch.
+
+- `main`: Using nvim lsp.
+- `coc-nvim`: Using coc.nvim. 
+    - coc.nvim only avairable LSP
+        - PHP
+        - WordPress
+        - Vue
