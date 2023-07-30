@@ -12,7 +12,7 @@ mason_lspconfig.setup {
   ensure_installed = {
     -- languages
     'html',
-    'css',
+    'cssls',
     'tsserver',
     'gopls',
     'lua_ls',
