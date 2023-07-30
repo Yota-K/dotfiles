@@ -3,16 +3,18 @@ if (not status) then return end
 
 local cusutom = require('lualine.themes.nightfox')
 
-local nightfox_dark = '#172331'
--- local carbonfox_dark = '#161616'
+-- theme.luaがあるパスを追加する
+local module_path = ';'..os.getenv('HOME')..'/dotfiles/?.lua;'
+package.path = package.path..module_path
+local theme = require('theme')
 
 -- nightfox
-cusutom.inactive.c.bg = nightfox_dark
-cusutom.normal.c.bg = nightfox_dark
+cusutom.inactive.c.bg = theme.colors['nightfox']
+cusutom.normal.c.bg = theme.colors['nightfox']
 --
 -- carbonfox
--- cusutom.inactive.c.bg = carbonfox_dark
--- cusutom.normal.c.bg = carbonfox_dark
+-- cusutom.inactive.c.bg = theme.colors['carbonfox']
+-- cusutom.normal.c.bg = theme.colors['carbonfox']
 
 lualine.setup {
   options = {

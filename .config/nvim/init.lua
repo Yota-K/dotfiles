@@ -7,45 +7,19 @@
 --  ╚═╝╚═╝  ╚═══╝╚═╝   ╚═╝╚═╝╚══════╝ ╚═════╝ ╚═╝  ╚═╝
 --
 
--- テーマの上書きを行うための関数
-local function theme_override_settings (theme_type)
-  local base_theme = {
-    -- 補完メニューのスクロールバーの色
-    PmenuThumb = { bg = 'white'},
-    -- 境界線の色
-    VertSplit = { fg = '#6fc3df' },
-    -- タブの色を背景色と同化させる
-    TabLineFill = { bg = '#172331'},
-    -- 選択時の色: 視認性重視
-    Visual = { fg = 'white', bg = '#8080ff' },
-  }
+-- package.path初期値にtheme.luaが存在するパスを追加
+-- 環境変数としてデフォルトで指定されているパスは以下。
+--
+-- /usr/local/share/lua/5.4/?.lua;
+-- /usr/local/share/lua/5.4/?/init.lua;
+-- /usr/local/lib/lua/5.4/?.lua;
+-- /usr/local/lib/lua/5.4/?/init.lua;
+-- ./?.lua;
+-- ./?/init.lua
 
-  -- coc.nvim
-  local coc_theme = {
-    -- 補完メニューのホバーしたときの色
-    CocMenuSel = { bg = '#73daca', fg = 'bg0'},
-    -- フローティングウィンドウの色
-    CocFloating = { bg = '#002b36' }
-  }
-
-  -- タブの色を背景色と同化させる
-  local tab_line = {
-    nightfox = { bg = '#172331'},
-    carbonfox = { bg = '#161616' }
-  }
-
-  if theme_type == 'nightfox' then
-    base_theme['CocMenuSel'] = coc_theme['CocMenuSel']
-    base_theme['TabLineFil'] = tab_line['nightfox']
-    -- フローティングウィンドウの色
-    base_theme['NormalFloat'] = { bg = '#3b474a' }
-  elseif theme_type == 'carbonfox' then
-    base_theme['CocFloating'] = coc_theme['CocFloating']
-    base_theme['TabLineFil'] = tab_line['carbonfox']
-  end
-
-  return base_theme
-end
+local module_path = ';'..os.getenv('HOME')..'/dotfiles/?.lua;'
+package.path = package.path..module_path
+local theme = require('theme')
 
 require ('plugin_settings')
 require ('base')
@@ -55,8 +29,8 @@ require ('plugins')
 require ('terminal')
 require('nightfox').setup({
   groups = {
-    nightfox = theme_override_settings('nightfox'),
-    carbonfox = theme_override_settings('carbonfox'),
+    nightfox = theme.theme_override_settings('nightfox'),
+    carbonfox = theme.theme_override_settings('carbonfox'),
   },
 })
 
