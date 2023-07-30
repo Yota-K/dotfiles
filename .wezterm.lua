@@ -79,38 +79,30 @@ wezterm.on('format-tab-title', function(tab, tabs, panes, config, hover, max_wid
   return string.format(' %d ', tab_index)
 end)
 
-local base_colors = {
-  nightfox_dark = '#172331',
-  carbonfox_dark = '#161616',
-  yellow = '#ffe64d',
-  blue = '#6fc3df',
-  aliceblue = '#f0f8ff',
-  peru = 'peru',
-  white = '#ffffff'
-}
+local theme = require('theme')
 
 local colors = {
-  cursor_bg = base_colors['yellow'],
-  split = base_colors['blue'],
+  cursor_bg = theme.colors['yellow'],
+  split = theme.colors['blue'],
   -- the foreground color of selected text
-  selection_fg = base_colors['nightfox_dark'],
+  selection_fg = theme.colors['nightfox'],
   -- the background color of selected text
-  selection_bg = base_colors['yellow'],
+  selection_bg = theme.colors['yellow'],
   tab_bar = {
-    background = base_colors['nightfox_dark'],
+    background = theme.colors['nightfox'],
     -- The active tab is the one that has focus in the window
     active_tab = {
-      bg_color = base_colors['aliceblue'],
-      fg_color = base_colors['nightfox_dark'],
+      bg_color = theme.colors['aliceblue'],
+      fg_color = theme.colors['nightfox'],
     },
     -- plus button hidden
     new_tab = {
-      bg_color = base_colors['nightfox_dark'],
-      fg_color = base_colors['nightfox_dark'],
+      bg_color = theme.colors['nightfox'],
+      fg_color = theme.colors['nightfox'],
     },
   },
-  quick_select_label_bg = { Color = base_colors['peru'] },
-  quick_select_label_fg = { Color = base_colors['white'] },
+  quick_select_label_bg = { Color = theme.colors['peru'] },
+  quick_select_label_fg = { Color = theme.colors['white'] },
 }
 
 -- キーバインドの設定、macOSの場合は以下のようになる

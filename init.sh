@@ -20,3 +20,12 @@ git ls-files | for file in .* *; do
     ln -sfn "$DOTFILES_DIR/$file" "$HOME/$file"
   fi
 done
+
+# weztermの追加モジュールは、~/.config/wezterm/ に配置しないといけないので、
+# ~/.config/weztermディレクトリが存在しない場合は作成して、~/theme.luaからシンボリックリンクを設定してファイルを参照できるようにする
+echo '~/.configにweztermディレクトリを作成します'
+# 既にディレクトリが存在する場合は何もしない
+mkdir -p ~/.config/wezterm
+
+echo '~/.config/weztermディレクトリにtheme.luaのシンボリックリンクを作成します'
+ln -sfn ~/theme.lua ~/.config/wezterm/theme.lua
