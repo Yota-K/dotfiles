@@ -23,7 +23,7 @@ local function theme_override_settings (theme_type)
     -- 境界線の色
     VertSplit = { fg = colors['blue'] },
     -- 選択時の色: 視認性重視
-    Visual = { fg = 'white', bg = colors['selected_blue'] },
+    Visual = { fg = colors['white'], bg = colors['selected_blue'] },
   }
 
   -- coc.nvim
@@ -42,12 +42,12 @@ local function theme_override_settings (theme_type)
 
   if theme_type == 'nightfox' then
     base_theme['CocMenuSel'] = coc_theme['CocMenuSel']
-    base_theme['TabLineFil'] = tab_line['nightfox']
+    base_theme['TabLineFill'] = tab_line['nightfox']
     -- フローティングウィンドウの色
     base_theme['NormalFloat'] = { bg = '#3b474a' }
   elseif theme_type == 'carbonfox' then
     base_theme['CocFloating'] = coc_theme['CocFloating']
-    base_theme['TabLineFil'] = tab_line['carbonfox']
+    base_theme['TabLineFill'] = tab_line['carbonfox']
   end
 
   return base_theme
