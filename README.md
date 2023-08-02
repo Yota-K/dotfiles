@@ -23,6 +23,5 @@ You can using to two types LSP by checkout git branch.
 - `main`: Using nvim lsp.
 - `coc-nvim`: Using coc.nvim. 
     - coc.nvim only avairable LSP
-        - PHP
-        - WordPress
+        - PHP (WordPress)
         - Vue
