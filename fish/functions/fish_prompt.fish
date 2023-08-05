@@ -4,7 +4,7 @@
 
 # 現在のディレクトリを表示
 function _prompt_dir
-  printf '\uf413  %s' (prompt_pwd)
+  printf '\uf4d3  %s' (prompt_pwd)
 end
 
 function _git_status
@@ -12,7 +12,7 @@ function _git_status
   if command git rev-parse --is-inside-work-tree >/dev/null 2>&1
     # Git
     set last_status $status
-    printf ' \uf408 %s ' (__fish_git_prompt)
+    printf ' \ue65b %s ' (__fish_git_prompt)
     set_color normal
   end
 end
