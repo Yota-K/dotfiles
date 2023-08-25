@@ -14,6 +14,11 @@ nvim_create_user_command('JsonFormatter', function() vim.cmd([[
   execute("%!jq '.'")
 ]]) end, {})
 
+-- xmlを整形
+nvim_create_user_command('XmlFormatter', function() vim.cmd([[
+  execute("%s/></>\r</g | filetype indent on | setf xml | normal gg=G")
+]]) end, {})
+
 -- Glowをvim上で実行する
 nvim_create_user_command('Glow', function() vim.cmd([[
   if !executable('glow')
