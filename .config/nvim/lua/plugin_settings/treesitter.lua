@@ -18,7 +18,11 @@ nvim_treesitter_configs.setup {
     'vue',
     'yaml'
   },
+  sync_install = false,
+  auto_install = false,
+  ignore_install = {},
   highlight = {
     enable = true,
   },
+  modules = {},
 }
