@@ -24,7 +24,7 @@ mason_lspconfig.setup {
     -- others
     'jsonls',
     'dockerls',
-    'yamlls'
+    'yamlls',
   },
   automatic_installation = true,
 }
@@ -103,6 +103,8 @@ cmp.setup({
     ['<C-p>'] = cmp.mapping.select_prev_item(),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
     ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+    -- enterで補完を確定する
+    ['<CR>'] = cmp.mapping.confirm({ select = true }),
   }),
   experimental = {
     ghost_text = true,
