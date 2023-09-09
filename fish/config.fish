@@ -86,16 +86,16 @@ alias dotfiles='cd ~/dotfiles && v'
 # weztermで画像を表示
 alias imgcat='wezterm imgcat'
 
-# lsコマンドをexaに変更
+# lsコマンドをezaに変更
 # Git管理下の場合は、Gitのステータスを表示する
-alias ls='exa --git'
+alias ls='eza --git'
 
 # tree
 # - treeオプションを有効にする
 # - 再帰の深さは3階層まで有効にする
 # - 隠しファイルを表示する
 # - node_modules, .git, .cache, .nextは検索対象から除外
-alias tree='exa -T -L 3 -a -I "node_modules|.git|.cache|.next"'
+alias tree='eza -T -L 3 -a -I "node_modules|.git|.cache|.next"'
 
 #########################################
 # CLIの色の変更
