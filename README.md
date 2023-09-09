@@ -13,7 +13,7 @@ If you invoked to `sh init.sh`, a symbolic link is set.
     - [glow](https://github.com/charmbracelet/glow)
 - CLI
     - [bat](https://github.com/sharkdp/bat)
-    - [exa](https://github.com/ogham/exa)
+    - [eza](https://github.com/eza-community/eza)
     - [ripgrep](https://github.com/BurntSushi/ripgrep)
 
 ## LSP settings
