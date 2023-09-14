@@ -188,6 +188,10 @@ set __fish_git_prompt_char_upstream_behind '-'
 export CLICOLOR=1
 export TERM=xterm-256color
 
+# tabtab source for packages
+# uninstall by removing these lines
+[ -f ~/.config/tabtab/fish/__tabtab.fish ]; and . ~/.config/tabtab/fish/__tabtab.fish; or true
+
 #########################################
 # MEMO
 #########################################
