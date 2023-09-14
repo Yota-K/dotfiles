@@ -8,7 +8,7 @@ set vertical-split = no
 set split-view-height = 45%
 
 ## 色の設定
-color default white 172331
+color default white default
 color cursor 232 154 bold
 color date 33 default
 color delimiter cyan default
