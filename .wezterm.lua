@@ -168,10 +168,7 @@ return {
   colors = colors,
   leader = leader,
   keys = keys,
-  font = wezterm.font_with_fallback({
-    { family = 'Ricty Diminished', weight = 'Bold' },
-    { family = 'Hack Nerd Font', weight = 'Bold' },
-  }),
+  font = wezterm.font('Ricty Diminished', { weight = 'Bold' }),
   font_size = 16,
   command_palette_font_size = 16,
   line_height = 1.25,
