@@ -2,8 +2,14 @@
 # 環境変数
 #########################################
 
-# nodeのPATH
-set -x PATH $HOME/.nodebrew/current/bin:$PATH
+# voltaのPATH
+set -gx VOLTA_HOME "$HOME/.volta"
+set -gx PATH "$VOLTA_HOME/bin" $PATH
+
+# Voltaでpnpmを使用できるようにする
+# まだ実験段階なため、利用する際は環境変数へフラグを立てる必要がある
+# https://docs.volta.sh/advanced/pnpm
+set VOLTA_FEATURE_PNPM 1
 
 # golangのPATH
 set -x GOPATH $HOME/go

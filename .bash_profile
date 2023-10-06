@@ -3,9 +3,6 @@ if [ -f ~/.bashrc ]; then
 . ~/.bashrc
 fi
 
-# nodeのPATH
-export PATH=$HOME/.nodebrew/current/bin:$PATH
-
 # zshじゃなくbashを使う
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
