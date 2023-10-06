@@ -6,7 +6,7 @@ local status, wezterm = pcall(require, 'wezterm')
 if (not status) then return end
 
 -- os.dateによって返却された数値から曜日を判定し、漢字に変換する
--- (曜日, 1–7, 日曜日が 1)
+-- (曜日, 1〜7, 日曜日が 1)
 local function day_of_week_ja (w_num)
   if w_num == 1 then
     return '日'
@@ -33,7 +33,7 @@ wezterm.on('update-status', function(window, pane)
   local wday = os.date('*t').wday
   -- 指定子の後に半角スペースをつけないと正常に表示されなかった
   local wday_ja = string.format('(%s)', day_of_week_ja(wday))
-  local date = wezterm.strftime('📆 %Y-%m-%d' .. wday_ja .. ' | ⏰ %H:%M:%S | ');
+  local date = wezterm.strftime('  📆 %Y-%m-%d ' .. wday_ja .. '  ⏰ %H:%M:%S  ');
 
   local bat = ''
 
@@ -59,11 +59,11 @@ wezterm.on('update-status', function(window, pane)
       battery_icon = '🌑 '
     end
 
-    bat = string.format('%s%.0f%% ', battery_icon, battery_state_of_charge)
+    bat = string.format('%s%.0f%%', battery_icon, battery_state_of_charge)
   end
 
   window:set_right_status(wezterm.format {
-    { Text = date .. bat },
+    { Text = bat .. date },
   })
 end)
 
@@ -168,8 +168,8 @@ return {
   colors = colors,
   leader = leader,
   keys = keys,
-  font = wezterm.font('Ricty Diminished', { weight = 'Bold' }),
   font_size = 16,
+  font = wezterm.font('HackGen'),
   command_palette_font_size = 16,
   line_height = 1.25,
   use_fancy_tab_bar = false,
