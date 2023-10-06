@@ -77,9 +77,6 @@ alias tmuxRestart='tmux attach'
 # tmux全体を終了
 alias tmuxKillAll='tmux kill-server'
 
-# ranger
-alias r='ranger'
-
 # dotfilesのエイリアス
 alias dotfiles='cd ~/dotfiles && v'
 
