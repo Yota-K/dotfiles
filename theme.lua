@@ -12,7 +12,8 @@ local colors = {
   blue = '#6fc3df',
   aliceblue = '#f0f8ff',
   peru = 'peru',
-  white = '#ffffff'
+  white = '#ffffff',
+  none = 'none'
 }
 
 -- テーマの上書きを行うための関数
@@ -24,6 +25,10 @@ local function theme_override_settings (theme_type)
     VertSplit = { fg = colors['blue'] },
     -- 選択時の色: 視認性重視
     Visual = { fg = colors['white'], bg = colors['selected_blue'] },
+    -- コマンドモードの結果を出力する時の上部に表示される背景色を透過させる
+    StatusLine = { fg = colors["none"], bg = colors["none"] },
+    -- タブの色を背景色を透過させる
+    TabLineFill = { fg = colors["none"], bg = colors["none"] },
   }
 
   -- coc.nvim
@@ -34,20 +39,12 @@ local function theme_override_settings (theme_type)
     CocFloating = { bg = '#002b36' }
   }
 
-  -- タブの色を背景色と同化させる
-  local tab_line = {
-    nightfox = { bg = colors['nightfox'] },
-    carbonfox = { bg = colors['carbonfoxk'] }
-  }
-
   if theme_type == 'nightfox' then
     base_theme['CocMenuSel'] = coc_theme['CocMenuSel']
-    base_theme['TabLineFill'] = tab_line['nightfox']
     -- フローティングウィンドウの色
     base_theme['NormalFloat'] = { bg = '#3b474a' }
   elseif theme_type == 'carbonfox' then
     base_theme['CocFloating'] = coc_theme['CocFloating']
-    base_theme['TabLineFill'] = tab_line['carbonfox']
   end
 
   return base_theme
