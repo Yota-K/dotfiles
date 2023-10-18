@@ -9,9 +9,9 @@
 
 local opt = vim.opt
 
-opt.encoding = 'utf-8'
+opt.encoding = "utf-8"
 
-opt.helplang = 'ja,en'
+opt.helplang = "ja,en"
 opt.numberwidth = 6
 
 opt.ruler = true
@@ -28,13 +28,13 @@ opt.laststatus = 2
 
 opt.showmatch.matchtime = 1
 
-opt.backspace = 'indent,eol,start'
+opt.backspace = "indent,eol,start"
 
-opt.virtualedit = 'onemore'
+opt.virtualedit = "onemore"
 
 opt.swapfile = false
 
-opt.clipboard = 'unnamedplus'
+opt.clipboard = "unnamedplus"
 
 opt.wildmenu = true
 opt.history = 5000
@@ -50,7 +50,7 @@ opt.smartcase = true
 -- 画面をスプリットした時に Status LineはSplitされないようにする
 opt.laststatus = 3
 
-vim.cmd ([[
+vim.cmd([[
   augroup highlightIdegraphicSpace
     autocmd!
     autocmd Colorscheme * highlight IdeographicSpace term=underline ctermbg=DarkGreen guibg=DarkGreen
@@ -59,4 +59,10 @@ vim.cmd ([[
 
   " 拡張子がmdxの時は、*.mdとして扱う
   au BufNewFile,BufRead *.mdx set filetype=markdown
+
+  " luaのformatter
+  augroup FormatAutogroup
+    autocmd!
+    autocmd BufWritePost * FormatWrite
+  augroup END
 ]])

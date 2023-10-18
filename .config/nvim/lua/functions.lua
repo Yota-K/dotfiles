@@ -1,32 +1,40 @@
 local nvim_create_user_command = vim.api.nvim_create_user_command
 
 -- 半角スペースを全て削除
-nvim_create_user_command('DeleteHalfSpaces', function() vim.cmd([[
+nvim_create_user_command("DeleteHalfSpaces", function()
+	vim.cmd([[
   execute("%s/ *$//g")
-]]) end, {})
+]])
+end, {})
 
 -- jqをVim上で実行
-nvim_create_user_command('JsonFormatter', function() vim.cmd([[
+nvim_create_user_command("JsonFormatter", function()
+	vim.cmd([[
   if !executable('jq')
     call s:echo_err("not found jq command.")
   endif
 
   execute("%!jq '.'")
-]]) end, {})
+]])
+end, {})
 
 -- xmlを整形
-nvim_create_user_command('XmlFormatter', function() vim.cmd([[
+nvim_create_user_command("XmlFormatter", function()
+	vim.cmd([[
   execute("%s/></>\r</g | filetype indent on | setf xml | normal gg=G")
-]]) end, {})
+]])
+end, {})
 
 -- Glowをvim上で実行する
-nvim_create_user_command('Glow', function() vim.cmd([[
+nvim_create_user_command("Glow", function()
+	vim.cmd([[
   if !executable('glow')
     call s:echo_err("not found glow command.")
   endif
 
   execute('vs | wincmd j | resize 100 | terminal glow')
-]]) end, {})
+]])
+end, {})
 
 -- タブラインのカスタマイズ
 -- タブをのファイル名 + ファイルフォーマットののアイコンの形式に変更する

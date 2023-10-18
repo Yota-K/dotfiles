@@ -1,4 +1,4 @@
-vim.api.nvim_set_keymap('n', '<C-n>', ':Fern . -reveal=% -drawer -toggle<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<C-n>", ":Fern . -reveal=% -drawer -toggle<CR>", { noremap = true, silent = true })
 
 vim.cmd([[
   let g:fern#renderer = 'devicons'
@@ -8,7 +8,7 @@ vim.cmd([[
 
   function! s:init_fern() abort
     " Write custom code here
-    
+
     nmap <buffer> i <Plug>(fern-action-open:split)
     nmap <buffer> s <Plug>(fern-action-open:vsplit)
 
