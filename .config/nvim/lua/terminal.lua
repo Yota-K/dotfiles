@@ -3,7 +3,7 @@ local user_command = vim.api.nvim_create_user_command
 
 -- TerminalをVSCodeのように現在のウィンドウの下に開く
 vim.api.nvim_create_autocmd({ "TermOpen" }, {
-	command = "startinsert",
+  command = "startinsert",
 })
 
 -- 常にインサートモードでTerminalを開く（水平分割）

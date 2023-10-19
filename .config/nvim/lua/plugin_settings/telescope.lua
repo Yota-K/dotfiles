@@ -1,32 +1,32 @@
 local status, telescope = pcall(require, "telescope")
 if not status then
-	return
+  return
 end
 
 local builtin = require("telescope.builtin")
 
 telescope.setup({
-	defaults = {
-		color_devicons = true,
-		file_ignore_patterns = { ".git/" },
-	},
-	pickers = {
-		live_grep = {
-			additional_args = function(opts)
-				return { "--hidden" }
-			end,
-		},
-	},
+  defaults = {
+    color_devicons = true,
+    file_ignore_patterns = { ".git/" },
+  },
+  pickers = {
+    live_grep = {
+      additional_args = function(opts)
+        return { "--hidden" }
+      end,
+    },
+  },
 })
 
 local keyset = vim.keymap.set
 
 -- ファイル名で検索
 keyset("n", "ff", function()
-	builtin.find_files({
-		no_ignore = false,
-		hidden = true,
-	})
+  builtin.find_files({
+    no_ignore = false,
+    hidden = true,
+  })
 end)
 
 -- ファイルに含まれる文字列で検索
