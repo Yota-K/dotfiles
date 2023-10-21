@@ -15,7 +15,7 @@ package.path = package.path .. base_module_path .. plugin_module_path
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 
 if not vim.loop.fs_stat(lazypath) then
-  endvim.fn.system({
+  vim.fn.system({
     "git",
     "clone",
     "--filter=blob:none",
@@ -70,7 +70,14 @@ require("lazy").setup({
   },
 
   -- tree-sitterを用いたコードのシンタックスハイライトを行うプラグイン
-  { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
+  {
+    "nvim-treesitter/nvim-treesitter",
+    event = "VeryLazy",
+    build = ":TSUpdate",
+    config = function()
+      require("plugin_settings.treesitter")
+    end,
+  },
 
   -- vim helpを日本語化
   {
@@ -177,43 +184,54 @@ require("lazy").setup({
   -- fuzzy finder
   {
     "nvim-telescope/telescope.nvim",
+    cmd = {
+      "Telescope",
+    },
+    keys = { { "ff", mode = "n" }, { "fg", mode = "n" }, { "fb", mode = "n" }, { "fh", mode = "n" } },
+    event = { "BufReadPre", "BufNewFile" },
     tag = "0.1.1",
     dependencies = { "nvim-lua/plenary.nvim" },
+    config = function()
+      require("plugin_settings.telescope")
+    end,
   },
 
   -- カラーコードの色を見えやすいように表示
   {
     "norcalli/nvim-colorizer.lua",
+    event = {
+      "BufReadPre",
+      "BufNewFile",
+    },
     config = function()
       require("colorizer").setup()
     end,
   },
 
   -- increment/decrementを拡張する
-  "monaqa/dial.nvim",
+  {
+    "monaqa/dial.nvim",
+    keys = {
+      { "<C-a>", mode = "n" },
+      { "<C-x>", mode = "n" },
+      { "g<C-a>", mode = "n" },
+      { "g<C-x>", mode = "n" },
+      { "<C-a>", mode = "v" },
+      { "<C-x>", mode = "v" },
+      { "g<C-a>", mode = "v" },
+      { "g<C-x>", mode = "v" },
+    },
+    config = function()
+      require("plugin_settings.dial")
+    end,
+  },
 
   -- Luaのフォーマッター
   {
     "mhartington/formatter.nvim",
     cmd = { "Format", "FormatWrite" },
     config = function()
-      -- Provides the Format, FormatWrite, FormatLock, and FormatWriteLock commands
-      require("formatter").setup({
-        -- Enable or disable logging
-        logging = true,
-        -- Set the log level
-        log_level = vim.log.levels.WARN,
-        -- All formatter configurations are opt-in
-        filetype = {
-          -- Formatter configurations for filetype "lua" go here
-          -- and will be executed in order
-          lua = {
-            -- "formatter.filetypes.lua" defines default configurations for the
-            -- "lua" filetype
-            require("formatter.filetypes.lua").stylua,
-          },
-        },
-      })
+      require("plugin_settings.formatter")
     end,
   },
 })
