@@ -7,9 +7,9 @@
 -- /usr/local/lib/lua/5.4/?/init.lua;
 -- ./?.lua;
 -- ./?/init.lua
-local module_path = ";" .. os.getenv("HOME") .. "/dotfiles/?.lua;"
-package.path = package.path .. module_path
-local theme = require("theme")
+local base_module_path = ";" .. os.getenv("HOME") .. "/dotfiles/?.lua;"
+local plugin_module_path = ";" .. os.getenv("HOME") .. "/dotfiles/.config/nvim/plugin_settings/?.lua;"
+package.path = package.path .. base_module_path .. plugin_module_path
 
 -- Install and configure lazy.nvim if not already installed
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -46,6 +46,8 @@ require("lazy").setup({
     end,
     -- init is called during startup. Configuration for vim plugins typically should be set in an init function
     init = function()
+      local theme = require("theme")
+
       require("nightfox").setup({
         groups = {
           nightfox = theme.theme_override_settings("nightfox"),
@@ -59,7 +61,13 @@ require("lazy").setup({
   { "simeji/winresizer", cmd = "WinResizerStartResize" },
 
   --  エメット
-  { "mattn/emmet-vim", ft = { "html", "javascriptreact", "typescriptreact", "vue", "php", "ejs", "svelte" } },
+  {
+    "mattn/emmet-vim",
+    ft = { "html", "javascriptreact", "typescriptreact", "vue", "php", "ejs", "svelte" },
+    config = function()
+      require("plugin_settings.emmet")
+    end,
+  },
 
   -- tree-sitterを用いたコードのシンタックスハイライトを行うプラグイン
   { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
@@ -81,10 +89,19 @@ require("lazy").setup({
   {
     "terrortylor/nvim-comment",
     event = "VeryLazy",
+    config = function()
+      require("plugin_settings.comment-out")
+    end,
   },
 
   -- ホバーしてる単語をカレントディレクトリ内から検索
-  { "pechorin/any-jump.vim", cmd = "AnyJump" },
+  {
+    "pechorin/any-jump.vim",
+    cmd = "AnyJump",
+    config = function()
+      require("plugin_settings.any-jump")
+    end,
+  },
 
   -- ripgrepをnvim上で実行して、検索結果をQuickfixに表示
   { "duane9/nvim-rg", cmd = "Rg" },
@@ -111,10 +128,14 @@ require("lazy").setup({
   -- lsp
   {
     "neovim/nvim-lspconfig",
+    -- 既存のファイルの編集を開始する or 存在しないファイルの編集を開始した時に読み込む
     event = {
       "BufReadPre",
       "BufNewFile",
     },
+    config = function()
+      require("plugin_settings.lsp")
+    end,
   },
   {
     "williamboman/mason.nvim",
