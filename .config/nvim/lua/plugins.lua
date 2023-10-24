@@ -64,7 +64,7 @@ require("lazy").setup({
   {
     "mattn/emmet-vim",
     ft = { "html", "javascriptreact", "typescriptreact", "vue", "php", "ejs", "svelte" },
-    config = function()
+    init = function()
       require("plugin_settings.emmet")
     end,
   },
