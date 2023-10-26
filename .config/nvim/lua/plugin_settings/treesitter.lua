@@ -19,6 +19,7 @@ nvim_treesitter_configs.setup({
     "vim",
     "vue",
     "yaml",
+    "graphql",
   },
   sync_install = false,
   auto_install = false,
