@@ -82,25 +82,29 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_wid
 end)
 
 local theme = require("theme")
+local selected_theme = theme.theme_config[theme.selected_theme]
+local selected_theme_bg = selected_theme["bg"]
+local wezterm_theme = selected_theme["wezterm"]
 
 local colors = {
+  cursor_fg = theme.colors["black"],
   cursor_bg = theme.colors["yellow"],
-  split = theme.colors["blue"],
+  -- split = theme.colors["blue"],
   -- the foreground color of selected text
-  selection_fg = theme.colors["nightfox"],
+  selection_fg = selected_theme_bg,
   -- the background color of selected text
   selection_bg = theme.colors["yellow"],
   tab_bar = {
-    background = theme.colors["nightfox"],
+    background = selected_theme_bg,
     -- The active tab is the one that has focus in the window
     active_tab = {
       bg_color = theme.colors["aliceblue"],
-      fg_color = theme.colors["nightfox"],
+      fg_color = selected_theme_bg,
     },
     -- plus button hidden
     new_tab = {
-      bg_color = theme.colors["nightfox"],
-      fg_color = theme.colors["nightfox"],
+      bg_color = selected_theme_bg,
+      fg_color = selected_theme_bg,
     },
   },
   quick_select_label_bg = { Color = theme.colors["peru"] },
@@ -165,7 +169,7 @@ local keys = {
 local default_cwd = os.getenv("HOME") .. "/Documents/"
 
 return {
-  color_scheme = "nightfox",
+  color_scheme = wezterm_theme,
   default_cwd = default_cwd,
   colors = colors,
   leader = leader,

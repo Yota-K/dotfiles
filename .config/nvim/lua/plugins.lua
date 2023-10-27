@@ -34,25 +34,24 @@ vim.g.mapleader = " "
 
 -- Load plugins using lazy.nvim syntax
 require("lazy").setup({
-  -- メインで使用してるテーマ
+  -- テーマ: デフォルトにないテーマを使う時はここに記述する
   {
-    "EdenEast/nightfox.nvim",
+    "ellisonleao/gruvbox.nvim",
+    -- "EdenEast/nightfox.nvim",
     lazy = false, -- make sure we load this during startup if it is your main colorscheme
     priority = 1000, -- make sure to load this before all the other start plugins
     config = function()
       -- load the colorscheme here
-      vim.cmd("colorscheme nightfox")
+      vim.cmd("colorscheme gruvbox")
+      -- vim.cmd("colorscheme nightfox")
       -- vim.cmd('colorscheme carbonfox')
     end,
     -- init is called during startup. Configuration for vim plugins typically should be set in an init function
     init = function()
       local theme = require("theme")
-
-      require("nightfox").setup({
-        groups = {
-          nightfox = theme.theme_override_settings("nightfox"),
-          carbonfox = theme.theme_override_settings("carbonfox"),
-        },
+      local settings = theme.theme_override_settings()
+      require("gruvbox").setup({
+        override = settings,
       })
     end,
   },
