@@ -37,7 +37,7 @@ nvim_create_user_command("Glow", function()
 end, {})
 
 -- タブラインのカスタマイズ
--- タブをのファイル名 + ファイルフォーマットののアイコンの形式に変更する
+-- タブをファイル名 + ファイル拡張子のアイコンの形式に変更する
 vim.cmd([[
   function MyTabLine()
     let s = ''
