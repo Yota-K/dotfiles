@@ -20,6 +20,7 @@ nvim_treesitter_configs.setup({
     "vue",
     "yaml",
     "graphql",
+    "prisma",
   },
   sync_install = false,
   auto_install = false,
