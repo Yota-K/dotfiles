@@ -7,7 +7,6 @@
 --  ╚═╝╚═╝  ╚═══╝╚═╝   ╚═╝╚═╝╚══════╝ ╚═════╝ ╚═╝  ╚═╝
 --
 
-require("plugin_settings")
 require("base")
 require("functions")
 require("keymap")

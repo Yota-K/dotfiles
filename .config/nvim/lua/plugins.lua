@@ -89,7 +89,13 @@ require("lazy").setup({
   },
 
   -- 各種Lintを非同期実行
-  "w0rp/ale",
+  {
+    "w0rp/ale",
+    event = { "VimEnter" },
+    config = function()
+      require("plugin_settings.ale")
+    end,
+  },
 
   -- コメントアウトを効率化
   {
@@ -116,19 +122,27 @@ require("lazy").setup({
   { "thinca/vim-qfreplace", cmd = "Qfreplace" },
 
   -- プロジェクトルートをカレントディレクトリにする
-  "mattn/vim-findroot",
-
-  -- アイコンフォント
-  "ryanoasis/vim-devicons",
+  {
+    "mattn/vim-findroot",
+    event = { "VimEnter" },
+    config = function()
+      require("plugin_settings.vim-findroot")
+    end,
+  },
 
   -- ファイラー
   {
     "lambdalisue/fern.vim",
+    event = { "VimEnter" },
     dependencies = {
+      "ryanoasis/vim-devicons",
       "lambdalisue/fern-renderer-devicons.vim",
       "lambdalisue/glyph-palette.vim",
       "lambdalisue/fern-git-status.vim",
     },
+    config = function()
+      require("plugin_settings.fern")
+    end,
   },
 
   -- lsp
@@ -161,7 +175,7 @@ require("lazy").setup({
       "BufNewFile",
     },
   },
-  "hrsh7th/vim-vsnip",
+  { "hrsh7th/vim-vsnip", event = { "VimEnter" } },
   {
     "hrsh7th/nvim-cmp",
     -- load cmp on InsertEnter
@@ -175,10 +189,22 @@ require("lazy").setup({
   { "elel-dev/vim-astro-syntax", ft = { "astro" } },
 
   -- ステータスライン
-  "nvim-lualine/lualine.nvim",
+  {
+    "nvim-lualine/lualine.nvim",
+    event = { "VimEnter" },
+    config = function()
+      require("plugin_settings.lualine")
+    end,
+  },
 
   -- Git操作
-  "dinhhuy258/git.nvim",
+  {
+    "dinhhuy258/git.nvim",
+    event = { "VimEnter" },
+    config = function()
+      require("plugin_settings.git-nvim")
+    end,
+  },
 
   -- fuzzy finder
   {
@@ -232,5 +258,14 @@ require("lazy").setup({
     config = function()
       require("plugin_settings.formatter")
     end,
+  },
+}, {
+  defaults = {
+    lazy = true,
+  },
+  performance = {
+    cache = {
+      enabled = true,
+    },
   },
 })
