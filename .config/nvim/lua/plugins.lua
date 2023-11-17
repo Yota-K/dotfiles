@@ -147,33 +147,17 @@ require("lazy").setup({
 
   -- lsp
   {
-    "neovim/nvim-lspconfig",
-    -- 既存のファイルの編集を開始する or 存在しないファイルの編集を開始した時に読み込む
+    "williamboman/mason-lspconfig.nvim",
+    dependencies = {
+      { "williamboman/mason.nvim" },
+      { "neovim/nvim-lspconfig" },
+    },
     event = {
-      "BufReadPre",
-      "BufNewFile",
+      "VimEnter",
     },
     config = function()
       require("plugin_settings.lsp")
     end,
-  },
-  {
-    "williamboman/mason.nvim",
-    cmd = {
-      "Mason",
-      "MasonInstall",
-      "MasonUninstall",
-      "MasonUninstallAll",
-      "MasonLog",
-      "MasonUpdate",
-    },
-  },
-  {
-    "williamboman/mason-lspconfig.nvim",
-    event = {
-      "BufReadPre",
-      "BufNewFile",
-    },
   },
   { "hrsh7th/vim-vsnip", event = { "VimEnter" } },
   {
