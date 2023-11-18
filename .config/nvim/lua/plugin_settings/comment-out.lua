@@ -3,7 +3,14 @@ if not status then
   return
 end
 
-comment.setup()
+comment.setup({
+  hook = function()
+    -- ReactやVueのビュー部分でもコメントアウトをできるようにする
+    --https://github.com/terrortylor/nvim-comment/issues/6
+    -- They can do anything here, e.g.:
+    require("ts_context_commentstring.internal").update_commentstring()
+  end,
+})
 
 local keyset = vim.api.nvim_set_keymap
 

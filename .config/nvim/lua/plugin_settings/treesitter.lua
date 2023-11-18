@@ -29,4 +29,7 @@ nvim_treesitter_configs.setup({
     enable = true,
   },
   modules = {},
+  context_commentstring = {
+    enable = true,
+  },
 })

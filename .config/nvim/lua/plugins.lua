@@ -71,6 +71,9 @@ require("lazy").setup({
   -- tree-sitterを用いたコードのシンタックスハイライトを行うプラグイン
   {
     "nvim-treesitter/nvim-treesitter",
+    dependencies = {
+      "JoosepAlviste/nvim-ts-context-commentstring",
+    },
     event = "VeryLazy",
     build = ":TSUpdate",
     config = function()
