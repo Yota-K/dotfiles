@@ -74,7 +74,7 @@ require("lazy").setup({
     dependencies = {
       "JoosepAlviste/nvim-ts-context-commentstring",
     },
-    event = "VeryLazy",
+    event = "VimEnter",
     build = ":TSUpdate",
     config = function()
       require("plugin_settings.treesitter")
@@ -171,9 +171,6 @@ require("lazy").setup({
       "hrsh7th/cmp-nvim-lsp",
     },
   },
-
-  -- syntax for astro
-  { "elel-dev/vim-astro-syntax", ft = { "astro" } },
 
   -- ステータスライン
   {
