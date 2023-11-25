@@ -8,7 +8,7 @@ local builtin = require("telescope.builtin")
 telescope.setup({
   defaults = {
     color_devicons = true,
-    file_ignore_patterns = { ".git/" },
+    file_ignore_patterns = { ".git/", ".yarn" },
   },
   pickers = {
     live_grep = {
