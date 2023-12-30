@@ -4,7 +4,7 @@
 
 # 現在のディレクトリを表示
 function _prompt_dir
-  printf '\uf4d3  %s' (prompt_pwd)
+  printf '\uf07b  %s' (prompt_pwd)
 end
 
 function _git_status
