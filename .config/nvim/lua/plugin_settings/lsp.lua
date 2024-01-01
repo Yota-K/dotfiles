@@ -70,7 +70,7 @@ lspconfig["lua_ls"].setup({
   },
 })
 
-lspconfig["deno_ls"].setup({
+lspconfig["denols"].setup({
   -- deno.jsonがある時は、denoのLSPを起動する
   root_dir = lspconfig.util.root_pattern("deno.json"),
   init_options = {
