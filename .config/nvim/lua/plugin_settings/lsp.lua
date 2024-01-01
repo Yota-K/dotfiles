@@ -33,6 +33,8 @@ mason_lspconfig.setup({
     "jsonls",
     "dockerls",
     "yamlls",
+    "yamlls",
+    "denols",
   },
   automatic_installation = true,
 })
@@ -44,9 +46,10 @@ mason_lspconfig.setup_handlers({
     lspconfig[server].setup(opt)
   end,
 })
+
 -- LuaのLSPの設定をオーバーライドする
 -- 参考: https://github.com/cpdean/cpd.dotfiles/blob/7da9ac7f64857cb5139f6623bd8ca0eaf63ddd5f/config/nvim/lua/cpdean_config/nvim-lsp.lua#L326-L375
-lspconfig.lua_ls.setup({
+lspconfig["lua_ls"].setup({
   settings = {
     Lua = {
       diagnostics = {
@@ -65,6 +68,29 @@ lspconfig.lua_ls.setup({
       },
     },
   },
+})
+
+lspconfig["deno_ls"].setup({
+  -- deno.jsonがある時は、denoのLSPを起動する
+  root_dir = lspconfig.util.root_pattern("deno.json"),
+  init_options = {
+    lint = true,
+    unstable = true,
+    suggest = {
+      imports = {
+        hosts = {
+          ["https://deno.land"] = true,
+          ["https://cdn.nest.land"] = true,
+          ["https://crux.land"] = true,
+        },
+      },
+    },
+  },
+})
+
+lspconfig["tsserver"].setup({
+  -- package.jsonがある時は、TypeScript, JavaScriptのLSPを起動する
+  root_dir = lspconfig.util.root_pattern("package.json"),
 })
 
 -- キーマッピング
