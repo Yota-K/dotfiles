@@ -243,6 +243,12 @@ require("lazy").setup({
       require("plugin_settings.formatter")
     end,
   },
+
+  -- GitHub Copilot
+  {
+    "github/copilot.vim",
+    event = { "VimEnter" },
+  },
 }, {
   defaults = {
     lazy = true,
@@ -253,3 +259,5 @@ require("lazy").setup({
     },
   },
 })
+
+-- luaでfizzbuzzを書いてみる
