@@ -261,5 +261,3 @@ require("lazy").setup({
     },
   },
 })
-
--- luaでfizzbuzzを書いてみる
