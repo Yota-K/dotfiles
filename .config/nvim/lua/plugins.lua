@@ -164,6 +164,7 @@ require("lazy").setup({
     dependencies = {
       { "williamboman/mason.nvim" },
       { "neovim/nvim-lspconfig" },
+      { "WhoIsSethDaniel/mason-tool-installer.nvim" },
     },
     event = {
       "VimEnter",

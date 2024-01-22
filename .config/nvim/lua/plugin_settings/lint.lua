@@ -1,10 +1,11 @@
 require("lint").linters_by_ft = {
-  javascript = { "eslint_d" },
-  javascriptreact = { "eslint_d" },
-  typescript = { "eslint_d" },
-  typescriptreact = { "eslint_d" },
-  vue = { "eslint_d" },
-  svelte = { "eslint_d" },
+  javascript = { "eslint_d", "cspell" },
+  javascriptreact = { "eslint_d", "cspell" },
+  typescript = { "eslint_d", "cspell" },
+  typescriptreact = { "eslint_d", "cspell" },
+  vue = { "eslint_d", "cspell" },
+  svelte = { "eslint_d", "cspell" },
+  json = { "eslint_d", "cspell" },
 }
 
 -- 以下のイベントが発生した時にLintを実行する

@@ -1,5 +1,6 @@
 local mason_status, mason = pcall(require, "mason")
 local mason_lspconfig_status, mason_lspconfig = pcall(require, "mason-lspconfig")
+local mason_tool_installer_status, mason_tool_installer = pcall(require, "mason-tool-installer")
 local lspconfig_status, lspconfig = pcall(require, "lspconfig")
 local cmp_nvim_lsp_status, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 local cmp_status, cmp = pcall(require, "cmp")
@@ -7,6 +8,7 @@ local cmp_status, cmp = pcall(require, "cmp")
 if
   not mason_status
   and not mason_lspconfig_status
+  and not mason_tool_installer_status
   and not lspconfig_status
   and not cmp_nvim_lsp_status
   and not cmp_status
@@ -34,10 +36,17 @@ mason_lspconfig.setup({
     "dockerls",
     "yamlls",
     "denols",
-    -- linter
-    "eslint_d",
   },
   automatic_installation = true,
+})
+
+-- MasonToolsInstall
+mason_tool_installer.setup({
+  ensure_installed = {
+    -- linter
+    "eslint_d",
+    "cspell",
+  },
 })
 
 local capabilities = cmp_nvim_lsp.default_capabilities(vim.lsp.protocol.make_client_capabilities())
