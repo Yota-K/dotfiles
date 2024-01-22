@@ -33,64 +33,70 @@ mason_lspconfig.setup({
     "jsonls",
     "dockerls",
     "yamlls",
-    "yamlls",
     "denols",
+    -- linter
+    "eslint_d",
   },
   automatic_installation = true,
 })
+
+local capabilities = cmp_nvim_lsp.default_capabilities(vim.lsp.protocol.make_client_capabilities())
 mason_lspconfig.setup_handlers({
-  function(server)
-    local opt = {
-      capabilities = cmp_nvim_lsp.default_capabilities(vim.lsp.protocol.make_client_capabilities()),
-    }
-    lspconfig[server].setup(opt)
-  end,
-})
-
--- LuaのLSPの設定をオーバーライドする
--- 参考: https://github.com/cpdean/cpd.dotfiles/blob/7da9ac7f64857cb5139f6623bd8ca0eaf63ddd5f/config/nvim/lua/cpdean_config/nvim-lsp.lua#L326-L375
-lspconfig["lua_ls"].setup({
-  settings = {
-    Lua = {
-      diagnostics = {
-        -- vimというグローバル変数を認識させる
-        globals = { "vim" },
-      },
-      workspace = {
-        -- Neovimのランタイムパス内のファイルをライブラリとして利用するようする
-        library = vim.api.nvim_get_runtime_file("", true),
-        -- サードパーティライブラリのチェックを無効化する
-        checkThirdParty = false,
-      },
-      -- テレメトリ（統計情報）を無効に設定
-      telemetry = {
-        enable = false,
-      },
-    },
-  },
-})
-
-lspconfig["denols"].setup({
-  -- deno.jsonがある時は、denoのLSPを起動する
-  root_dir = lspconfig.util.root_pattern("deno.json"),
-  init_options = {
-    lint = true,
-    unstable = true,
-    suggest = {
-      imports = {
-        hosts = {
-          ["https://deno.land"] = true,
-          ["https://cdn.nest.land"] = true,
-          ["https://crux.land"] = true,
+  function(server_name)
+    -- LuaのLSPの設定をオーバーライドする
+    -- 参考: https://github.com/cpdean/cpd.dotfiles/blob/7da9ac7f64857cb5139f6623bd8ca0eaf63ddd5f/config/nvim/lua/cpdean_config/nvim-lsp.lua#L326-L375
+    if server_name == "lua_ls" then
+      lspconfig["lua_ls"].setup({
+        settings = {
+          Lua = {
+            diagnostics = {
+              -- vimというグローバル変数を認識させる
+              globals = { "vim" },
+            },
+            workspace = {
+              -- Neovimのランタイムパス内のファイルをライブラリとして利用するようする
+              library = vim.api.nvim_get_runtime_file("", true),
+              -- サードパーティライブラリのチェックを無効化する
+              checkThirdParty = false,
+            },
+            -- テレメトリ（統計情報）を無効に設定
+            telemetry = {
+              enable = false,
+            },
+          },
         },
-      },
-    },
-  },
-})
-
-lspconfig["tsserver"].setup({
-  -- package.jsonがある時は、TypeScript, JavaScriptのLSPを起動する
-  root_dir = lspconfig.util.root_pattern("package.json"),
+      })
+      -- TODO: denoのLSPの設定が動作していない
+    elseif server_name == "denols" then
+      lspconfig["denols"].setup({
+        -- deno.jsonがある時は、denoのLSPを起動する
+        root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc", "deps.ts", "import_map.json"),
+        capabilities = capabilities,
+        init_options = {
+          enable = true,
+          suggest = {
+            imports = {
+              hosts = {
+                ["https://crux.land"] = true,
+                ["https://deno.land"] = true,
+                ["https://x.nest.land"] = true,
+              },
+            },
+          },
+        },
+      })
+    -- package.jsonがある時は、TypeScript, JavaScriptのLSPを起動する
+    elseif server_name == "tsserver" then
+      lspconfig["tsserver"].setup({
+        root_dir = lspconfig.util.root_pattern("package.json"),
+        capabilities = capabilities,
+      })
+    else
+      lspconfig[server_name].setup({
+        capabilities = capabilities,
+      })
+    end
+  end,
 })
 
 -- キーマッピング
