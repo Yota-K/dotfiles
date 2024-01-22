@@ -56,10 +56,4 @@ opt.signcolumn = "number"
 vim.cmd([[
   " 拡張子がmdxの時は、*.mdとして扱う
   au BufNewFile,BufRead *.mdx set filetype=markdown
-
-  " luaのformatter
-  augroup FormatAutogroup
-    autocmd!
-    autocmd BufWritePost * FormatWrite
-  augroup END
 ]])

@@ -91,12 +91,22 @@ require("lazy").setup({
     },
   },
 
-  -- 各種Lintを非同期実行
+  -- formatterの実行
   {
-    "w0rp/ale",
+    "stevearc/conform.nvim",
+    event = { "VimEnter" },
+    dependencies = { "ckipp01/stylua-nvim" },
+    config = function()
+      require("plugin_settings.conform")
+    end,
+  },
+
+  -- lintの実行
+  {
+    "mfussenegger/nvim-lint",
     event = { "VimEnter" },
     config = function()
-      require("plugin_settings.ale")
+      require("plugin_settings.lint")
     end,
   },
 
@@ -232,15 +242,6 @@ require("lazy").setup({
     },
     config = function()
       require("plugin_settings.dial")
-    end,
-  },
-
-  -- Luaのフォーマッター
-  {
-    "mhartington/formatter.nvim",
-    cmd = { "Format", "FormatWrite" },
-    config = function()
-      require("plugin_settings.formatter")
     end,
   },
 
