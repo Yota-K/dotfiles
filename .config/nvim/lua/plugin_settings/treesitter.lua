@@ -25,7 +25,10 @@ nvim_treesitter_configs.setup({
   },
   sync_install = false,
   auto_install = true,
-  ignore_install = {},
+  ignore_install = {
+    -- markdownのsyntaxがおかしくなるので無効化
+    "markdown",
+  },
   highlight = {
     enable = true,
   },
