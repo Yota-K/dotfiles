@@ -36,6 +36,7 @@ mason_lspconfig.setup({
     "dockerls",
     "yamlls",
     "denols",
+    "eslint",
   },
   automatic_installation = true,
 })
@@ -43,68 +44,87 @@ mason_lspconfig.setup({
 -- MasonToolsInstall
 mason_tool_installer.setup({
   ensure_installed = {
-    -- linter
-    "eslint_d",
     "cspell",
   },
 })
 
-local capabilities = cmp_nvim_lsp.default_capabilities(vim.lsp.protocol.make_client_capabilities())
+-- Denoのプロジェクトかどうかを判定する
+local function has_deno_files()
+  local deno_files = { "deno.json", "deno.jsonc", "deps.ts", "import_map.json" }
+  local root_dir = vim.fn.getcwd()
+
+  for _, filename in ipairs(deno_files) do
+    if vim.fn.filereadable(root_dir .. "/" .. filename) == 1 then
+      return true
+    end
+  end
+
+  return false
+end
+
 mason_lspconfig.setup_handlers({
   function(server_name)
+    -- Denoのプロジェクトかどうかを判定する
+    -- TODO: lspconfigのroot_patternで対象ファイルが取得できないのでこの方法で判定している
+    -- 現状だと、package.jsonが存在するディレクトリでないとLSPが起動しないので、
+    local is_deno_repo = has_deno_files()
+
+    local opts = {}
+    opts.capabilities = cmp_nvim_lsp.default_capabilities(vim.lsp.protocol.make_client_capabilities())
+
+    if server_name == "tsserver" then
+      if is_deno_repo then
+        return
+      end
+    elseif server_name == "denols" then
+      if not is_deno_repo then
+        return
+      end
+
+      opts.root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc", "deps.ts", "import_map.json")
+      opts.init_options = {
+        enable = true,
+        suggest = {
+          imports = {
+            hosts = {
+              ["https://crux.land"] = true,
+              ["https://deno.land"] = true,
+              ["https://x.nest.land"] = true,
+            },
+          },
+        },
+      }
+    elseif server_name == "eslint" then
+      opts.on_attach = function(buffer)
+        vim.api.nvim_create_autocmd("BufWritePre", {
+          buffer = buffer,
+        })
+      end
+
     -- LuaのLSPの設定をオーバーライドする
     -- 参考: https://github.com/cpdean/cpd.dotfiles/blob/7da9ac7f64857cb5139f6623bd8ca0eaf63ddd5f/config/nvim/lua/cpdean_config/nvim-lsp.lua#L326-L375
-    if server_name == "lua_ls" then
-      lspconfig["lua_ls"].setup({
-        settings = {
-          Lua = {
-            diagnostics = {
-              -- vimというグローバル変数を認識させる
-              globals = { "vim" },
-            },
-            workspace = {
-              -- Neovimのランタイムパス内のファイルをライブラリとして利用するようする
-              library = vim.api.nvim_get_runtime_file("", true),
-              -- サードパーティライブラリのチェックを無効化する
-              checkThirdParty = false,
-            },
-            -- テレメトリ（統計情報）を無効に設定
-            telemetry = {
-              enable = false,
-            },
+    elseif server_name == "lua_ls" then
+      opts.settings = {
+        Lua = {
+          diagnostics = {
+            -- vimというグローバル変数を認識させる
+            globals = { "vim" },
+          },
+          workspace = {
+            -- Neovimのランタイムパス内のファイルをライブラリとして利用するようする
+            library = vim.api.nvim_get_runtime_file("", true),
+            -- サードパーティライブラリのチェックを無効化する
+            checkThirdParty = false,
+          },
+          -- テレメトリ（統計情報）を無効に設定
+          telemetry = {
+            enable = false,
           },
         },
-      })
-      -- TODO: denoのLSPの設定が動作していない
-    elseif server_name == "denols" then
-      lspconfig["denols"].setup({
-        -- deno.jsonがある時は、denoのLSPを起動する
-        root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc", "deps.ts", "import_map.json"),
-        capabilities = capabilities,
-        init_options = {
-          enable = true,
-          suggest = {
-            imports = {
-              hosts = {
-                ["https://crux.land"] = true,
-                ["https://deno.land"] = true,
-                ["https://x.nest.land"] = true,
-              },
-            },
-          },
-        },
-      })
-    -- package.jsonがある時は、TypeScript, JavaScriptのLSPを起動する
-    elseif server_name == "tsserver" then
-      lspconfig["tsserver"].setup({
-        root_dir = lspconfig.util.root_pattern("package.json"),
-        capabilities = capabilities,
-      })
-    else
-      lspconfig[server_name].setup({
-        capabilities = capabilities,
-      })
+      }
     end
+
+    lspconfig[server_name].setup(opts)
   end,
 })
 
