@@ -28,6 +28,8 @@ require("lazy").setup("plugin_settings", {
       enabled = true,
     },
   },
+  -- "Config Change Detected. Reloading..."通知を無効にする
+  -- https://github.com/folke/lazy.nvim/issues/32
   change_detection = {
     notify = false,
   },
