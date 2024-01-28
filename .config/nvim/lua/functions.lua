@@ -37,49 +37,58 @@ nvim_create_user_command("Glow", function()
 end, {})
 
 -- タブラインのカスタマイズ
--- タブをファイル名 + ファイル拡張子のアイコンの形式に変更する
-vim.cmd([[
-  function MyTabLine()
-    let s = ''
-    for i in range(tabpagenr('$'))
-      " select the highlighting
-      if i + 1 == tabpagenr()
-        let s .= '%#TabLineSel#'
+-- タブをタブ番号 + ファイル名 + ファイル拡張子のアイコンの形式に変更する
+local fn = vim.fn
+local function myTabline()
+  local s = ""
+
+  for i = 1, fn.tabpagenr("$") do
+    local winnr = fn.tabpagewinnr(i)
+    local buflist = fn.tabpagebuflist(i)
+    local bufnr = buflist[winnr]
+    local bufname = fn.bufname(bufnr)
+
+    s = s .. "%" .. i .. "T"
+    if i == fn.tabpagenr() then
+      -- アクティブなタブページのラベル
+      s = s .. "%#TabLineSel#"
+    else
+      -- アクティブでないタブページのラベル
+      s = s .. "%#TabLine#"
+    end
+
+    -- Show tabnumber
+    local tabnumber = string.format("[%s]", i)
+    s = s .. tabnumber .. " "
+
+    -- Show icon
+    local icon = ""
+    icon = vim.api.nvim_call_function("WebDevIconsGetFileTypeSymbol", { bufname }) .. " "
+
+    -- bufname
+    if bufname ~= "" then
+      -- ファイル名の最後にあるセミコロンと$がついている場合は削除
+      local match_pattern = "%;%$"
+      if string.find(bufname, match_pattern) then
+        bufname = string.gsub(bufname, match_pattern, "")
+      end
+
+      if icon ~= "" then
+        s = string.format("%s%s%s%s", s, icon, fn.fnamemodify(bufname, ":t"), " ")
       else
-        let s .= '%#TabLine#'
-      endif
-      " set the tab page number (for mouse clicks)
-      let s .= '%' . (i + 1) . 'T'
-      " the label is made by MyTabLabel()
-      let s .= ' %{MyTabLabel(' . (i + 1) . ')} '
-      if i + 1 == tabpagenr()
-        let s .= '%#TabLineSep#'
-      elseif i + 2 == tabpagenr()
-        let s .= '%#TabLineSep2#'
-      else
-        let s .= ''
-      endif
-    endfor
+        s = string.format("%s%s%s", s, fn.fnamemodify(bufname, ":t"), " ")
+      end
+    else
+      s = s .. "No Name" .. " "
+    end
+  end
 
-    " after the last tab fill with TabLineFill and reset tab page nr
-    let s .= '%#TabLineFill#%T'
+  -- タブページの行のラベルがない部分
+  s = s .. "%#TabLineFill#"
 
-    " right-align the label to close the current tab page
-    if tabpagenr('$') > 1
-      let s .= '%=%#TabLine#%999X'
-    endif
-    return s
-  endfunction
+  return s
+end
 
-  function MyTabLabel(n)
-    let buflist = tabpagebuflist(a:n)
-    let winnr = tabpagewinnr(a:n)
-    let name = bufname(buflist[winnr - 1])
-    let icon = WebDevIconsGetFileTypeSymbol(name)
-    let result = printf('%s %s ', name, icon)
-    let label = fnamemodify(result, ':t')
-    return len(label) == 0 ? '[No Name]' : label
-  endfunction
-
-  set tabline=%!MyTabLine()
-]])
+-- グローバルな関数として登録
+_G.myTabline = myTabline
+vim.o.tabline = "%!v:lua.myTabline()"
