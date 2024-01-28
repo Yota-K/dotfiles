@@ -63,11 +63,9 @@ return {
     -- Denoのプロジェクトかどうかを判定する
     local function has_deno_files()
       local deno_files = { "deno.json", "deno.jsonc", "deps.ts", "import_map.json" }
-      local root_dir = vim.fn.getcwd()
 
       for _, filename in ipairs(deno_files) do
-        local target_file = root_dir .. "/" .. filename
-        if vim.fn.findfile(target_file) == 1 then
+        if vim.fn.findfile(filename, ".;") == filename then
           return true
         end
       end
