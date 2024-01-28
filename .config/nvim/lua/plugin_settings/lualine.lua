@@ -3,10 +3,7 @@ return {
   "nvim-lualine/lualine.nvim",
   event = { "VimEnter" },
   config = function()
-    local status, lualine = pcall(require, "lualine")
-    if not status then
-      return
-    end
+    local lualine = require("lualine")
 
     -- local cusutom = require("lualine.themes.nightfox")
     local cusutom = require("lualine.themes.gruvbox")

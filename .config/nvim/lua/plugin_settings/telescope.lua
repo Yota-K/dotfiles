@@ -9,11 +9,7 @@ return {
   tag = "0.1.3",
   dependencies = { "nvim-lua/plenary.nvim" },
   config = function()
-    local status, telescope = pcall(require, "telescope")
-    if not status then
-      return
-    end
-
+    local telescope = require("telescope")
     local builtin = require("telescope.builtin")
 
     telescope.setup({

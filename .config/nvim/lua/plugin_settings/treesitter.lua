@@ -7,10 +7,7 @@ return {
   event = "VimEnter",
   build = ":TSUpdate",
   config = function()
-    local status, nvim_treesitter_configs = pcall(require, "nvim-treesitter.configs")
-    if not status then
-      return
-    end
+    local nvim_treesitter_configs = require("nvim-treesitter.configs")
 
     nvim_treesitter_configs.setup({
       ensure_installed = {
