@@ -38,6 +38,7 @@ return {
         "tsserver",
         "gopls",
         "lua_ls",
+        "ruby_ls",
         -- libraries
         "svelte",
         -- FW
@@ -49,6 +50,7 @@ return {
         "yamlls",
         "denols",
         "eslint",
+        "solargraph",
       },
       automatic_installation = true,
     })
