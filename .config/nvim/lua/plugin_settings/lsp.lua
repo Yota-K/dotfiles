@@ -50,6 +50,7 @@ return {
         "yamlls",
         "denols",
         "eslint",
+        -- Rubyのコード補完、ドキュメントを提供してくれるLSP
         "solargraph",
       },
       automatic_installation = true,
@@ -107,12 +108,6 @@ return {
               },
             },
           }
-        elseif server_name == "eslint" then
-          opts.on_attach = function(buffer)
-            vim.api.nvim_create_autocmd("BufWritePre", {
-              buffer = buffer,
-            })
-          end
 
         -- LuaのLSPの設定をオーバーライドする
         -- 参考: https://github.com/cpdean/cpd.dotfiles/blob/7da9ac7f64857cb5139f6623bd8ca0eaf63ddd5f/config/nvim/lua/cpdean_config/nvim-lsp.lua#L326-L375
