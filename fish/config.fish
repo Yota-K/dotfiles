@@ -21,6 +21,9 @@ set -x GO111MODULE on
 # RustのPATH
 set PATH $HOME/.cargo/bin $PATH
 
+# RubyのPATH
+set PATH $HOME/.rbenv/shims:/usr/local/bin:$PATH
+
 #########################################
 # エイリアス
 #########################################
@@ -158,6 +161,11 @@ function topen
     echo 'Please setting args.'
     return 0
   end
+end
+
+function direnv_hook
+  set -l exports (direnv export fish)
+  eval "$exports"
 end
 
 #########################################
