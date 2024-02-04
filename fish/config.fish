@@ -163,11 +163,6 @@ function topen
   end
 end
 
-function direnv_hook
-  set -l exports (direnv export fish)
-  eval "$exports"
-end
-
 #########################################
 # その他
 #########################################
@@ -212,3 +207,7 @@ export TERM=xterm-256color
 
 # Fish Shellでコマンドの実行結果を変数に代入する方法
 # https://efcl.info/2013/0520/res3282/
+
+# direnv
+# https://github.com/direnv/direnv/blob/master/docs/hook.md#fish
+direnv hook fish | source
