@@ -23,3 +23,14 @@ if cd "$DOTFILES_DIR"; then
 else
  echo "$DOTFILES_DIR が存在しません。"
 fi
+
+# weztermの追加モジュールは、~/.config/wezterm/ に配置しないといけない
+# ~/.config/weztermディレクトリが存在しない場合は作成して、~/theme.luaからシンボリックリンクを設定してファイルを参照できるようにする
+#
+# MEMO: .config/wezterm/にtheme.luaを配置すればこの処理は不要だが、theme.luaはneovimのテーマの設定も共通化するためのモジュールである。
+# .config/.weztermディレクトリにあるとweztermの設定を行うファイルみたいな感じで違和感があるので、dotfilesのトップレベルに配置している。
+mkdir -p ~/.config/wezterm
+
+if [ -d "$HOME/.config/wezterm" ]; then
+  ln -sfv "$DOTFILES_DIR/theme.lua" "$HOME/.config/wezterm/theme.lua"
+fi
