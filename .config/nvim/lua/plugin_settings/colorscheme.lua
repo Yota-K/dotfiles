@@ -1,15 +1,5 @@
--- package.path初期値にtheme.luaが存在するパスを追加する。
--- 環境変数としてデフォルトで指定されているパスは以下
---
--- /usr/local/share/lua/5.4/?.lua;
--- /usr/local/share/lua/5.4/?/init.lua;
--- /usr/local/lib/lua/5.4/?.lua;
--- /usr/local/lib/lua/5.4/?/init.lua;
--- ./?.lua;
--- ./?/init.lua
-local base_module_path = ";" .. os.getenv("HOME") .. "/dotfiles/?.lua;"
-local plugin_module_path = ";" .. os.getenv("HOME") .. "/dotfiles/.config/nvim/plugin_settings/?.lua;"
-package.path = package.path .. base_module_path .. plugin_module_path
+local module_path = ";" .. os.getenv("HOME") .. "/dotfiles/.config/wezterm/?.lua;"
+package.path = package.path .. module_path
 
 -- テーマ: デフォルトにないテーマを使う時はここに記述する
 return {
@@ -25,7 +15,11 @@ return {
   end,
   -- init is called during startup. Configuration for vim plugins typically should be set in an init function
   init = function()
+    -- theme.luaがあるパスを追加する
+    local module_path = ";" .. os.getenv("HOME") .. "/dotfiles/?.lua;"
+    package.path = package.path .. module_path
     local theme = require("theme")
+
     local settings = theme.theme_override_settings()
     require("gruvbox").setup({
       override = settings,

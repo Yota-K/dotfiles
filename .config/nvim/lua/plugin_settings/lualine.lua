@@ -5,8 +5,8 @@ return {
   config = function()
     local lualine = require("lualine")
 
-    -- local cusutom = require("lualine.themes.nightfox")
-    local cusutom = require("lualine.themes.gruvbox")
+    -- local custom = require("lualine.themes.nightfox")
+    local custom = require("lualine.themes.gruvbox")
 
     -- theme.luaがあるパスを追加する
     local module_path = ";" .. os.getenv("HOME") .. "/dotfiles/?.lua;"
@@ -14,13 +14,13 @@ return {
     local theme = require("theme")
 
     local bg = theme.theme_config[theme.selected_theme]["bg"]
-    cusutom.inactive.c.bg = bg
-    cusutom.normal.c.bg = bg
+    custom.inactive.c.bg = bg
+    custom.normal.c.bg = bg
 
     lualine.setup({
       options = {
         icons_enabled = true,
-        theme = cusutom,
+        theme = custom,
         section_separators = { left = "", right = "" },
         component_separators = { left = "", right = "" },
         disabled_filetypes = {},
