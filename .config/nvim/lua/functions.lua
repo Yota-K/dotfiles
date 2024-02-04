@@ -19,11 +19,15 @@ nvim_create_user_command("JsonFormatter", function()
 end, {})
 
 -- xmlを整形
-nvim_create_user_command("XmlFormatter", function()
+local xmlFormat = function()
   vim.cmd([[
-  execute("%s/></>\r</g | filetype indent on | setf xml | normal gg=G")
-]])
-end, {})
+    execute("%s/></>\r</g | filetype indent on | setf xml | normal gg=G")
+  ]])
+end
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+  pattern = { "*.xml" },
+  callback = xmlFormat,
+})
 
 -- Glowをvim上で実行する
 nvim_create_user_command("Glow", function()
