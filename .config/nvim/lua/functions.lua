@@ -3,12 +3,12 @@ local nvim_create_user_command = vim.api.nvim_create_user_command
 -- jqをVim上で実行
 nvim_create_user_command("JsonFormatter", function()
   vim.cmd([[
-  if !executable('jq')
-    call s:echo_err("not found jq command.")
-  endif
+    if !executable('jq')
+      call s:echo_err("not found jq command.")
+    endif
 
-  execute("%!jq '.'")
-]])
+    execute("%!jq '.'")
+  ]])
 end, {})
 
 -- xmlを保存時に整形
