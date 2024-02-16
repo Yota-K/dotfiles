@@ -2,7 +2,8 @@
   "allowCompoundWords": true,
   "dictionaries": [
     "dotfiles",
-    "vim"
+    "vim",
+    "user"
   ],
   "dictionaryDefinitions": [
     {
@@ -14,6 +15,11 @@
       "name": "vim",
       "path": "~/.local/share/cspell/vim.txt.gz",
       "description": "Vim Script Language dictionary"
+    },
+    {
+      "name": "user",
+      "path": "~/.local/share/cspell/user.txt",
+      "description": "User local dictionary"
     }
   ]
 }

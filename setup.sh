@@ -52,4 +52,7 @@ if [ ! -f ~/.local/share/cspell/vim.txt.gz ]; then
   # -o: ダウンロードしたファイルを保存する
   curl -fsSLo ~/.local/share/cspell/vim.txt.gz --create-dirs "$vim_dictionary_url"
 fi
+# 業務で使用する単語のような公開したらまずい単語を登録するための、ユーザー辞書を作成する
+touch ~/.local/share/cspell/user.txt
+
 echo "cspellの設定が完了しました ✅"
