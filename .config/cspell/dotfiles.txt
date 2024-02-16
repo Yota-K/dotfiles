@@ -1,0 +1,4 @@
+wezterm
+ckipp01
+ellisonleao
+gruvbox

@@ -1,0 +1,19 @@
+{
+  "allowCompoundWords": true,
+  "dictionaries": [
+    "dotfiles",
+    "vim"
+  ],
+  "dictionaryDefinitions": [
+    {
+      "name": "dotfiles",
+      "path": "~/.config/cspell/dotfiles.txt",
+      "description": "dotfiles dictionary"
+    },
+    {
+      "name": "vim",
+      "path": "~/.local/share/cspell/vim.txt.gz",
+      "description": "Vim Script Language dictionary"
+    }
+  ]
+}

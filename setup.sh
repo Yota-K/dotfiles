@@ -3,7 +3,6 @@
 DOTFILES_DIR="$HOME/dotfiles"
 
 echo "シンボリックリンクを設定します"
-
 if cd "$DOTFILES_DIR"; then
   # cd でdotfilesディレクトリに移動できた場合、gitディレクトリと.DS_Storeファイルを除外し、隠しファイルを検索する
   # cut で3バイト目以降を取得し、リンク先のファイルパスを取得する
@@ -23,6 +22,17 @@ if cd "$DOTFILES_DIR"; then
 else
  echo "$DOTFILES_DIR が存在しません。"
 fi
+
+echo "cspellの設定をします"
+# vimのスペルチェック用の辞書をダウンロードして、cspellの設定ファイルを作成する
+mkdir -p ~/.local/share/cspell
+if [ ! -f ~/.local/share/cspell/vim.txt.gz ]; then
+  vim_dictionary_url="https://github.com/iamcco/coc-spell-checker/raw/master/dicts/vim/vim.txt.gz"
+  curl -fsSLo ~/.local/share/cspell/vim.txt.gz --create-dirs "$vim_dictionary_url"
+fi
+
+# cspell.jsonは隠しファイルではないため、ループではなく直接リンクを作成している
+ln -sfv "$DOTFILES_DIR/cspell.json" "$HOME/cspell.json"
 
 # weztermの追加モジュールは、~/.config/wezterm/ に配置しないといけない
 # ~/.config/weztermディレクトリが存在しない場合は作成して、~/theme.luaからシンボリックリンクを設定してファイルを参照できるようにする
