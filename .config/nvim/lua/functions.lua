@@ -94,3 +94,45 @@ end
 -- グローバルな関数として登録
 _G.myTabline = myTabline
 vim.o.tabline = "%!v:lua.myTabline()"
+
+-- Cspellのユーザー辞書に単語を追加する処理
+vim.api.nvim_create_user_command("CspellAppend", function(opts)
+  local cspell_config_dir = "~/.config/cspell"
+  local cspell_data_dir = "~/.local/share/cspell"
+  -- vim.call("expand", ...) を使用して、~をユーザーのホームディレクトリの絶対パスに展開する
+  local cspell_dirs = {
+    dotfiles = vim.call("expand", cspell_config_dir .. "/dotfiles.txt"),
+    user = vim.call("expand", cspell_data_dir .. "/user.txt"),
+  }
+  -- optsから引数を取得
+  local word = opts.args or ""
+
+  -- optsが空の場合はホバーしているワードを取得
+  if word == "" then
+    word = vim.fn.expand("<cword>"):lower()
+  end
+
+  -- 引数も設定せず、ホバーしているワードも取得できない場合はエラーを表示
+  if word == "" then
+    vim.notify("Word not set.", vim.log.levels.ERROR)
+  end
+
+  -- bangの有無で保存先を分岐
+  -- bang: コマンド実行時の!のこと
+  -- CspellAppend! で実行すると、dotfiles.txtに追加する
+  local dictionary_name = opts.bang and "dotfiles" or "user"
+
+  -- shellのechoコマンドで登録したい単語を辞書ファイルに追加
+  vim.fn.system(string.format("echo %s >> %s", word, cspell_dirs[dictionary_name]))
+
+  -- cspellをリロードするため、現在行を更新してすぐ戻す
+  if vim.api.nvim_get_option_value("modifiable", {}) then
+    vim.api.nvim_set_current_line(vim.api.nvim_get_current_line())
+    vim.api.nvim_command("silent! undo")
+  end
+
+  vim.notify(word .. "added to " .. dictionary_name .. " dictionary.", vim.log.levels.INFO)
+end, {
+  nargs = "?",
+  bang = true,
+})
