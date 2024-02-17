@@ -31,3 +31,5 @@ simeji
 winresizer
 sniv
 wday
+scaffdog
+turborepo
