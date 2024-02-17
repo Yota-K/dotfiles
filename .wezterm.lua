@@ -73,12 +73,25 @@ end)
 wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
   local tab_index = tab.tab_index + 1
 
-  -- Copymode時のみ、"Copymode..."というテキストを表示
-  if tab.is_active and string.match(tab.active_pane.title, "Copy mode:") ~= nil then
-    return string.format(" %d %s ", tab_index, "Copy mode...")
+  if tab.is_active then
+    -- Copy mode時
+    if string.match(tab.active_pane.title, "Copy mode:") ~= nil then
+      return string.format(" %d %s ", tab_index, "Copy mode...📄")
+    end
+
+    -- Zoom mode時
+    if tab.active_pane.is_zoomed then
+      return string.format(" %d %s ", tab_index, "Zoom mode...🔍")
+    end
   end
 
   return string.format(" %d ", tab_index)
+end)
+
+-- 起動時にウィンドウをフルスクリーンにする
+wezterm.on("gui-startup", function(cmd)
+  local tab, pane, window = wezterm.mux.spawn_window(cmd or {})
+  window:gui_window():toggle_fullscreen()
 end)
 
 local theme = require("theme")
@@ -113,7 +126,7 @@ local colors = {
 
 -- キーバインドの設定、macOSの場合は以下のようになる
 --
--- ALT →  OPTION
+-- ALT → OPTION
 
 -- leader keyを CTRL + qにマッピング
 local leader = { key = "q", mods = "CTRL", timeout_milliseconds = 1000 }
@@ -139,16 +152,19 @@ local keys = {
   { key = "|", mods = "LEADER", action = act({ SplitHorizontal = { domain = "CurrentPaneDomain" } }) },
   -- hjklでPANEを移動する
   { key = "h", mods = "LEADER", action = act({ ActivatePaneDirection = "Left" }) },
-  { key = "l", mods = "LEADER", action = act({ ActivatePaneDirection = "Right" }) },
-  { key = "k", mods = "LEADER", action = act({ ActivatePaneDirection = "Up" }) },
   { key = "j", mods = "LEADER", action = act({ ActivatePaneDirection = "Down" }) },
+  { key = "k", mods = "LEADER", action = act({ ActivatePaneDirection = "Up" }) },
+  { key = "l", mods = "LEADER", action = act({ ActivatePaneDirection = "Right" }) },
+  -- タブを入れ替える
+  { key = "{", mods = "LEADER", action = act({ MoveTabRelative = -1 }) },
+  { key = "}", mods = "LEADER", action = act({ MoveTabRelative = 1 }) },
   -- PANEを閉じる
   { key = "x", mods = "ALT", action = act({ CloseCurrentPane = { confirm = true } }) },
   -- ALT + hjklでペインの幅を調整する
   { key = "h", mods = "ALT", action = act({ AdjustPaneSize = { "Left", 5 } }) },
-  { key = "l", mods = "ALT", action = act({ AdjustPaneSize = { "Right", 5 } }) },
-  { key = "k", mods = "ALT", action = act({ AdjustPaneSize = { "Up", 5 } }) },
   { key = "j", mods = "ALT", action = act({ AdjustPaneSize = { "Down", 5 } }) },
+  { key = "k", mods = "ALT", action = act({ AdjustPaneSize = { "Up", 5 } }) },
+  { key = "l", mods = "ALT", action = act({ AdjustPaneSize = { "Right", 5 } }) },
   -- QuickSelect・・・画面に表示されている文字をクイックにコピペできる機能
   { key = "Enter", mods = "SHIFT", action = "QuickSelect" },
   -- 画面の文字の大きさを調整する
@@ -162,21 +178,19 @@ local keys = {
   -- コマンドパレットを開く
   -- コマンドパレット経由でキーマッピングに設定していない機能も使うことができる
   { key = "P", mods = "CTRL", action = act.ActivateCommandPalette },
+  -- Zoomモードの切り替え
+  { key = "Z", mods = "CTRL", action = act.TogglePaneZoomState },
 }
-
--- デフォルトディレクトリを/Documents/に変更
--- NOTE: ~でホームディレクトリを指定する方法だとうまくいかなかった
-local default_cwd = os.getenv("HOME") .. "/Documents/"
 
 return {
   color_scheme = wezterm_theme,
-  default_cwd = default_cwd,
+  default_cwd = os.getenv("HOME") .. "/Documents/",
   colors = colors,
   leader = leader,
   keys = keys,
   font_size = 15,
   font = wezterm.font("HackGen35 Console"),
-  command_palette_font_size = 16,
+  window_padding = { left = 10, right = 10, top = 10, bottom = 10 },
   line_height = 1.25,
   use_fancy_tab_bar = false,
   front_end = "WebGpu",
