@@ -1,7 +1,7 @@
 # dotfiles
 
-This repository in order to management dotfiles.   
-If you invoked to `sh init.sh`, a symbolic link is set.
+This repository in order to management dotfiles.
+If you invoked to `sh setup.sh`, a symbolic link is set.
 
 ## Main using tools.
 
@@ -21,7 +21,7 @@ If you invoked to `sh init.sh`, a symbolic link is set.
 You can using to two types LSP by checkout git branch.
 
 - `main`: Using nvim lsp.
-- `coc-nvim`: Using coc.nvim. 
+- `coc-nvim`: Using coc.nvim.
     - coc.nvim only available LSP
         - PHP (WordPress)
         - Vue
