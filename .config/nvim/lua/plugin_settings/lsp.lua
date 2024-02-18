@@ -41,6 +41,7 @@ return {
         "ruby_ls",
         -- libraries
         "svelte",
+        "prismals",
         -- FW
         "astro",
         "tailwindcss",
@@ -50,6 +51,7 @@ return {
         "yamlls",
         "denols",
         "eslint",
+        "graphql",
         -- Rubyのコード補完、ドキュメントを提供してくれるLSP
         "solargraph",
       },

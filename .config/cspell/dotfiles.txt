@@ -33,3 +33,4 @@ sniv
 wday
 scaffdog
 turborepo
+prismals
