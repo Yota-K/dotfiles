@@ -34,3 +34,5 @@ wday
 scaffdog
 turborepo
 prismals
+catppuccin
+joosepalviste

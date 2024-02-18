@@ -6,7 +6,8 @@ return {
     local lualine = require("lualine")
 
     -- local custom = require("lualine.themes.nightfox")
-    local custom = require("lualine.themes.gruvbox")
+    -- local custom = require("lualine.themes.gruvbox")
+    local custom = require("lualine.themes.catppuccin")
 
     -- theme.luaがあるパスを追加する
     local module_path = ";" .. os.getenv("HOME") .. "/dotfiles/?.lua;"
