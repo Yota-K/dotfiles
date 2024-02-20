@@ -36,3 +36,5 @@ turborepo
 prismals
 catppuccin
 joosepalviste
+qiita
+zenn
