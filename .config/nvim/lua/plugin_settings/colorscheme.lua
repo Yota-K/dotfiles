@@ -15,7 +15,13 @@ return {
     -- vim.cmd("colorscheme gruvbox")
     -- vim.cmd("colorscheme nightfox")
     -- vim.cmd('colorscheme carbonfox')
-    vim.cmd("colorscheme catppuccin")
+    vim.cmd([[
+      " 境界線の色を変更
+      " WinSeparatorというneovimにしかないハイライトが使用されていた
+      " テーマから提供される上書き機能でオーバーライドできなかったので、ここで設定している
+      autocmd ColorScheme * highlight WinSeparator guifg=#6c7086
+      colorscheme catppuccin
+    ]])
   end,
   -- init is called during startup. Configuration for vim plugins typically should be set in an init function
   init = function()
@@ -30,7 +36,12 @@ return {
     -- })
     --
     require("catppuccin").setup({
-      color_overrides = settings,
+      color_overrides = {
+        all = settings,
+      },
+      custom_highlights = {
+        WinSeparator = { fg = "red" },
+      },
     })
   end,
 }

@@ -55,8 +55,6 @@ local function theme_override_settings(theme_type)
     -- Visual = { fg = colors["white"], bg = colors["selected_blue"] },
     -- -- コマンドモードの結果を出力する時の上部に表示される背景色を透過させる
     StatusLine = { fg = colors["none"], bg = colors["none"] },
-    -- タブの色を背景色を透過させる
-    TabLineFill = { fg = colors["none"], bg = colors["none"] },
     -- エラーやヒントの記号を表示するための表示領域
     -- 背景色があると鬱陶しいので透過させる
     SignColumn = { fg = colors["none"], bg = colors["none"] },
@@ -79,7 +77,7 @@ local function theme_override_settings(theme_type)
     augroup END
 
     autocmd ColorScheme * highlight StatusLine NONE
-    autocmd ColorScheme * highlight TabLineFill NONE
+    autocmd ColorScheme * highlight TabLineFill ctermbg=NONE guibg=NONE
     autocmd ColorScheme * highlight SignColumn NONE
   ]])
 
