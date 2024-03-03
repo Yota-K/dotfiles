@@ -15,6 +15,7 @@ If you invoked to `sh setup.sh`, a symbolic link is set.
     - [bat](https://github.com/sharkdp/bat)
     - [eza](https://github.com/eza-community/eza)
     - [ripgrep](https://github.com/BurntSushi/ripgrep)
+    - [starship](https://github.com/starship/starship)
 
 ## LSP settings
 

@@ -93,8 +93,9 @@ alias dotfiles='cd ~/dotfiles && v'
 alias imgcat='wezterm imgcat'
 
 # lsコマンドをezaに変更
+# ファイルのアイコン表示を有効にする
 # Git管理下の場合は、Gitのステータスを表示する
-alias ls='eza --git'
+alias ls='eza --icons --git'
 
 # tree
 # - treeオプションを有効にする
@@ -198,6 +199,13 @@ export TERM=xterm-256color
 # uninstall by removing these lines
 [ -f ~/.config/tabtab/fish/__tabtab.fish ]; and . ~/.config/tabtab/fish/__tabtab.fish; or true
 
+# direnv
+# https://github.com/direnv/direnv/blob/master/docs/hook.md#fish
+direnv hook fish | source
+
+# starship
+starship init fish | source
+
 #########################################
 # MEMO
 #########################################
@@ -207,7 +215,3 @@ export TERM=xterm-256color
 
 # Fish Shellでコマンドの実行結果を変数に代入する方法
 # https://efcl.info/2013/0520/res3282/
-
-# direnv
-# https://github.com/direnv/direnv/blob/master/docs/hook.md#fish
-direnv hook fish | source
