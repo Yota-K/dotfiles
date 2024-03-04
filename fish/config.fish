@@ -93,9 +93,8 @@ alias dotfiles='cd ~/dotfiles && v'
 alias imgcat='wezterm imgcat'
 
 # lsコマンドをezaに変更
-# ファイルのアイコン表示を有効にする
 # Git管理下の場合は、Gitのステータスを表示する
-alias ls='eza --icons --git'
+alias ls='eza --git'
 
 # tree
 # - treeオプションを有効にする
