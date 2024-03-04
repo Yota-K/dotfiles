@@ -52,7 +52,7 @@ error_symbol = "[❯❯❯](bold red)"
 format = 'Node.js [$symbol($version )]($style)'
 
 [lua]
-format = 'Lua [$symbol($version )]($style) '
+format = 'Lua [$symbol($version )]($style)'
 
 [ruby]
 format = 'Ruby [$symbol($version )]($style)'
@@ -69,7 +69,7 @@ format = "[$symbol$branch]($style) "
 
 # others
 [docker_context]
-format = 'Docker [🐋 $context](blue bold)'
+format = 'Docker [🐋 $context ](blue bold)'
 
 [aws]
 disabled = true
