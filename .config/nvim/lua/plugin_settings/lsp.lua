@@ -39,6 +39,7 @@ return {
         "gopls",
         "lua_ls",
         "ruby_ls",
+        "rust_analyzer",
         -- libraries
         "svelte",
         "prismals",
