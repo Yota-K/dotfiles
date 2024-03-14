@@ -3,25 +3,15 @@ package.path = package.path .. module_path
 
 -- テーマ: デフォルトにないテーマを使う時はここに記述する
 return {
-  -- "ellisonleao/gruvbox.nvim",
+  "ellisonleao/gruvbox.nvim",
   -- "EdenEast/nightfox.nvim",
-  "catppuccin/nvim",
-  -- catppuccinのテーマを使用するためにnameの設定が必要
-  name = "catppuccin",
   lazy = false, -- make sure we load this during startup if it is your main colorscheme
   priority = 1000, -- make sure to load this before all the other start plugins
   config = function()
     -- load the colorscheme here
-    -- vim.cmd("colorscheme gruvbox")
+    vim.cmd("colorscheme gruvbox")
     -- vim.cmd("colorscheme nightfox")
     -- vim.cmd('colorscheme carbonfox')
-    vim.cmd([[
-      " 境界線の色を変更
-      " WinSeparatorというneovimにしかないハイライトが使用されていた
-      " テーマから提供される上書き機能でオーバーライドできなかったので、ここで設定している
-      autocmd ColorScheme * highlight WinSeparator guifg=#6c7086
-      colorscheme catppuccin
-    ]])
   end,
   -- init is called during startup. Configuration for vim plugins typically should be set in an init function
   init = function()
@@ -31,17 +21,8 @@ return {
     local theme = require("theme")
 
     local settings = theme.theme_override_settings()
-    -- require("gruvbox").setup({
-    --   override = settings,
-    -- })
-    --
-    require("catppuccin").setup({
-      color_overrides = {
-        all = settings,
-      },
-      custom_highlights = {
-        WinSeparator = { fg = "red" },
-      },
+    require("gruvbox").setup({
+      override = settings,
     })
   end,
 }

@@ -3,7 +3,7 @@ local THEME = {}
 
 -- テーマを管理
 local theme_config = {
-  name = "catppuccin",
+  name = "gruvbox",
   nightfox = {
     bg = "#172331",
     wezterm = "nightfox",
@@ -19,11 +19,6 @@ local theme_config = {
   vscode = {
     bg = "#1e1e1e",
     wezterm = "Vs Code Dark+ (Gogh)",
-  },
-  catppuccin = {
-    bg = "#1e1e2e",
-    border_color = "#6c7086",
-    wezterm = "Catppuccin Mocha",
   },
 }
 
