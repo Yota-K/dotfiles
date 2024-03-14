@@ -22,6 +22,7 @@ return {
     -- formatterの設定
     vim.g.ale_fixers = {
       ["*"] = { "remove_trailing_lines", "trim_whitespace" },
+      ["rust"] = { "rustfmt" },
       javascript = { "prettier", "eslint" },
       json = { "prettier", "eslint" },
       javascriptreact = { "prettier", "eslint" },
