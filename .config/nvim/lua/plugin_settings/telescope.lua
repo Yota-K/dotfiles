@@ -5,7 +5,6 @@ return {
     "Telescope",
   },
   keys = { { "ff", mode = "n" }, { "fg", mode = "n" }, { "fb", mode = "n" }, { "fh", mode = "n" } },
-  event = { "BufReadPre", "BufNewFile" },
   tag = "0.1.3",
   dependencies = { "nvim-lua/plenary.nvim" },
   config = function()

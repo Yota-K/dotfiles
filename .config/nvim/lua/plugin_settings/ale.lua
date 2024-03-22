@@ -1,7 +1,7 @@
 -- linter, formatterの実行
 return {
   "dense-analysis/ale",
-  event = { "VimEnter" },
+  event = { "BufRead" },
   dependencies = { "ckipp01/stylua-nvim" },
   config = function()
     -- neovimでaleの設定を使う場合に必要な宣言
