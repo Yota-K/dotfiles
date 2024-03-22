@@ -3,8 +3,8 @@ return {
   "lambdalisue/fern.vim",
   event = { "VimEnter" },
   dependencies = {
-    "ryanoasis/vim-devicons",
-    "lambdalisue/fern-renderer-devicons.vim",
+    "lambdalisue/nerdfont.vim",
+    "lambdalisue/fern-renderer-nerdfont.vim",
     "lambdalisue/glyph-palette.vim",
     "lambdalisue/fern-git-status.vim",
   },
@@ -12,7 +12,7 @@ return {
     vim.api.nvim_set_keymap("n", "<C-n>", ":Fern . -reveal=% -drawer -toggle<CR>", { noremap = true, silent = true })
 
     vim.cmd([[
-      let g:fern#renderer = 'devicons'
+      let g:fern#renderer = "nerdfont"
       let g:fern#default_hidden = 1
       let g:fern#drawer_width = 40
       let g:fern_disable_startup_warnings = 1
