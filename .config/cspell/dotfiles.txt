@@ -40,3 +40,6 @@ qiita
 zenn
 tauri
 urql
+jisyo
+skkeleton
+monaqa

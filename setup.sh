@@ -53,6 +53,23 @@ if [ ! -f ~/.local/share/cspell/vim.txt.gz ]; then
   curl -fsSLo ~/.local/share/cspell/vim.txt.gz --create-dirs "$vim_dictionary_url"
 fi
 # 業務で使用する単語のような公開したらまずい単語を登録するための、ユーザー辞書を作成する
+# TODO: gitのプライベートリポジトリとかで管理するようにして、ない場合はpullするようにしたい
 touch ~/.local/share/cspell/user.txt
 
 echo "cspellの設定が完了しました ✅"
+echo ""
+
+echo "skkで使用する辞書をダウンロードします 📝"
+skk_dir="$HOME/.skk"
+skk_jisyo="$skk_dir/SKK-JISYO.L"
+skk_dictionary_url="http://openlab.jp/skk/dic/SKK-JISYO.L.gz"
+compressed_file="$skk_dir/SKK-JISYO.L.gz"
+
+mkdir -p "$skk_dir"
+
+if [ ! -f "$skk_jisyo" ]; then
+  curl -fsSLo "$compressed_file" --create-dirs "$skk_dictionary_url"
+  gunzip -c "$compressed_file" > "$skk_jisyo"
+fi
+
+echo "skkで使用する辞書のダウンロードが完了しました ✅"
