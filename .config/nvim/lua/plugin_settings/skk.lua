@@ -17,8 +17,7 @@ return {
         })
       end,
     })
-    -- 本当はControl + jを押した時に読み込むようにしたいが、
-    -- フリーズするので、起動時に読み込むようにしている
+    -- Control + jを押した時に読み込むようにしたいが、フリーズするため起動時に読み込むようにしている
     vim.cmd([[
       imap <C-j> <Plug>(skkeleton-enable)
       cmap <C-j> <Plug>(skkeleton-enable)
