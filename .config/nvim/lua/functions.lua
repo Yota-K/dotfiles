@@ -109,13 +109,6 @@ vim.o.tabline = "%!v:lua.myTabline()"
 
 -- Cspellのユーザー辞書に単語を追加する処理
 vim.api.nvim_create_user_command("CspellAppend", function(opts)
-  local cspell_config_dir = "~/.config/cspell"
-  local cspell_data_dir = "~/.local/share/cspell"
-  -- vim.call("expand", ...) を使用して、~をユーザーのホームディレクトリの絶対パスに展開する
-  local cspell_dirs = {
-    dotfiles = vim.call("expand", cspell_config_dir .. "/dotfiles.txt"),
-    user = vim.call("expand", cspell_data_dir .. "/user.txt"),
-  }
   -- optsから引数を取得
   local word = opts.args or ""
 
@@ -128,6 +121,12 @@ vim.api.nvim_create_user_command("CspellAppend", function(opts)
   if word == "" then
     vim.notify("Word not set.", vim.log.levels.ERROR)
   end
+
+  -- vim.call("expand", ...) を使用して、~をユーザーのホームディレクトリの絶対パスに展開する
+  local cspell_dirs = {
+    dotfiles = vim.call("expand", "~/.config/cspell/dotfiles.txt"),
+    user = vim.call("expand", "~/.local/share/cspell/user.txt"),
+  }
 
   -- bangの有無で保存先を分岐
   -- bang: コマンド実行時の!のこと
@@ -143,7 +142,7 @@ vim.api.nvim_create_user_command("CspellAppend", function(opts)
     vim.api.nvim_command("silent! undo")
   end
 
-  vim.notify(word .. "added to " .. dictionary_name .. " dictionary.", vim.log.levels.INFO)
+  vim.notify(word .. " added to " .. dictionary_name .. " dictionary.", vim.log.levels.INFO)
 end, {
   nargs = "?",
   bang = true,
