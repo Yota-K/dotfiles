@@ -5,7 +5,12 @@ return {
   },
   lazy = false,
   init = function()
+    -- Control + tを押した時に読み込むようにしたいが、フリーズするため起動時に読み込むようにしている
+    vim.keymap.set("i", "<C-t>", "<Plug>(skkeleton-toggle)")
+    vim.keymap.set("c", "<C-t>", "<Plug>(skkeleton-toggle)")
+
     vim.api.nvim_create_autocmd("User", {
+      -- skkeletonが最初に有効化された際に実行される
       pattern = "skkeleton-initialize-pre",
       callback = function()
         vim.fn["skkeleton#config"]({
@@ -17,10 +22,9 @@ return {
         })
       end,
     })
-    -- Control + jを押した時に読み込むようにしたいが、フリーズするため起動時に読み込むようにしている
-    vim.cmd([[
-      imap <C-j> <Plug>(skkeleton-enable)
-      cmap <C-j> <Plug>(skkeleton-enable)
-    ]])
+  end,
+  config = function()
+    -- カタカナモードに切り替える
+    vim.fn["skkeleton#register_keymap"]("input", "q", "katakana")
   end,
 }

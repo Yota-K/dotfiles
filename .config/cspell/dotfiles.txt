@@ -43,3 +43,9 @@ urql
 jisyo
 skkeleton
 monaqa
+hoge
+fuga
+hira
+kata
+hankata
+zenkaku
