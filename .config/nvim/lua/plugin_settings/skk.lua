@@ -5,9 +5,9 @@ return {
   },
   lazy = false,
   init = function()
-    -- Control + tを押した時に読み込むようにしたいが、フリーズするため起動時に読み込むようにしている
-    vim.keymap.set("i", "<C-t>", "<Plug>(skkeleton-toggle)")
-    vim.keymap.set("c", "<C-t>", "<Plug>(skkeleton-toggle)")
+    -- Control + jを押した時に読み込むようにしたいが、フリーズするため起動時に読み込むようにしている
+    vim.keymap.set("i", "<C-j>", "<Plug>(skkeleton-toggle)")
+    vim.keymap.set("c", "<C-j>", "<Plug>(skkeleton-toggle)")
 
     vim.api.nvim_create_autocmd("User", {
       -- skkeletonが最初に有効化された際に実行される
@@ -24,7 +24,13 @@ return {
     })
   end,
   config = function()
-    -- カタカナモードに切り替える
-    vim.fn["skkeleton#register_keymap"]("input", "q", "katakana")
+    -- 全角モードに切り替える
+    vim.g["skkeleton#mapped_keys"] = { "<C-l>" }
+    vim.fn["skkeleton#register_keymap"]("input", "<C-l>", "zenkaku")
+
+    -- ひらがなモードだと「・」が入力できないので、「z/」に割り当てる
+    vim.fn["skkeleton#register_kanatable"]("rom", {
+      ["z/"] = { "・", "" },
+    }, true)
   end,
 }
