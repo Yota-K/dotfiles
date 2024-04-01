@@ -1,7 +1,10 @@
 -- コメントアウトを効率化
 return {
   "terrortylor/nvim-comment",
-  event = "VeryLazy",
+  keys = {
+    { "<C-z>", mode = "n" },
+    { "<C-z>", mode = "v" },
+  },
   config = function()
     local comment = require("nvim_comment")
 
