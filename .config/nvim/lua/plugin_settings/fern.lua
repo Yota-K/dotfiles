@@ -45,21 +45,21 @@ return {
     vim.api.nvim_create_autocmd("FileType", {
       pattern = "fern",
       callback = function()
-        vim.cmd("call glyph_palette#apply()")
+        vim.cmd([[ call glyph_palette#apply() ]])
       end,
     })
     vim.api.nvim_create_autocmd("FileType", {
       pattern = { "nerdtree", "startify" },
       callback = function()
-        vim.cmd("call glyph_palette#apply()")
+        vim.cmd([[ call glyph_palette#apply() ]])
       end,
     })
 
+    -- Error detected while processing function <lambda>1072[1]..<SNR>123_show[52]..<SNR>123_apply:
+    -- line    4:
+    -- E28: No such highlight group name: FernRootSymbolの解消
+    -- Gitに追跡されていない、かつ、長いファイル名のときに発生した
     vim.cmd([[
-      " Error detected while processing function <lambda>1072[1]..<SNR>123_show[52]..<SNR>123_apply:
-      " line    4:
-      " E28: No such highlight group name: FernRootSymbolの解消
-      " Gitに追跡されていない、かつ、長いファイル名のときに発生した
       hi FernRootSymbol ctermfg=white guifg=white ctermbg=NONE guibg=NONE
     ]])
   end,

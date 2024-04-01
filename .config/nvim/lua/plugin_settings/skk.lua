@@ -1,3 +1,4 @@
+-- 日本語入力を強化
 return {
   "vim-skk/skkeleton",
   dependencies = {

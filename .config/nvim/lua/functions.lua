@@ -16,9 +16,7 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
   pattern = { "*.xml" },
   callback = function()
     local success, error_message = pcall(function()
-      vim.cmd([[
-        execute("%s/></>\r</g | filetype indent on | setf xml | normal gg=G")
-      ]])
+      vim.cmd([[ execute("%s/></>\r</g | filetype indent on | setf xml | normal gg=G") ]])
     end)
 
     if not success then
@@ -28,7 +26,7 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 })
 
 -- Glowをvim上で実行する
--- TODO: 動作が安定しないの
+-- TODO: 動作が安定しない
 nvim_create_user_command("Glow", function()
   if not vim.fn.executable("glow") then
     vim.notify("Not found glow command.", vim.log.levels.ERROR)

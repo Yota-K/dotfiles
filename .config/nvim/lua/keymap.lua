@@ -7,7 +7,7 @@ keymap("i", "[<Enter>", "[]<Left>", silent)
 keymap("i", '"<Enter>', '""<Left>', silent)
 keymap("i", "'<Enter>", "''<Left>", silent)
 keymap("i", "`<Enter>", "``<Left>", silent)
-keymap("i", "<C-s>", "\\", { silent = true })
+keymap("i", "<C-s>", "\\", silent)
 
 local noremap = { noremap = true }
 keymap("n", "j", "gj", noremap)

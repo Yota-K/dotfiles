@@ -1,3 +1,4 @@
+-- emmetを使用できるようにする
 return {
   "mattn/emmet-vim",
   ft = { "html", "javascriptreact", "typescriptreact", "vue", "php", "ejs", "svelte" },
