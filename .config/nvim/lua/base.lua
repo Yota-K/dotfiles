@@ -24,8 +24,6 @@ opt.smartindent = true
 
 opt.showcmd = true
 
-opt.laststatus = 2
-
 opt.showmatch.matchtime = 1
 
 opt.backspace = "indent,eol,start"
