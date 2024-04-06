@@ -1,6 +1,3 @@
-local module_path = ";" .. os.getenv("HOME") .. "/dotfiles/.config/wezterm/?.lua;"
-package.path = package.path .. module_path
-
 -- テーマ: デフォルトにないテーマを使う時はここに記述する
 return {
   "ellisonleao/gruvbox.nvim",
