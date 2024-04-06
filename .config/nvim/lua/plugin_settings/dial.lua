@@ -13,15 +13,16 @@ return {
   },
   config = function()
     local dial_map = require("dial.map")
+    local noremap = { noremap = true }
 
-    vim.keymap.set("n", "<C-a>", dial_map.inc_normal(), { noremap = true })
-    vim.keymap.set("n", "<C-x>", dial_map.dec_normal(), { noremap = true })
-    vim.keymap.set("n", "g<C-a>", dial_map.inc_gnormal(), { noremap = true })
-    vim.keymap.set("n", "g<C-x>", dial_map.dec_gnormal(), { noremap = true })
-    vim.keymap.set("v", "<C-a>", dial_map.inc_visual(), { noremap = true })
-    vim.keymap.set("v", "<C-x>", dial_map.dec_visual(), { noremap = true })
-    vim.keymap.set("v", "g<C-a>", dial_map.inc_gvisual(), { noremap = true })
-    vim.keymap.set("v", "g<C-x>", dial_map.dec_gvisual(), { noremap = true })
+    vim.keymap.set("n", "<C-a>", dial_map.inc_normal(), noremap)
+    vim.keymap.set("n", "<C-x>", dial_map.dec_normal(), noremap)
+    vim.keymap.set("n", "g<C-a>", dial_map.inc_gnormal(), noremap)
+    vim.keymap.set("n", "g<C-x>", dial_map.dec_gnormal(), noremap)
+    vim.keymap.set("v", "<C-a>", dial_map.inc_visual(), noremap)
+    vim.keymap.set("v", "<C-x>", dial_map.dec_visual(), noremap)
+    vim.keymap.set("v", "g<C-a>", dial_map.inc_gvisual(), noremap)
+    vim.keymap.set("v", "g<C-x>", dial_map.dec_gvisual(), noremap)
 
     local augend = require("dial.augend")
 
