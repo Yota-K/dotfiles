@@ -7,6 +7,9 @@ return {
     "lambdalisue/fern-renderer-nerdfont.vim",
     "lambdalisue/glyph-palette.vim",
     "lambdalisue/fern-git-status.vim",
+    -- タブでアイコンを表示する時に必要
+    -- タブを開くときは必ずファイラーを開いてから実行するのでfernに依存させている
+    "ryanoasis/vim-devicons",
   },
   init = function()
     vim.api.nvim_set_keymap("n", "<C-n>", ":Fern . -reveal=% -drawer -toggle<CR>", { noremap = true, silent = true })
