@@ -52,7 +52,6 @@ alias dlogsf='docker logs -f'
 # git
 alias gpush='git push'
 alias gpull='git pull'
-alias gmerge='git merge'
 alias gfetch='git fetch --prune'
 alias gcm='git commit'
 alias gst='git status'
@@ -67,7 +66,6 @@ alias gstash='git stash'
 alias gspop='git stash pop'
 alias gtag='git tag'
 alias gcherrypick='git cherry-pick'
-alias gresethard='git reset --hard'
 
 # tig
 alias tiga='tig --all'
