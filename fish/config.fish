@@ -101,6 +101,11 @@ alias ls='eza --git'
 # - node_modules, .git, .cache, .nextは検索対象から除外
 alias tree='eza -T -L 3 -a -I "node_modules|.git|.cache|.next"'
 
+# ripgrep
+# hidden files to be searched by default
+# gitディレクトリは検索対象から除外
+alias rg="rg --hidden --g '!.git'"
+
 #########################################
 # CLIの色の変更
 #########################################
