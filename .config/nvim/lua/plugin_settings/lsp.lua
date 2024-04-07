@@ -191,12 +191,15 @@ return {
         ghost_text = true,
       },
       window = {
-        completion = cmp.config.window.bordered({
-          border = "single",
-        }),
-        documentation = cmp.config.window.bordered({
-          border = "single",
-        }),
+        completion = {
+          -- borderを非表示にする
+          border = { "", "", "", "", "", "", "", "" },
+          winhighlight = "Normal:CmpNormal,FloatBorder:CmpBorder,CursorLine:CmpSelection",
+        },
+        documentation = {
+          border = "rounded",
+          winhighlight = "Normal:CmpNormal,FloatBorder:CmpBorder",
+        },
       },
     })
   end,

@@ -84,6 +84,14 @@ local function theme_override_settings(theme_type)
     base_theme["CocFloating"] = coc_theme["CocFloating"]
   end
 
+  -- nvim-cmpの背景色
+  -- 選択中の文字の色は使用しているthemeの色に合わせる
+  vim.api.nvim_set_hl(
+    0,
+    "CmpSelection",
+    { fg = theme_config[theme_config["name"]].bg, bg = "#a8a8a8", bold = true, italic = false }
+  )
+
   return base_theme
 end
 

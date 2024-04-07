@@ -25,5 +25,5 @@ require("terminal")
 vim.cmd([[
   " ターミナルでも True Color を使えるようにする。
   set termguicolors
-  set pumblend=10
+  set pumblend=20
 ]])
