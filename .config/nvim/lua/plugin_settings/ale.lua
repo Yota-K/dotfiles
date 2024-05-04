@@ -11,8 +11,8 @@ return {
     vim.g.ale_linters = {
       javascript = { "eslint" },
       javascriptreact = { "eslint" },
-      typescript = { "eslint" },
-      typescriptreact = { "eslint" },
+      typescript = { "eslint", "cspell" },
+      typescriptreact = { "eslint", "cspell" },
       vue = { "eslint" },
       svelte = { "eslint" },
       css = { "stylelint" },
