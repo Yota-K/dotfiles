@@ -38,7 +38,7 @@ return {
         "tsserver",
         "gopls",
         "lua_ls",
-        "ruby_ls",
+        "ruby_lsp",
         "rust_analyzer",
         -- libraries
         "svelte",
