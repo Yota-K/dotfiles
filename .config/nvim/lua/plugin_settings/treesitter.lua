@@ -28,6 +28,8 @@ return {
         "graphql",
         "prisma",
         "astro",
+        "markdown",
+        "markdown_inline",
       },
       ignore_install = {},
       sync_install = false,

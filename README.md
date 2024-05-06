@@ -10,7 +10,6 @@ If you invoked to `sh setup.sh`, a symbolic link is set.
 - Terminal: [wezterm](https://github.com/wez/wezterm)
 - CUI
     - [tig](https://github.com/jonas/tig)
-    - [glow](https://github.com/charmbracelet/glow)
 - CLI
     - [bat](https://github.com/sharkdp/bat)
     - [eza](https://github.com/eza-community/eza)
