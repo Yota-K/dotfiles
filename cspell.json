@@ -1,4 +1,5 @@
 {
+  "caseSensitive": true,
   "allowCompoundWords": true,
   "dictionaries": [
     "dotfiles",
