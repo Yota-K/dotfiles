@@ -49,3 +49,8 @@ hira
 kata
 hankata
 zenkaku
+chakra
+prisma
+rtmpbaseurl
+rtmp
+tailwindcss
