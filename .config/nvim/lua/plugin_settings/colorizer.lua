@@ -1,11 +1,14 @@
 -- カラーコードの色を見えやすいように表示
 return {
-  "norcalli/nvim-colorizer.lua",
+  "brenoprata10/nvim-highlight-colors",
   event = {
     "BufReadPre",
     "BufNewFile",
   },
   config = function()
-    require("colorizer").setup()
+    -- Ensure termguicolors is enabled if not already
+    vim.opt.termguicolors = true
+
+    require("nvim-highlight-colors").setup({})
   end,
 }
