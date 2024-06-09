@@ -54,3 +54,8 @@ prisma
 rtmpbaseurl
 rtmp
 tailwindcss
+lambdalisue
+ryanoasis
+devicons
+williamboman
+gqlgen
