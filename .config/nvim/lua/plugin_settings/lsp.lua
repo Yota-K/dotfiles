@@ -55,6 +55,7 @@ return {
         "graphql",
         -- Rubyのコード補完、ドキュメントを提供してくれるLSP
         "solargraph",
+        "terraformls",
       },
       automatic_installation = true,
     })
