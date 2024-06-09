@@ -43,6 +43,7 @@ brew "rustup-init", link: false
 brew "starship"
 brew "stylua"
 brew "tcl-tk"
+brew "tfenv"
 brew "tig"
 brew "tmux"
 brew "unbound"
