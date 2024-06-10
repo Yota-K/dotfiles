@@ -88,12 +88,6 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_wid
   return string.format(" %d ", tab_index)
 end)
 
--- 起動時にウィンドウをフルスクリーンにする
-wezterm.on("gui-startup", function(cmd)
-  local tab, pane, window = wezterm.mux.spawn_window(cmd or {})
-  window:gui_window():toggle_fullscreen()
-end)
-
 local theme = require("theme")
 local selected_theme = theme.theme_config[theme.selected_theme]
 local selected_theme_bg = selected_theme["bg"]
