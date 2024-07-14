@@ -166,6 +166,42 @@ function topen
   end
 end
 
+# VoltaでインストールしたNode.jsを削除する
+function remove_node_for_volta
+  set package $argv[1]
+  set dir "$HOME/.volta/tools/image/node/$package/"
+
+  if test -d $dir
+    rm -rf $dir
+    if test $status -eq 0
+      echo "Successfully removed $package"
+    else
+      echo "Failed to remove $package"
+    end
+  else
+    echo "Not found $package"
+  end
+end
+
+# ディレクトリを移動する際に、.node-versionファイルがあれば、そのバージョンのNode.jsをインストールする
+function check_node_version_for_volta --on-variable PWD --description 'check .node-version on pwd change and run volta install'
+  status --is-command-substitution; and return
+
+  set -l dir (pwd)
+
+  while not test "$dir" = ''
+    set node_version_file "$dir/.node-version"
+
+    if test -e "$node_version_file"
+      set node_version (cat $node_version_file)
+      volta install node@$node_version
+      break
+    end
+
+    set dir (string split -r -m1 / $dir)[1]
+  end
+end
+
 #########################################
 # その他
 #########################################
