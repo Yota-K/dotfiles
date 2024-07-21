@@ -12,7 +12,7 @@ return {
     { "<C-r>", mode = "n" },
   },
   config = function()
-    vim.api.nvim_set_keymap("n", "<C-r>", "<cmd>RenderMarkdownToggle<CR>", { noremap = true, silent = true })
+    vim.api.nvim_set_keymap("n", "<C-r>", "<cmd>RenderMarkdown toggle<CR>", { noremap = true, silent = true })
     require("render-markdown").setup({})
   end,
 }
