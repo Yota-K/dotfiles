@@ -17,31 +17,6 @@ return {
     custom.inactive.c.bg = bg
     custom.normal.c.bg = bg
 
-    -- 参考: https://github.com/szkny/dotfiles/blob/f55a7305160d89792a4e40ef92eb1a0e02d78be7/nvim/lua/plugins/lualine.lua#L1
-    vim.cmd([[
-      fun! LualineSkkeletonMode() abort
-        try
-          let l:current_mode = mode()
-
-          if (l:current_mode=='i' || l:current_mode=='c') && skkeleton#is_enabled()
-            let l:mode_dict = #{
-              \ hira:    'あ',
-              \ kata:    'ア',
-              \ hankata: '_ｱ',
-              \ zenkaku: 'Ａ',
-              \ abbrev:  'abbr',
-              \ }
-            let l:mode = mode_dict[skkeleton#mode()]
-            return 'IME:'.l:mode
-          else
-            return ''
-          endif
-        catch
-          return ''
-        endtry
-      endf
-    ]])
-
     lualine.setup({
       options = {
         icons_enabled = true,
