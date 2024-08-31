@@ -2,6 +2,9 @@
 # 環境変数
 #########################################
 
+# ユーザー個別の設定が書き込まれるディレクトリを.configに変更
+set -x XDG_CONFIG_HOME "$HOME/.config"
+
 # voltaのPATH
 set -gx VOLTA_HOME "$HOME/.volta"
 set -gx PATH "$VOLTA_HOME/bin" $PATH
