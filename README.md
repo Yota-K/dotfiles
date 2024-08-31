@@ -9,7 +9,7 @@ If you invoked to `sh setup.sh`, a symbolic link is set.
 - Shell: [fish](https://github.com/fish-shell/fish-shell)
 - Terminal: [wezterm](https://github.com/wez/wezterm)
 - CUI
-    - [tig](https://github.com/jonas/tig)
+    - [Lazygit](https://github.com/jesseduffield/lazygit)
 - CLI
     - [bat](https://github.com/sharkdp/bat)
     - [eza](https://github.com/eza-community/eza)
