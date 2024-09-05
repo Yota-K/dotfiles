@@ -11,7 +11,7 @@ local opt = vim.opt
 
 opt.encoding = "utf-8"
 
-opt.helplang = "ja,en"
+opt.helplang = "ja"
 opt.numberwidth = 6
 
 opt.ruler = true
