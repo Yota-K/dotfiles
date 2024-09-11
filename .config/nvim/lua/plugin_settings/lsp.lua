@@ -91,6 +91,7 @@ return {
         opts.capabilities = cmp_nvim_lsp.default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
         if server_name == "tsserver" then
+          server_name = "ts_ls"
           if is_deno_repo then
             return
           end
