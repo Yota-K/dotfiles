@@ -35,7 +35,7 @@ return {
         -- languages
         "html",
         "cssls",
-        "tsserver",
+        "ts_ls",
         "gopls",
         "lua_ls",
         "ruby_lsp",
