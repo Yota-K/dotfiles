@@ -21,3 +21,6 @@ keymap("n", "<Up>", "<Nop>", noremap)
 keymap("n", "<Right>", "<Nop>", noremap)
 keymap("n", "<Space>n", ":set invnumber<CR>", noremap)
 keymap("n", "HS", ":h | only<CR>", noremap)
+
+-- leader keyをスペースキーに設定
+vim.g.mapleader = " "
