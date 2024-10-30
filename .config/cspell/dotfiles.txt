@@ -69,3 +69,4 @@ muniftanjim
 zbirenbaum
 hakonharnes
 echasnovski
+terraformls
