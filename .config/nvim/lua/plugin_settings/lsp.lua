@@ -90,8 +90,7 @@ return {
         local opts = {}
         opts.capabilities = cmp_nvim_lsp.default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
-        if server_name == "tsserver" then
-          server_name = "ts_ls"
+        if server_name == "ts_ls" then
           if is_deno_repo then
             return
           end
@@ -134,6 +133,12 @@ return {
                 enable = false,
               },
             },
+          }
+        elseif server_name == "graphql" then
+          opts.filetypes = {
+            "graphql",
+            "typescriptreact",
+            "typescript",
           }
         end
 
