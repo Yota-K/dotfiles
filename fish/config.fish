@@ -27,6 +27,9 @@ set PATH $HOME/.cargo/bin $PATH
 # RubyのPATH
 set PATH $HOME/.rbenv/shims:/usr/local/bin:$PATH
 
+# nixのPATH
+set PATH $HOME/.nix-profile/bin $PATH
+
 #########################################
 # エイリアス
 #########################################

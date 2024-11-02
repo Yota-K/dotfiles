@@ -53,6 +53,7 @@ return {
         "denols",
         "eslint",
         "graphql",
+        "nil_ls",
         -- Rubyのコード補完、ドキュメントを提供してくれるLSP
         "solargraph",
         "terraformls",
