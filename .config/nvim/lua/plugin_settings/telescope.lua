@@ -43,5 +43,8 @@ return {
 
     -- helpを開く
     keyset("n", "fh", builtin.help_tags, {})
+
+    -- gitで変更されたファイルを検索
+    keyset("n", "fgs", builtin.git_status, {})
   end,
 }
