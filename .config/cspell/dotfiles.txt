@@ -70,3 +70,4 @@ zbirenbaum
 hakonharnes
 echasnovski
 terraformls
+dayjs
