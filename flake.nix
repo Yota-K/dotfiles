@@ -4,6 +4,9 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+    # Flake関連のユーティリティ関数
+    # マルチプラットフォーム対応を行うために使用している。
+    # https://github.com/numtide/flake-utils?tab=readme-ov-file#system---system--system--
     flake-utils.url = "github:numtide/flake-utils";
   };
 
