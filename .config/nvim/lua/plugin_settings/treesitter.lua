@@ -30,6 +30,7 @@ return {
         "astro",
         "markdown",
         "markdown_inline",
+        "nix",
       },
       ignore_install = {},
       sync_install = false,
