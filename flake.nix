@@ -14,32 +14,46 @@
   flake-utils.lib.eachDefaultSystem (system:
     # NOTE: let-in構文を使うことで関数内で変数を宣言できる
     let
-      # NOTE: Overlaysという仕組みを利用することでNixpkgsを拡張・上書きすることができる
-      pkgs = nixpkgs.legacyPackages.${system}.extend (neovim-nightly-overlay.overlays.default);
+      pkgs = import nixpkgs {
+        system = system;
+        # Unfreeパッケージをインストールできるようにする
+        # ref: https://nixos.org/manual/nixpkgs/stable/#sec-allow-unfree
+        config.allowUnfree = true;
+        overlays = [ neovim-nightly-overlay.overlays.default ];
+      };
     in
     {
+      allowUnfree = true;
+
       packages.my-packages = pkgs.buildEnv {
         name = "my-packages";
         paths = with pkgs; [
-          # エラーで落ちたのでコメントアウト
-          # nixpkgs.legacyPackages.${system}.aws-sam-cli
           alacritty
           bat
-          # エラーで落ちたのでコメントアウト
-          # nixpkgs.legacyPackages.${system}.deno
           curl
           direnv
+          deno
           eza
           git
+          gitflow
           jq
           lazygit
+          ngrok
           ripgrep
+          starship
           tig
           tmux
           vim
           volta
           zellij
           neovim
+          graphviz
+          libffi
+          libzip
+          vips
+          unbound
+          freetds
+          libssh2
         ];
       };
     }
