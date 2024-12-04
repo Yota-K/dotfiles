@@ -56,6 +56,23 @@
           zellij
         ];
       };
+
+      # nix run .#updateで以下のスクリプトを実行する
+      # - nix flake update: flakeのlockファイルを更新する
+      # - nix profile upgrade my-packages: 最新のフレークを使用してパッケージをアップグレードする
+      apps.update = {
+        type = "app";
+        program = toString (
+          pkgs.writeShellScript "update-script" ''
+            set -e
+            echo "Updating flake..."
+            nix flake update
+            echo "Updating profile..."
+            nix profile upgrade my-packages
+            echo "Update complete!"
+          ''
+        );
+      };
     }
   );
 }
