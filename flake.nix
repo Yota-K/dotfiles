@@ -31,29 +31,29 @@
           alacritty
           bat
           curl
-          direnv
           deno
+          direnv
           eza
           git
           gitflow
+          graphviz
           jq
           lazygit
+          libffi
+          libssh2
+          libzip
+          neovim
           ngrok
+          rbenv
           ripgrep
           starship
           tig
           tmux
+          unbound
           vim
+          vips
           volta
           zellij
-          neovim
-          graphviz
-          libffi
-          libzip
-          vips
-          unbound
-          freetds
-          libssh2
         ];
       };
     }
