@@ -43,17 +43,24 @@
             eza
             git
             gitflow
+            go
             graphviz
             jq
             lazygit
             libffi
             libssh2
             libzip
+            # luaのlatest versionは2024年12月現在だと5.4系だが、nixでインストールすると5.2系がインストールされる
+            # ref: https://github.com/NixOS/nixpkgs/issues/323083
+            lua
             neovim
             ngrok
             nixfmt-rfc-style
+            perl
+            php
             rbenv
             ripgrep
+            rustup
             starship
             tig
             tmux
