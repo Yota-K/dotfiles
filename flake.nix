@@ -58,13 +58,11 @@
             nixfmt-rfc-style
             perl
             php
-            rbenv
             ripgrep
             rustup
             starship
             tig
             tmux
-            unbound
             vim
             vips
             volta
