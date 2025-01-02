@@ -8,7 +8,8 @@
     { self, nixpkgs, neovim-nightly-overlay }:
     let
       supportSystems = [
-        "x86_64-darwin" # macOS (64-bit x86)
+        "x86_64-darwin" # 64-bit x86 macOS
+        "aarch64-darwin" # 64-bit ARM macOS
       ];
       forAllSystems = nixpkgs.lib.genAttrs supportSystems;
     in
