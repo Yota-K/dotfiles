@@ -3,7 +3,10 @@
 #########################################
 
 # ユーザー個別の設定が書き込まれるディレクトリを.configに変更
-set -x XDG_CONFIG_HOME "$HOME/.config"
+set -gx XDG_CONFIG_HOME "$HOME/.config"
+
+# brewのPATH
+set -gx PATH /opt/homebrew/bin $PATH
 
 # voltaのPATH
 set -gx VOLTA_HOME "$HOME/.volta"
@@ -15,20 +18,25 @@ set -gx PATH "$VOLTA_HOME/bin" $PATH
 set VOLTA_FEATURE_PNPM 1
 
 # golangのPATH
-set -x GOPATH $HOME/go
-set -x PATH $PATH:$GOPATH/bin
+set -gx GOPATH $HOME/go
+set -gx PATH $PATH:$GOPATH/bin
 
 # GOPATHの外でプロジェクトを扱えるようにする
-set -x GO111MODULE on
+set -gx GO111MODULE on
 
 # RustのPATH
-set PATH $HOME/.cargo/bin $PATH
+set -gx PATH $HOME/.nix-profile/.cargo/bin $PATH
 
 # RubyのPATH
-set PATH $HOME/.rbenv/shims:/usr/local/bin:$PATH
+set -gx PATH $HOME/.nix-profile/bin/rbenv $PATH
 
 # nixのPATH
-set PATH $HOME/.nix-profile/bin $PATH
+set -gx PATH $HOME/.nix-profile/bin $PATH
+
+# NOTE: fishをnixで管理するように変更したら、fish起動時にNixの環境設定を有効にしないとnixコマンドが使えなくなったので足した。
+if test -f /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.fish
+  source /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.fish
+end
 
 #########################################
 # エイリアス
@@ -235,10 +243,6 @@ set __fish_git_prompt_char_stashstate '↩'
 set __fish_git_prompt_char_upstream_ahead '+'
 set __fish_git_prompt_char_upstream_behind '-'
 
-# iterm
-export CLICOLOR=1
-export TERM=xterm-256color
-
 # tabtab source for packages
 # uninstall by removing these lines
 [ -f ~/.config/tabtab/fish/__tabtab.fish ]; and . ~/.config/tabtab/fish/__tabtab.fish; or true
@@ -249,6 +253,9 @@ direnv hook fish | source
 
 # starship
 starship init fish | source
+
+# Added by `rbenv init` on Thu Jan  2 23:43:55 JST 2025
+status --is-interactive; and rbenv init - --no-rehash fish | source
 
 #########################################
 # MEMO
