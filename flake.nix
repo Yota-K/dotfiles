@@ -30,18 +30,22 @@
             name = "my-packages";
             paths = with pkgs; [
               alacritty
+              awscli
               bat
               curl
+              ctop
               deno
               direnv
+              docker
+              docker-compose
               eza
+              fish
               git
               gitflow
               go
               graphviz
               jq
               lazygit
-              libffi
               libssh2
               libzip
               lua
@@ -50,9 +54,12 @@
               nixfmt-rfc-style
               perl
               php
+              ruby
+              rbenv
               ripgrep
               rustup
               starship
+              stylua
               tig
               tmux
               vim
