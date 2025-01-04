@@ -7,6 +7,7 @@ If you invoked to `sh setup.sh`, a symbolic link is set.
 
 - Editor: [Neovim](https://github.com/neovim/neovim)
 - Shell: [fish](https://github.com/fish-shell/fish-shell)
+- Package manager: [nix](https://github.com/NixOS/nix)
 - Terminal: [wezterm](https://github.com/wez/wezterm)
 - CUI
     - [Lazygit](https://github.com/jesseduffield/lazygit)
