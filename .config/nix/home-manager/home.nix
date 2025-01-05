@@ -31,6 +31,7 @@ let
     starship
     stylua
     tig
+    vim-startuptime
     volta
   ];
   editors = with pkgs; [
