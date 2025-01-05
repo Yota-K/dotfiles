@@ -37,10 +37,12 @@
     enable = true;
     onActivation = {
       autoUpdate = true;
+      # nix-darwin によって生成された Brewfile にリストされていないパッケージ以外はアンインストールする。
+      cleanup = "uninstall";
     };
     brews = [
-      "glib"
       "cairo"
+      "glib"
       "gobject-introspection"
       "libffi"
       "libpq"
@@ -51,9 +53,12 @@
     casks = [
       "arc"
       "figma"
+      "firefox"
       "google-chrome"
+      "microsoft-edge"
       "raycast"
       "sequel-ace"
+      "slack"
       "wezterm@nightly"
       "zoom"
     ];
