@@ -1,5 +1,5 @@
 {
-  description = "My package list.";
+  description = "My nix configuration";
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     home-manager = {
@@ -43,6 +43,28 @@
               echo "Updating home-manager... 🏠"
               # --impureフラグをつけることで、ビルド中に環境変数にアクセスすることを許可する
               nix run nixpkgs#home-manager -- switch --flake .#darwinConfig --impure
+              echo "Updating nix-darwin... 🍎"
+              nix run nix-darwin -- switch --flake .#my-macbook
+              echo "Update complete! ✅"
+            '');
+          };
+
+          # env DARWIN_USER=your_username nix run .#update-home-manager
+          update-home-manager = {
+            type = "app";
+            program = toString (pkgs.writeShellScript "update-home-manager-script" ''
+              set -e
+              echo "Updating home-manager... 🏠"
+              nix run nixpkgs#home-manager -- switch --flake .#darwinConfig --impure
+              echo "Update complete! ✅"
+            '');
+          };
+
+          # nix run .#update-darwin
+          update-darwin = {
+            type = "app";
+            program = toString (pkgs.writeShellScript "update-darwin-script" ''
+              set -e
               echo "Updating nix-darwin... 🍎"
               nix run nix-darwin -- switch --flake .#my-macbook
               echo "Update complete! ✅"
