@@ -6,6 +6,53 @@
 }:
 let
   username = builtins.getEnv "DARWIN_USER";
+
+  cliTools = with pkgs; [
+    awscli
+    aws-sam-cli
+    bat
+    curl
+    ctop
+    deno
+    direnv
+    docker
+    docker-compose
+    eza
+    fish
+    git
+    gitflow
+    go
+    graphviz
+    jq
+    lazygit
+    ngrok
+    nixfmt-rfc-style
+    ripgrep
+    starship
+    stylua
+    tig
+    volta
+  ];
+  editors = with pkgs; [
+    neovim # neovim-nightly
+    vim
+  ];
+  libraries = with pkgs; [
+    libssh2
+    libzip
+    lua
+    perl
+    php
+    ruby
+    rbenv
+    rustup
+    vips
+  ];
+  terminalPackages = with pkgs; [
+    alacritty
+    tmux
+    zellij
+  ];
 in
 {
   nixpkgs = {
@@ -33,50 +80,9 @@ in
   home = {
     username = username;
     homeDirectory = "/Users/${username}";
-
     # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
     stateVersion = "24.05";
-
-    packages = with pkgs; [
-      alacritty
-      awscli
-      aws-sam-cli
-      bat
-      curl
-      ctop
-      deno
-      direnv
-      docker
-      docker-compose
-      eza
-      fish
-      git
-      gitflow
-      go
-      graphviz
-      jq
-      lazygit
-      libssh2
-      libzip
-      lua
-      neovim # neovim-nightly
-      ngrok
-      nixfmt-rfc-style
-      perl
-      php
-      ruby
-      rbenv
-      ripgrep
-      rustup
-      starship
-      stylua
-      tig
-      tmux
-      vim
-      vips
-      volta
-      zellij
-    ];
+    packages = cliTools ++ editors ++ libraries ++ terminalPackages;
   };
 
   programs.home-manager = {
