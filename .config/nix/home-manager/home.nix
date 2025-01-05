@@ -40,6 +40,7 @@ in
     packages = with pkgs; [
       alacritty
       awscli
+      aws-sam-cli
       bat
       curl
       ctop
