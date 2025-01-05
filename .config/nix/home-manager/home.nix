@@ -17,6 +17,19 @@ in
     ];
   };
 
+  nix = {
+    settings = {
+      # FlakesとNix commandをはNixの実験的機能なので、experimental-featuresフィールドに追加する
+      experimental-features = ["nix-command" "flakes"];
+    };
+    gc = {
+      automatic = true;
+      frequency = "weekly";
+      options = "--delete-older-than 7d";
+    };
+    package = pkgs.nix;
+  };
+
   home = {
     username = username;
     homeDirectory = "/Users/${username}";
@@ -65,5 +78,7 @@ in
     ];
   };
 
-  programs.home-manager.enable = true;
+  programs.home-manager = {
+    enable = true;
+  };
 }
