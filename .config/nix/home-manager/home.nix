@@ -30,6 +30,7 @@ let
     ripgrep
     starship
     stylua
+    tenv
     tig
     vim-startuptime
     volta
