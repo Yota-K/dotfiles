@@ -46,6 +46,7 @@
       "gobject-introspection"
       "libffi"
       "libpq"
+      "luarocks"
       "poppler"
       "postgresql@14"
       "ruby-build"
