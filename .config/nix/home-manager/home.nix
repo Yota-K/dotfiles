@@ -8,7 +8,7 @@ let
   username = builtins.getEnv "DARWIN_USER";
 
   cliTools = with pkgs; [
-    awscli
+    awscli2
     aws-sam-cli
     bat
     curl
