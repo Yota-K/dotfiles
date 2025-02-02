@@ -182,7 +182,7 @@ return {
   colors = colors,
   leader = leader,
   keys = keys,
-  font_size = 15,
+  font_size = 14,
   font = wezterm.font("HackGen35 Console"),
   window_padding = { left = 10, right = 10, top = 10, bottom = 10 },
   line_height = 1.25,
