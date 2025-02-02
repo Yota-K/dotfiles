@@ -50,6 +50,7 @@
       "poppler"
       "postgresql@14"
       "ruby-build"
+      "golang-migrate"
     ];
     casks = [
       "arc"
@@ -62,6 +63,7 @@
       "slack"
       "wezterm@nightly"
       "zoom"
+      "tableplus"
     ];
     taps = [
       "homebrew/bundle"
