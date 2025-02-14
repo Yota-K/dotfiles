@@ -2,3 +2,4 @@
 .vim/plugged
 .vim/autoload
 .vim/.netrwhist
+.git
