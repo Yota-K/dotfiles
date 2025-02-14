@@ -14,6 +14,7 @@ If you invoked to `sh setup.sh`, a symbolic link is set.
 - CLI
     - [bat](https://github.com/sharkdp/bat)
     - [eza](https://github.com/eza-community/eza)
+    - [delta](https://github.com/dandavison/delta)
     - [ripgrep](https://github.com/BurntSushi/ripgrep)
     - [starship](https://github.com/starship/starship)
 
