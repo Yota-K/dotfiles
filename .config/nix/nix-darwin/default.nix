@@ -7,6 +7,14 @@
     ];
   };
 
+  # macOS Sequoia では、nixbld ユーザーに新しいユーザー/グループ ID セットを使用する必要がある
+  # ref: https://github.com/i077/system/blob/532b77c93ddc2e04ced0859b7cbb74f034d8f6bf/modules/darwin/default.nix#L15
+  ids = {
+    gids = {
+      nixbld = 350;
+    };
+  };
+
   system = {
     # 下位互換性のため
     # ないとエラーで落ちた
@@ -44,13 +52,13 @@
       "cairo"
       "glib"
       "gobject-introspection"
+      "golang-migrate"
       "libffi"
       "libpq"
       "luarocks"
       "poppler"
       "postgresql@14"
       "ruby-build"
-      "golang-migrate"
     ];
     casks = [
       "arc"
@@ -61,9 +69,9 @@
       "raycast"
       "sequel-ace"
       "slack"
+      "tableplus"
       "wezterm@nightly"
       "zoom"
-      "tableplus"
     ];
     taps = [
       "homebrew/bundle"
