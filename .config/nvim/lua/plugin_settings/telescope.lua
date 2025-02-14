@@ -13,12 +13,12 @@ return {
 
     telescope.setup({
       defaults = {
-        color_devicons = true,
-        file_ignore_patterns = { ".git/", ".yarn" },
+        file_ignore_patterns = { ".yarn" },
       },
       pickers = {
+        -- Search for a string and get results live as you type, respects .gitignore
         live_grep = {
-          additional_args = function(opts)
+          additional_args = function()
             return { "--hidden" }
           end,
         },
