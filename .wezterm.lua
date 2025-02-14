@@ -183,7 +183,10 @@ return {
   leader = leader,
   keys = keys,
   font_size = 14,
-  font = wezterm.font("HackGen35 Console"),
+  font = wezterm.font_with_fallback({
+    "HackGen35 Console",
+    "Hack Nerd Font",
+  }),
   window_padding = { left = 10, right = 10, top = 10, bottom = 10 },
   line_height = 1.25,
   use_fancy_tab_bar = false,
