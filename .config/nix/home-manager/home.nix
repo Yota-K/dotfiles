@@ -13,6 +13,7 @@ let
     bat
     curl
     ctop
+    delta
     deno
     direnv
     docker
