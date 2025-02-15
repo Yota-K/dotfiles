@@ -3,10 +3,10 @@ local THEME = {}
 
 -- テーマを管理
 local theme_config = {
-  name = "gruvbox",
-  nightfox = {
-    bg = "#172331",
-    wezterm = "nightfox",
+  name = "bamboo",
+  bamboo = {
+    bg = "#252623",
+    wezterm = "Bamboo",
   },
   carbonfox = {
     bg = "#161616",
@@ -16,10 +16,14 @@ local theme_config = {
     bg = "#282828",
     wezterm = "Gruvbox Dark (Gogh)",
   },
-  vscode = {
-    bg = "#1e1e1e",
-    wezterm = "Vs Code Dark+ (Gogh)",
+  nightfox = {
+    bg = "#172331",
+    wezterm = "nightfox",
   },
+  -- vscode = {
+  --   bg = "#1e1e1e",
+  --   wezterm = "Vs Code Dark+ (Gogh)",
+  -- },
 }
 
 -- 色を管理
