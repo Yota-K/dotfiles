@@ -1,0 +1,10 @@
+[manager]
+show_hidden = true
+
+[opener]
+edit = [
+  { run = '${EDITOR:=nvim} "$@"', desc = "$EDITOR", block = true },
+]
+open = [
+  { run = 'open "$@"', desc = "Open", for = "macos" },
+]

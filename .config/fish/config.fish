@@ -120,6 +120,9 @@ alias tree='eza -T -L 3 -a -I "node_modules|.git|.cache|.next"'
 # gitディレクトリは検索対象から除外
 alias rg="rg --hidden --g '!.git'"
 
+# yazi
+alias y='yazi'
+
 #########################################
 # CLIの色の変更
 #########################################

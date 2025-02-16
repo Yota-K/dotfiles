@@ -35,6 +35,7 @@ let
     tig
     vim-startuptime
     volta
+    yazi
   ];
   editors = with pkgs; [
     neovim # neovim-nightly
