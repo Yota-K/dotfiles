@@ -9,10 +9,10 @@ return {
 
     -- linterの設定
     vim.g.ale_linters = {
-      javascript = { "eslint" },
-      javascriptreact = { "eslint" },
-      typescript = { "eslint", "cspell" },
-      typescriptreact = { "eslint", "cspell" },
+      javascript = { "eslint", "biome" },
+      javascriptreact = { "eslint", "biome" },
+      typescript = { "eslint", "cspell", "biome" },
+      typescriptreact = { "eslint", "cspell", "biome" },
       vue = { "eslint" },
       svelte = { "eslint" },
       css = { "stylelint" },
