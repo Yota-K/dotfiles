@@ -120,9 +120,6 @@ alias tree='eza -T -L 3 -a -I "node_modules|.git|.cache|.next"'
 # gitディレクトリは検索対象から除外
 alias rg="rg --hidden --g '!.git'"
 
-# yazi
-alias y='yazi'
-
 #########################################
 # CLIの色の変更
 #########################################
@@ -217,6 +214,17 @@ function check_node_version_for_volta --on-variable PWD --description 'check .no
 
     set dir (string split -r -m1 / $dir)[1]
   end
+end
+
+# yazi
+# https://yazi-rs.github.io/docs/quick-start#shell-wrapper
+function y
+  set tmp (mktemp -t "yazi-cwd.XXXXXX")
+  yazi $argv --cwd-file="$tmp"
+  if set cwd (command cat -- "$tmp"); and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
+    builtin cd -- "$cwd"
+  end
+  rm -f -- "$tmp"
 end
 
 #########################################
