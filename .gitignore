@@ -3,3 +3,4 @@
 .vim/autoload
 .vim/.netrwhist
 .git
+.envrc
