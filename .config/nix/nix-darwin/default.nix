@@ -82,6 +82,7 @@
     ];
     casks = [
       "arc"
+      "cursor"
       "figma"
       "firefox"
       "google-chrome"
