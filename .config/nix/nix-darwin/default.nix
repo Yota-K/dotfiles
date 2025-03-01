@@ -15,6 +15,26 @@
     };
   };
 
+  nix = {
+    # Determinate Systemsのnix-installerでnixをインストールしたら、以下のエラーが発生したので指定している
+    #
+    # error: Determinate detected, aborting activation
+    # Determinate uses its own daemon to manage the Nix installation that
+    # conflicts with nix-darwin’s native Nix management.
+    #
+    # To turn off nix-darwin’s management of the Nix installation, set:
+    #
+    #     nix.enable = false;
+    #
+    # This will allow you to use nix-darwin with Determinate. Some nix-darwin
+    # functionality that relies on managing the Nix installation, like the
+    # `nix.*` options to adjust Nix settings or configure a Linux builder,
+    # will be unavailable.
+    #
+    # ref: https://github.com/LnL7/nix-darwin/blob/master/README.md#prerequisites
+    enable = false;
+  };
+
   system = {
     # 下位互換性のため
     # ないとエラーで落ちた
