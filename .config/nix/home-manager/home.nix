@@ -20,6 +20,7 @@ let
     docker-compose
     eza
     fish
+    fzf
     git
     gitflow
     go
