@@ -230,6 +230,15 @@ function y
   rm -f -- "$tmp"
 end
 
+# fish + fzf でコマンド履歴を検索する
+# https://qiita.com/acro5piano/items/0ef6baef78b648592afe
+function fzf_history
+  history | fzf-tmux -d40% +s +m --tiebreak=index --query=(commandline -b) \
+    > /tmp/fzf
+  and commandline (cat /tmp/fzf)
+end
+alias h=fzf_history
+
 #########################################
 # その他
 #########################################
