@@ -71,3 +71,4 @@ hakonharnes
 echasnovski
 terraformls
 dayjs
+furigana
