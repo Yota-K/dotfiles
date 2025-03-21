@@ -84,6 +84,9 @@ alias gcherrypick='git cherry-pick'
 # tig
 alias tiga='tig --all'
 
+# lazygit
+alias l='lazygit'
+
 # 安全策
 alias cp='cp -i'
 alias mv='mv -i'
