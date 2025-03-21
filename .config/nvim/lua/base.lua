@@ -53,7 +53,7 @@ opt.signcolumn = "number"
 
 -- 拡張子がmdxの時は、*.mdとして扱う
 vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
-  pattern = "*.mdx",
+  pattern = { "*.mdx", "*.mdc" },
   callback = function()
     vim.bo.filetype = "markdown"
   end,
