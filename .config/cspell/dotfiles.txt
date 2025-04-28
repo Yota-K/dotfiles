@@ -72,3 +72,4 @@ echasnovski
 terraformls
 dayjs
 furigana
+totp
