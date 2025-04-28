@@ -34,6 +34,7 @@ return {
       scss = { "prettier", "stylelint" },
       go = { "trim_whitespace", "remove_trailing_lines", "goimports", "gofmt" },
       lua = { "stylua" },
+      terraform = { "terraform" },
     }
 
     -- ファイル保存時に実行
