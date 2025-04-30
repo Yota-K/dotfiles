@@ -7,9 +7,9 @@
 let
   username = builtins.getEnv "DARWIN_USER";
 
-  cliTools = with pkgs; [
-    awscli2
+  tools = with pkgs; [
     aws-sam-cli
+    awscli2
     bat
     curl
     ctop
@@ -27,31 +27,30 @@ let
     graphviz
     jq
     lazygit
+    libssh2
+    libzip
+    lua
     ngrok
     nixfmt-rfc-style
+    perl
+    php
+    pyenv
+    rbenv
     ripgrep
+    ruby
+    rustup
     starship
     stylua
     tenv
     tig
     vim-startuptime
+    vips
     volta
     yazi
   ];
   editors = with pkgs; [
     neovim # neovim-nightly
     vim
-  ];
-  libraries = with pkgs; [
-    libssh2
-    libzip
-    lua
-    perl
-    php
-    ruby
-    rbenv
-    rustup
-    vips
   ];
   terminalPackages = with pkgs; [
     alacritty
@@ -87,7 +86,7 @@ in
     homeDirectory = "/Users/${username}";
     # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
     stateVersion = "24.05";
-    packages = cliTools ++ editors ++ libraries ++ terminalPackages;
+    packages = tools ++ editors ++ terminalPackages;
   };
 
   programs.home-manager = {
