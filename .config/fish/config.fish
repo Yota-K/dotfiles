@@ -33,6 +33,14 @@ set -gx PATH $HOME/.nix-profile/bin/rbenv $PATH
 # nixのPATH
 set -gx PATH $HOME/.nix-profile/bin $PATH
 
+# pyenvのPATH
+set -x PYENV_ROOT $HOME/.pyenv
+set -x PATH $PYENV_ROOT/bin $PATH
+
+if type -q pyenv
+    pyenv init - | source
+end
+
 # NOTE: fishをnixで管理するように変更したら、fish起動時にNixの環境設定を有効にしないとnixコマンドが使えなくなったので足した。
 if test -f /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.fish
   source /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.fish
