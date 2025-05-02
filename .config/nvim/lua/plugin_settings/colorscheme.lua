@@ -11,16 +11,6 @@ return {
     -- vim.cmd([[ colorscheme nightfox ]])
     -- vim.cmd([[ colorscheme carbonfox ]])
 
-    -- -- theme.luaがあるパスを追加する
-    local module_path = ";" .. os.getenv("HOME") .. "/dotfiles/?.lua;"
-    package.path = package.path .. module_path
-
-    local theme = require("theme")
-    local settings = theme.theme_override_settings()
-
-    require("bamboo").setup({
-      override = settings,
-    })
     require("bamboo").load()
   end,
 }

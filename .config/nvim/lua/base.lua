@@ -58,3 +58,16 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
     vim.bo.filetype = "markdown"
   end,
 })
+
+-- 使用しているテーマ関係なく絶対に有効にしたい配色の設定
+vim.cmd([[
+  augroup highlightIdegraphicSpace
+    autocmd!
+    autocmd Colorscheme * highlight IdeographicSpace term=underline ctermbg=DarkGreen guibg=DarkGreen
+    autocmd VimEnter,WinEnter * match IdeographicSpace /　/
+  augroup END
+
+  autocmd ColorScheme * highlight StatusLine NONE
+  autocmd ColorScheme * highlight TabLineFill ctermbg=NONE guibg=NONE
+  autocmd ColorScheme * highlight SignColumn NONE
+]])
