@@ -73,3 +73,6 @@ terraformls
 dayjs
 furigana
 totp
+highlightidegraphicspace
+aliceblue
+peru
