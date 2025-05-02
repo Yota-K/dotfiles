@@ -68,18 +68,6 @@
       # nix-darwin によって生成された Brewfile にリストされていないパッケージ以外はアンインストールする。
       cleanup = "uninstall";
     };
-    brews = [
-      "cairo"
-      "glib"
-      "gobject-introspection"
-      "golang-migrate"
-      "libffi"
-      "libpq"
-      "luarocks"
-      "poppler"
-      "postgresql@14"
-      "ruby-build"
-    ];
     casks = [
       "arc"
       "cursor"
@@ -96,6 +84,20 @@
     ];
     taps = [
       "homebrew/bundle"
+      "idoavrah/homebrew"
+    ];
+    brews = [
+      "cairo"
+      "glib"
+      "gobject-introspection"
+      "golang-migrate"
+      "libffi"
+      "libpq"
+      "luarocks"
+      "poppler"
+      "postgresql@14"
+      "ruby-build"
+      "tftui"
     ];
   };
 }
