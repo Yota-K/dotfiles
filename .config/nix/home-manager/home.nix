@@ -35,7 +35,6 @@ let
     perl
     php
     pyenv
-    rbenv
     ripgrep
     ruby
     rustup

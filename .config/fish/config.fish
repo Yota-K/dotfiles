@@ -28,7 +28,7 @@ set -gx GO111MODULE on
 set -gx PATH $HOME/.nix-profile/.cargo/bin $PATH
 
 # RubyのPATH
-set -gx PATH $HOME/.nix-profile/bin/rbenv $PATH
+set -gx PATH $HOME/opt/homebrew/bin/rbenv $PATH
 
 # nixのPATH
 set -gx PATH $HOME/.nix-profile/bin $PATH

@@ -96,6 +96,7 @@
       "luarocks"
       "poppler"
       "postgresql@14"
+      "rbenv"
       "ruby-build"
       "tftui"
     ];
