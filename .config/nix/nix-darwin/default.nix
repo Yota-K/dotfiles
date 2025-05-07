@@ -61,6 +61,10 @@
     };
   };
 
+  # homebrewで管理しているパッケージについて
+  # - GUIアプリケーション
+  #   - rubyのバージョン管理に関係するもの
+  #   - postgresql系のもの
   homebrew = {
     enable = true;
     onActivation = {
@@ -76,7 +80,6 @@
       "google-chrome"
       "microsoft-edge"
       "raycast"
-      "sequel-ace"
       "slack"
       "tableplus"
       "wezterm@nightly"
