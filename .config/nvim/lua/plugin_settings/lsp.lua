@@ -52,6 +52,7 @@ return {
         "yamlls",
         "denols",
         "eslint",
+        "biome",
         "graphql",
         "nil_ls",
         "sqls",

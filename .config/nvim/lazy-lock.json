@@ -1,8 +1,8 @@
 {
-  "ale": { "branch": "master", "commit": "baaca9a5d7016c52466c3b4cd2d161b317d801ed" },
   "avante.nvim": { "branch": "main", "commit": "f9aa75459d403d9e963ef2647c9791e0dfc9e5f9" },
   "bamboo.nvim": { "branch": "master", "commit": "97124a0b81f886abc0d666ebec512b92425d67b6" },
   "cmp-nvim-lsp": { "branch": "main", "commit": "a8912b88ce488f411177fc8aed358b04dc246d7b" },
+  "conform.nvim": { "branch": "master", "commit": "6feb2f28f9a9385e401857b21eeac3c1b66dd628" },
   "copilot.lua": { "branch": "master", "commit": "2f50ec4c16048153a50633053120292c9a7784bb" },
   "dial.nvim": { "branch": "master", "commit": "2c7e2750372918f072a20f3cf754d845e143d7c9" },
   "dressing.nvim": { "branch": "master", "commit": "2d7c2db2507fa3c4956142ee607431ddb2828639" },
@@ -30,7 +30,6 @@
   "nvim-ts-context-commentstring": { "branch": "main", "commit": "1b212c2eee76d787bbea6aa5e92a2b534e7b4f8f" },
   "plenary.nvim": { "branch": "master", "commit": "857c5ac632080dba10aae49dba902ce3abf91b35" },
   "render-markdown": { "branch": "main", "commit": "6910fe12a9634be5ce4e19aff4d3b45abf3f0dd3" },
-  "stylua-nvim": { "branch": "main", "commit": "ce59a353f02938cba3e0285e662fcd3901cd270f" },
   "telescope.nvim": { "branch": "master", "commit": "d829aa64059001ee7b2c8c8aa9c4e6df0b17d893" },
   "vim-devicons": { "branch": "master", "commit": "71f239af28b7214eebb60d4ea5bd040291fb7e33" },
   "vim-findroot": { "branch": "master", "commit": "76af2f097cf8196b00f049054444966d10c82f95" },
