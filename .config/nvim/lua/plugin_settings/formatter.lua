@@ -37,7 +37,7 @@ return {
       return { "biome" }
     end
     -- 最初に利用可能なフォーマッタを実行する
-    local web_formatter = { "biome", "prettierd", stop_after_first = true }
+    local web_formatter = { "biome", "prettier", stop_after_first = true }
 
     require("conform").setup({
       formatters_by_ft = {
@@ -56,9 +56,6 @@ return {
         -- You can customize some of the format options for the filetype (:help conform.format)
         rust = { "rustfmt", lsp_format = "fallback" },
         terraform = { "terraform_fmt" },
-        -- 他のフォーマッタが設定されていないファイルタイプでフォーマッタを実行するには、
-        -- "_" ファイルタイプを使用する
-        ["_"] = { "" },
       },
       format_on_save = {
         timeout_ms = 500,
