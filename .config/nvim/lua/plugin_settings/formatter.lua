@@ -3,18 +3,8 @@ return {
   "stevearc/conform.nvim",
   event = { "BufRead" },
   config = function()
-    -- biomeとprettierのformatterが競合してしまうので、有効になっているlspを確認してbiomeとprettierを切り替える
-    local js_formatter = function(bufnr)
-      local has_biome_lsp = vim.lsp.get_clients({
-        bufnr = bufnr,
-        name = "biome",
-      })[1]
-
-      -- 外部フォーマッタは使わず、LSP のフォーマットを使う
-      if has_biome_lsp then
-        return {}
-      end
-
+    -- biomeとprettierのformatterが競合してしまうので、設定ファイルを確認してフォーマッターを切り替える
+    local js_formatter = function()
       local has_prettier = vim.fs.find({
         -- https://prettier.io/docs/en/configuration.html
         ".prettierrc",
@@ -29,12 +19,42 @@ return {
         "prettier.config.cjs",
       }, { upward = true })[1]
 
-      -- prettierが設定されている場合は、eslint_dとprettierを使用する
-      if has_prettier then
-        return { "eslint_d", "prettier" }
+      local has_eslint = vim.fs.find({
+        -- https://eslint.org/docs/latest/use/configure/configuration-files
+        "eslint.config.js",
+        "eslint.config.mjs",
+        "eslint.config.ts",
+        "eslint.config.cjs",
+        "eslint.config.mts",
+        "eslint.config.cts",
+        -- flat config以前のフォーマットも一応指定しておく
+        -- https://eslint.org/docs/latest/use/configure/configuration-files-deprecated
+        ".eslintrc.js",
+        ".eslintrc.cjs",
+        ".eslintrc.yaml",
+        ".eslintrc.yml",
+        ".eslintrc.json",
+      }, { upward = true })[1]
+
+      local has_biome_config = vim.fs.find({
+        "biome.json",
+        "biome.jsonc",
+      }, { upward = true })[1]
+
+      if has_prettier and has_eslint then
+        return { "prettier", "eslint_d" }
       end
 
-      return { "biome" }
+      if has_biome_config and has_eslint then
+        -- Prettierの設定ファイルがなく、ESLintの設定ファイルが存在する場合は、フォーマッターとしてbiomeを利用する
+        return { "biome", "eslint_d" }
+      end
+
+      if has_biome_config then
+        return { "biome" }
+      end
+
+      return {}
     end
     -- 最初に利用可能なフォーマッタを実行する
     local web_formatter = { "biome", "prettier", stop_after_first = true }
@@ -60,6 +80,22 @@ return {
       format_on_save = {
         timeout_ms = 500,
         lsp_format = "fallback",
+      },
+      formatters = {
+        biome = {
+          command = "npx",
+          -- biome check --write --unsafeでフォーマットする
+          args = {
+            "biome",
+            "check",
+            "--write",
+            "--unsafe",
+            "--stdin-file-path",
+            "$FILENAME",
+          },
+          stdin = true,
+          cwd = require("conform.util").root_file({ "biome.json", "biome.jsonc" }),
+        },
       },
     })
   end,
