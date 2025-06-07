@@ -3,51 +3,54 @@ return {
   "stevearc/conform.nvim",
   event = { "BufRead" },
   config = function()
+    local prettier_config = {
+      -- https://prettier.io/docs/en/configuration.html
+      ".prettierrc",
+      ".prettierrc.json",
+      ".prettierrc.yml",
+      ".prettierrc.yaml",
+      ".prettierrc.json5",
+      ".prettierrc.js",
+      ".prettierrc.cjs",
+      ".prettierrc.toml",
+      "prettier.config.js",
+      "prettier.config.cjs",
+    }
+    local eslint_config = {
+      -- https://eslint.org/docs/latest/use/configure/configuration-files
+      "eslint.config.js",
+      "eslint.config.mjs",
+      "eslint.config.ts",
+      "eslint.config.cjs",
+      "eslint.config.mts",
+      "eslint.config.cts",
+      -- flat config以前のフォーマットも一応指定しておく
+      -- https://eslint.org/docs/latest/use/configure/configuration-files-deprecated
+      ".eslintrc.js",
+      ".eslintrc.cjs",
+      ".eslintrc.yaml",
+      ".eslintrc.yml",
+      ".eslintrc.json",
+    }
+    local biome_config = {
+      "biome.json",
+      "biome.jsonc",
+    }
+
     -- biomeとprettierのformatterが競合してしまうので、設定ファイルを確認してフォーマッターを切り替える
+    -- 複数のフォーマッタが指定されている場合は、順番にフォーマッターを実行する挙動になる
+    -- @see: https://github.com/stevearc/conform.nvim?tab=readme-ov-file#setup
     local js_formatter = function()
-      local has_prettier = vim.fs.find({
-        -- https://prettier.io/docs/en/configuration.html
-        ".prettierrc",
-        ".prettierrc.json",
-        ".prettierrc.yml",
-        ".prettierrc.yaml",
-        ".prettierrc.json5",
-        ".prettierrc.js",
-        ".prettierrc.cjs",
-        ".prettierrc.toml",
-        "prettier.config.js",
-        "prettier.config.cjs",
-      }, { upward = true })[1]
-
-      local has_eslint = vim.fs.find({
-        -- https://eslint.org/docs/latest/use/configure/configuration-files
-        "eslint.config.js",
-        "eslint.config.mjs",
-        "eslint.config.ts",
-        "eslint.config.cjs",
-        "eslint.config.mts",
-        "eslint.config.cts",
-        -- flat config以前のフォーマットも一応指定しておく
-        -- https://eslint.org/docs/latest/use/configure/configuration-files-deprecated
-        ".eslintrc.js",
-        ".eslintrc.cjs",
-        ".eslintrc.yaml",
-        ".eslintrc.yml",
-        ".eslintrc.json",
-      }, { upward = true })[1]
-
-      local has_biome_config = vim.fs.find({
-        "biome.json",
-        "biome.jsonc",
-      }, { upward = true })[1]
+      local has_prettier = vim.fs.find(prettier_config, { upward = true })[1]
+      local has_eslint = vim.fs.find(eslint_config, { upward = true })[1]
+      local has_biome_config = vim.fs.find(biome_config, { upward = true })[1]
 
       if has_prettier and has_eslint then
-        return { "prettier", "eslint_d" }
+        return { "eslint_d", "prettier" }
       end
 
       if has_biome_config and has_eslint then
-        -- Prettierの設定ファイルがなく、ESLintの設定ファイルが存在する場合は、フォーマッターとしてbiomeを利用する
-        return { "biome", "eslint_d" }
+        return { "eslint_d", "biome" }
       end
 
       if has_biome_config then
@@ -56,8 +59,6 @@ return {
 
       return {}
     end
-    -- 最初に利用可能なフォーマッタを実行する
-    local web_formatter = { "biome", "prettier", stop_after_first = true }
 
     require("conform").setup({
       formatters_by_ft = {
@@ -67,24 +68,17 @@ return {
         typescriptreact = js_formatter,
         vue = js_formatter,
         svelte = js_formatter,
-        json = web_formatter,
-        jsonc = web_formatter,
-        css = web_formatter,
-        scss = web_formatter,
-        lua = { "stylua" },
-        go = { "goimports", "gofmt" },
-        -- You can customize some of the format options for the filetype (:help conform.format)
-        rust = { "rustfmt", lsp_format = "fallback" },
-        terraform = { "terraform_fmt" },
       },
       format_on_save = {
-        timeout_ms = 500,
+        -- モノレポ構成の場合、ルートから深い階層にあるファイルに対してフォーマッターを実行すると、タイムアウトエラーで落ちるため、長めに5秒で設定している
+        timeout_ms = 5000,
         lsp_format = "fallback",
       },
+      -- Formatterの動作をカスタマイズする
       formatters = {
         biome = {
           command = "npx",
-          -- biome check --write --unsafeでフォーマットする
+          -- biome check --write --unsafe でフォーマットする
           args = {
             "biome",
             "check",
@@ -94,7 +88,21 @@ return {
             "$FILENAME",
           },
           stdin = true,
-          cwd = require("conform.util").root_file({ "biome.json", "biome.jsonc" }),
+          cwd = require("conform.util").root_file(prettier_config),
+        },
+        eslint_d = {
+          command = "npx",
+          -- Mason経由でインストールしたeslint_dを使用してフォーマットする
+          -- @see: https://github.com/mantoni/eslint_d.js/
+          args = {
+            "eslint_d",
+            "--fix-to-stdout",
+            "--stdin",
+            "--stdin-filename",
+            "$FILENAME",
+          },
+          stdin = true,
+          cwd = require("conform.util").root_file(eslint_config),
         },
       },
     })
