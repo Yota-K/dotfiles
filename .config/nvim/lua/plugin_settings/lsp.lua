@@ -66,7 +66,10 @@ return {
     -- MasonToolsInstall
     mason_tool_installer.setup({
       ensure_installed = {
+        "biome",
         "cspell",
+        "eslint_d",
+        "prettier"
       },
     })
 
@@ -116,8 +119,8 @@ return {
             },
           }
 
-        -- LuaのLSPの設定をオーバーライドする
-        -- 参考: https://github.com/cpdean/cpd.dotfiles/blob/7da9ac7f64857cb5139f6623bd8ca0eaf63ddd5f/config/nvim/lua/cpdean_config/nvim-lsp.lua#L326-L375
+          -- LuaのLSPの設定をオーバーライドする
+          -- 参考: https://github.com/cpdean/cpd.dotfiles/blob/7da9ac7f64857cb5139f6623bd8ca0eaf63ddd5f/config/nvim/lua/cpdean_config/nvim-lsp.lua#L326-L375
         elseif server_name == "lua_ls" then
           opts.settings = {
             Lua = {
@@ -175,7 +178,7 @@ return {
     -- LSP handlers
     -- LSPサーバーから送信される"publishDiagnostics"メッセージを処理する際に、仮想テキストとしてエラー情報を表示しないようにする
     vim.lsp.handlers["textDocument/publishDiagnostics"] =
-      vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, { virtual_text = false })
+        vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, { virtual_text = false })
 
     --
     -- Completion settings (hrsh7th/nvim-cmp)
