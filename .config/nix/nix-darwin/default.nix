@@ -40,15 +40,20 @@
     # ないとエラーで落ちた
     stateVersion = 4;
 
+    NSGlobalDomain = {
+      # システム音のボリュームを0に設定する
+      "com.apple.sound.beep.volume" = 0.0;
+      # キーリピート速度を設定する（短いほど速い）
+      KeyRepeat = 1;
+      # キーリピート開始の遅延時間を設定する（短いほど速い）
+      InitialKeyRepeat = 10;
+    };
+
     # https://daiderd.com/nix-darwin/manual/index.html
     defaults = {
-      # Finder ですべてのファイル拡張子を表示するかどうか
-      NSGlobalDomain.AppleShowAllExtensions = true;
       finder = {
         # 隠しファイルを常に表示するかどうか。
         AppleShowAllFiles = true;
-        # ファイル拡張子を常に表示するかどうか
-        AppleShowAllExtensions = true;
       };
       dock = {
         # ドックを自動的に非表示または表示するかどうか。
