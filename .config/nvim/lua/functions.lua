@@ -124,9 +124,8 @@ end, {
 })
 
 -- カーソル位置のコードをcursorで開く
-function OpenByCursor()
+vim.api.nvim_create_user_command("Cursor", function()
   local path = vim.fn.expand("%:p")
   local line = vim.fn.line(".")
   vim.fn.system(string.format("cursor --g %s:%d", path, line))
-end
-vim.api.nvim_create_user_command("Cursor", OpenByCursor, { range = true })
+end, { range = true })
