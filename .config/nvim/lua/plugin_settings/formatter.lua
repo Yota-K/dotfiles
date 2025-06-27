@@ -12,6 +12,7 @@ return {
       ".prettierrc.json5",
       ".prettierrc.js",
       ".prettierrc.cjs",
+      ".prettierrc.mjs",
       ".prettierrc.toml",
       "prettier.config.js",
       "prettier.config.cjs",
@@ -41,9 +42,13 @@ return {
     -- 複数のフォーマッタが指定されている場合は、順番にフォーマッターを実行する挙動になる
     -- @see: https://github.com/stevearc/conform.nvim?tab=readme-ov-file#setup
     local js_formatter = function()
-      local has_prettier = vim.fs.find(prettier_config, { upward = true })[1]
-      local has_eslint = vim.fs.find(eslint_config, { upward = true })[1]
-      local has_biome_config = vim.fs.find(biome_config, { upward = true })[1]
+      local root_prettier = require("conform.util").root_file(prettier_config)
+      local root_eslint = require("conform.util").root_file(eslint_config)
+      local root_biome = require("conform.util").root_file(biome_config)
+
+      local has_prettier = root_prettier ~= nil
+      local has_eslint = root_eslint ~= nil
+      local has_biome_config = root_biome ~= nil
 
       if has_prettier and has_eslint then
         return { "eslint_d", "prettier" }
@@ -88,7 +93,7 @@ return {
             "$FILENAME",
           },
           stdin = true,
-          cwd = require("conform.util").root_file(prettier_config),
+          cwd = require("conform.util").root_file(biome_config),
         },
         eslint_d = {
           command = "npx",
