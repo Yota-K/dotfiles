@@ -81,6 +81,16 @@ return {
       },
       -- Formatterの動作をカスタマイズする
       formatters = {
+        prettier = {
+          command = "npx",
+          args = {
+            "prettier",
+            "--stdin-filepath",
+            "$FILENAME",
+          },
+          stdin = true,
+          cwd = require("conform.util").root_file(prettier_config),
+        },
         biome = {
           command = "npx",
           -- biome check --write --unsafe でフォーマットする
