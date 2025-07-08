@@ -21,6 +21,7 @@ let
     eza
     fish
     fzf
+    gh
     git
     gitflow
     go
