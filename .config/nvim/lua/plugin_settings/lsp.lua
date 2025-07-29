@@ -29,38 +29,40 @@ return {
       },
     })
 
+    local servers = {
+      -- languages
+      "html",
+      "cssls",
+      "ts_ls",
+      "gopls",
+      "lua_ls",
+      "ruby_lsp",
+      "rust_analyzer",
+      -- libraries
+      "svelte",
+      "prismals",
+      -- FW
+      "astro",
+      "tailwindcss",
+      -- others
+      "jsonls",
+      "dockerls",
+      "yamlls",
+      "denols",
+      "eslint",
+      "biome",
+      "graphql",
+      "nil_ls",
+      "sqls",
+      -- Rubyのコード補完、ドキュメントを提供してくれるLSP
+      "solargraph",
+      "terraformls",
+    }
     mason_lspconfig.setup({
-      ensure_installed = {
-        -- languages
-        "html",
-        "cssls",
-        "ts_ls",
-        "gopls",
-        "lua_ls",
-        "ruby_lsp",
-        "rust_analyzer",
-        -- libraries
-        "svelte",
-        "prismals",
-        -- FW
-        "astro",
-        "tailwindcss",
-        -- others
-        "jsonls",
-        "dockerls",
-        "yamlls",
-        "denols",
-        "eslint",
-        "biome",
-        "graphql",
-        "nil_ls",
-        "sqls",
-        -- Rubyのコード補完、ドキュメントを提供してくれるLSP
-        "solargraph",
-        "terraformls",
-      },
+      ensure_installed = servers,
       automatic_enable = true,
     })
+    vim.lsp.enable(servers)
 
     -- MasonToolsInstall
     mason_tool_installer.setup({
@@ -73,29 +75,38 @@ return {
     })
 
     vim.lsp.config("*", {
-      on_attach = function(_, bufnr)
-        -- キーマッピング
+      capabilities = cmp_nvim_lsp.default_capabilities()
+    })
+
+    -- ref: https://github.com/NickCao/flakes/blob/master/nixos/mainframe/nvim.lua
+    vim.api.nvim_create_autocmd('LspAttach', {
+      group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+      callback = function(ev)
+        -- Enable completion triggered by <c-x><c-o>
+        vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
+
+        local opts = { buffer = ev.buf }
+
         -- ヒントを表示
-        vim.keymap.set("n", "<space>h", "<cmd>lua vim.lsp.buf.hover()<CR>")
+        vim.keymap.set("n", "<space>h", vim.lsp.buf.hover, opts)
         -- 定義元ジャンプ
-        vim.keymap.set("n", "<space>]", "<cmd>lua vim.lsp.buf.definition()<CR>")
+        vim.keymap.set("n", "<space>]", vim.lsp.buf.definition, opts)
         -- カーソル下の変数をコード内で参照している箇所を一覧表示
-        vim.keymap.set("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>")
+        vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
         -- エラーを表示
-        vim.keymap.set("n", "ge", "<cmd>lua vim.diagnostic.open_float()<CR>")
+        vim.keymap.set("n", "ge", vim.diagnostic.open_float, opts)
         -- エラーの発生箇所に移動
-        vim.keymap.set("n", "e]", "<cmd>lua vim.diagnostic.goto_next()<CR>")
-        vim.keymap.set("n", "e[", "<cmd>lua vim.diagnostic.goto_prev()<CR>")
+        vim.keymap.set("n", "e]", vim.diagnostic.goto_next, opts)
+        vim.keymap.set("n", "e[", vim.diagnostic.goto_prev, opts)
 
         -- 必要になったらコメントアウト解除して使えるようにする
-        -- vim.keymap.set('n', 'gf', '<cmd>lua vim.lsp.buf.formatting()<CR>')
-        -- vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>')
-        -- vim.keymap.set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>')
-        -- vim.keymap.set('n', 'gt', '<cmd>lua vim.lsp.buf.type_definition()<CR>')
-        -- vim.keymap.set('n', 'gn', '<cmd>lua vim.lsp.buf.rename()<CR>')
-        -- vim.keymap.set('n', 'ga', '<cmd>lua vim.lsp.buf.code_action()<CR>')
+        -- vim.keymap.set('n', 'gf', function() vim.lsp.buf.format({ async = true }) end, opts)
+        -- vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
+        -- vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
+        -- vim.keymap.set('n', 'gt', vim.lsp.buf.type_definition, opts)
+        -- vim.keymap.set('n', 'gn', vim.lsp.buf.rename, opts)
+        -- vim.keymap.set('n', 'ga', vim.lsp.buf.code_action, opts)
       end,
-      capabilities = cmp_nvim_lsp.default_capabilities()
     })
 
     -- 補完設定
