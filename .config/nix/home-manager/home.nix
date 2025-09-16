@@ -1,8 +1,9 @@
-{ inputs
-, lib
-, config
-, pkgs
-, ...
+{
+  inputs,
+  lib,
+  config,
+  pkgs,
+  ...
 }:
 let
   username = builtins.getEnv "DARWIN_USER";
@@ -18,6 +19,7 @@ let
     direnv
     docker
     docker-compose
+    ecspresso
     eza
     fish
     fzf
@@ -71,12 +73,14 @@ in
   nix = {
     settings = {
       # FlakesとNix commandをはNixの実験的機能なので、experimental-featuresフィールドに追加する
-      experimental-features = ["nix-command" "flakes"];
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
     };
     gc = {
       automatic = true;
-      frequency = "weekly";
-      options = "--delete-older-than 7d";
+      dates = "weekly";
     };
     package = pkgs.nix;
   };
