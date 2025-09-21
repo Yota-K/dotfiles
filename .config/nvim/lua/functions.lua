@@ -123,9 +123,74 @@ end, {
   bang = true,
 })
 
--- カーソル位置のコードをcursorで開く
-vim.api.nvim_create_user_command("Cursor", function()
-  local path = vim.fn.expand("%:p")
-  local line = vim.fn.line(".")
-  vim.fn.system(string.format("cursor --g %s:%d", path, line))
-end, { range = true })
+-- cursorコマンドをターミナルで実行する
+--使用例：
+-- - :Cursor - ターミナルでcursorコマンドのみ実行（CLIモード）
+-- - :Cursor gui - GUIのCursorアプリでファイル全体を開く
+-- - :Cursor 10,20 - ターミナルでcursor file:10:20を実行（CLIモード）
+-- - :Cursor gui 10,20 - GUIのCursorアプリで10-20行目を開く
+vim.api.nvim_create_user_command("Cursor", function(opts)
+  local buf = vim.api.nvim_get_current_buf()
+  local file_path = vim.api.nvim_buf_get_name(buf)
+
+  if file_path == "" then
+    vim.notify("ファイルが保存されていません", vim.log.levels.WARN)
+    return
+  end
+
+  local cursor_cmd = "cursor"
+  local is_gui = false
+
+  -- 引数を解析
+  if opts.args and opts.args ~= "" then
+    local args = vim.split(opts.args, "%s+")
+
+    -- guiオプションをチェック
+    for _, arg in ipairs(args) do
+      if arg == "gui" then
+        is_gui = true
+      end
+    end
+
+    -- 数値の範囲をチェック
+    local start_line, end_line = opts.args:match("(%d+),?(%d*)")
+    if start_line then
+      start_line = tonumber(start_line)
+      end_line = end_line == "" and start_line or tonumber(end_line)
+      if is_gui then
+        cursor_cmd = string.format("cursor %s:%d:%d", file_path, start_line, end_line)
+      else
+        cursor_cmd = string.format("cursor %s:%d:%d", file_path, start_line, end_line)
+      end
+    elseif is_gui then
+      cursor_cmd = "cursor " .. file_path
+    end
+  else
+    -- ファイルパスを渡さずに単純にcursorコマンドのみ実行
+    cursor_cmd = "cursor"
+  end
+
+  if is_gui then
+    -- GUIモード: ターミナルを開かずに直接実行
+    vim.cmd("!" .. cursor_cmd)
+  else
+    -- CLIモード: ターミナルを垂直分割で開く
+    vim.cmd("vsplit")
+    vim.cmd("terminal")
+
+    -- ターミナル内でcursorコマンドを実行
+    local terminal_buf = vim.api.nvim_get_current_buf()
+    local job_id = vim.b.terminal_job_id
+
+    if job_id then
+      vim.api.nvim_chan_send(job_id, cursor_cmd .. "\r")
+    else
+      -- ジョブIDが取得できない場合の代替方法
+      vim.api.nvim_buf_call(terminal_buf, function()
+        vim.cmd("normal! G")
+        vim.cmd("normal! A" .. cursor_cmd)
+        vim.cmd("normal! A")
+      end)
+    end
+  end
+end, { nargs = "?" })
