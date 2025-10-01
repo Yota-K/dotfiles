@@ -7,6 +7,9 @@
 --  ╚═╝╚═╝  ╚═══╝╚═╝   ╚═╝╚═╝╚══════╝ ╚═════╝ ╚═╝  ╚═╝
 --
 
+-- ログの保存先をtmpに変更
+vim.env.XDG_STATE_HOME = '/tmp'
+
 require("base")
 require("functions")
 require("keymap")
