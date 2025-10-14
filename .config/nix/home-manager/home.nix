@@ -8,6 +8,7 @@ let
 
   tools = with pkgs; [
     aws-sam-cli
+    aws-vault
     awscli2
     bat
     curl
