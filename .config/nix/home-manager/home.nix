@@ -7,7 +7,7 @@ let
   username = builtins.getEnv "DARWIN_USER";
 
   tools = with pkgs; [
-    aws-sam-cli
+    # aws-sam-cli
     aws-vault
     awscli2
     bat
