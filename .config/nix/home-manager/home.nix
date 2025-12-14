@@ -50,8 +50,8 @@ let
     yazi
   ];
   editors = with pkgs; [
-    neovim # neovim-nightly
     vim
+    neovim
   ];
   terminalPackages = with pkgs; [
     alacritty
@@ -64,9 +64,6 @@ in
     config = {
       allowUnfree = true;
     };
-    overlays = [
-      inputs.neovim-nightly-overlay.overlays.default
-    ];
   };
 
   nix = {
