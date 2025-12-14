@@ -1,4 +1,4 @@
-{ pkgs, ... }: 
+{ pkgs, ... }:
 let
   username = builtins.getEnv "DARWIN_USER";
 in
