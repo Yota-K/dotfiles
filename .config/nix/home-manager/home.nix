@@ -3,8 +3,6 @@
 , ...
 }:
 let
-  username = builtins.getEnv "DARWIN_USER";
-
   tools = with pkgs; [
     # aws-sam-cli
     aws-vault
@@ -81,8 +79,8 @@ in
   };
 
   home = {
-    username = username;
-    homeDirectory = "/Users/${username}";
+    username = "public";
+    homeDirectory = "/Users/public";
     # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
     stateVersion = "24.05";
     packages = tools ++ editors ++ terminalPackages;

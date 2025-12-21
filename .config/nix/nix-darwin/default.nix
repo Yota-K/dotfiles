@@ -1,7 +1,4 @@
 { pkgs, ... }:
-let
-  username = builtins.getEnv "DARWIN_USER";
-in
 {
   fonts = {
     packages = with pkgs; [
@@ -40,7 +37,7 @@ in
   };
 
   system = {
-    primaryUser = username;
+    primaryUser = "public";
 
     # 下位互換性のため
     # ないとエラーで落ちた
