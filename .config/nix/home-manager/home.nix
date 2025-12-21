@@ -1,6 +1,7 @@
-{ inputs
-, pkgs
-, ...
+{
+  inputs,
+  pkgs,
+  ...
 }:
 let
   tools = with pkgs; [
@@ -34,7 +35,6 @@ let
     php
     pyenv
     ripgrep
-    ruby
     rustup
     starship
     stylua
