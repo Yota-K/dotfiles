@@ -1,24 +1,19 @@
 {
   description = "My nix configuration";
-
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
-
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
     nix-darwin = {
       url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
     neovim-nightly-overlay = {
       url = "github:nix-community/neovim-nightly-overlay";
     };
   };
-
   outputs =
     inputs@{ self
     , nixpkgs
@@ -32,7 +27,6 @@
         "x86_64-darwin"
         "aarch64-darwin"
       ];
-
       forAllSystems = nixpkgs.lib.genAttrs supportSystems;
     in
     {
@@ -67,10 +61,6 @@
           };
         }
       );
-
-      ########################################
-      # home-manager
-      ########################################
       homeConfigurations = {
         darwinConfig = home-manager.lib.homeManagerConfiguration {
           pkgs = import nixpkgs {
@@ -86,10 +76,6 @@
           ];
         };
       };
-
-      ########################################
-      # nix-darwin
-      ########################################
       darwinConfigurations."my-macbook" = nix-darwin.lib.darwinSystem {
         system = "aarch64-darwin";
         specialArgs = {
@@ -99,10 +85,6 @@
           ./.config/nix/nix-darwin/default.nix
         ];
       };
-
-      ########################################
-      # formatter
-      ########################################
       formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.nixpkgs-fmt);
     };
 }
