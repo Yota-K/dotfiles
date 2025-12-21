@@ -13,8 +13,6 @@ let
     delta
     deno
     direnv
-    docker
-    docker-compose
     ecspresso
     eza
     fish
@@ -31,6 +29,7 @@ let
     lua
     ngrok
     nixfmt-rfc-style
+    orbstack
     perl
     php
     pyenv

@@ -16,7 +16,12 @@
   };
 
   outputs =
-    inputs@{ self, nixpkgs, home-manager, nix-darwin }:
+    inputs@{ self
+    , nixpkgs
+    , home-manager
+    , nix-darwin
+    ,
+    }:
     let
       supportSystems = [
         "x86_64-darwin"
@@ -29,7 +34,8 @@
       ########################################
       # nix run .#update
       ########################################
-      apps = forAllSystems (system:
+      apps = forAllSystems (
+        system:
         let
           pkgs = import nixpkgs {
             inherit system;
@@ -38,19 +44,21 @@
         {
           update = {
             type = "app";
-            program = toString (pkgs.writeShellScript "update-script" ''
-              set -e
-              echo "Updating flake... ⚙️"
-              nix flake update
+            program = toString (
+              pkgs.writeShellScript "update-script" ''
+                set -e
+                echo "Updating flake... ⚙️"
+                nix flake update
 
-              echo "Updating home-manager... 🏠"
-              nix run nixpkgs#home-manager -- switch --flake .#darwinConfig --impure
+                echo "Updating home-manager... 🏠"
+                nix run nixpkgs#home-manager -- switch --flake .#darwinConfig --impure
 
-              echo "Updating nix-darwin... 🍎"
-              sudo darwin-rebuild switch --flake .#my-macbook
+                echo "Updating nix-darwin... 🍎"
+                sudo nix run nix-darwin/master#darwin-rebuild -- switch --flake .#my-macbook
 
-              echo "Update complete! ✅"
-            '');
+                echo "Update complete! ✅"
+              ''
+            );
           };
         }
       );
@@ -90,8 +98,6 @@
       ########################################
       # formatter
       ########################################
-      formatter = forAllSystems (system:
-        nixpkgs.legacyPackages.${system}.nixpkgs-fmt
-      );
+      formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.nixpkgs-fmt);
     };
 }
