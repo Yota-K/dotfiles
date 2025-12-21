@@ -53,6 +53,7 @@ let
     tmux
     zellij
   ];
+  username = "public";
 in
 {
   nixpkgs = {
@@ -77,8 +78,8 @@ in
   };
 
   home = {
-    username = "public";
-    homeDirectory = "/Users/public";
+    username = username;
+    homeDirectory = "/Users/${username}";
     # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
     stateVersion = "24.05";
     packages = tools ++ editors ++ terminalPackages;
