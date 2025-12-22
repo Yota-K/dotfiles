@@ -1,3 +1,10 @@
+# NOTE
+# fishの文法
+# @see https://www.gfd-dennou.org/member/hiroki/homepage/main009.html
+# 
+# Fish Shellでコマンドの実行結果を変数に代入する方法
+# https://efcl.info/2013/0520/res3282/
+
 #########################################
 # 環境変数
 #########################################
@@ -182,26 +189,6 @@ function gtag_commit
   git tag -a $argv[1] -m $argv[1] -a
 end
 
-# パスを指定してtigを開く
-function topen
-  if string length -q -- $argv
-    set dir $argv
-    cd $dir
-
-    # 指定したディレクトリに.gitがあるかのチェック
-    if test -d .git
-      tiga
-    else
-      echo 'Not found .git directory.'
-      return 0
-    end
-
-  else
-    echo 'Please setting args.'
-    return 0
-  end
-end
-
 # VoltaでインストールしたNode.jsを削除する
 function remove_node_for_volta
   set package $argv[1]
@@ -297,13 +284,3 @@ status --is-interactive; and rbenv init - --no-rehash fish | source
 if test -f /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.fish
   source /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.fish
 end
-
-#########################################
-# MEMO
-#########################################
-
-# fishの文法
-# MEMO: https://www.gfd-dennou.org/member/hiroki/homepage/main009.html
-
-# Fish Shellでコマンドの実行結果を変数に代入する方法
-# https://efcl.info/2013/0520/res3282/
