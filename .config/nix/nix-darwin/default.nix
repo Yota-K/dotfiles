@@ -46,6 +46,12 @@
     # https://daiderd.com/nix-darwin/manual/index.html
     defaults = {
       NSGlobalDomain = {
+        # ダークモード
+        AppleInterfaceStyle = "Dark";
+        # 24時間表示
+        AppleICUForce24HourTime = true;
+        # サイドバーのアイコンサイズ (1=小, 2=中, 3=大)
+        NSTableViewDefaultSizeMode = 2;
         # システム音のボリュームを0に設定する
         "com.apple.sound.beep.volume" = 0.0;
         # キーリピート速度を設定する（短いほど速い）
@@ -56,14 +62,23 @@
       finder = {
         # 隠しファイルを常に表示するかどうか。
         AppleShowAllFiles = true;
+        # すべてのファイル拡張子を表示するかどうか
+        AppleShowAllExtensions = true;
       };
       dock = {
-        # ドックを自動的に非表示または表示するかどうか。
+        # ドック内のアイコンのサイズ。デフォルトは64
+        tilesize = 40;
+        # ドックを自動的に非表示または表示するかどうか
         autohide = true;
         # ドックに最近使用したアプリケーションを表示します
         show-recents = false;
         # メニューバーの表示位置
         orientation = "left";
+      };
+      screencapture = {
+        location = "~/Documents/screenshot";
+        # 使用する画像の拡張子
+        type = "png";
       };
     };
   };
