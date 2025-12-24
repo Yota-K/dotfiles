@@ -1,6 +1,10 @@
 gui:
   showIcons: true
   mouseEvents: false
+os:
+  # A built-in preset that sets all of the above settings. Supported presets are
+  # defined in the getPreset function in editor_presets.go.
+  editPreset: "nvim"
 git:
   pagers:
     - pager: delta --dark --paging=never
