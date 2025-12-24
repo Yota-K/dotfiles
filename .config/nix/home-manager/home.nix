@@ -21,6 +21,7 @@ let
     git
     gitflow
     go
+    google-cloud-sdk
     graphviz
     jq
     lazygit
