@@ -2,12 +2,12 @@
 return {
   "monaqa/dial.nvim",
   keys = {
-    { "<C-a>", mode = "n" },
-    { "<C-x>", mode = "n" },
+    { "<C-a>",  mode = "n" },
+    { "<C-x>",  mode = "n" },
     { "g<C-a>", mode = "n" },
     { "g<C-x>", mode = "n" },
-    { "<C-a>", mode = "v" },
-    { "<C-x>", mode = "v" },
+    { "<C-a>",  mode = "v" },
+    { "<C-x>",  mode = "v" },
     { "g<C-a>", mode = "v" },
     { "g<C-x>", mode = "v" },
   },
@@ -32,10 +32,10 @@ return {
         augend.case.new({
           types = { "camelCase", "snake_case", "kebab-case", "SCREAMING_SNAKE_CASE", "PascalCase" },
         }),
-        augend.integer.alias.decimal, -- nonnegative decimal number (0, 1, 2, 3, ...)
-        augend.integer.alias.hex, -- nonnegative hex number  (0x01, 0x1a1f, etc.)
-        augend.date.alias["%Y/%m/%d"], -- date (2022/02/19, etc.)
-        augend.constant.alias.bool, -- boolean value (true <-> false)
+        augend.integer.alias.decimal,     -- nonnegative decimal number (0, 1, 2, 3, ...)
+        augend.integer.alias.hex,         -- nonnegative hex number  (0x01, 0x1a1f, etc.)
+        augend.date.alias["%Y/%m/%d"],    -- date (2022/02/19, etc.)
+        augend.constant.alias.bool,       -- boolean value (true <-> false)
         augend.constant.alias.ja_weekday, -- Japanese weekday	月, 火, ..., 土, 日
         augend.constant.new({
           elements = { "&&", "||" },
