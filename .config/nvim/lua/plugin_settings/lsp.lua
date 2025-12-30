@@ -2,8 +2,8 @@
 return {
   "neovim/nvim-lspconfig",
   dependencies = {
-    "williamboman/mason.nvim",
-    "williamboman/mason-lspconfig.nvim",
+    "mason-org/mason.nvim",
+    "mason-org/mason-lspconfig.nvim",
     "WhoIsSethDaniel/mason-tool-installer.nvim",
     "hrsh7th/vim-vsnip",
     "hrsh7th/nvim-cmp",
@@ -37,6 +37,7 @@ return {
       "gopls",
       "lua_ls",
       "ruby_lsp",
+      "solargraph", -- Rubyのコード補完、ドキュメントを提供してくれるLSP
       "rust_analyzer",
       -- libraries
       "svelte",
@@ -54,8 +55,6 @@ return {
       "graphql",
       "nil_ls",
       "sqls",
-      -- Rubyのコード補完、ドキュメントを提供してくれるLSP
-      "solargraph",
       "terraformls",
     }
     mason_lspconfig.setup({
