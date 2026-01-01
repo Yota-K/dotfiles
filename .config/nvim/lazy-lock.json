@@ -1,8 +1,8 @@
 {
-  "avante.nvim": { "branch": "main", "commit": "5e37159898739c80fda5e9848aa77e184336a849" },
+  "avante.nvim": { "branch": "main", "commit": "7a9fbbd4ddc9affc6a33bff644b1af7c0f908e74" },
   "bamboo.nvim": { "branch": "master", "commit": "1309bc88bffcf1bedc3e84e7fa9004de93da774a" },
   "cmp-nvim-lsp": { "branch": "main", "commit": "cbc7b02bb99fae35cb42f514762b89b5126651ef" },
-  "conform.nvim": { "branch": "master", "commit": "df83eeaab265dacd2eef139a78e502a3f8926618" },
+  "conform.nvim": { "branch": "master", "commit": "4b713b9da0061a54750bfed457e190459be28c7b" },
   "copilot.lua": { "branch": "master", "commit": "e78d1ffebdf6ccb6fd8be4e6898030c1cf5f9b64" },
   "dial.nvim": { "branch": "master", "commit": "f2634758455cfa52a8acea6f142dcd6271a1bf57" },
   "dressing.nvim": { "branch": "master", "commit": "2d7c2db2507fa3c4956142ee607431ddb2828639" },
@@ -34,6 +34,6 @@
   "vim-findroot": { "branch": "master", "commit": "76af2f097cf8196b00f049054444966d10c82f95" },
   "vim-qfreplace": { "branch": "master", "commit": "707a895f9f86eeed106f64da0bd9fa07b3cd9cee" },
   "vim-vsnip": { "branch": "master", "commit": "9bcfabea653abdcdac584283b5097c3f8760abaa" },
-  "vimdoc-ja": { "branch": "master", "commit": "741ddf00ccdad7a222b2ca4acff0b0f946eed4cc" },
+  "vimdoc-ja": { "branch": "master", "commit": "6bd30665b5d023cfd735fd12ec232716b8b6cd7b" },
   "winresizer": { "branch": "master", "commit": "9bd559a03ccec98a458e60c705547119eb5350f3" }
 }
