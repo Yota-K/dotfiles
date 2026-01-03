@@ -11,19 +11,133 @@ nvim_create_user_command("JsonFormatter", function()
   ]])
 end, {})
 
--- xmlを保存時に整形
-vim.api.nvim_create_autocmd({ "BufWritePre" }, {
-  pattern = { "*.xml" },
-  callback = function()
-    local success, error_message = pcall(function()
-      vim.cmd([[ execute("%s/></>\r</g | filetype indent on | setf xml | normal gg=G") ]])
-    end)
+-- Cspellのユーザー辞書に単語を追加する処理
+nvim_create_user_command("CspellAppend", function(opts)
+  -- optsから引数を取得
+  local word = opts.args or ""
 
-    if not success then
-      vim.notify("[xml format]" .. error_message, vim.log.levels.ERROR)
+  -- optsが空の場合はホバーしているワードを取得
+  if word == "" then
+    word = vim.fn.expand("<cword>"):lower()
+  end
+
+  -- 引数も設定せず、ホバーしているワードも取得できない場合はエラーを表示
+  if word == "" then
+    vim.notify("Word not set.", vim.log.levels.ERROR)
+  end
+
+  -- vim.call("expand", ...) を使用して、~をユーザーのホームディレクトリの絶対パスに展開する
+  local cspell_dirs = {
+    dotfiles = vim.call("expand", "~/.config/cspell/dotfiles.txt"),
+    user = vim.call("expand", "~/.local/share/cspell/user.txt"),
+  }
+
+  -- bangの有無で保存先を分岐
+  -- bang: コマンド実行時の!のこと
+  -- CspellAppend! で実行すると、dotfiles.txtに追加する
+  local dictionary_name = opts.bang and "dotfiles" or "user"
+
+  -- shellのechoコマンドで登録したい単語を辞書ファイルに追加
+  vim.fn.system(string.format("echo %s >> %s", word, cspell_dirs[dictionary_name]))
+
+  -- cspellをリロードするため、現在行を更新してすぐ戻す
+  if vim.api.nvim_get_option_value("modifiable", {}) then
+    vim.api.nvim_set_current_line(vim.api.nvim_get_current_line())
+    vim.api.nvim_command("silent! undo")
+  end
+
+  vim.notify(word .. " added to " .. dictionary_name .. " dictionary.", vim.log.levels.INFO)
+end, {
+  nargs = "?",
+  bang = true,
+})
+
+-- AIアシスタントをターミナルで起動するコマンド
+-- デフォだと、Copilot cliを使用する
+nvim_create_user_command("AiHelp", function(opts)
+  local buf = vim.api.nvim_get_current_buf()
+  local file_path = vim.api.nvim_buf_get_name(buf)
+
+  if file_path == "" then
+    vim.notify("ファイルが保存されていません", vim.log.levels.WARN)
+    return
+  end
+
+  -- mode引数をパースして使用するコマンドを決定
+  local command = "copilot"
+  if opts.args and opts.args:match("mode=cursor") then
+    command = "cursor-agent"
+  end
+  if opts.args and opts.args:match("mode=gemini") then
+    command = "gemini"
+  end
+
+  -- CLIモード: ターミナルを垂直分割で開く
+  vim.cmd("vsplit")
+  vim.cmd("wincmd r")
+  vim.cmd("terminal " .. command)
+end, {
+  nargs = "?",
+  complete = function(arg_lead, cmd_line, cursor_pos)
+    local candidates = { "mode=copilot", "mode=cursor", "mode=gemini" }
+    if arg_lead == "" then
+      return candidates
     end
+    local matches = {}
+    for _, candidate in ipairs(candidates) do
+      if candidate:find(arg_lead, 1, true) == 1 then
+        table.insert(matches, candidate)
+      end
+    end
+    return matches
   end,
 })
+
+-- Ctopをfloating window内で実行するコマンド
+nvim_create_user_command("Ctop", function()
+  -- ctopコマンドが存在するかチェック
+  if vim.fn.executable("ctop") == 0 then
+    vim.notify("ctop command not found.", vim.log.levels.ERROR)
+    return
+  end
+
+  -- バッファを作成
+  local buf = vim.api.nvim_create_buf(false, true)
+
+  -- ウィンドウのサイズを設定（画面の80%）
+  local width = math.floor(vim.o.columns * 0.8)
+  local height = math.floor(vim.o.lines * 0.8)
+
+  -- ウィンドウの位置を中央に設定
+  local col = math.floor((vim.o.columns - width) / 2)
+  local row = math.floor((vim.o.lines - height) / 2)
+
+  -- floating windowを作成
+  local win = vim.api.nvim_open_win(buf, true, {
+    relative = "editor",
+    width = width,
+    height = height,
+    col = col,
+    row = row,
+    style = "minimal",
+    border = "single",
+  })
+
+  -- バッファにctopを実行するターミナルを起動
+  vim.fn.termopen("ctop", {
+    on_exit = function()
+      -- ctopが終了したら自動的にウィンドウを閉じる
+      vim.schedule(function()
+        if vim.api.nvim_win_is_valid(win) then
+          vim.api.nvim_win_close(win, true)
+        end
+      end)
+    end,
+  })
+
+  -- ターミナルモードに入る
+  vim.cmd("startinsert")
+end, {})
 
 -- タブラインのカスタマイズ
 -- タブをタブ番号 + ファイル名 + ファイル拡張子のアイコンの形式に変更する
@@ -81,85 +195,3 @@ end
 -- グローバルな関数として登録
 _G.myTabline = myTabline
 vim.o.tabline = "%!v:lua.myTabline()"
-
--- Cspellのユーザー辞書に単語を追加する処理
-vim.api.nvim_create_user_command("CspellAppend", function(opts)
-  -- optsから引数を取得
-  local word = opts.args or ""
-
-  -- optsが空の場合はホバーしているワードを取得
-  if word == "" then
-    word = vim.fn.expand("<cword>"):lower()
-  end
-
-  -- 引数も設定せず、ホバーしているワードも取得できない場合はエラーを表示
-  if word == "" then
-    vim.notify("Word not set.", vim.log.levels.ERROR)
-  end
-
-  -- vim.call("expand", ...) を使用して、~をユーザーのホームディレクトリの絶対パスに展開する
-  local cspell_dirs = {
-    dotfiles = vim.call("expand", "~/.config/cspell/dotfiles.txt"),
-    user = vim.call("expand", "~/.local/share/cspell/user.txt"),
-  }
-
-  -- bangの有無で保存先を分岐
-  -- bang: コマンド実行時の!のこと
-  -- CspellAppend! で実行すると、dotfiles.txtに追加する
-  local dictionary_name = opts.bang and "dotfiles" or "user"
-
-  -- shellのechoコマンドで登録したい単語を辞書ファイルに追加
-  vim.fn.system(string.format("echo %s >> %s", word, cspell_dirs[dictionary_name]))
-
-  -- cspellをリロードするため、現在行を更新してすぐ戻す
-  if vim.api.nvim_get_option_value("modifiable", {}) then
-    vim.api.nvim_set_current_line(vim.api.nvim_get_current_line())
-    vim.api.nvim_command("silent! undo")
-  end
-
-  vim.notify(word .. " added to " .. dictionary_name .. " dictionary.", vim.log.levels.INFO)
-end, {
-  nargs = "?",
-  bang = true,
-})
-
--- AIアシスタントをターミナルで起動するコマンド
--- デフォだと、Copilot cliを使用する
-vim.api.nvim_create_user_command("AiHelp", function(opts)
-  local buf = vim.api.nvim_get_current_buf()
-  local file_path = vim.api.nvim_buf_get_name(buf)
-
-  if file_path == "" then
-    vim.notify("ファイルが保存されていません", vim.log.levels.WARN)
-    return
-  end
-
-  -- mode引数をパースして使用するコマンドを決定
-  local command = "copilot"
-  if opts.args and opts.args:match("mode=cursor") then
-    command = "cursor-agent"
-  end
-  if opts.args and opts.args:match("mode=gemini") then
-    command = "gemini"
-  end
-
-  -- CLIモード: ターミナルを垂直分割で開く
-  vim.cmd("vsplit")
-  vim.cmd("wincmd r")
-  vim.cmd("terminal " .. command)
-end, {
-  nargs = "?",
-  complete = function(arg_lead, cmd_line, cursor_pos)
-    local candidates = { "mode=copilot", "mode=cursor", "mode=gemini" }
-    if arg_lead == "" then
-      return candidates
-    end
-    local matches = {}
-    for _, candidate in ipairs(candidates) do
-      if candidate:find(arg_lead, 1, true) == 1 then
-        table.insert(matches, candidate)
-      end
-    end
-    return matches
-  end,
-})
