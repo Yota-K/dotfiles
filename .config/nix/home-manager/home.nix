@@ -22,6 +22,7 @@ let
     gitflow
     go
     google-cloud-sdk
+    google-cloud-sql-proxy
     graphviz
     jq
     lazygit
