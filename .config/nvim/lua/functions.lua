@@ -139,6 +139,48 @@ nvim_create_user_command("Ctop", function()
   vim.cmd("startinsert")
 end, {})
 
+-- LazyGitをfloating window内で実行するコマンド
+nvim_create_user_command("LazyGit", function()
+  -- lazygitコマンドが存在するかチェック
+  if vim.fn.executable("lazygit") == 0 then
+    vim.notify("lazygit command not found.", vim.log.levels.ERROR)
+    return
+  end
+
+  local buf = vim.api.nvim_create_buf(false, true)
+
+  local width = math.floor(vim.o.columns * 0.9)
+  local height = math.floor(vim.o.lines * 0.9)
+
+  local col = math.floor((vim.o.columns - width) / 2)
+  local row = math.floor((vim.o.lines - height) / 2)
+
+  local win = vim.api.nvim_open_win(buf, true, {
+    relative = "editor",
+    width = width,
+    height = height,
+    col = col,
+    row = row,
+    style = "minimal",
+    border = "single",
+  })
+
+  -- バッファにlazygitを実行するターミナルを起動
+  vim.fn.termopen("lazygit", {
+    on_exit = function()
+      -- lazygitが終了したら自動的にウィンドウを閉じる
+      vim.schedule(function()
+        if vim.api.nvim_win_is_valid(win) then
+          vim.api.nvim_win_close(win, true)
+        end
+      end)
+    end,
+  })
+
+  -- ターミナルモードに入る
+  vim.cmd("startinsert")
+end, {})
+
 -- タブラインのカスタマイズ
 -- タブをタブ番号 + ファイル名 + ファイル拡張子のアイコンの形式に変更する
 local fn = vim.fn
