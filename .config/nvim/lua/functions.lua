@@ -11,6 +11,17 @@ nvim_create_user_command("JsonFormatter", function()
   ]])
 end, {})
 
+-- xmlを整形
+nvim_create_user_command("XmlFormatter", function()
+  local success, error_message = pcall(function()
+    vim.cmd([[ execute("%s/></>\r</g | filetype indent on | setf xml | normal gg=G") ]])
+  end)
+
+  if not success then
+    vim.notify("[xml format]" .. error_message, vim.log.levels.ERROR)
+  end
+end, {})
+
 -- Cspellのユーザー辞書に単語を追加する処理
 nvim_create_user_command("CspellAppend", function(opts)
   -- optsから引数を取得
@@ -50,47 +61,6 @@ nvim_create_user_command("CspellAppend", function(opts)
 end, {
   nargs = "?",
   bang = true,
-})
-
--- AIアシスタントをターミナルで起動するコマンド
--- デフォだと、Copilot cliを使用する
-nvim_create_user_command("AiHelp", function(opts)
-  local buf = vim.api.nvim_get_current_buf()
-  local file_path = vim.api.nvim_buf_get_name(buf)
-
-  if file_path == "" then
-    vim.notify("ファイルが保存されていません", vim.log.levels.WARN)
-    return
-  end
-
-  -- mode引数をパースして使用するコマンドを決定
-  local command = "copilot"
-  if opts.args and opts.args:match("mode=cursor") then
-    command = "cursor-agent"
-  end
-  if opts.args and opts.args:match("mode=gemini") then
-    command = "gemini"
-  end
-
-  -- CLIモード: ターミナルを垂直分割で開く
-  vim.cmd("vsplit")
-  vim.cmd("wincmd r")
-  vim.cmd("terminal " .. command)
-end, {
-  nargs = "?",
-  complete = function(arg_lead, cmd_line, cursor_pos)
-    local candidates = { "mode=copilot", "mode=cursor", "mode=gemini" }
-    if arg_lead == "" then
-      return candidates
-    end
-    local matches = {}
-    for _, candidate in ipairs(candidates) do
-      if candidate:find(arg_lead, 1, true) == 1 then
-        table.insert(matches, candidate)
-      end
-    end
-    return matches
-  end,
 })
 
 -- Ctopをfloating window内で実行するコマンド
@@ -180,6 +150,47 @@ nvim_create_user_command("LazyGit", function()
   -- ターミナルモードに入る
   vim.cmd("startinsert")
 end, {})
+
+-- AIアシスタントをターミナルで起動するコマンド
+-- デフォだと、Copilot cliを使用する
+nvim_create_user_command("AiHelp", function(opts)
+  local buf = vim.api.nvim_get_current_buf()
+  local file_path = vim.api.nvim_buf_get_name(buf)
+
+  if file_path == "" then
+    vim.notify("No file is opened.", vim.log.levels.WARN)
+    return
+  end
+
+  -- mode引数をパースして使用するコマンドを決定
+  local command = "copilot"
+  if opts.args and opts.args:match("mode=cursor") then
+    command = "cursor-agent"
+  end
+  if opts.args and opts.args:match("mode=gemini") then
+    command = "gemini"
+  end
+
+  -- CLIモード: ターミナルを垂直分割で開く
+  vim.cmd("vsplit")
+  vim.cmd("wincmd r")
+  vim.cmd("terminal " .. command)
+end, {
+  nargs = "?",
+  complete = function(arg_lead)
+    local candidates = { "mode=copilot", "mode=cursor", "mode=gemini" }
+    if arg_lead == "" then
+      return candidates
+    end
+    local matches = {}
+    for _, candidate in ipairs(candidates) do
+      if candidate:find(arg_lead, 1, true) == 1 then
+        table.insert(matches, candidate)
+      end
+    end
+    return matches
+  end,
+})
 
 -- ヴィジュアルモードで選択したテキストをCopilotで処理する
 local function copilot_transform_selection()

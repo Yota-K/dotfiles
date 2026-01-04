@@ -51,7 +51,11 @@ opt.laststatus = 3
 -- エラーやヒントがある時は行数の部分を上書きして表示する
 opt.signcolumn = "number"
 
--- 拡張子がmdxの時は、*.mdとして扱う
+-- ログの保存先をtmpに変更
+vim.env.XDG_STATE_HOME = '/tmp'
+
+-- storybookで使用される可能性あり
+-- 拡張子がmdxの時は、*.mdとして扱うことで、markdownとして認識させる
 vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
   pattern = { "*.mdx", "*.mdc" },
   callback = function()
@@ -59,22 +63,8 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
   end,
 })
 
--- xmlを保存時に整形
-vim.api.nvim_create_autocmd({ "BufWritePre" }, {
-  pattern = { "*.xml" },
-  callback = function()
-    local success, error_message = pcall(function()
-      vim.cmd([[ execute("%s/></>\r</g | filetype indent on | setf xml | normal gg=G") ]])
-    end)
-
-    if not success then
-      vim.notify("[xml format]" .. error_message, vim.log.levels.ERROR)
-    end
-  end,
-})
-
--- 使用しているテーマ関係なく絶対に有効にしたい配色の設定
 vim.cmd([[
+  " 使用しているテーマ関係なく必ず有効にしたい配色の設定
   augroup highlightIdegraphicSpace
     autocmd!
     autocmd Colorscheme * highlight IdeographicSpace term=underline ctermbg=DarkGreen guibg=DarkGreen
@@ -84,4 +74,8 @@ vim.cmd([[
   autocmd ColorScheme * highlight StatusLine NONE
   autocmd ColorScheme * highlight TabLineFill ctermbg=NONE guibg=NONE
   autocmd ColorScheme * highlight SignColumn NONE
+
+  " ターミナルでも True Color を使えるようにする。
+  set termguicolors
+  set pumblend=20
 ]])
