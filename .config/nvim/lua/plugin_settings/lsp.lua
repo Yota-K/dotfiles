@@ -56,7 +56,6 @@ return {
       "nil_ls",
       "sqls",
       "terraformls",
-      "copilot"
     }
     mason_lspconfig.setup({
       ensure_installed = servers,
