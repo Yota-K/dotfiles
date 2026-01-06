@@ -43,6 +43,7 @@ let
     stylua
     tenv
     tig
+    uv
     vim-startuptime
     vips
     volta
