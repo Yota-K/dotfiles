@@ -163,9 +163,9 @@ nvim_create_user_command("AiHelp", function(opts)
   end
 
   -- mode引数をパースして使用するコマンドを決定
-  local command = "copilot"
-  if opts.args and opts.args:match("mode=cursor") then
-    command = "cursor-agent"
+  local command = "claude"
+  if opts.args and opts.args:match("mode=copilot") then
+    command = "copilot"
   end
   if opts.args and opts.args:match("mode=gemini") then
     command = "gemini"
@@ -178,7 +178,7 @@ nvim_create_user_command("AiHelp", function(opts)
 end, {
   nargs = "?",
   complete = function(arg_lead)
-    local candidates = { "mode=copilot", "mode=cursor", "mode=gemini" }
+    local candidates = { "mode=claude", "mode=copilot", "mode=gemini" }
     if arg_lead == "" then
       return candidates
     end
