@@ -1,6 +1,7 @@
-{ inputs
-, pkgs
-, ...
+{
+  inputs,
+  pkgs,
+  ...
 }:
 let
   tools = with pkgs; [
@@ -8,6 +9,7 @@ let
     aws-vault
     awscli2
     bat
+    claude-code
     curl
     ctop
     delta
