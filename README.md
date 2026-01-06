@@ -8,6 +8,9 @@
     - [nix](https://github.com/NixOS/nix) main
     - [brew](https://github.com/Homebrew/brew) used by mac os
 - Terminal: [wezterm](https://github.com/wez/wezterm)
+- AI
+    - [claude-code](https://github.com/anthropics/claude-code)
+    - [copilot-cli](https://github.com/github/copilot-cli)
 - CUI
     - [Lazygit](https://github.com/jesseduffield/lazygit)
     - [yazi](https://github.com/sxyazi/yazi)
