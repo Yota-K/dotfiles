@@ -149,6 +149,9 @@ alias tstatecat='terraform state show'
 # tftui
 alias tui='tftui'
 
+# raycast
+alias raycast='open raycast://'
+
 #########################################
 # CLIの色の変更
 #########################################
