@@ -1,7 +1,3 @@
--- NOTE: 関数を保護されたモードで呼び出すpcallを使って、weztermを呼び出す。
--- pcallの最初の戻り値がfalseの時は、funcの実行中にエラーが発生している。
---
--- http://www.rtpro.yamaha.co.jp/RT/docs/lua/tutorial/library.html#pcall
 local status, wezterm = pcall(require, "wezterm")
 if not status then
   return
@@ -127,53 +123,53 @@ local leader = { key = "q", mods = "CTRL", timeout_milliseconds = 1000 }
 local act = wezterm.action
 local keys = {
   -- CMD + cでタブを新規作成
-  { key = "c", mods = "LEADER", action = act({ SpawnTab = "CurrentPaneDomain" }) },
+  { key = "c",     mods = "LEADER", action = act({ SpawnTab = "CurrentPaneDomain" }) },
   -- CMD + xでタブを閉じる
-  { key = "x", mods = "LEADER", action = act({ CloseCurrentTab = { confirm = true } }) },
+  { key = "x",     mods = "LEADER", action = act({ CloseCurrentTab = { confirm = true } }) },
   -- CTRL + q + numberでタブの切り替え
-  { key = "1", mods = "LEADER", action = act({ ActivateTab = 0 }) },
-  { key = "2", mods = "LEADER", action = act({ ActivateTab = 1 }) },
-  { key = "3", mods = "LEADER", action = act({ ActivateTab = 2 }) },
-  { key = "4", mods = "LEADER", action = act({ ActivateTab = 3 }) },
-  { key = "5", mods = "LEADER", action = act({ ActivateTab = 4 }) },
-  { key = "6", mods = "LEADER", action = act({ ActivateTab = 5 }) },
-  { key = "7", mods = "LEADER", action = act({ ActivateTab = 6 }) },
-  { key = "8", mods = "LEADER", action = act({ ActivateTab = 7 }) },
-  { key = "9", mods = "LEADER", action = act({ ActivateTab = 8 }) },
+  { key = "1",     mods = "LEADER", action = act({ ActivateTab = 0 }) },
+  { key = "2",     mods = "LEADER", action = act({ ActivateTab = 1 }) },
+  { key = "3",     mods = "LEADER", action = act({ ActivateTab = 2 }) },
+  { key = "4",     mods = "LEADER", action = act({ ActivateTab = 3 }) },
+  { key = "5",     mods = "LEADER", action = act({ ActivateTab = 4 }) },
+  { key = "6",     mods = "LEADER", action = act({ ActivateTab = 5 }) },
+  { key = "7",     mods = "LEADER", action = act({ ActivateTab = 6 }) },
+  { key = "8",     mods = "LEADER", action = act({ ActivateTab = 7 }) },
+  { key = "9",     mods = "LEADER", action = act({ ActivateTab = 8 }) },
   -- PANEを水平方向に開く
-  { key = "-", mods = "LEADER", action = act({ SplitVertical = { domain = "CurrentPaneDomain" } }) },
+  { key = "-",     mods = "LEADER", action = act({ SplitVertical = { domain = "CurrentPaneDomain" } }) },
   -- PANEを縦方向に開く
-  { key = "|", mods = "LEADER", action = act({ SplitHorizontal = { domain = "CurrentPaneDomain" } }) },
+  { key = "|",     mods = "LEADER", action = act({ SplitHorizontal = { domain = "CurrentPaneDomain" } }) },
   -- hjklでPANEを移動する
-  { key = "h", mods = "LEADER", action = act({ ActivatePaneDirection = "Left" }) },
-  { key = "j", mods = "LEADER", action = act({ ActivatePaneDirection = "Down" }) },
-  { key = "k", mods = "LEADER", action = act({ ActivatePaneDirection = "Up" }) },
-  { key = "l", mods = "LEADER", action = act({ ActivatePaneDirection = "Right" }) },
+  { key = "h",     mods = "LEADER", action = act({ ActivatePaneDirection = "Left" }) },
+  { key = "j",     mods = "LEADER", action = act({ ActivatePaneDirection = "Down" }) },
+  { key = "k",     mods = "LEADER", action = act({ ActivatePaneDirection = "Up" }) },
+  { key = "l",     mods = "LEADER", action = act({ ActivatePaneDirection = "Right" }) },
   -- タブを入れ替える
-  { key = "{", mods = "LEADER", action = act({ MoveTabRelative = -1 }) },
-  { key = "}", mods = "LEADER", action = act({ MoveTabRelative = 1 }) },
+  { key = "{",     mods = "LEADER", action = act({ MoveTabRelative = -1 }) },
+  { key = "}",     mods = "LEADER", action = act({ MoveTabRelative = 1 }) },
   -- PANEを閉じる
-  { key = "x", mods = "ALT", action = act({ CloseCurrentPane = { confirm = true } }) },
+  { key = "x",     mods = "ALT",    action = act({ CloseCurrentPane = { confirm = true } }) },
   -- ALT + hjklでペインの幅を調整する
-  { key = "h", mods = "ALT", action = act({ AdjustPaneSize = { "Left", 5 } }) },
-  { key = "j", mods = "ALT", action = act({ AdjustPaneSize = { "Down", 5 } }) },
-  { key = "k", mods = "ALT", action = act({ AdjustPaneSize = { "Up", 5 } }) },
-  { key = "l", mods = "ALT", action = act({ AdjustPaneSize = { "Right", 5 } }) },
+  { key = "h",     mods = "ALT",    action = act({ AdjustPaneSize = { "Left", 5 } }) },
+  { key = "j",     mods = "ALT",    action = act({ AdjustPaneSize = { "Down", 5 } }) },
+  { key = "k",     mods = "ALT",    action = act({ AdjustPaneSize = { "Up", 5 } }) },
+  { key = "l",     mods = "ALT",    action = act({ AdjustPaneSize = { "Right", 5 } }) },
   -- QuickSelect・・・画面に表示されている文字をクイックにコピペできる機能
-  { key = "Enter", mods = "SHIFT", action = "QuickSelect" },
+  { key = "Enter", mods = "SHIFT",  action = "QuickSelect" },
   -- 画面の文字の大きさを調整する
   -- HINT: ⌘ + 0で文字の大きさをもとに戻す
-  { key = "+", mods = "CTRL", action = act.IncreaseFontSize },
-  { key = "-", mods = "CTRL", action = act.DecreaseFontSize },
+  { key = "+",     mods = "CTRL",   action = act.IncreaseFontSize },
+  { key = "-",     mods = "CTRL",   action = act.DecreaseFontSize },
   -- 画面上に表示されたアルファベットを使用して、特定のペインに移動する
-  { key = "1", mods = "CTRL", action = act.PaneSelect },
+  { key = "1",     mods = "CTRL",   action = act.PaneSelect },
   -- 画面上に表示されたアルファベットを使用して、現在のペインと選択したペインを入れ替える
-  { key = "2", mods = "CTRL", action = act({ PaneSelect = { mode = "SwapWithActive" } }) },
+  { key = "2",     mods = "CTRL",   action = act({ PaneSelect = { mode = "SwapWithActive" } }) },
   -- コマンドパレットを開く
   -- コマンドパレット経由でキーマッピングに設定していない機能も使うことができる
-  { key = "P", mods = "CTRL", action = act.ActivateCommandPalette },
+  { key = "P",     mods = "CTRL",   action = act.ActivateCommandPalette },
   -- Zoomモードの切り替え
-  { key = "Z", mods = "CTRL", action = act.TogglePaneZoomState },
+  { key = "Z",     mods = "CTRL",   action = act.TogglePaneZoomState },
 }
 
 return {
@@ -191,6 +187,7 @@ return {
   line_height = 1.25,
   use_fancy_tab_bar = false,
   front_end = "WebGpu",
+  webgpu_power_preference = "HighPerformance",
   -- アクティブではないペインの彩度を変更しない
   inactive_pane_hsb = {
     saturation = 1,
