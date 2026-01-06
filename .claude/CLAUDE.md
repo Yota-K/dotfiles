@@ -2,7 +2,7 @@
 
 Respond in Japanese.
 
-## 開発の基本理念
+## Core Principles: Less is More
 
 - Keep implementations small - Write the smallest, most obvious solution
 - Let code speak - If you need multi-paragraph comments, refactor until intent is obvious
