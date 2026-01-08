@@ -2,6 +2,8 @@
 
 Respond in Japanese.
 
+When implementing, be sure to obtain approval before proceeding with the implementation.
+
 ## Core Principles: Less is More
 
 - Keep implementations small - Write the smallest, most obvious solution
