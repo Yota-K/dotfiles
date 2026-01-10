@@ -145,6 +145,7 @@ alias tapply='terraform apply'
 alias tstate='terraform state'
 alias tstatels='terraform state list'
 alias tstatecat='terraform state show'
+alias tplangenerate='terraform plan -generate-config-out=tmp.tf'
 
 # tftui
 alias tui='tftui'
