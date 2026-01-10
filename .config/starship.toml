@@ -38,6 +38,9 @@ format = 'Node.js [$symbol($version )]($style)'
 
 [lua]
 format = 'Lua [$symbol($version )]($style)'
+detect_extensions = []
+detect_files = ['stylua.toml']
+detect_folders = []
 
 [ruby]
 format = 'Ruby [$symbol($version )]($style)'
@@ -59,5 +62,9 @@ format = 'Docker [🐋 $context ](blue bold)'
 [terraform]
 format = 'Terraform [$symbol($version )]($style)'
 
+# cloud
 [aws]
+disabled = true
+
+[gcloud]
 disabled = true
