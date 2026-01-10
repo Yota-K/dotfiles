@@ -42,7 +42,6 @@ let
     starship
     stylua
     tenv
-    tig
     uv
     vim-startuptime
     vips
