@@ -31,6 +31,7 @@ let
     libssh2
     libzip
     lua
+    minikube
     ngrok
     nixfmt-rfc-style
     orbstack
