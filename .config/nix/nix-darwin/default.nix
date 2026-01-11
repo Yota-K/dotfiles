@@ -8,14 +8,6 @@
     ];
   };
 
-  # macOS Sequoia では、nixbld ユーザーに新しいユーザー/グループ ID セットを使用する必要がある
-  # ref: https://github.com/i077/system/blob/532b77c93ddc2e04ced0859b7cbb74f034d8f6bf/modules/darwin/default.nix#L15
-  ids = {
-    gids = {
-      nixbld = 350;
-    };
-  };
-
   nix = {
     # Determinate Systemsのnix-installerでnixをインストールしたら、以下のエラーが発生したので指定している
     #
@@ -58,12 +50,19 @@
         KeyRepeat = 1;
         # キーリピート開始の遅延時間を設定する（短いほど速い）
         InitialKeyRepeat = 10;
+        # スマートダッシュを無効化
+        NSAutomaticDashSubstitutionEnabled = false;
+        # スマート引用符を無効化
+        NSAutomaticQuoteSubstitutionEnabled = false;
       };
       finder = {
         # 隠しファイルを常に表示するかどうか。
         AppleShowAllFiles = true;
         # すべてのファイル拡張子を表示するかどうか
         AppleShowAllExtensions = true;
+        # Finderの終了を許可するか
+        # ナビゲーションバーに終了等選択肢が表示されるようになる。Dockからは終了できない。
+        QuitMenuItem = true;
       };
       dock = {
         # ドック内のアイコンのサイズ。デフォルトは64
@@ -76,6 +75,8 @@
         orientation = "left";
       };
       screencapture = {
+        # ディレクトリを作成する必要あり
+        # https://github.com/nix-darwin/nix-darwin/issues/1240
         location = "~/Documents/screenshot";
         # 使用する画像の拡張子
         type = "png";
