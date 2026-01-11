@@ -29,34 +29,40 @@ return {
       },
     })
 
-    local servers = {
-      -- languages
-      "html",
+    local languages = {
       "cssls",
-      "ts_ls",
       "gopls",
+      "html",
       "lua_ls",
       "ruby_lsp",
-      "solargraph", -- Rubyのコード補完、ドキュメントを提供してくれるLSP
       "rust_analyzer",
-      -- libraries
-      "svelte",
+      "solargraph", -- Rubyのコード補完、ドキュメントを提供してくれるLSP
+      "ts_ls",
+    }
+    local libraries = {
       "prismals",
-      -- FW
+      "svelte",
+    }
+    local frameworks = {
       "astro",
       "tailwindcss",
-      -- others
-      "jsonls",
-      "dockerls",
-      "yamlls",
-      "denols",
-      "eslint",
+    }
+    local others = {
       "biome",
+      "denols",
+      "dockerls",
+      "emmet_language_server",
+      "eslint",
       "graphql",
+      "jsonls",
       "nil_ls",
       "sqls",
       "terraformls",
+      "yamlls",
     }
+
+    local servers = vim.iter({ languages, libraries, frameworks, others }):flatten():totable()
+
     mason_lspconfig.setup({
       ensure_installed = servers,
       automatic_enable = true,
