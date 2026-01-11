@@ -12,6 +12,7 @@ return {
       typescriptreact = { "eslint_d", "biomejs", "cspell" },
       vue = { "eslint_d" },
       svelte = { "eslint_d" },
+      lua = { "cspell" },
       markdown = { "cspell" },
     }
 
