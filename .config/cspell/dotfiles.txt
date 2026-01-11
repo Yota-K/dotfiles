@@ -76,3 +76,8 @@ totp
 highlightidegraphicspace
 aliceblue
 peru
+biomejs
+ctop
+gemini
+claude
+sqls
