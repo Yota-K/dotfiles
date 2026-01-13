@@ -210,25 +210,6 @@ function remove_node_for_volta
   end
 end
 
-# ディレクトリを移動する際に、.node-versionファイルがあれば、そのバージョンのNode.jsをインストールする
-function check_node_version_for_volta --on-variable PWD --description 'check .node-version on pwd change and run volta install'
-  status --is-command-substitution; and return
-
-  set -l dir (pwd)
-
-  while not test "$dir" = ''
-    set node_version_file "$dir/.node-version"
-
-    if test -e "$node_version_file"
-      set node_version (cat $node_version_file)
-      volta install node@$node_version
-      break
-    end
-
-    set dir (string split -r -m1 / $dir)[1]
-  end
-end
-
 # yazi
 # https://yazi-rs.github.io/docs/quick-start#shell-wrapper
 function y
