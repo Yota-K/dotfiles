@@ -81,3 +81,5 @@ ctop
 gemini
 claude
 sqls
+yazi
+webgpu_power_preference
