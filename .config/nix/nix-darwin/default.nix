@@ -117,6 +117,7 @@
       "gobject-introspection"
       "golang-migrate"
       "libffi"
+      "libvips"
       "libpq"
       "luarocks"
       "poppler"
