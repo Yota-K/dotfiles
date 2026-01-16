@@ -7,8 +7,11 @@ end
 local function get_pane_info(window)
   local tab = window:active_tab()
   local panes = tab:panes_with_info()
-  local active_pane_index = 1
 
+  -- ペインが2個以上の時のみステータスバーに表示する
+  if #panes < 2 then return "" end
+
+  local active_pane_index = 1
   for i, p in ipairs(panes) do
     if p.is_active then
       active_pane_index = i
@@ -86,8 +89,12 @@ wezterm.on("update-status", function(window, pane)
   local date = wezterm.strftime("📆 %Y-%m-%d" .. " " .. wday_ja .. " " .. "⏰ %H:%M:%S")
 
   local split = " | "
+  local status_parts = {}
+  if pane_info ~= "" then table.insert(status_parts, pane_info) end
+  table.insert(status_parts, bat)
+  table.insert(status_parts, date)
   window:set_right_status(wezterm.format({
-    { Text = pane_info .. split .. bat .. split .. date },
+    { Text = table.concat(status_parts, split) },
   }))
 end)
 
