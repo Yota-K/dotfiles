@@ -52,8 +52,10 @@ end
 # エイリアス
 #########################################
 
-alias home='cd ~/Documents'
 alias ..='cd ..'
+alias dotfiles='cd ~/dotfiles && v'
+alias home='cd ~/Documents'
+
 alias cp='cp -i'
 alias mv='mv -i'
 alias rm='rm -i'
@@ -91,9 +93,6 @@ alias dlogsf='docker logs -f'
 function dshell_invoke
   docker-compose run --rm $argv[1] sh -c $argv[2]
 end
-
-# dotfiles
-alias dotfiles='cd ~/dotfiles && v'
 
 # eza
 # lsコマンドをezaに変更
@@ -145,6 +144,9 @@ end
 # lazygit
 alias l='lazygit'
 
+# nvim
+alias v='nvim'
+
 # raycast
 alias raycast='open raycast://'
 
@@ -170,12 +172,7 @@ alias tiga='tig --all'
 
 # tmux
 alias tmuxRestart='tmux attach'
-
-# tmux全体を終了
 alias tmuxKillAll='tmux kill-server'
-
-# vim
-alias v='nvim'
 
 # volta
 
