@@ -73,6 +73,7 @@ return {
         typescriptreact = js_formatter,
         vue = js_formatter,
         svelte = js_formatter,
+        go = { "gofumpt" },
       },
       format_on_save = {
         -- モノレポ構成の場合、ルートから深い階層にあるファイルに対してフォーマッターを実行すると、タイムアウトエラーで落ちるため、長めに5秒で設定している
