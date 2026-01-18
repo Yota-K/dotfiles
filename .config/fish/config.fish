@@ -54,6 +54,13 @@ end
 
 alias home='cd ~/Documents'
 alias ..='cd ..'
+alias cp='cp -i'
+alias mv='mv -i'
+alias rm='rm -i'
+
+#########################################
+# ツールごとのエイリアス・関数
+#########################################
 
 # Docker
 
@@ -78,6 +85,40 @@ alias dvolumerm='docker volume rm'
 alias dlogs='docker logs'
 alias dlogsf='docker logs -f'
 
+# Dockerコンテナの中でUNIXコマンドを実行する
+# $argv[1]・・・コンテナの名前
+# $argv[2]・・・実行したいコマンドを''か""で囲って渡す 'node -v'
+function dshell_invoke
+  docker-compose run --rm $argv[1] sh -c $argv[2]
+end
+
+# dotfiles
+alias dotfiles='cd ~/dotfiles && v'
+
+# eza
+# lsコマンドをezaに変更
+# Git管理下の場合は、Gitのステータスを表示する
+alias ls='eza --git'
+
+# tree
+# - treeオプションを有効にする
+# - 再帰の深さは3階層まで有効にする
+# - 隠しファイルを表示する
+# - node_modules, .git, .cache, .nextは検索対象から除外
+alias tree='eza -T -L 3 -a -I "node_modules|.git|.cache|.next"'
+
+# fzf
+
+# 履歴検索してコマンドラインにセット
+function fzf_history
+  history | fzf --tac | read -l cmd
+  if test -n "$cmd"
+    commandline --replace "$cmd"
+  end
+end
+
+alias h='fzf_history'
+
 # git
 alias gpush='git push'
 alias gpull='git pull'
@@ -96,42 +137,16 @@ alias gspop='git stash pop'
 alias gtag='git tag'
 alias gcherrypick='git cherry-pick'
 
-# tig
-alias tiga='tig --all'
+# ワークツリーで変更済みのファイルにタグをつけてコミットする
+function gtag_commit
+  git tag -a $argv[1] -m $argv[1] -a
+end
 
 # lazygit
 alias l='lazygit'
 
-# 安全策
-alias cp='cp -i'
-alias mv='mv -i'
-alias rm='rm -i'
-
-# vim
-alias v='nvim'
-
-# tmux
-alias tmuxRestart='tmux attach'
-
-# tmux全体を終了
-alias tmuxKillAll='tmux kill-server'
-
-# dotfilesのエイリアス
-alias dotfiles='cd ~/dotfiles && v'
-
-# weztermで画像を表示
-alias imgcat='wezterm imgcat'
-
-# lsコマンドをezaに変更
-# Git管理下の場合は、Gitのステータスを表示する
-alias ls='eza --git'
-
-# tree
-# - treeオプションを有効にする
-# - 再帰の深さは3階層まで有効にする
-# - 隠しファイルを表示する
-# - node_modules, .git, .cache, .nextは検索対象から除外
-alias tree='eza -T -L 3 -a -I "node_modules|.git|.cache|.next"'
+# raycast
+alias raycast='open raycast://'
 
 # ripgrep
 # hidden files to be searched by default
@@ -150,8 +165,50 @@ alias tplangenerate='terraform plan -generate-config-out=tmp.tf'
 # tftui
 alias tui='tftui'
 
-# raycast
-alias raycast='open raycast://'
+# tig
+alias tiga='tig --all'
+
+# tmux
+alias tmuxRestart='tmux attach'
+
+# tmux全体を終了
+alias tmuxKillAll='tmux kill-server'
+
+# vim
+alias v='nvim'
+
+# volta
+
+# インストールしたNode.jsを削除する
+function remove_node_for_volta
+  set package $argv[1]
+  set dir "$HOME/.volta/tools/image/node/$package/"
+
+  if test -d $dir
+    rm -rf $dir
+    if test $status -eq 0
+      echo "Successfully removed $package"
+    else
+      echo "Failed to remove $package"
+    end
+  else
+    echo "Not found $package"
+  end
+end
+
+# wezterm
+alias imgcat='wezterm imgcat'
+
+# yazi
+# https://yazi-rs.github.io/docs/quick-start#shell-wrapper
+function y
+  set tmp (mktemp -t "yazi-cwd.XXXXXX")
+  yazi $argv --cwd-file="$tmp"
+  if set cwd (command cat -- "$tmp"); and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
+    builtin cd -- "$cwd"
+  end
+  rm -f -- "$tmp"
+end
 
 #########################################
 # CLIの色の変更
@@ -176,53 +233,6 @@ set fish_color_redirection    brcyan
 set fish_color_search_match   --background=brblack
 set fish_color_selection      --background=brblack
 set fish_color_user           brblue
-
-#########################################
-# 関数
-#########################################
-
-# Dockerコンテナの中でUNIXコマンドを実行する
-# $argv[1]・・・コンテナの名前
-# $argv[2]・・・実行したいコマンドを''か""で囲って渡す 'node -v'
-function dshell_invoke
-  docker-compose run --rm $argv[1] sh -c $argv[2]
-end
-
-# ワークツリーで変更済みのファイルにタグをつけてコミットする
-function gtag_commit
-  git tag -a $argv[1] -m $argv[1] -a
-end
-
-# VoltaでインストールしたNode.jsを削除する
-function remove_node_for_volta
-  set package $argv[1]
-  set dir "$HOME/.volta/tools/image/node/$package/"
-
-  if test -d $dir
-    rm -rf $dir
-    if test $status -eq 0
-      echo "Successfully removed $package"
-    else
-      echo "Failed to remove $package"
-    end
-  else
-    echo "Not found $package"
-  end
-end
-
-# yazi
-# https://yazi-rs.github.io/docs/quick-start#shell-wrapper
-function y
-  set tmp (mktemp -t "yazi-cwd.XXXXXX")
-  yazi $argv --cwd-file="$tmp"
-  if set cwd (command cat -- "$tmp"); and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
-    builtin cd -- "$cwd"
-  end
-  rm -f -- "$tmp"
-end
-
-# fzf
-alias h='history | fzf'
 
 #########################################
 # その他
