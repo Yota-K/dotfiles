@@ -1,18 +1,18 @@
-# AI Coding Rules
+# AI コーディング規約
 
-Respond in Japanese.
+日本語で応答してください。
 
-When implementing, be sure to obtain approval before proceeding with the implementation.
+実装する際は、実装を進める前に必ず承認を得てください。
 
-## Core Principles: Less is More
+## 核となる原則：Less is More
 
-- Keep implementations small - Write the smallest, most obvious solution
-- Let code speak - If you need multi-paragraph comments, refactor until intent is obvious
-- Simple > Clever - Clear code beats clever code every time
-- Delete ruthlessly - Remove anything that doesn't add clear value
+- 実装を小さく保つ - 最小限で最も明白な解決策を書く
+- コードに語らせる - 複数段落のコメントが必要な場合は、意図が明白になるまでリファクタリングする
+- シンプル > 巧妙 - 明確なコードは巧妙なコードに常に勝る
+- 容赦なく削除する - 明確な価値を追加しないものはすべて削除する
 
 ## Git
 
-- Use current working directory - All file operations must use <env>Working directory</env> as base path, never main branch directory
-- Commit per task - Commit when each logical task completes; include context and reasoning in commit message
-- No "why" in code comments - History lives in commits, not in code
+- 現在の作業ディレクトリを使用する - すべてのファイル操作は <env>作業ディレクトリ</env> をベースパスとして使用し、メインブランチのディレクトリは使用しない
+- タスクごとにコミットする - 各論理的なタスクが完了したらコミットする。コミットメッセージにコンテキストと理由を含める
+- コードコメントに「理由」を書かない - 履歴はコミットに残し、コードには残さない

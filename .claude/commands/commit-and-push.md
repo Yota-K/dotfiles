@@ -1,1 +1,1 @@
-Let's commit the changes. Then commit and push to the current branch.
+それでは変更をコミットしましょう。その後、現在のブランチにコミットしてプッシュします。

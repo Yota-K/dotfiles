@@ -1,3 +1,3 @@
-Let's commit the changes. Then commit, push, and create a draft pull request.
+変更をコミットしましょう。その後、コミット、プッシュして、ドラフトのプルリクエストを作成します。
 
-Split large changes: If changes touch multiple concerns, split them into separate commits
+大きな変更を分割: 変更が複数の関心事に触れる場合は、それらを別々のコミットに分割します

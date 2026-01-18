@@ -1,22 +1,22 @@
 ---
 name: git-commit
-description: Stage meaningful diffs and create commits with WHY-focused messages. Use when agent needs to commit code changes.
+description: 意味のある差分をステージングし、WHYに焦点を当てたメッセージでコミットを作成します。エージェントがコード変更をコミットする必要がある場合に使用します。
 ---
 
-## INSTRUCTIONS
+## 指示事項
 
-Use `/commit-and-push` or `/commit-and-pr` slash command to stage meaningful diffs and create commits with WHY-focused messages.
+`/commit-and-push` または `/commit-and-pr` のスラッシュコマンドを実行した時に、使用してください。
 
-## DISCIPLINE
+## 規律
 
-- Only commit when:
-  1. ALL tests are passing
-  2. ALL compiler/linter warnings have been resolved
-  3. The change represents a single logical unit of work
-  4. Commit messages clearly state whether the commit contains structural or behavioral changes
-- Use small, frequent commits rather than large, infrequent ones
+- 以下の場合のみコミットする:
+  1. すべてのテストが合格している
+  2. すべてのコンパイラ/リンターの警告が解決されている
+  3. 変更が単一の論理的な作業単位を表している
+  4. コミットメッセージが、コミットに構造的変更または動作的変更が含まれているかを明確に示している
+- 大きく頻度の低いコミットではなく、小さく頻繁なコミットを使用する
 
-## Commit Message Format
+## コミットメッセージ形式
 
 ```
 <type>(<scope>): <subject>
@@ -28,10 +28,10 @@ Use `/commit-and-push` or `/commit-and-pr` slash command to stage meaningful dif
 
 **Types**: `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `build`, `ci`, `chore`, `revert`
 
-**Body should explain**:
+**Bodyで説明すべき内容**:
 
-- WHAT changed and WHY
-- Problem context and solution rationale
-- Implementation decisions
-- Potential impacts
-- Wrap at 72 characters
+- 何が変更されたか、そしてなぜ変更されたか
+- 問題の背景と解決策の根拠
+- 実装の決定事項
+- 潜在的な影響
+- 72文字で折り返す
