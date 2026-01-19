@@ -91,6 +91,10 @@ alias dlogsf='docker logs -f'
 # $argv[1]・・・コンテナの名前
 # $argv[2]・・・実行したいコマンドを''か""で囲って渡す 'node -v'
 function dshell_invoke
+  if test (count $argv) -ne 2
+    echo "Usage: dshell_invoke <container_name> '<command>'"
+    return 1
+  end
   docker-compose run --rm $argv[1] sh -c $argv[2]
 end
 
@@ -154,6 +158,12 @@ alias raycast='open raycast://'
 # hidden files to be searched by default
 # gitディレクトリは検索対象から除外
 alias rg="rg --hidden --g '!.git'"
+
+# rgでgrepした結果をdeltaで見やすく表示する
+function rgdelta
+  rg --line-number --no-heading --color=always $argv \
+  | delta --paging=auto
+end
 
 # terraform
 alias tinit='terraform init'

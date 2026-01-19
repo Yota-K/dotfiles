@@ -20,6 +20,7 @@ let
     tenv
     vim-startuptime
     yazi
+    zoxide
   ];
 
   # パブリッククラウド/コンテナ関連
