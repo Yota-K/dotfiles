@@ -86,7 +86,7 @@ wezterm.on("update-status", function(window, pane)
   local wday = os.date("*t").wday
   -- 指定子の後に半角スペースをつけないと正常に表示されなかった
   local wday_ja = string.format("(%s)", day_of_week_ja(wday))
-  local date = wezterm.strftime("📆 %Y-%m-%d" .. " " .. wday_ja .. " " .. "⏰ %H:%M:%S")
+  local date = wezterm.strftime("📆 %Y-%m-%d" .. " " .. wday_ja .. " " .. "⏰ %H:%M:%S" .. " ")
 
   local split = " | "
   local status_parts = {}
