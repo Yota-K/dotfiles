@@ -114,6 +114,8 @@
     brews = [
       "cairo"
       "glib"
+      # home-managerで入れようとしたらエラーになった
+      "gemini-cli"
       "gobject-introspection"
       "golang-migrate"
       "libffi"
