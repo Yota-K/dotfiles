@@ -41,25 +41,28 @@ return {
     -- biomeとprettierのformatterが競合してしまうので、設定ファイルを確認してフォーマッターを切り替える
     -- 複数のフォーマッタが指定されている場合は、順番にフォーマッターを実行する挙動になる
     -- @see: https://github.com/stevearc/conform.nvim?tab=readme-ov-file#setup
-    local js_formatter = function()
-      local root_prettier = require("conform.util").root_file(prettier_config)
-      local root_eslint = require("conform.util").root_file(eslint_config)
-      local root_biome = require("conform.util").root_file(biome_config)
+    local function has_config(bufnr, config_files)
+      local bufname = vim.api.nvim_buf_get_name(bufnr)
+      local bufdir = vim.fn.fnamemodify(bufname, ":h")
+      local found = vim.fs.find(config_files, { path = bufdir, upward = true, limit = 1 })
+      return #found > 0
+    end
 
-      local has_prettier = root_prettier ~= nil
-      local has_eslint = root_eslint ~= nil
-      local has_biome_config = root_biome ~= nil
+    local js_formatter = function(bufnr)
+      local has_prettier = has_config(bufnr, prettier_config)
+      local has_eslint = has_config(bufnr, eslint_config)
+      local has_biome_config = has_config(bufnr, biome_config)
 
       if has_prettier and has_eslint then
         return { "eslint_d", "prettier" }
       end
 
       if has_biome_config and has_eslint then
-        return { "eslint_d", "biome" }
+        return { "eslint_d", "biome_format" }
       end
 
       if has_biome_config then
-        return { "biome" }
+        return { "biome_check" }
       end
 
       return {}
@@ -92,9 +95,19 @@ return {
           stdin = true,
           cwd = require("conform.util").root_file(prettier_config),
         },
-        biome = {
+        biome_format = {
           command = "npx",
-          -- biome check --write --unsafe でフォーマットする
+          args = {
+            "biome",
+            "format",
+            "--stdin-file-path",
+            "$FILENAME",
+          },
+          stdin = true,
+          cwd = require("conform.util").root_file(biome_config),
+        },
+        biome_check = {
+          command = "npx",
           args = {
             "biome",
             "check",
@@ -107,17 +120,6 @@ return {
           cwd = require("conform.util").root_file(biome_config),
         },
         eslint_d = {
-          command = "npx",
-          -- Mason経由でインストールしたeslint_dを使用してフォーマットする
-          -- @see: https://github.com/mantoni/eslint_d.js/
-          args = {
-            "eslint_d",
-            "--fix-to-stdout",
-            "--stdin",
-            "--stdin-filename",
-            "$FILENAME",
-          },
-          stdin = true,
           cwd = require("conform.util").root_file(eslint_config),
         },
       },
