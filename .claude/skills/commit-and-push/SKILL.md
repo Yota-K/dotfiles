@@ -1,5 +1,5 @@
 ---
-name: "commit-and-push"
+name: commit-and-push
 description: "変更内容を分析し、Conventional Commit形式でコミットしてpushする"
 ---
 

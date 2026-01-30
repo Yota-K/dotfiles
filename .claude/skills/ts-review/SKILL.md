@@ -1,4 +1,5 @@
 ---
+name: ts-review
 description: 拡張思考を用いた包括的なコードレビュー
 argument-hint: [PR番号 | ファイルパス | (空欄で全変更)]
 ---

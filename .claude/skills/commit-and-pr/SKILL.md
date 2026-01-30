@@ -1,5 +1,5 @@
 ---
-name: "commit-and-pr"
+name: commit-and-pr
 description: "変更内容を分析し、Conventional Commit形式でコミットしてプッシュし、ドラフトのプルリクエストを作成する"
 ---
 
