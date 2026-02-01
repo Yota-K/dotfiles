@@ -84,3 +84,5 @@ sqls
 yazi
 webgpu_power_preference
 gofumpt
+yota
+visai
