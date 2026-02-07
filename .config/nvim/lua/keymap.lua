@@ -1,6 +1,9 @@
-local keymap = vim.api.nvim_set_keymap
+-- leader keyをスペースキーに設定
+vim.g.mapleader = " "
 
+local keymap = vim.api.nvim_set_keymap
 local silent = { silent = true }
+
 keymap("i", "(<Enter>", "()<Left>", silent)
 keymap("i", "{<Enter>", "{}<Left>", silent)
 keymap("i", "[<Enter>", "[]<Left>", silent)
@@ -22,6 +25,3 @@ keymap("n", "<Up>", "<Nop>", noremap)
 keymap("n", "<Right>", "<Nop>", noremap)
 keymap("n", "<Space>n", ":set invnumber<CR>", noremap)
 keymap("n", "HS", ":h | only<CR>", noremap)
-
--- leader keyをスペースキーに設定
-vim.g.mapleader = " "
