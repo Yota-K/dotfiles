@@ -226,6 +226,6 @@ return {
     saturation = 1,
     brightness = 1,
   },
-  -- ビープ音を無効にする
   audible_bell = "Disabled",
+  disable_default_mouse_bindings = true,
 }
