@@ -4,7 +4,7 @@ return {
   cmd = {
     "Telescope",
   },
-  keys = { { "ff", mode = "n" }, { "fg", mode = "n" }, { "fb", mode = "n" }, { "fh", mode = "n" } },
+  keys = { { "ff", mode = "n" }, { "fg", mode = "n" }, { "fb", mode = "n" } },
   tag = "0.1.7",
   dependencies = { "nvim-lua/plenary.nvim" },
   config = function()
@@ -40,9 +40,6 @@ return {
 
     -- neovimで開いているバッファで検索
     keyset("n", "fb", builtin.buffers, {})
-
-    -- helpを開く
-    keyset("n", "fh", builtin.help_tags, {})
 
     -- gitで変更されたファイルを検索
     keyset("n", "fgs", builtin.git_status, {})
