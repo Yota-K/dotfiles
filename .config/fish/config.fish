@@ -64,6 +64,9 @@ alias rm='rm -i'
 # ツールごとのエイリアス・関数
 #########################################
 
+# claude
+alias claudesize='du -sh ~/.claude/ && du -sh ~/.claude/* | sort -h'
+
 # Docker
 
 # Added by OrbStack: command-line tools and integration
