@@ -60,7 +60,7 @@ let
   languages = with pkgs; [
     deno
     go
-    lua
+    lua5_1
     perl
     php
     pyenv
