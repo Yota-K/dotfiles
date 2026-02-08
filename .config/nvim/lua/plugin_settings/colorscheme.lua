@@ -11,6 +11,9 @@ return {
     -- vim.cmd([[ colorscheme nightfox ]])
     -- vim.cmd([[ colorscheme carbonfox ]])
 
+    require("bamboo").setup({
+      style = 'multiplex',
+    })
     require("bamboo").load()
   end,
 }

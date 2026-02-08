@@ -3,10 +3,14 @@ local THEME = {}
 
 -- テーマを管理
 local theme_config = {
-  name = "bamboo",
+  name = "bamboo_multiplex",
   bamboo = {
     bg = "#252623",
     wezterm = "Bamboo",
+  },
+  bamboo_multiplex = {
+    bg = "#232923",
+    wezterm = "Bamboo Multiplex",
   },
   carbonfox = {
     bg = "#161616",

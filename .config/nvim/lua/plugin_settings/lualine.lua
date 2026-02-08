@@ -6,7 +6,7 @@ return {
     local lualine = require("lualine")
 
     -- Please specify current using theme.
-    local custom = require("lualine.themes.bamboo")
+    local custom = require("lualine.themes.seoul256")
 
     -- theme.luaがあるパスを追加する
     local module_path = ";" .. os.getenv("HOME") .. "/dotfiles/?.lua;"
