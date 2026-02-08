@@ -1,7 +1,8 @@
 ---
 name: verify-app
 description: push前の変更の包括的な検証 - テスト、型チェック、Lint、手動チェック
-model: sonnet
+tools: [Read, Bash, Grep, Glob]
+model: opus
 ---
 
 # アプリ検証エージェント
