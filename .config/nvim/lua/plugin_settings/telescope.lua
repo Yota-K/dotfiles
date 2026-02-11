@@ -22,6 +22,9 @@ return {
             return { "--hidden" }
           end,
         },
+        git_status = {
+          file_ignore_patterns = {},
+        },
       },
     })
 
@@ -30,7 +33,7 @@ return {
     -- ファイル名で検索
     keyset("n", "ff", function()
       builtin.find_files({
-        no_ignore = false,
+        no_ignore = true,
         hidden = true,
       })
     end)
