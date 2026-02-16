@@ -13,7 +13,7 @@ return {
 
     telescope.setup({
       defaults = {
-        file_ignore_patterns = { ".yarn", ".git", "node_modules" },
+        file_ignore_patterns = { ".yarn", ".git", "node_modules", ".next", ".turbo" },
       },
       pickers = {
         -- Search for a string and get results live as you type, respects .gitignore
