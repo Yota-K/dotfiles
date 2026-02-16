@@ -63,6 +63,8 @@
         # Finderの終了を許可するか
         # ナビゲーションバーに終了等選択肢が表示されるようになる。Dockからは終了できない。
         QuitMenuItem = true;
+        # 新規ウィンドウでドキュメントフォルダを表示
+        NewWindowTarget = "Documents";
       };
       dock = {
         # ドック内のアイコンのサイズ。デフォルトは64
