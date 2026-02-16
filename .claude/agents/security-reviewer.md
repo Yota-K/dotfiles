@@ -478,25 +478,6 @@ PRをレビューする際は、インラインコメントを投稿:
 - メジャーリリース前
 - セキュリティツールのアラート後
 
-## セキュリティツールのインストール
-
-```bash
-# セキュリティリンティングをインストール
-npm install --save-dev eslint-plugin-security
-
-# 依存関係監査をインストール
-npm install --save-dev audit-ci
-
-# package.jsonスクリプトに追加
-{
-  "scripts": {
-    "security:audit": "npm audit",
-    "security:lint": "eslint . --plugin security",
-    "security:check": "npm run security:audit && npm run security:lint"
-  }
-}
-```
-
 ## ベストプラクティス
 
 1. **多層防御** - 複数のセキュリティレイヤー
