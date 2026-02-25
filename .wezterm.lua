@@ -203,6 +203,49 @@ local keys = {
   { key = "P",     mods = "CTRL",   action = act.ActivateCommandPalette },
   -- Zoomモードの切り替え
   { key = "Z",     mods = "CTRL",   action = act.TogglePaneZoomState },
+  -- コピーモードの起動（セレクト状態をクリアした状態で開始する）
+  {
+    key = "X",
+    mods = "CTRL|SHIFT",
+    action = act.Multiple({
+      act.ActivateCopyMode,
+      act.CopyMode("ClearSelectionMode"),
+    })
+  },
+}
+
+local key_tables = {
+  copy_mode = {
+    { key = "Escape", mods = "NONE", action = act.CopyMode("Close") },
+    { key = "q",      mods = "NONE", action = act.CopyMode("Close") },
+    -- 移動
+    { key = "h",      mods = "NONE", action = act.CopyMode("MoveLeft") },
+    { key = "j",      mods = "NONE", action = act.CopyMode("MoveDown") },
+    { key = "k",      mods = "NONE", action = act.CopyMode("MoveUp") },
+    { key = "l",      mods = "NONE", action = act.CopyMode("MoveRight") },
+    { key = "w",      mods = "NONE", action = act.CopyMode("MoveForwardWord") },
+    { key = "b",      mods = "NONE", action = act.CopyMode("MoveBackwardWord") },
+    { key = "0",      mods = "NONE", action = act.CopyMode("MoveToStartOfLine") },
+    { key = "$",      mods = "NONE", action = act.CopyMode("MoveToEndOfLineContent") },
+    { key = "^",      mods = "NONE", action = act.CopyMode("MoveToStartOfLineContent") },
+    { key = "G",      mods = "NONE", action = act.CopyMode("MoveToScrollbackBottom") },
+    { key = "g",      mods = "NONE", action = act.CopyMode("MoveToScrollbackTop") },
+    { key = "u",      mods = "CTRL", action = act.CopyMode("PageUp") },
+    { key = "d",      mods = "CTRL", action = act.CopyMode("PageDown") },
+    -- セレクション
+    { key = "v",      mods = "NONE", action = act.CopyMode({ SetSelectionMode = "Cell" }) },
+    { key = "V",      mods = "NONE", action = act.CopyMode({ SetSelectionMode = "Line" }) },
+    { key = "v",      mods = "CTRL", action = act.CopyMode({ SetSelectionMode = "Block" }) },
+    -- コピーしてコピーモードを終了
+    {
+      key = "y",
+      mods = "NONE",
+      action = act.Multiple({
+        act.CopyTo("ClipboardAndPrimarySelection"),
+        act.CopyMode("Close"),
+      })
+    },
+  },
 }
 
 return {
@@ -211,6 +254,7 @@ return {
   colors = colors,
   leader = leader,
   keys = keys,
+  key_tables = key_tables,
   font_size = 14,
   font = wezterm.font_with_fallback({
     "HackGen35 Console",
