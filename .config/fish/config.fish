@@ -1,9 +1,7 @@
-# NOTE
-# fishの文法
-# @see https://www.gfd-dennou.org/member/hiroki/homepage/main009.html
-# 
-# Fish Shellでコマンドの実行結果を変数に代入する方法
-# https://efcl.info/2013/0520/res3282/
+# NOTE: fishをnixで管理するように変更したら、fish起動時にNixの環境設定を有効にしないとnixコマンドが使えなくなったので足した。
+if test -f /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.fish
+  source /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.fish
+end
 
 #########################################
 # 環境変数
@@ -77,11 +75,15 @@ alias mv='mv -i'
 alias rm='rm -i'
 
 #########################################
-# ツールごとのエイリアス・関数
+# ツールごとのエイリアス・関数・設定等
 #########################################
 
 # claude
 alias claudesize='du -sh ~/.claude/ && du -sh ~/.claude/* | sort -h'
+
+# direnv
+# https://github.com/direnv/direnv/blob/master/docs/hook.md#fish
+direnv hook fish | source
 
 # Docker
 
@@ -172,6 +174,10 @@ alias v='nvim'
 
 # raycast
 alias raycast='open raycast://'
+
+# rbenv
+# Added by `rbenv init` on Thu Jan  2 23:43:55 JST 2025
+status --is-interactive; and rbenv init - --no-rehash fish | source
 
 # ripgrep
 # hidden files to be searched by default
@@ -273,15 +279,3 @@ set fish_greeting
 # tabtab source for packages
 # uninstall by removing these lines
 [ -f ~/.config/tabtab/fish/__tabtab.fish ]; and . ~/.config/tabtab/fish/__tabtab.fish; or true
-
-# direnv
-# https://github.com/direnv/direnv/blob/master/docs/hook.md#fish
-direnv hook fish | source
-
-# Added by `rbenv init` on Thu Jan  2 23:43:55 JST 2025
-status --is-interactive; and rbenv init - --no-rehash fish | source
-
-# NOTE: fishをnixで管理するように変更したら、fish起動時にNixの環境設定を有効にしないとnixコマンドが使えなくなったので足した。
-if test -f /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.fish
-  source /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.fish
-end
