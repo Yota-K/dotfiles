@@ -49,6 +49,22 @@ if type -q pyenv
 end
 
 #########################################
+# pure fish
+# https://github.com/pure-fish/pure
+#########################################
+
+# Nix管理のfishプラグインを読み込む
+if test -d ~/.nix-profile/share/fish/vendor_functions.d
+  set -p fish_function_path ~/.nix-profile/share/fish/vendor_functions.d
+  for f in ~/.nix-profile/share/fish/vendor_conf.d/*.fish
+    source $f
+  end
+end
+
+# pure-fishのカスタマイズ
+source ~/.config/fish/functions/pure.fish
+
+#########################################
 # エイリアス
 #########################################
 
@@ -254,26 +270,6 @@ set fish_color_user           brblue
 # Remove greeting messsage
 set fish_greeting
 
-# gitのブランチとstatusを表示させるのに必要
-# https://qiita.com/mom0tomo/items/b593c0e98c1eea70a114
-
-# Fish git prompt
-set __fish_git_prompt_showdirtystate 'yes'
-set __fish_git_prompt_showstashstate 'yes'
-set __fish_git_prompt_showuntrackedfiles 'yes'
-set __fish_git_prompt_showupstream 'yes'
-set __fish_git_prompt_color_branch yellow
-set __fish_git_prompt_color_upstream_ahead green
-set __fish_git_prompt_color_upstream_behind red
-
-# Status Chars
-set __fish_git_prompt_char_dirtystate '⚡'
-set __fish_git_prompt_char_stagedstate '→'
-set __fish_git_prompt_char_untrackedfiles '☡'
-set __fish_git_prompt_char_stashstate '↩'
-set __fish_git_prompt_char_upstream_ahead '+'
-set __fish_git_prompt_char_upstream_behind '-'
-
 # tabtab source for packages
 # uninstall by removing these lines
 [ -f ~/.config/tabtab/fish/__tabtab.fish ]; and . ~/.config/tabtab/fish/__tabtab.fish; or true
@@ -281,9 +277,6 @@ set __fish_git_prompt_char_upstream_behind '-'
 # direnv
 # https://github.com/direnv/direnv/blob/master/docs/hook.md#fish
 direnv hook fish | source
-
-# starship
-starship init fish | source
 
 # Added by `rbenv init` on Thu Jan  2 23:43:55 JST 2025
 status --is-interactive; and rbenv init - --no-rehash fish | source

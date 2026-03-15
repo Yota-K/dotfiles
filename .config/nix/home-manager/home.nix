@@ -13,10 +13,10 @@ let
     direnv
     eza
     fish
+    fishPlugins.pure
     fzf
     jq
     ripgrep
-    starship
     tenv
     vim-startuptime
     yazi
