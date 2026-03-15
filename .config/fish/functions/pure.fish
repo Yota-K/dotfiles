@@ -33,7 +33,6 @@ function _pure_prompt_current_folder --argument-names current_prompt_width
     echo "$current_folder_color$folder_icon  $current_folder"
 end
 
-# gitステータスをstarshipデフォルトのシンボルで個別表示
 # ! = unstaged, + = staged, ? = untracked
 function _pure_prompt_git_dirty
     set --local result ""

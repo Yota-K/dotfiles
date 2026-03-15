@@ -23,7 +23,6 @@
  │   │       ├── tabline.lua         # タブライン表示設定
  │   │       ├── terminal.lua        # ターミナル関連設定
  │   │       └── plugin_settings     # 各種プラグインの設定
- │   ├── starship.toml # Starshipプロンプトの設定
  │   └── yazi         # Yaziファイルマネージャーの設定
  ├── .envrc           # direnvの環境変数設定
  ├── .envrc.sample    # direnv設定のサンプル
