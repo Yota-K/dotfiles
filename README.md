@@ -14,7 +14,6 @@
     - [fzf](https://github.com/junegunn/fzf)
     - [delta](https://github.com/dandavison/delta)
     - [ripgrep](https://github.com/BurntSushi/ripgrep)
-    - [starship](https://github.com/starship/starship)
     - [zoxide](https://github.com/ajeetdsouza/zoxide)
 - TUI
     - [Lazygit](https://github.com/jesseduffield/lazygit)
