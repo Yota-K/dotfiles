@@ -7,6 +7,10 @@ return {
   event = "VimEnter",
   build = ":TSUpdate",
   config = function()
+    require("ts_context_commentstring").setup({
+      enable_autocmd = false,
+    })
+
     local nvim_treesitter_configs = require("nvim-treesitter.configs")
 
     nvim_treesitter_configs.setup({

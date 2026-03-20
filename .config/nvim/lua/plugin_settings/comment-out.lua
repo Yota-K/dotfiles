@@ -13,7 +13,7 @@ return {
         -- ReactやVueのビュー部分でもコメントアウトをできるようにする
         --https://github.com/terrortylor/nvim-comment/issues/6
         -- They can do anything here, e.g.:
-        require("ts_context_commentstring.internal").update_commentstring()
+        require("ts_context_commentstring").calculate_commentstring()
       end,
     })
 
