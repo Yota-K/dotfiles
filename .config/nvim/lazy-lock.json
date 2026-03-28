@@ -32,5 +32,5 @@
   "vim-qfreplace": { "branch": "master", "commit": "707a895f9f86eeed106f64da0bd9fa07b3cd9cee" },
   "vimdoc-ja": { "branch": "master", "commit": "6bd30665b5d023cfd735fd12ec232716b8b6cd7b" },
   "visai.nvim": { "branch": "main", "commit": "3181080c57cffc853541db2c8bdfc104b8a2d890" },
-  "winresizer": { "branch": "master", "commit": "55ae92b980b607fef154f9273db91020adbe7d22" }
+  "winresizer": { "branch": "master", "commit": "299076f7f79e2e2f7706b2dfacbb3c074ce53257" }
 }

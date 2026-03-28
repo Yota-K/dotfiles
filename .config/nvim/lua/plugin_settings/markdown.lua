@@ -1,10 +1,7 @@
 -- markdownを見やすくするプラグイン
 return {
   "MeanderingProgrammer/render-markdown.nvim",
-  name = "render-markdown", -- Only needed if you have another plugin named markdown.nvim
-  -- tree-sitterの以下のparserに依存している
-  -- markdown
-  -- markdown_inline
+  name = "render-markdown",
   dependencies = { "nvim-treesitter/nvim-treesitter" },
   cmd = "RenderMarkdownToggle",
   ft = { "markdown" },

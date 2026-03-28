@@ -10,8 +10,9 @@
       url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # 新しいnightlyでtreesitter highlighterがクラッシュするため、動作確認済みのリビジョンに固定
     neovim-nightly-overlay = {
-      url = "github:nix-community/neovim-nightly-overlay";
+      url = "github:nix-community/neovim-nightly-overlay/701c0a6174fde5de4b9424c0d1e5a4306b73baac";
     };
   };
   outputs =
