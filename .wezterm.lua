@@ -3,6 +3,10 @@ if not status then
   return
 end
 
+-- オーバーレイペインのIDを管理するテーブル
+-- ペインが閉じるとis_zoomedがfalseになるため、クリーンアップ不要
+wezterm.GLOBAL.overlay_panes = wezterm.GLOBAL.overlay_panes or {}
+
 -- activeなペインの番号と全ペイン数を取得して文字列を返す
 local function get_pane_info(window)
   local tab = window:active_tab()
@@ -109,7 +113,8 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_wid
     end
 
     -- Zoom mode時
-    if tab.active_pane.is_zoomed then
+    -- オーバーレイランチャーで開いた場合は "Zoom mode...🔍" は表示しない
+    if tab.active_pane.is_zoomed and not wezterm.GLOBAL.overlay_panes[tostring(tab.active_pane.pane_id)] then
       return string.format(" %d %s ", tab_index, "Zoom mode...🔍")
     end
   end
@@ -211,6 +216,38 @@ local keys = {
       act.ActivateCopyMode,
       act.CopyMode("ClearSelectionMode"),
     })
+  },
+  -- オーバーレイランチャー: split-pane + zoom で現在のペインを覆うように選択したツールを起動する
+  {
+    key = "o",
+    mods = "LEADER",
+    action = act.InputSelector({
+      title = "Overlay Launcher",
+      choices = {
+        { label = "✏️ Neovim" },
+        { label = "🐙 Lazygit" },
+        { label = "🐟 Fish" },
+        { label = "🧠 Claude Code" },
+      },
+      action = wezterm.action_callback(function(window, pane, _id, label)
+        if not label then return end
+        local commands = {
+          ["✏️ Neovim"] = "nvim",
+          ["🐙 Lazygit"] = "lazygit",
+          ["🐟 Fish"] = "fish",
+          ["🧠 Claude Code"] = "claude",
+        }
+        local cmd = commands[label]
+        if not cmd then return end
+        local shell = os.getenv("SHELL") or "/bin/sh"
+        local new_pane = pane:split({
+          direction = "Bottom",
+          args = { shell, "-ic", cmd },
+        })
+        wezterm.GLOBAL.overlay_panes[tostring(new_pane:pane_id())] = true
+        window:perform_action(act.TogglePaneZoomState, new_pane)
+      end),
+    }),
   },
 }
 
