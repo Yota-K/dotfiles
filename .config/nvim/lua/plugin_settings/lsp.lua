@@ -5,9 +5,36 @@ return {
     "mason-org/mason.nvim",
     "mason-org/mason-lspconfig.nvim",
     "WhoIsSethDaniel/mason-tool-installer.nvim",
-    "hrsh7th/vim-vsnip",
-    "hrsh7th/nvim-cmp",
-    "hrsh7th/cmp-nvim-lsp",
+    {
+      "saghen/blink.cmp",
+      dependencies = { "rafamadriz/friendly-snippets" },
+      version = "1.*",
+      opts = {
+        keymap = {
+          preset = "none",
+          ["<C-n>"] = { "select_next", "fallback" },
+          ["<C-p>"] = { "select_prev", "fallback" },
+          ["<C-f>"] = { "scroll_documentation_down", "fallback" },
+          ["<C-b>"] = { "scroll_documentation_up", "fallback" },
+          ["<CR>"] = { "accept", "fallback" },
+        },
+        appearance = {
+          nerd_font_variant = "mono",
+        },
+        completion = {
+          documentation = {
+            auto_show = true,
+            window = { border = "rounded" },
+          },
+          ghost_text = { enabled = true },
+        },
+        sources = {
+          default = { "lsp", "path", "snippets", "buffer" },
+        },
+        fuzzy = { implementation = "prefer_rust_with_warning" },
+      },
+      opts_extend = { "sources.default" },
+    },
   },
   event = {
     "VimEnter",
@@ -16,8 +43,7 @@ return {
     local mason = require("mason")
     local mason_lspconfig = require("mason-lspconfig")
     local mason_tool_installer = require("mason-tool-installer")
-    local cmp_nvim_lsp = require("cmp_nvim_lsp")
-    local cmp = require("cmp")
+    local blink_cmp = require("blink.cmp")
 
     mason.setup({
       ui = {
@@ -80,7 +106,7 @@ return {
     })
 
     vim.lsp.config("*", {
-      capabilities = cmp_nvim_lsp.default_capabilities()
+      capabilities = blink_cmp.get_lsp_capabilities()
     })
 
     -- ref: https://github.com/NickCao/flakes/blob/master/nixos/mainframe/nvim.lua
@@ -114,39 +140,5 @@ return {
       end,
     })
 
-    -- 補完設定
-    cmp.setup({
-      snippet = {
-        expand = function(args)
-          vim.fn["vsnip#anonymous"](args.body)
-        end,
-      },
-      sources = {
-        { name = "nvim_lsp" },
-      },
-      mapping = cmp.mapping.preset.insert({
-        -- スクロールのキーマッピング
-        ["<C-n>"] = cmp.mapping.select_next_item(),
-        ["<C-p>"] = cmp.mapping.select_prev_item(),
-        ["<C-f>"] = cmp.mapping.scroll_docs(4),
-        ["<C-b>"] = cmp.mapping.scroll_docs(-4),
-        -- enterで補完を確定する
-        ["<CR>"] = cmp.mapping.confirm({ select = true }),
-      }),
-      experimental = {
-        ghost_text = true,
-      },
-      window = {
-        completion = {
-          -- borderを非表示にする
-          border = { "", "", "", "", "", "", "", "" },
-          winhighlight = "Normal:CmpNormal,FloatBorder:CmpBorder,CursorLine:CmpSelection",
-        },
-        documentation = {
-          border = "rounded",
-          winhighlight = "Normal:CmpNormal,FloatBorder:CmpBorder",
-        },
-      },
-    })
   end,
 }
