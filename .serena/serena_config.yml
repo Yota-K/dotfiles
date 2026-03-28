@@ -9,9 +9,8 @@ language_backend: LSP
 
 # whether to open a graphical window with Serena's logs.
 # This is mainly supported on Windows and (partly) on Linux; not available on macOS.
-# If you want to see the logs in a web browser, use the `web_dashboard` option instead.
-# Limitations: doesn't seem to work with the community version of Claude Desktop for Linux
-# Might also cause problems with some MCP clients - if you have any issues, try disabling this
+# If you prefer a browser-based tool, use the `web_dashboard` option instead.
+# Further information: https://oraios.github.io/serena/02-usage/060_dashboard.html
 #
 # Being able to inspect logs is useful both for troubleshooting and for monitoring the tool calls,
 # especially when using the agno playground, since the tool calls are not always shown,
@@ -24,18 +23,26 @@ language_backend: LSP
 # we have to live with this limitation for now.
 gui_log_window: false
 
-# whether to open the Serena web dashboard (which will be accessible through your web browser) that
-# shows Serena's current session logs - as an alternative to the GUI log window which
-# is supported on all platforms.
+# whether to start the Serena web dashboard, which provides access to Serena's configuration
+# and state as well as the current session logs.
+# The web dashboard is supported on all platforms.
+# We strongly recommend to always enable this option, since the dashboard provides important information
+# about the current state of Serena.
+# If you don't want the browser window to pop up automatically, set `web_dashboard_open_on_launch` to False
+# (see option below).
+# Further information: https://oraios.github.io/serena/02-usage/060_dashboard.html
 web_dashboard: false
 
-# The address where the web dashboard will listen on
+# the address the web dashboard will listen on (bind address).
 web_dashboard_listen_address: 127.0.0.1
 
 # whether to open a browser window with the web dashboard when Serena starts (provided that web_dashboard
-# is enabled). If set to False, you can still open the dashboard manually by navigating to
-# http://localhost:24282/dashboard/ in your web browser (24282 = 0x5EDA, SErena DAshboard).
-# If you have multiple instances running, a higher port will be used; try port 24283, 24284, etc.
+# is enabled). See also the web_dashboard option.
+# If set to false, you can still open the dashboard manually by
+# a) telling the LLM to "open the dashboard" (provided that the open_dashboard tool is enabled) or by
+# b) manually navigating to http://localhost:24282/dashboard/ in your web browser (actual port
+#    may be higher if you have multiple instances running; try ports 24283, 24284, etc.)
+# See also: https://oraios.github.io/serena/02-usage/060_dashboard.html
 web_dashboard_open_on_launch: true
 
 # the minimum log level for the GUI log window and the dashboard (10 = debug, 20 = info, 30 = warning, 40 = error)
@@ -45,9 +52,8 @@ log_level: 20
 # This is useful for debugging language server issues.
 trace_lsp_communication: false
 
-# Added on 23.08.2025
-# Advanced configuration option allowing to configure language server implementation specific options. Maps the language
-# (same entry as in project.yml) to the options.
+# advanced configuration option allowing to configure language server-specific options.
+# Maps the language key to the options.
 # Have a look at the docstring of the constructors of the LS implementations within solidlsp (e.g., for C# or PHP) to see which options are available.
 # No documentation on options means no options are available.
 ls_specific_settings: {}
@@ -60,10 +66,6 @@ excluded_tools: []
 
 # list of optional tools (which are disabled by default) to be included
 included_optional_tools: []
-
-# Used as default for tools where the apply method has a default maximal answer length.
-# Even though the value of the max_answer_chars can be changed when calling the tool, it may make sense to adjust this default
-# through the global configuration.
 default_max_tool_answer_chars: 150000
 
 # the name of the token count estimator to use for tool usage statistics.
@@ -91,6 +93,9 @@ base_modes:
 default_modes:
 - interactive
 - editing
+
+# fixed set of tools to use as the base tool set (if non-empty), replacing Serena's default set of tools.
+# This cannot be combined with non-empty excluded_tools or included_optional_tools.
 
 # fixed set of tools to use as the base tool set (if non-empty), replacing Serena's default set of tools.
 # This cannot be combined with non-empty excluded_tools or included_optional_tools.
@@ -137,3 +142,12 @@ project_serena_folder_location: $projectDir/.serena
 # Note that Serena's own files (e.g. memories and configuration files) always use native line endings.
 # This setting can be overridden on a per-project basis in project.yml files.
 line_ending: native
+
+# list of regex patterns for memories to completely ignore.
+# Matching memories will not appear in list_memories or activate_project output
+# and cannot be accessed via read_memory or write_memory.
+# To access ignored memory files, use the read_file tool on the raw file path.
+# This is useful for projects with large numbers of archived memory files.
+# You can extend the list on a per-project basis in the project.yml configuration file.
+# Example: ["_archive/.*", "_episodes/.*"]
+ignored_memory_patterns: []

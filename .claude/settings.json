@@ -4,6 +4,19 @@
     "type": "command",
     "command": "~/.claude/statusline.sh"
   },
+  "hooks": {
+    "Notification": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if [ \"$(uname)\" = \"Darwin\" ]; then osascript -e 'display notification \"Claude Code needs your attention\" with title \"Claude Code\"'; fi"
+          }
+        ]
+      }
+    ]
+  },
   "permissions": {
     "allow": [
       "WebFetch(domain:github.com)",
