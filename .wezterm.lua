@@ -13,7 +13,8 @@ local function get_pane_info(window)
   local panes = tab:panes_with_info()
 
   -- ペインが2個以上の時のみステータスバーに表示する
-  if #panes < 2 then return "" end
+  local pane_count = 2
+  if #panes < pane_count then return "" end
 
   local active_pane_index = 1
   for i, p in ipairs(panes) do
@@ -203,9 +204,6 @@ local keys = {
   { key = "1",     mods = "CTRL",   action = act.PaneSelect },
   -- 画面上に表示されたアルファベットを使用して、現在のペインと選択したペインを入れ替える
   { key = "2",     mods = "CTRL",   action = act({ PaneSelect = { mode = "SwapWithActive" } }) },
-  -- コマンドパレットを開く
-  -- コマンドパレット経由でキーマッピングに設定していない機能も使うことができる
-  { key = "P",     mods = "CTRL",   action = act.ActivateCommandPalette },
   -- Zoomモードの切り替え
   { key = "Z",     mods = "CTRL",   action = act.TogglePaneZoomState },
   -- コピーモードの起動（セレクト状態をクリアした状態で開始する）
