@@ -21,3 +21,4 @@
 - AI
     - [claude-code](https://github.com/anthropics/claude-code)
     - [copilot-cli](https://github.com/github/copilot-cli)
+    - [gemini-cli](https://cloud.google.com/blog/ja/topics/developers-practitioners/introducing-gemini-cli)
