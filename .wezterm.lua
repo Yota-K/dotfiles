@@ -196,6 +196,20 @@ local keys = {
   { key = "l",     mods = "ALT",    action = act({ AdjustPaneSize = { "Right", 5 } }) },
   -- QuickSelect・・・画面に表示されている文字をクイックにコピペできる機能
   { key = "Enter", mods = "SHIFT",  action = "QuickSelect" },
+  -- QuickSelectで選択した文字列をブラウザで開く
+  {
+    key = "Enter",
+    mods = "LEADER",
+    action = act.QuickSelectArgs({
+      patterns = { "https?://[\\w\\-._~:/?#@!$&'*+,;=%]+" },
+      action = wezterm.action_callback(function(window, pane)
+        local text = window:get_selection_text_for_pane(pane)
+        if text and text ~= "" then
+          wezterm.open_with(text)
+        end
+      end),
+    }),
+  },
   -- 画面の文字の大きさを調整する
   -- HINT: ⌘ + 0で文字の大きさをもとに戻す
   { key = "+",     mods = "CTRL",   action = act.IncreaseFontSize },
