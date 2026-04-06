@@ -22,7 +22,7 @@
   "nvim-lint": { "branch": "master", "commit": "4b03656c09c1561f89b6aa0665c15d292ba9499d" },
   "nvim-lspconfig": { "branch": "master", "commit": "16812abf0e8d8175155f26143a8504e8253e92b0" },
   "nvim-rg": { "branch": "main", "commit": "27c9ca583d05a73048186dc3048b26428ef21753" },
-  "nvim-treesitter": { "branch": "master", "commit": "cf12346a3414fa1b06af75c79faebe7f76df080a" },
+  "nvim-treesitter": { "branch": "main", "commit": "4916d6592ede8c07973490d9322f187e07dfefac" },
   "nvim-ts-context-commentstring": { "branch": "main", "commit": "1b212c2eee76d787bbea6aa5e92a2b534e7b4f8f" },
   "plenary.nvim": { "branch": "master", "commit": "b9fd5226c2f76c951fc8ed5923d85e4de065e509" },
   "render-markdown": { "branch": "main", "commit": "e3c18ddd27a853f85a6f513a864cf4f2982b9f26" },
@@ -30,7 +30,7 @@
   "vim-devicons": { "branch": "master", "commit": "71f239af28b7214eebb60d4ea5bd040291fb7e33" },
   "vim-findroot": { "branch": "master", "commit": "76af2f097cf8196b00f049054444966d10c82f95" },
   "vim-qfreplace": { "branch": "master", "commit": "707a895f9f86eeed106f64da0bd9fa07b3cd9cee" },
-  "vimdoc-ja": { "branch": "master", "commit": "6bd30665b5d023cfd735fd12ec232716b8b6cd7b" },
+  "vimdoc-ja": { "branch": "master", "commit": "cae42dbd24d5954db18c58d19589a686a88b67c2" },
   "visai.nvim": { "branch": "main", "commit": "3181080c57cffc853541db2c8bdfc104b8a2d890" },
   "winresizer": { "branch": "master", "commit": "299076f7f79e2e2f7706b2dfacbb3c074ce53257" }
 }

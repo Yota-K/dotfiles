@@ -7,7 +7,6 @@ let
   # CLI/TUI系
   cliTools = with pkgs; [
     bat
-    claude-code
     curl
     delta
     direnv
@@ -18,6 +17,7 @@ let
     jq
     ripgrep
     tenv
+    tree-sitter
     vim-startuptime
     yazi
     zoxide
@@ -37,8 +37,9 @@ let
   ];
 
   # Editors
-  editors = with pkgs; [
-    vim
+  editors = [
+    pkgs.vim
+    inputs.claude-code.packages.${pkgs.system}.default
     inputs.neovim-nightly-overlay.packages.${pkgs.system}.default
   ];
 

@@ -10,6 +10,11 @@
       url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # nixpkgsのclaude-codeはリリースへの追従が遅く、npm registryから削除済みバージョンを参照してビルドが失敗することがあるため、
+    # 1時間ごとに自動更新される専用flakeを使用
+    claude-code = {
+      url = "github:sadjow/claude-code-nix";
+    };
     # 新しいnightlyでtreesitter highlighterがクラッシュするため、動作確認済みのリビジョンに固定
     neovim-nightly-overlay = {
       url = "github:nix-community/neovim-nightly-overlay/701c0a6174fde5de4b9424c0d1e5a4306b73baac";
@@ -18,6 +23,7 @@
   outputs =
     inputs@{ self
     , nixpkgs
+    , claude-code
     , home-manager
     , nix-darwin
     , neovim-nightly-overlay
@@ -51,7 +57,7 @@
                 nix flake update
 
                 echo "Updating home-manager... 🏠"
-                nix run nixpkgs#home-manager -- switch --flake .#darwinConfig --impure
+                nix run home-manager -- switch --flake .#darwinConfig --impure
 
                 echo "Updating nix-darwin... 🍎"
                 sudo nix run nix-darwin/master#darwin-rebuild -- switch --flake .#my-macbook
