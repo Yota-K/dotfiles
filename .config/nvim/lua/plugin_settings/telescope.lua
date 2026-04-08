@@ -5,7 +5,6 @@ return {
     "Telescope",
   },
   keys = { { "ff", mode = "n" }, { "fg", mode = "n" }, { "fb", mode = "n" } },
-  tag = "0.1.7",
   dependencies = { "nvim-lua/plenary.nvim" },
   config = function()
     local telescope = require("telescope")
