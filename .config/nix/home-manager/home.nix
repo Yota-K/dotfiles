@@ -17,6 +17,7 @@ let
     jq
     ripgrep
     tenv
+    tflint
     tree-sitter
     vim-startuptime
     yazi
