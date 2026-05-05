@@ -103,8 +103,10 @@
     "type": "command",
     "command": "~/.claude/statusline.sh"
   },
-  "skipAutoPermissionPrompt": true,
   "enabledPlugins": {
     "gopls-lsp@claude-plugins-official": true
-  }
+  },
+  "editorMode": "vim",
+  "skipAutoPermissionPrompt": true,
+  "theme": "auto"
 }
