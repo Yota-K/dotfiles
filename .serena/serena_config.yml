@@ -23,26 +23,26 @@ language_backend: LSP
 # we have to live with this limitation for now.
 gui_log_window: false
 
-# whether to start the Serena web dashboard, which provides access to Serena's configuration
-# and state as well as the current session logs.
-# The web dashboard is supported on all platforms.
-# We strongly recommend to always enable this option, since the dashboard provides important information
-# about the current state of Serena.
-# If you don't want the browser window to pop up automatically, set `web_dashboard_open_on_launch` to False
-# (see option below).
+# whether to start the Serena Dashboard, which provides detailed information on your Serena session,
+# the current configuration and furthermore allows some settings to be conveniently modified on the fly.
+# We strongly recommend to always enable this option!
+# If you want to prevent the Dashboard window from being opened on launch,
+# set `web_dashboard_open_on_launch` to false (see below).
 # Further information: https://oraios.github.io/serena/02-usage/060_dashboard.html
 web_dashboard: false
 
 # the address the web dashboard will listen on (bind address).
 web_dashboard_listen_address: 127.0.0.1
 
-# whether to open a browser window with the web dashboard when Serena starts (provided that web_dashboard
-# is enabled). See also the web_dashboard option.
-# If set to false, you can still open the dashboard manually by
-# a) telling the LLM to "open the dashboard" (provided that the open_dashboard tool is enabled) or by
-# b) manually navigating to http://localhost:24282/dashboard/ in your web browser (actual port
-#    may be higher if you have multiple instances running; try ports 24283, 24284, etc.)
-# See also: https://oraios.github.io/serena/02-usage/060_dashboard.html
+# whether to open the Dashboard window/browser tab when Serena starts (provided that `web_dashboard` is enabled).
+# If set to false, you can still open the dashboard manually:
+#  * When using an interface that supports a tray icon (see setting `web_dashboard_interface`),
+#    you can conveniently open the dashboard from the system tray.
+#  * When using the `browser` interface (no tray icon), so you can only open the dashboard by
+#    a) telling the LLM to "open the dashboard" (provided that the open_dashboard tool is enabled) or by
+#    b) manually navigating to http://localhost:24282/dashboard/ in your web browser (actual port
+#       may be higher if you have multiple instances running; try ports 24283, 24284, etc.)
+# Further information: https://oraios.github.io/serena/02-usage/060_dashboard.html
 web_dashboard_open_on_launch: true
 
 # the minimum log level for the GUI log window and the dashboard (10 = debug, 20 = info, 30 = warning, 40 = error)
@@ -66,13 +66,17 @@ excluded_tools: []
 
 # list of optional tools (which are disabled by default) to be included
 included_optional_tools: []
+
+# Used as default for tools where the apply method has a default maximal answer length.
+# Even though the value of the max_answer_chars can be changed when calling the tool, it may make sense to adjust this default
+# through the global configuration.
 default_max_tool_answer_chars: 150000
 
 # the name of the token count estimator to use for tool usage statistics.
 # See the `RegisteredTokenCountEstimator` enum for available options.
 #
 # By default, a very naive character count estimator is used, which simply counts the number of characters.
-# You can configure this to TIKTOKEN_GPT4 to use a local tiktoken-based estimator for GPT-4 (will download tiktoken
+# You can configure this to TIKTOKEN_GPT4O to use a local tiktoken-based estimator for GPT-4o (will download tiktoken
 # data files on first run), or ANTHROPIC_CLAUDE_SONNET_4 which will use the (free of cost) Anthropic API to
 # estimate the token count using the Claude Sonnet 4 tokenizer.
 token_count_estimator: CHAR_COUNT
@@ -81,24 +85,15 @@ token_count_estimator: CHAR_COUNT
 projects:
 - /Users/public/dotfiles
 
-# list of mode names to that are always to be included in the set of active modes
-# The full set of modes to be activated is base_modes + default_modes.
-# If this is undefined, no base modes are included.
-# The project configuration (project.yml) may override this setting.
+# list of mode names to that are always to be included in the set of active modes.
+# The full set of modes to be activated is base_modes + default_modes + added_modes,
+# where added_modes can be defined by projects/CLI parameters.
+# If this is undefined/empty, no base modes are included.
+# See https://oraios.github.io/serena/02-usage/050_configuration.html#modes
 base_modes:
-
-# list of mode names that are to be activated by default.
-# The full set of modes to be activated is base_modes + default_modes.
-# These modes can be overridden by the project configuration (project.yml) or through the CLI (--mode).
 default_modes:
 - interactive
 - editing
-
-# fixed set of tools to use as the base tool set (if non-empty), replacing Serena's default set of tools.
-# This cannot be combined with non-empty excluded_tools or included_optional_tools.
-
-# fixed set of tools to use as the base tool set (if non-empty), replacing Serena's default set of tools.
-# This cannot be combined with non-empty excluded_tools or included_optional_tools.
 
 # fixed set of tools to use as the base tool set (if non-empty), replacing Serena's default set of tools.
 # This cannot be combined with non-empty excluded_tools or included_optional_tools.
@@ -151,3 +146,19 @@ line_ending: native
 # You can extend the list on a per-project basis in the project.yml configuration file.
 # Example: ["_archive/.*", "_episodes/.*"]
 ignored_memory_patterns: []
+
+# defines the interface (application mode) used for the web dashboard (if enabled).
+# If empty/null, use platform-dependent default. Otherwise, possible values:
+#  * browser: the dashboard is opened in the default browser (if `web_dashboard_open_on_launch` is true)
+#      This is supported on all platforms.
+#  * app: the dashboard is opened in a separate native-like app window with accompanying tray icon, whose
+#      lifecycle is tied to the Serena process.
+#      If `web_dashboard_open_on_launch` is false, the dashboard can be conveniently accessed via the tray icon.
+#      This is supported on Windows and macOS, but note that on macOS, where tray icons are very visible,
+#      this may result in too many icons being displayed when using multi-agent setups.
+#  * tray_manager: use a global tray icon to provide access to the dashboards of all running Serena instances,
+#      opening the dashboard in browser tabs when selected from the tray menu.
+#      This is EXPERIMENTAL. It is tested on Windows only. We will establish macOS support, but it is yet untested.
+#      On Linux, this cannot be universally supported, but it may work in some desktop environments.
+# See https://oraios.github.io/serena/02-usage/060_dashboard.html
+web_dashboard_interface:
