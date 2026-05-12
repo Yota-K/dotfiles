@@ -56,6 +56,7 @@ let
     git
     gitflow
     lazygit
+    gitleaks
   ];
 
   # プログラミング言語/ランタイム/バージョン管理/パッケージマネージャ
