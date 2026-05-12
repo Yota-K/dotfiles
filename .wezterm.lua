@@ -222,11 +222,12 @@ local keys = {
   { key = "Z",     mods = "CTRL",   action = act.TogglePaneZoomState },
   -- コピーモードの起動（セレクト状態をクリアした状態で開始する）
   {
-    key = "X",
+    key = "x",
     mods = "CTRL|SHIFT",
     action = act.Multiple({
+      act.ClearSelection,
+      act.CopyMode("Close"),
       act.ActivateCopyMode,
-      act.CopyMode("ClearSelectionMode"),
     })
   },
   -- オーバーレイランチャー: split-pane + zoom で現在のペインを覆うように選択したツールを起動する
