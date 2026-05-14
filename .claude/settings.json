@@ -98,6 +98,16 @@
           }
         ]
       }
+    ],
+    "SessionEnd": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "input=$(cat); cwd=$(printf '%s' \"$input\" | jq -r '.cwd // empty'); [ -n \"$cwd\" ] || exit 0; gitdir=$(git -C \"$cwd\" rev-parse --absolute-git-dir 2>/dev/null) || exit 0; case \"$gitdir\" in */.git/worktrees/*) ;; *) exit 0 ;; esac; if [ -n \"$(git -C \"$cwd\" status --porcelain 2>/dev/null)\" ]; then [ \"$(uname)\" = \"Darwin\" ] && osascript -e \"display notification \\\"未コミット変更あり: $cwd\\\" with title \\\"Worktree 残置\\\"\" 2>/dev/null; exit 0; fi; common=$(git -C \"$cwd\" rev-parse --path-format=absolute --git-common-dir 2>/dev/null); main=\"${common%/.git}\"; git -C \"$main\" worktree remove --force \"$cwd\" >/dev/null 2>&1 || true"
+          }
+        ]
+      }
     ]
   },
   "statusLine": {
