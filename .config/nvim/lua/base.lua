@@ -103,3 +103,32 @@ vim.api.nvim_create_autocmd("ColorScheme", {
     vim.api.nvim_set_hl(0, "SignColumn", {})
   end,
 })
+
+-- プロジェクトルートをカレントディレクトリにする (vim.fs.root による findroot 代替)
+-- ref: https://github.com/mattn/vim-findroot/tree/master
+local findroot_group = vim.api.nvim_create_augroup("findroot", { clear = true })
+vim.api.nvim_create_autocmd({ "BufEnter" }, {
+  group = findroot_group,
+  callback = function(args)
+    if vim.bo[args.buf].buftype ~= "" then
+      return
+    end
+    local bufname = vim.api.nvim_buf_get_name(args.buf)
+    if bufname == "" or bufname:find("://", 1, true) then
+      return
+    end
+
+    -- git管理されているプロジェクトをルートとしてカレントディレクトリを変更する
+    local root = vim.fs.root(args.buf, { ".git", ".gitignore" })
+    if not root then
+      return
+    end
+
+    local cwd = vim.fs.normalize(vim.fn.getcwd()):lower()
+    if cwd:find(vim.fs.normalize(root):lower(), 1, true) == 1 then
+      return
+    end
+
+    vim.cmd.lcd(root)
+  end,
+})
