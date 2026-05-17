@@ -10,38 +10,46 @@
 local opt = vim.opt
 
 opt.encoding = "utf-8"
-
 opt.helplang = "ja"
+-- 行番号の表示幅
 opt.numberwidth = 6
-
+-- ステータスラインにカーソル位置を表示
 opt.ruler = true
-
+-- インデント幅を2スペースに設定
 opt.shiftwidth = 2
+-- タブ幅を2スペースに設定
 opt.tabstop = 2
+-- タブをスペースに展開
 opt.expandtab = true
+-- 自動インデントを有効化
 opt.autoindent = true
+-- スマートインデントを有効化
 opt.smartindent = true
-
+-- 入力中のコマンドを表示
 opt.showcmd = true
-
+-- 対応する括弧をハイライト表示する時間（0.1秒）
 opt.showmatch.matchtime = 1
-
+-- バックスペースで削除できる範囲を指定
 opt.backspace = "indent,eol,start"
-
+-- カーソルを行末より1文字先まで移動可能に
 opt.virtualedit = "onemore"
-
+-- スワップファイルを作成しない
 opt.swapfile = false
-
+-- システムのクリップボードと連携
 opt.clipboard = "unnamedplus"
-
+-- コマンドライン補完を有効化
 opt.wildmenu = true
+-- コマンド履歴の保存数
 opt.history = 5000
-
+-- 行の折り返しを無効化
 opt.wrap = false
-
+-- インクリメンタル検索を有効化
 opt.incsearch = true
+-- 検索結果をハイライト表示
 opt.hlsearch = true
+-- 検索時に大文字小文字を区別しない
 opt.ignorecase = true
+-- 大文字を含む場合は大文字小文字を区別
 opt.smartcase = true
 
 -- Global Status Line を有効にする
