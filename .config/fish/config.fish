@@ -13,15 +13,6 @@ set -gx XDG_CONFIG_HOME "$HOME/.config"
 # brewのPATH
 set -gx PATH /opt/homebrew/bin $PATH
 
-# voltaのPATH
-set -gx VOLTA_HOME "$HOME/.volta"
-set -gx PATH "$VOLTA_HOME/bin" $PATH
-
-# Voltaでpnpmを使用できるようにする
-# まだ実験段階なため、利用する際は環境変数へフラグを立てる必要がある
-# https://docs.volta.sh/advanced/pnpm
-set VOLTA_FEATURE_PNPM 1
-
 # golangのPATH
 set -gx GOPATH $HOME/go
 set -gx PATH $PATH:$GOPATH/bin
@@ -44,6 +35,11 @@ set -x PATH $PYENV_ROOT/bin $PATH
 
 if type -q pyenv
   pyenv init - | source
+end
+
+# mise
+if type -q mise
+  mise activate fish | source
 end
 
 #########################################
@@ -208,25 +204,6 @@ alias tiga='tig --all'
 # tmux
 alias tmuxRestart='tmux attach'
 alias tmuxKillAll='tmux kill-server'
-
-# volta
-
-# インストールしたNode.jsを削除する
-function remove_node_for_volta
-  set package $argv[1]
-  set dir "$HOME/.volta/tools/image/node/$package/"
-
-  if test -d $dir
-    rm -rf $dir
-    if test $status -eq 0
-      echo "Successfully removed $package"
-    else
-      echo "Failed to remove $package"
-    end
-  else
-    echo "Not found $package"
-  end
-end
 
 # wezterm
 alias imgcat='wezterm imgcat'

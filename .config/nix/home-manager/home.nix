@@ -1,7 +1,6 @@
-{
-  inputs,
-  pkgs,
-  ...
+{ inputs
+, pkgs
+, ...
 }:
 let
   # CLI/TUI系
@@ -60,16 +59,16 @@ let
   ];
 
   # プログラミング言語/ランタイム/バージョン管理/パッケージマネージャ
+  # プロジェクトごとに切り替えが必要な言語に関してはmiseで管理している
   languages = with pkgs; [
     deno
-    go
     lua5_1
+    mise
     perl
     php
     pyenv
     rustup
     uv
-    volta
   ];
 
   # その他

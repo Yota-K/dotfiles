@@ -1,0 +1,9 @@
+# プロジェクト毎に切替したい言語や、npmでグローバルインストールしたいパッケージはmiseで管理する
+[tools]
+go = "1.26"
+node = "24"
+pnpm = "10"
+
+# npm packages
+"npm:@github/copilot" = "latest"
+"npm:@google/gemini-cli" = "latest"

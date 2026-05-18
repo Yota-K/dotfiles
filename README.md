@@ -7,6 +7,7 @@
 - Shell: [fish](https://github.com/fish-shell/fish-shell)
 - Package managers
     - [nix](https://github.com/NixOS/nix) (main)
+    - [mise](https://github.com/jdx/mise)
     - [brew](https://github.com/Homebrew/brew) for macOS
 - CLIs
     - [bat](https://github.com/sharkdp/bat)

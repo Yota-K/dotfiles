@@ -11,6 +11,7 @@
  │   ├── cspell       # スペルチェッカーの設定
  │   ├── fish         # Fishシェルの設定
  │   ├── lazygit      # Lazygit（Git TUIクライアント）の設定
+ │   ├── mise         # mise（ランタイム・ツールバージョン管理）の設定
  │   ├── nix          # Nixパッケージマネージャーの設定
  │   ├── nvim         # Neovimの設定
  │   │   ├── after    # ファイルタイプ別の設定
