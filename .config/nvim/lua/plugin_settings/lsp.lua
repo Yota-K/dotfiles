@@ -75,6 +75,7 @@ return {
     }
     local others = {
       "biome",
+      "buf_ls",
       "denols",
       "dockerls",
       "emmet_language_server",
@@ -139,6 +140,5 @@ return {
         -- vim.keymap.set('n', 'ga', vim.lsp.buf.code_action, opts)
       end,
     })
-
   end,
 }
