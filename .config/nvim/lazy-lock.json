@@ -18,7 +18,7 @@
   "mason.nvim": { "branch": "main", "commit": "8e921c2b68571e978db5d4d3fef9c9a7f8755473" },
   "nerdfont.vim": { "branch": "master", "commit": "cc50782ee9580fc70b659cf1ebd55229d94b37ab" },
   "nvim-comment": { "branch": "main", "commit": "e9ac16ab056695cad6461173693069ec070d2b23" },
-  "nvim-highlight-colors": { "branch": "main", "commit": "e4c7af0211866162d999ce0bdd6a029302e19139" },
+  "nvim-highlight-colors": { "branch": "main", "commit": "08407be4943fb5726bd93c0a8cf36243c9f60c89" },
   "nvim-lint": { "branch": "master", "commit": "665525810630701b84181e4d9eefd24b49845b29" },
   "nvim-lspconfig": { "branch": "master", "commit": "8f7e64066e2641d5e7d494962a9c7051e3d38dd5" },
   "nvim-rg": { "branch": "main", "commit": "4289cc873eea1c035a55d4b0c9bbf8e8c60851cc" },
