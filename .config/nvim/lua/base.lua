@@ -64,7 +64,7 @@ opt.termguicolors = true
 -- ポップアップメニューに透過を付与する
 opt.pumblend = 20
 
--- ログの肥大化を防止するため、nvim本体のログをtmpに退避
+-- ログの肥大化を防止するため、ログの保存先をtmpに変更
 vim.env.NVIM_LOG_FILE = '/tmp/nvim.log'
 
 -- マウス操作を無効化
