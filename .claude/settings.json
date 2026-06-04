@@ -115,7 +115,8 @@
     "command": "~/.claude/statusline.sh"
   },
   "enabledPlugins": {
-    "gopls-lsp@claude-plugins-official": true
+    "gopls-lsp@claude-plugins-official": true,
+    "security-guidance@claude-plugins-official": true
   },
   "theme": "auto",
   "editorMode": "vim",
