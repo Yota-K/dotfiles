@@ -96,6 +96,9 @@
       autoUpdate = true;
       # nix-darwin によって生成された Brewfile にリストされていないパッケージ以外はアンインストールする。
       cleanup = "uninstall";
+      # Homebrew 5.1+ では `brew bundle --cleanup` が --force/--force-cleanup/$HOMEBREW_ASK を必須とするため明示的に付与
+      # ref: https://github.com/nix-darwin/nix-darwin/pull/1774
+      extraFlags = [ "--force-cleanup" ];
     };
     casks = [
       "arc"
