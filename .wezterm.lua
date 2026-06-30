@@ -212,14 +212,14 @@ local keys = {
   },
   -- 画面の文字の大きさを調整する
   -- HINT: ⌘ + 0で文字の大きさをもとに戻す
-  { key = "+",     mods = "CTRL",   action = act.IncreaseFontSize },
-  { key = "-",     mods = "CTRL",   action = act.DecreaseFontSize },
+  { key = "+", mods = "CTRL", action = act.IncreaseFontSize },
+  { key = "-", mods = "CTRL", action = act.DecreaseFontSize },
   -- 画面上に表示されたアルファベットを使用して、特定のペインに移動する
-  { key = "1",     mods = "CTRL",   action = act.PaneSelect },
+  { key = "1", mods = "CTRL", action = act.PaneSelect },
   -- 画面上に表示されたアルファベットを使用して、現在のペインと選択したペインを入れ替える
-  { key = "2",     mods = "CTRL",   action = act({ PaneSelect = { mode = "SwapWithActive" } }) },
+  { key = "2", mods = "CTRL", action = act({ PaneSelect = { mode = "SwapWithActive" } }) },
   -- Zoomモードの切り替え
-  { key = "Z",     mods = "CTRL",   action = act.TogglePaneZoomState },
+  { key = "Z", mods = "CTRL", action = act.TogglePaneZoomState },
   -- コピーモードの起動（セレクト状態をクリアした状態で開始する）
   {
     key = "x",
@@ -241,6 +241,7 @@ local keys = {
         { label = "🐙 Lazygit" },
         { label = "🐟 Fish" },
         { label = "🧠 Claude Code" },
+        { label = "⚙️ dotfiles" },
       },
       action = wezterm.action_callback(function(window, pane, _id, label)
         if not label then return end
@@ -249,6 +250,7 @@ local keys = {
           ["🐙 Lazygit"] = "lazygit",
           ["🐟 Fish"] = "fish",
           ["🧠 Claude Code"] = "claude",
+          ["⚙️ dotfiles"] = "cd ~/dotfiles && nvim",
         }
         local cmd = commands[label]
         if not cmd then return end
