@@ -17,6 +17,9 @@
       "Bash(pnpm install:*)"
     ],
     "deny": [
+      "Read(**/.env)",
+      "Edit(**/.env.production)",
+      "Write(**/.env.production)",
       "Bash(rm -rf /)",
       "Bash(rm -rf ~)",
       "Bash(rm -rf /*)",
@@ -118,8 +121,8 @@
     "gopls-lsp@claude-plugins-official": true,
     "security-guidance@claude-plugins-official": true
   },
+  "skipWorkflowUsageWarning": true,
   "theme": "auto",
   "editorMode": "vim",
-  "skipAutoPermissionPrompt": true,
-  "skipWorkflowUsageWarning": true
+  "skipAutoPermissionPrompt": true
 }
