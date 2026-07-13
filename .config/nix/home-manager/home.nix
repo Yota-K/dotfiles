@@ -31,7 +31,8 @@ let
     ecspresso
     google-cloud-sdk
     google-cloud-sql-proxy
-    minikube
+    # orbstack同梱のkubectlと衝突するため一時的に無効化。再有効化する場合はこの行を戻し、orbstackを `(lib.hiPrio orbstack)` に変更する
+    # minikube
     ngrok
     orbstack
   ];
