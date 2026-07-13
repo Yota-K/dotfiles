@@ -58,6 +58,14 @@
                 echo "Updating home-manager... 🏠"
                 nix run home-manager -- switch --flake .#darwinConfig --impure
 
+                # brew bundleが未信頼のサードパーティtapを拒否するため、事前にtrustしておく（冪等）
+                # nix-darwinのactivationでbrew bundleが走る際、sudo経由でXDG_CONFIG_HOMEが未設定になり
+                # brewは ~/.homebrew/trust.json を参照するため、XDG_CONFIG_HOMEを空にしてtrustを実行する
+                echo "Trusting third-party brew taps... 🔐"
+                if [ -x /opt/homebrew/bin/brew ]; then
+                  XDG_CONFIG_HOME= /opt/homebrew/bin/brew trust idoavrah/homebrew || true
+                fi
+
                 echo "Updating nix-darwin... 🍎"
                 sudo nix run nix-darwin/master#darwin-rebuild -- switch --flake .#my-macbook
 
