@@ -6,5 +6,5 @@ os:
   # defined in the getPreset function in editor_presets.go.
   editPreset: "nvim"
 git:
-  pagers:
-    - pager: delta --dark --paging=never
+  diffRenderers:
+    - command: delta --dark --paging=never
