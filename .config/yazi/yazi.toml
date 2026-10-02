@@ -6,5 +6,5 @@ edit = [
   { run = '${EDITOR:=nvim} "$@"', desc = "$EDITOR", block = true },
 ]
 open = [
-  { run = 'open "$@"', desc = "Open", for = "macos", orphan = true },
+  { run = 'open "$@"', desc = "Open", for = "macos" },
 ]
