@@ -69,8 +69,18 @@
     "ask": [],
     "defaultMode": "auto"
   },
-  "model": "claude-opus-4-7[1m]",
+  "model": "sonnet",
   "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "input=$(cat); p=$(printf '%s' \"$input\" | jq -r '.prompt // empty'); if printf '%s' \"$p\" | grep -qE '死ね|殺す|殺して|死んで|ぶっ殺す|殺すぞ|地獄に堕ちろ|脳みそ腐ってる'; then printf '%s' '{\"hookSpecificOutput\":{\"hookEventName\":\"UserPromptSubmit\",\"additionalContext\":\"直前の発言に強い言葉が含まれています。実装や操作を進める前に、一度AskUserQuestionツールで本当に続けてよいか確認してください。\"}}'; fi"
+          }
+        ]
+      }
+    ],
     "Notification": [
       {
         "matcher": "",
