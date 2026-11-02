@@ -96,6 +96,28 @@ return {
     })
     vim.lsp.enable(servers)
 
+    -- mason-lspconfigがastroのtsdkを明示的に上書きするため、ここで再度上書きする
+    -- (after/lsp/astro.luaはmason-lspconfigの明示的なvim.lsp.config呼び出しより優先度が低く効果がない)
+    vim.lsp.config("astro", {
+      before_init = function(_, config)
+        local lspconfig_util = require("lspconfig.util")
+        config.init_options = config.init_options or {}
+        config.init_options.typescript = config.init_options.typescript or {}
+
+        local tsdk = lspconfig_util.get_typescript_server_path(config.root_dir)
+        if tsdk == "" then
+          -- プロジェクトローカルにtypescriptが無い場合は、miseで管理しているグローバルなtypescript(6系)にフォールバックする
+          -- typescript 7系はtypescript.js/tsserverlibrary.jsを同梱しないためtsdkとして使えない
+          local mise_dir = vim.fn.system({ "mise", "where", "npm:typescript" }):gsub("\n$", "")
+          if vim.v.shell_error == 0 and mise_dir ~= "" then
+            tsdk = mise_dir .. "/node_modules/typescript/lib"
+          end
+        end
+
+        config.init_options.typescript.tsdk = tsdk
+      end,
+    })
+
     -- MasonToolsInstall
     mason_tool_installer.setup({
       ensure_installed = {

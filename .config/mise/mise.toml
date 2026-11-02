@@ -7,3 +7,5 @@ pnpm = "10"
 # npm packages
 "npm:@github/copilot" = "latest"
 "npm:@google/gemini-cli" = "latest"
+# typescript 7系はtsserverlibrary.js等を同梱しないため、astro-lsのtsdk解決に必要な6系に固定する
+"npm:typescript" = "6"
