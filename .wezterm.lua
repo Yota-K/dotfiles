@@ -106,8 +106,19 @@ end)
 -- タブの表示をカスタマイズ
 wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
   local tab_index = tab.tab_index + 1
-  local claude = tab.active_pane.user_vars.claude
-  local mark = claude == "done" and " ✅" or claude == "wait" and " ⏳" or ""
+  local mark = ""
+  local mux_tab = wezterm.mux.get_tab(tab.tab_id)
+  local tab_panes = mux_tab and mux_tab:panes_with_info() or {}
+  for i, p in ipairs(tab_panes) do
+    local claude = p.pane:get_user_vars().claude
+    local icon = claude == "done" and "✅" or claude == "wait" and "⏳" or nil
+    if icon then
+      mark = mark .. icon .. (#tab_panes > 1 and i or "")
+    end
+  end
+  if mark ~= "" then
+    mark = " 🦀" .. mark
+  end
 
   if tab.is_active then
     -- Copy mode時
