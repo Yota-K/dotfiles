@@ -106,6 +106,8 @@ end)
 -- タブの表示をカスタマイズ
 wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
   local tab_index = tab.tab_index + 1
+  local claude = tab.active_pane.user_vars.claude
+  local mark = claude == "done" and " ✅" or claude == "wait" and " ⏳" or ""
 
   if tab.is_active then
     -- Copy mode時
@@ -120,7 +122,7 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_wid
     end
   end
 
-  return string.format(" %d ", tab_index)
+  return string.format(" %d%s ", tab_index, mark)
 end)
 
 local theme = require("theme")
