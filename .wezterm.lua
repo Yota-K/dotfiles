@@ -106,19 +106,6 @@ end)
 -- タブの表示をカスタマイズ
 wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
   local tab_index = tab.tab_index + 1
-  local mark = ""
-  local mux_tab = wezterm.mux.get_tab(tab.tab_id)
-  local tab_panes = mux_tab and mux_tab:panes_with_info() or {}
-  for i, p in ipairs(tab_panes) do
-    local claude = p.pane:get_user_vars().claude
-    local icon = claude == "done" and "✅" or claude == "wait" and "⏳" or nil
-    if icon then
-      mark = mark .. icon .. (#tab_panes > 1 and i or "")
-    end
-  end
-  if mark ~= "" then
-    mark = " 🦀" .. mark
-  end
 
   if tab.is_active then
     -- Copy mode時
@@ -131,9 +118,37 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_wid
     if tab.active_pane.is_zoomed and not wezterm.GLOBAL.overlay_panes[tostring(tab.active_pane.pane_id)] then
       return string.format(" %d %s ", tab_index, "Zoom mode...🔍")
     end
+
+    return string.format(" %d ", tab_index)
   end
 
-  return string.format(" %d%s ", tab_index, mark)
+  local claude
+  local mux_tab = wezterm.mux.get_tab(tab.tab_id)
+  for _, p in ipairs(mux_tab and mux_tab:panes() or {}) do
+    local pane_title = p:get_title()
+    if pane_title:match("^\xE2\x97[\x90-\x93] ") then
+      claude = "run"
+      break
+    elseif pane_title:match("^✳ ") then
+      claude = "done"
+    end
+  end
+
+  if not claude then
+    return string.format(" %d ", tab_index)
+  end
+
+  local theme = require("theme")
+  local icons = { run = "⌛️", done = "✅" }
+  local bg = { run = theme.colors["yellow"], done = theme.colors["peru"] }
+  return {
+    { Background = { Color = bg[claude] } },
+    { Foreground = { Color = theme.colors["black"] } },
+    { Text = string.format(" %d Claude %s ", tab_index, icons[claude]) },
+    "ResetAttributes",
+    { Background = { Color = theme.theme_config[theme.selected_theme]["bg"] } },
+    { Foreground = { Color = theme.colors["aliceblue"] } },
+  }
 end)
 
 local theme = require("theme")
